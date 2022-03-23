@@ -13,5 +13,20 @@
 
 
 /** */
-public class Aminoacid extends Materials implements Materials {
+public class Aminoacid extends Materials {
+    /**
+     * @param p
+     */
+    @Override
+    public boolean AddToBackpack(Backpack p) {
+        return false;
+    }
+
+    /**
+     * @param p
+     */
+    @Override
+    public void RemoveFromBackpack(Backpack p) {
+
+    }
 }

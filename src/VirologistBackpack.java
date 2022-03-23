@@ -57,6 +57,6 @@ public class VirologistBackpack extends Backpack implements Backpack {
 	}
 	
 	/** */
-	public bool EnoughMaterials(int a, int n) {
+	public boolean EnoughMaterials(int a, int n) {
 	}
 }

@@ -14,4 +14,11 @@
 
 /** */
 public class NotLearn implements LearnBehavior {
+    /**
+     *
+     */
+    @Override
+    public void Learn() {
+
+    }
 }

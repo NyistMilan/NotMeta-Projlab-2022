@@ -14,4 +14,11 @@
 
 /** */
 public class NotCreate implements CreateBehavior {
+    /**
+     * @param g
+     */
+    @Override
+    public Agent CreateAgent(Genome g) {
+        return null;
+    }
 }

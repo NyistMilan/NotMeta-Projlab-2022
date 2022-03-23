@@ -39,4 +39,14 @@ public abstract class Agent implements Collectable {
 	
 	/** */
 	public abstract void Remove(Virologist v);
+
+	@Override
+	public void RemoveFromBackpack(Backpack p) {
+
+	}
+
+	@Override
+	public boolean AddToBackpack(Backpack p) {
+		return false;
+	}
 }

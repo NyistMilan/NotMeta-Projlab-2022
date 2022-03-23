@@ -13,8 +13,7 @@
 
 
 /** */
-public class LearnBehavior {
+interface LearnBehavior {
 	/** */
-	public void Learn() {
-	}
+	void Learn();
 }

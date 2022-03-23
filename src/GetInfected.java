@@ -14,4 +14,21 @@
 
 /** */
 public class GetInfected implements GetInfectedBehavior {
+    /**
+     *
+     */
+    @Override
+    public int GetPriority() {
+        return 0;
+    }
+
+    /**
+     * @param v1
+     * @param v2
+     * @param a
+     */
+    @Override
+    public void GetInfected(Virologist v1, Virologist v2, Agent a) {
+
+    }
 }

@@ -13,8 +13,7 @@
 
 
 /** */
-public class PickUpBehavior {
+interface PickUpBehavior {
 	/** */
-	public void PickUpCollectable(Virologist v, Collectable[1..*] c) {
-	}
+	void PickUpCollectable(Virologist v, Collectable[1..*] c);
 }

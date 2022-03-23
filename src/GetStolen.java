@@ -14,4 +14,11 @@
 
 /** */
 public class GetStolen implements GetStolenBehavior {
+    /**
+     *
+     */
+    @Override
+    public boolean GetStolenFrom() {
+        return false;
+    }
 }

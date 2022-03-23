@@ -14,4 +14,20 @@
 
 /** */
 public class Move implements MoveBehavior {
+    /**
+     *
+     */
+    @Override
+    public int GetPriority() {
+        return 0;
+    }
+
+    /**
+     * @param v
+     * @param d
+     */
+    @Override
+    public void Move(Virologist v, int d) {
+
+    }
 }

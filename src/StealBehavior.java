@@ -13,8 +13,7 @@
 
 
 /** */
-public class StealBehavior {
+interface StealBehavior {
 	/** */
-	public void Steal(Virologist v, Collectable[1..*] c) {
-	}
+	void Steal(Virologist v, Collectable[1..*] c);
 }

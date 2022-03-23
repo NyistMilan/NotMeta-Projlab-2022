@@ -13,8 +13,7 @@
 
 
 /** */
-public class GetStolenBehavior {
+interface GetStolenBehavior {
 	/** */
-	public bool GetStolenFrom(Collectable[1..*] c) {
-	}
+	boolean GetStolenFrom(Collectable[1..*] c);
 }

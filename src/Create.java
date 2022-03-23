@@ -14,4 +14,11 @@
 
 /** */
 public class Create implements CreateBehavior {
+    /**
+     * @param g
+     */
+    @Override
+    public Agent CreateAgent(Genome g) {
+        return null;
+    }
 }

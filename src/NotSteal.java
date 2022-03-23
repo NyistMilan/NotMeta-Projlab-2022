@@ -14,4 +14,11 @@
 
 /** */
 public class NotSteal implements StealBehavior {
+    /**
+     * @param v
+     */
+    @Override
+    public void Steal(Virologist v) {
+
+    }
 }

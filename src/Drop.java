@@ -13,5 +13,12 @@
 
 
 /** */
-public class Drop extends DropBehavior implements DropBehavior {
+public class Drop implements DropBehavior {
+    /**
+     *
+     */
+    @Override
+    public void DropCollectable() {
+
+    }
 }

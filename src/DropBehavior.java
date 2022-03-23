@@ -13,8 +13,7 @@
 
 
 /** */
-public class DropBehavior {
+interface DropBehavior {
 	/** */
-	public void DropCollectable(Collectable[1..*] c) {
-	}
+	void DropCollectable(Collectable[1..*] c);
 }

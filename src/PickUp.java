@@ -14,4 +14,11 @@
 
 /** */
 public class PickUp implements PickUpBehavior {
+    /**
+     * @param v
+     */
+    @Override
+    public void PickUpCollectable(Virologist v) {
+
+    }
 }

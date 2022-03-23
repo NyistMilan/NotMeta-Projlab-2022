@@ -14,4 +14,11 @@
 
 /** */
 public class NotDrop implements DropBehavior {
+    /**
+     *
+     */
+    @Override
+    public void DropCollectable() {
+
+    }
 }

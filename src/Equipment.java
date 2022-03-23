@@ -22,4 +22,14 @@ public abstract class Equipment implements Collectable {
 	
 	/** */
 	public abstract void Remove(Virologist v);
+
+	@Override
+	public boolean AddToBackpack(Backpack p) {
+		return false;
+	}
+
+	@Override
+	public void RemoveFromBackpack(Backpack p) {
+
+	}
 }

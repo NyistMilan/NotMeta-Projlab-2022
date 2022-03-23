@@ -13,15 +13,13 @@
 
 
 /** */
-public class GetInfectedBehavior {
+interface GetInfectedBehavior {
 	/** */
-	private int priority;
+	int priority = 0;
 	
 	/** */
-	public int GetPriority() {
-	}
+	int GetPriority();
 	
 	/** */
-	public void GetInfected(Virologist v1, Virologist v2, Agent a) {
-	}
+	void GetInfected(Virologist v1, Virologist v2, Agent a);
 }

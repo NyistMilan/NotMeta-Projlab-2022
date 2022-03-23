@@ -13,12 +13,10 @@
 
 
 /** */
-public class Collectable {
+interface Collectable {
 	/** */
-	public bool AddToBackpack(Backpack p) {
-	}
+	boolean AddToBackpack(Backpack p);
 	
 	/** */
-	public void RemoveFromBackpack(Backpack p) {
-	}
+	void RemoveFromBackpack(Backpack p);
 }

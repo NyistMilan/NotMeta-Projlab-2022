@@ -14,4 +14,11 @@
 
 /** */
 public class Learn implements LearnBehavior {
+    /**
+     *
+     */
+    @Override
+    public void Learn() {
+
+    }
 }

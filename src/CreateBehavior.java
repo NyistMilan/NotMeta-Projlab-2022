@@ -13,8 +13,7 @@
 
 
 /** */
-public class CreateBehavior {
+interface CreateBehavior {
 	/** */
-	public Agent CreateAgent(Genome g) {
-	}
+	Agent CreateAgent(Genome g);
 }

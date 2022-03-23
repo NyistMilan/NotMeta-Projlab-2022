@@ -21,4 +21,20 @@ public class Chorea extends Agent {
 	/** */
 	public void Remove(Virologist v) {
 	}
+
+	/**
+	 * @param p
+	 */
+	@Override
+	public boolean AddToBackpack(Backpack p) {
+		return false;
+	}
+
+	/**
+	 * @param p
+	 */
+	@Override
+	public void RemoveFromBackpack(Backpack p) {
+
+	}
 }

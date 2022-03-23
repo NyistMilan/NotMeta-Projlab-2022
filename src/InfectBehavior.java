@@ -13,8 +13,7 @@
 
 
 /** */
-public class InfectBehavior {
+interface InfectBehavior {
 	/** */
-	public void Infect(Virologist v1, Virologist v2, Agent a) {
-	}
+	void Infect(Virologist v1, Virologist v2, Agent a);
 }

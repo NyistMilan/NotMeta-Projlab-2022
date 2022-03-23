@@ -13,15 +13,13 @@
 
 
 /** */
-public class MoveBehavior {
+interface MoveBehavior {
 	/** */
-	private int priority;
+	int priority = 0;
 	
 	/** */
-	public int GetPriority() {
-	}
+	int GetPriority();
 	
 	/** */
-	public void Move(Virologist v, int d) {
-	}
+	void Move(Virologist v, int d);
 }
