@@ -39,16 +39,13 @@ public class Backpack {
 	}
 	
 	/** */
-	public ArrayList<Equipment> GetEquipments() {
-	}
+	//public ArrayList<Equipment> GetEquipments() {}
 	
 	/** */
-	public ArrayList<Aminoacid> GetAminos() {
-	}
+	//public ArrayList<Aminoacid> GetAminos() {}
 	
 	/** */
-	public ArrayList<Nucleotide> GetNucleotide() {
-	}
+	//public ArrayList<Nucleotide> GetNucleotide() {}
 	
 	/** */
 	public void Remove(Equipment e) {

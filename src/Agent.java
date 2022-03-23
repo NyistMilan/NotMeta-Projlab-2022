@@ -9,9 +9,6 @@
 //
 //
 
-
-
-
 /** */
 public abstract class Agent implements Collectable {
 	/** */
@@ -27,12 +24,10 @@ public abstract class Agent implements Collectable {
 	private int duration;
 	
 	/** */
-	public int DecreaseWarranty() {
-	}
+	public int DecreaseWarranty() {return 0;}
 	
 	/** */
-	public int DecreaseDuration() {
-	}
+	public int DecreaseDuration() {return 0;}
 	
 	/** */
 	public abstract void Apply(Virologist v);

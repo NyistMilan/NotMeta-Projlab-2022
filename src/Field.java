@@ -10,46 +10,66 @@
 //
 
 
-
+import java.util.ArrayList;
 
 /** */
 public abstract class Field {
-	/** */
+	/**
+	 *
+	 */
 	private Virologist virologists;
-	
-	/** */
+
+	/**
+	 *
+	 */
 	private Collectable items;
-	
-	/** */
+
+	/**
+	 *
+	 */
 	private Field neighbours;
-	
-	/** */
+
+	/**
+	 *
+	 */
 	private Backpack backpack;
-	
-	/** */
-	public Field GetNeighbour(int d) {
-	}
-	
-	/** */
+
+	/**
+	 *
+	 */
+	//public Field GetNeighbour(int d) {}
+
+	/**
+	 *
+	 */
 	public abstract void Accept(Virologist v);
-	
-	/** */
+
+	/**
+	 *
+	 */
 	public void Remove(Virologist v) {
 	}
-	
-	/** */
+
+	/**
+	 *
+	 */
 	public void Add(Collectable c) {
 	}
-	
-	/** */
+
+	/**
+	 *
+	 */
 	public void Remove(Collectable c) {
 	}
-	
-	/** */
+
+	/**
+	 *
+	 */
 	public void SetNeighbour(Field f) {
 	}
-	
-	/** */
-	public int [1..*] GetDirections() {
-	}
+
+	/**
+	 *
+	 */
+	//public ArrayList<Integer> GetDirections() {}
 }

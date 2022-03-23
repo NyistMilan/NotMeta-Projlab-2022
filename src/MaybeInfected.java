@@ -14,4 +14,13 @@
 
 /** */
 public class MaybeInfected implements GetInfectedBehavior {
+    @Override
+    public int GetPriority() {
+        return 0;
+    }
+
+    @Override
+    public void GetInfected(Virologist v1, Virologist v2, Agent a) {
+
+    }
 }

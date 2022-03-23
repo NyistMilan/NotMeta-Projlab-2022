@@ -33,12 +33,10 @@ public class VirologistBackpack extends Backpack {
 	}
 	
 	/** */
-	public ArrayList<Agent> GetAgents() {
-	}
+	//public ArrayList<Agent> GetAgents() {}
 	
 	/** */
-	public ArrayList<Agent> GetAppliedAgents() {
-	}
+	//public ArrayList<Agent> GetAppliedAgents() {}
 	
 	/** */
 	public void Remove(Agent a) {
@@ -57,6 +55,5 @@ public class VirologistBackpack extends Backpack {
 	}
 	
 	/** */
-	public boolean EnoughMaterials(int a, int n) {
-	}
+	//public boolean EnoughMaterials(int a, int n) {}
 }

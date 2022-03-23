@@ -18,8 +18,7 @@ public class Route {
 	public Field fields;
 	
 	/** */
-	public Field GetLocation() {
-	}
+	//public Field GetLocation() {}
 	
 	/** */
 	public void Add(Field f) {

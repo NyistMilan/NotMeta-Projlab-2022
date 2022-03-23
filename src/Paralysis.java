@@ -13,15 +13,7 @@
 
 
 /** */
-public class Paralysis extends Agent, Agent {
-	/** */
-	public void Apply(Virologist v) {
-	}
-	
-	/** */
-	public void Remove(Virologist v) {
-	}
-	
+public class Paralysis extends Agent {
 	/** */
 	public void Apply(Virologist v) {
 	}

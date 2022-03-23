@@ -18,8 +18,7 @@ public class Laboratory extends Field {
 	private Genome genome;
 	
 	/** */
-	public Genome GetGenome() {
-	}
+	public Genome GetGenome() {return new GenomeChorea();}
 	
 	/** */
 	public void Accept(Virologist v) {

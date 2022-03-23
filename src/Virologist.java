@@ -73,16 +73,14 @@ public class Virologist {
 	}
 	
 	/** */
-	public boolean GetStolenFrom(ArrayList<Collectable> c) {
-	}
+	public boolean GetStolenFrom(ArrayList<Collectable> c) {return false;}
 	
 	/** */
 	public void Infect(Virologist v, Agent a) {
 	}
 	
 	/** */
-	public boolean Add(Genome g) {
-	}
+	public boolean Add(Genome g) {return false;}
 	
 	/** */
 	public void Learn() {
@@ -93,8 +91,7 @@ public class Virologist {
 	}
 	
 	/** */
-	public Agent CreateAgent(Genome g) {
-	}
+	//public Agent CreateAgent(Genome g) {}
 	
 	/** */
 	public void GetInfected(Virologist v, Agent a) {
@@ -105,12 +102,10 @@ public class Virologist {
 	}
 	
 	/** */
-	public State GetState() {
-	}
+	//public State GetState() {}
 	
 	/** */
-	public Route GetRoute() {
-	}
+	//public Route GetRoute() {}
 	
 	/** */
 	public void EndTurn() {

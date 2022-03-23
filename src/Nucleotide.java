@@ -13,5 +13,14 @@
 
 
 /** */
-public class Nucleotide extends Materials implements Materials {
+public class Nucleotide extends Materials{
+    @Override
+    public boolean AddToBackpack(Backpack p) {
+        return false;
+    }
+
+    @Override
+    public void RemoveFromBackpack(Backpack p) {
+
+    }
 }
