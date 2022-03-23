@@ -10,7 +10,7 @@
 //
 
 
-
+import java.util.ArrayList;
 
 /** */
 public class NotPickUp implements PickUpBehavior {
@@ -18,7 +18,7 @@ public class NotPickUp implements PickUpBehavior {
      * @param v
      */
     @Override
-    public void PickUpCollectable(Virologist v) {
+    public void PickUpCollectable(Virologist v, ArrayList<Collectable> c) {
 
     }
 }

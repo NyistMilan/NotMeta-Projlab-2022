@@ -10,7 +10,7 @@
 //
 
 
-
+import java.util.ArrayList;
 
 /** */
 public class Virologist {
@@ -22,9 +22,6 @@ public class Virologist {
 	
 	/** */
 	private VirologistBackpack backPack;
-	
-	/** */
-	private ActiveEffects activeEffects;
 	
 	/** */
 	private Route route;
@@ -57,26 +54,26 @@ public class Virologist {
 	private InfectBehavior infectBehavior;
 	
 	/** */
-	private GetStolenBehavior -getStolenBehavior;
+	private GetStolenBehavior getStolenBehavior;
 	
 	/** */
 	public void Move(int d) {
 	}
 	
 	/** */
-	public void PickUpCollectable(Collectable[1..*] c) {
+	public void PickUpCollectable(ArrayList<Collectable> c) {
 	}
 	
 	/** */
-	public void DropCollectable(Collectable[1..*] c) {
+	public void DropCollectable(ArrayList<Collectable> c) {
 	}
 	
 	/** */
-	public void Steal(Virologist v, Collectable[1..*] c) {
+	public void Steal(Virologist v, ArrayList<Collectable> c) {
 	}
 	
 	/** */
-	public bool GetStolenFrom(Collectable[1..*] c) {
+	public boolean GetStolenFrom(ArrayList<Collectable> c) {
 	}
 	
 	/** */
@@ -84,7 +81,7 @@ public class Virologist {
 	}
 	
 	/** */
-	public bool Add(Genom g) {
+	public boolean Add(Genome g) {
 	}
 	
 	/** */

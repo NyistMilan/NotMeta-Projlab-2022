@@ -10,10 +10,10 @@
 //
 
 
-
+import java.util.ArrayList;
 
 /** */
 interface GetStolenBehavior {
 	/** */
-	boolean GetStolenFrom(Collectable[1..*] c);
+	boolean GetStolenFrom(ArrayList<Collectable> c);
 }

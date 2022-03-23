@@ -10,10 +10,10 @@
 //
 
 
-
+import java.util.ArrayList;
 
 /** */
 interface PickUpBehavior {
 	/** */
-	void PickUpCollectable(Virologist v, Collectable[1..*] c);
+	void PickUpCollectable(Virologist v, ArrayList<Collectable> c);
 }

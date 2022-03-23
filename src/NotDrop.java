@@ -10,7 +10,7 @@
 //
 
 
-
+import java.util.ArrayList;
 
 /** */
 public class NotDrop implements DropBehavior {
@@ -18,7 +18,7 @@ public class NotDrop implements DropBehavior {
      *
      */
     @Override
-    public void DropCollectable() {
+    public void DropCollectable(ArrayList<Collectable> c) {
 
     }
 }

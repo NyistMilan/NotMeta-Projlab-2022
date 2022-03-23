@@ -10,15 +10,16 @@
 //
 
 
-
+import java.util.ArrayList;
 
 /** */
 public class Drop implements DropBehavior {
+
     /**
-     *
+     * @param c
      */
     @Override
-    public void DropCollectable() {
+    public void DropCollectable(ArrayList<Collectable> c) {
 
     }
 }

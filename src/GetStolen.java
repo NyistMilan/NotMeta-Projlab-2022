@@ -10,7 +10,7 @@
 //
 
 
-
+import java.util.ArrayList;
 
 /** */
 public class GetStolen implements GetStolenBehavior {
@@ -18,7 +18,7 @@ public class GetStolen implements GetStolenBehavior {
      *
      */
     @Override
-    public boolean GetStolenFrom() {
+    public boolean GetStolenFrom(ArrayList<Collectable> c) {
         return false;
     }
 }

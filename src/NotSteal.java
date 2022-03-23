@@ -10,7 +10,7 @@
 //
 
 
-
+import java.util.ArrayList;
 
 /** */
 public class NotSteal implements StealBehavior {
@@ -18,7 +18,7 @@ public class NotSteal implements StealBehavior {
      * @param v
      */
     @Override
-    public void Steal(Virologist v) {
+    public void Steal(Virologist v, ArrayList<Collectable> c) {
 
     }
 }

@@ -10,10 +10,11 @@
 //
 
 
-
+import java.util.ArrayList;
 
 /** */
 interface DropBehavior {
 	/** */
-	void DropCollectable(Collectable[1..*] c);
+	void DropCollectable(ArrayList<Collectable> c);
+
 }

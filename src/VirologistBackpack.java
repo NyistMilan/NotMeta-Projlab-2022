@@ -10,15 +10,15 @@
 //
 
 
-
+import java.util.ArrayList;
 
 /** */
-public class VirologistBackpack extends Backpack implements Backpack {
+public class VirologistBackpack extends Backpack {
 	/** */
-	private Agent agents;
+	private ArrayList<Agent> agents;
 	
 	/** */
-	private Agent appliedAgents;
+	private ArrayList<Agent> appliedAgents;
 	
 	/** */
 	public void Add(Equipment e) {
@@ -33,11 +33,11 @@ public class VirologistBackpack extends Backpack implements Backpack {
 	}
 	
 	/** */
-	public Agent[0..*] GetAgents() {
+	public ArrayList<Agent> GetAgents() {
 	}
 	
 	/** */
-	public Agent[0..*] GetAppliedAgents() {
+	public ArrayList<Agent> GetAppliedAgents() {
 	}
 	
 	/** */

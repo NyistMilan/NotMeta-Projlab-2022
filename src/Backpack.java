@@ -10,7 +10,7 @@
 //
 
 
-
+import java.util.ArrayList;
 
 /** */
 public class Backpack {
@@ -18,13 +18,13 @@ public class Backpack {
 	public int capacity;
 	
 	/** */
-	private Nucleotide nucleotids;
+	private ArrayList<Nucleotide> nucleotids;
 	
 	/** */
-	private Aminoacid aminoacids;
+	private ArrayList<Aminoacid> aminoacids;
 	
 	/** */
-	private Equipment equipments;
+	private ArrayList<Equipment> equipments;
 	
 	/** */
 	public void Add(Equipment e) {
@@ -39,15 +39,15 @@ public class Backpack {
 	}
 	
 	/** */
-	public Equipment[0..*] GetEquipments() {
+	public ArrayList<Equipment> GetEquipments() {
 	}
 	
 	/** */
-	public Aminoacid[0..*] GetAminos() {
+	public ArrayList<Aminoacid> GetAminos() {
 	}
 	
 	/** */
-	public Nucleotide[0..*] GetNucleotide() {
+	public ArrayList<Nucleotide> GetNucleotide() {
 	}
 	
 	/** */
@@ -59,6 +59,6 @@ public class Backpack {
 	}
 	
 	/** */
-	public void Remove(Nukleotide n) {
+	public void Remove(Nucleotide n) {
 	}
 }

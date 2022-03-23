@@ -10,10 +10,10 @@
 //
 
 
-
+import java.util.ArrayList;
 
 /** */
 interface StealBehavior {
 	/** */
-	void Steal(Virologist v, Collectable[1..*] c);
+	void Steal(Virologist v, ArrayList<Collectable> c);
 }
