@@ -239,7 +239,7 @@ public class Skeleton {
                     dropMaterials();
                     break;
                 case 8:
-                    if (yesOrNoInput("Is there space remaining?"))
+                    if (yesOrNoInput("Can you store your items in your normal backpack?"))
                         dropSack();
                     else
                         dropSackNotEnoughSpace();
@@ -248,7 +248,7 @@ public class Skeleton {
                     learn();
                     break;
                 case 10:
-                    if (yesOrNoInput("Do you have enough space?"))
+                    if (yesOrNoInput("Do you have enough materials?"))
                         createAgent();
                     else
                         createAgentWithNotEnoughMaterial();
@@ -277,7 +277,7 @@ public class Skeleton {
                     break;
                 case 13:
                     printList(protections);
-                    int protection = askForInput("What agent would you like to infect with?", 1, 4);
+                    int protection = askForInput("What kind of protection the other virologist has?", 1, 4);
                     System.out.println("\n" + protections[protection - 1]);
                     switch(protection){
                         case 1:
@@ -296,7 +296,7 @@ public class Skeleton {
                     break;
                 case 14:
                     printList(endings);
-                    int ending = askForInput("What agent would you like to infect with?", 1, 3);
+                    int ending = askForInput("Do you need to remove any agents after ending your turn?", 1, 3);
                     System.out.println("\n" + endings[ending - 1]);
                     switch(ending){
                         case 1:
