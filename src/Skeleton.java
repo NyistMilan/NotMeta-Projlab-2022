@@ -14,39 +14,39 @@ public class Skeleton {
     private final String[] menu = {
             "1. Move To Field",
             "2. Move To Laboratory",
-            "3. Take...",
-            "4. Drop Materials",
-            "5. Drop Sack",
-            "6. Learn",
-            "7. Create Agent",
-            "8. Steal",
-            "9. Infect With...",
-            "10. Infect Virologist that has...",
-            "11. End Turn and...",
-            "12. Exit This Program"
+            "3. Take Aminoacid...",
+            "4. Take Equipment...",
+            "5. Drop Materials",
+            "6. Drop Sack",
+            "7. Learn",
+            "8. Create Agent",
+            "9. Steal",
+            "10. Infect With...",
+            "11. Infect Virologist that has...",
+            "12. End Turn and...",
+            "13. Exit This Program"
     };
-    /**When the user enters 3. for the main option, and decides that his/her bag is not full, these sub-options pop up.*/
-    private final String[] takeOptions = {
-            "1. Aminoacid",
-            "2. Sack",
-            "3. Cloak",
-            "4. Gloves"
+    /**When the user enters 4. for the main option, and decides that his/her bag is not full, these sub-options pop up.*/
+    private final String[] takeEquipmentOptions = {
+            "1. Sack",
+            "2. Cloak",
+            "3. Gloves"
     };
-    /** When the user enters 9. for the main option, these sub-options pop up.*/
+    /** When the user enters 10. for the main option, these sub-options pop up.*/
     private final String[] agents = {
             "1. Oblivion",
             "2. Chorea",
             "3. Protection",
             "4. Paralysis"
     };
-    /** When the user enters 10. for the main option, these sub-options pop up.*/
+    /** When the user enters 11. for the main option, these sub-options pop up.*/
     private final String[] protections = {
             "1. Protected agent",
             "2. Cloak",
             "3. Gloves",
             "4. Gloves and you have Gloves as well"
     };
-    /** When the user enters 11. for the main option, these sub-options pop up.*/
+    /** When the user enters 12. for the main option, these sub-options pop up.*/
     private final String[] endings = {
             "1. doesn't remove anything",
             "2. remove applied Oblivion",
@@ -216,42 +216,47 @@ public class Skeleton {
                     moveToLaboratory();
                     break;
                 case 3:
-                    if (yesOrNoInput("Do you have enough space?")){
-                        printList(takeOptions);
-                        int take = askForInput("Input a number", 1, 4);
-                        System.out.println("\n" + takeOptions[take - 1]);
-                        switch (take) {
-                            case 1 -> takeAminoacid();
-                            case 2 -> takeSack();
-                            case 3 -> takeCloak();
-                            case 4 -> takeGloves();
-                        }
-                    }
+                    if (yesOrNoInput("Do you have enough space?"))
+                        takeAminoacid();
                     else
                         takeMaterialsNotEnoughSpace();
                     break;
                 case 4:
-                    dropMaterials();
+                    if (yesOrNoInput("Do you have enough space?")){
+                        printList(takeEquipmentOptions);
+                        int takeEq = askForInput("Input a number", 1, 3);
+                        System.out.println("\n" + takeEquipmentOptions[takeEq - 1]);
+                        switch (takeEq) {
+                            case 1 -> takeSack();
+                            case 2 -> takeCloak();
+                            case 3 -> takeGloves();
+                        }
+                    }
+                    else
+                        takeEquipmentNotEnoughSpace();
                     break;
                 case 5:
+                    dropMaterials();
+                    break;
+                case 6:
                     if (yesOrNoInput("Can you store your items in your normal backpack?"))
                         dropSack();
                     else
                         dropSackNotEnoughSpace();
                     break;
-                case 6:
+                case 7:
                     learn();
                     break;
-                case 7:
+                case 8:
                     if (yesOrNoInput("Do you have enough materials?"))
                         createAgent();
                     else
                         createAgentWithNotEnoughMaterial();
                     break;
-                case 8:
+                case 9:
                     steal();
                     break;
-                case 9:
+                case 10:
                     printList(agents);
                     int agent = askForInput("What agent would you like to infect with?", 1, 4);
                     System.out.println("\n" + agents[agent - 1]);
@@ -262,7 +267,7 @@ public class Skeleton {
                         case 4 -> infectWithParalysis();
                     }
                     break;
-                case 10:
+                case 11:
                     printList(protections);
                     int protection = askForInput("What kind of protection the other virologist has?", 1, 4);
                     System.out.println("\n" + protections[protection - 1]);
@@ -273,7 +278,7 @@ public class Skeleton {
                         case 4 -> infectVirologistWithGlovesAndYouHaveGlovesToo();
                     }
                     break;
-                case 11:
+                case 12:
                     printList(endings);
                     int ending = askForInput("Do you need to remove any agents after ending your turn?", 1, 3);
                     System.out.println("\n" + endings[ending - 1]);
@@ -283,7 +288,7 @@ public class Skeleton {
                         case 3 -> endTurnAndRemoveOblivionFromNotAppliedAgents();
                     }
                     break;
-                case 12:
+                case 13:
                     return false;
             }
         }
