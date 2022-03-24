@@ -25,27 +25,28 @@ public class Skeleton {
             "11. End Turn and...",
             "12. Exit This Program"
     };
+    /**When the user enters 3. for the main option, and decides that his/her bag is not full, these sub-options pop up.*/
     private final String[] takeOptions = {
             "1. Aminoacid",
             "2. Sack",
             "3. Cloak",
             "4. Gloves"
     };
-    /** When the user enters 12. for the main option, these sub-options pop up.*/
+    /** When the user enters 9. for the main option, these sub-options pop up.*/
     private final String[] agents = {
             "1. Oblivion",
             "2. Chorea",
             "3. Protection",
             "4. Paralysis"
     };
-    /** When the user enters 13. for the main option, these sub-options pop up.*/
+    /** When the user enters 10. for the main option, these sub-options pop up.*/
     private final String[] protections = {
             "1. Protected agent",
             "2. Cloak",
             "3. Gloves",
             "4. Gloves and you have Gloves as well"
     };
-    /** When the user enters 14. for the main option, these sub-options pop up.*/
+    /** When the user enters 11. for the main option, these sub-options pop up.*/
     private final String[] endings = {
             "1. doesn't remove anything",
             "2. remove applied Oblivion",
