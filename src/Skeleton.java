@@ -14,19 +14,22 @@ public class Skeleton {
     private final String[] menu = {
             "1. Move To Field",
             "2. Move To Laboratory",
-            "3. Take Aminoacid",
-            "4. Take Sack",
-            "5. Take Cloak",
-            "6. Take Gloves",
-            "7. Drop Materials",
-            "8. Drop Sack",
-            "9. Learn",
-            "10. Create Agent",
-            "11. Steal",
-            "12. Infect With...",
-            "13. Infect Virologist that has...",
-            "14. End Turn and...",
-            "15. Exit This Program"
+            "3. Take...",
+            "4. Drop Materials",
+            "5. Drop Sack",
+            "6. Learn",
+            "7. Create Agent",
+            "8. Steal",
+            "9. Infect With...",
+            "10. Infect Virologist that has...",
+            "11. End Turn and...",
+            "12. Exit This Program"
+    };
+    private final String[] takeOptions = {
+            "1. Aminoacid",
+            "2. Sack",
+            "3. Cloak",
+            "4. Gloves"
     };
     /** When the user enters 12. for the main option, these sub-options pop up.*/
     private final String[] agents = {
@@ -202,7 +205,7 @@ public class Skeleton {
         boolean running = true;
         while(running){
             printList(menu);
-            int input = askForInput("Input a number", 1, 14);
+            int input = askForInput("Input a number", 1, 12);
             System.out.println("\n" + menu[input - 1]);
             switch(input){
                 case 1:
@@ -212,51 +215,42 @@ public class Skeleton {
                     moveToLaboratory();
                     break;
                 case 3:
-                    if (yesOrNoInput("Do you have enough space?"))
-                        takeAminoacid();
+                    if (yesOrNoInput("Do you have enough space?")){
+                        printList(takeOptions);
+                        int take = askForInput("Input a number", 1, 4);
+                        System.out.println("\n" + takeOptions[take - 1]);
+                        switch (take) {
+                            case 1 -> takeAminoacid();
+                            case 2 -> takeSack();
+                            case 3 -> takeCloak();
+                            case 4 -> takeGloves();
+                        }
+                    }
                     else
                         takeMaterialsNotEnoughSpace();
                     break;
                 case 4:
-                    if (yesOrNoInput("Do you have enough space?"))
-                        takeSack();
-                    else
-                        takeEquipmentNotEnoughSpace();
-                    break;
-                case 5:
-                    if (yesOrNoInput("Do you have enough space?"))
-                        takeCloak();
-                    else
-                        takeEquipmentNotEnoughSpace();
-                    break;
-                case 6:
-                    if (yesOrNoInput("Do you have enough space?"))
-                        takeGloves();
-                    else
-                        takeEquipmentNotEnoughSpace();
-                    break;
-                case 7:
                     dropMaterials();
                     break;
-                case 8:
+                case 5:
                     if (yesOrNoInput("Can you store your items in your normal backpack?"))
                         dropSack();
                     else
                         dropSackNotEnoughSpace();
                     break;
-                case 9:
+                case 6:
                     learn();
                     break;
-                case 10:
+                case 7:
                     if (yesOrNoInput("Do you have enough materials?"))
                         createAgent();
                     else
                         createAgentWithNotEnoughMaterial();
                     break;
-                case 11:
+                case 8:
                     steal();
                     break;
-                case 12:
+                case 9:
                     printList(agents);
                     int agent = askForInput("What agent would you like to infect with?", 1, 4);
                     System.out.println("\n" + agents[agent - 1]);
@@ -267,7 +261,7 @@ public class Skeleton {
                         case 4 -> infectWithParalysis();
                     }
                     break;
-                case 13:
+                case 10:
                     printList(protections);
                     int protection = askForInput("What kind of protection the other virologist has?", 1, 4);
                     System.out.println("\n" + protections[protection - 1]);
@@ -278,7 +272,7 @@ public class Skeleton {
                         case 4 -> infectVirologistWithGlovesAndYouHaveGlovesToo();
                     }
                     break;
-                case 14:
+                case 11:
                     printList(endings);
                     int ending = askForInput("Do you need to remove any agents after ending your turn?", 1, 3);
                     System.out.println("\n" + endings[ending - 1]);
@@ -288,8 +282,8 @@ public class Skeleton {
                         case 3 -> endTurnAndRemoveOblivionFromNotAppliedAgents();
                     }
                     break;
-                case 15:
-                    running = false;
+                case 12:
+                    return false;
             }
         }
         return true;
