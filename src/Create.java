@@ -19,6 +19,8 @@ public class Create implements CreateBehavior {
      */
     @Override
     public Agent CreateAgent(Genome g) {
+        Skeleton.methodCall(this, "g");
+        Skeleton.methodReturn(this);
         return null;
     }
 }

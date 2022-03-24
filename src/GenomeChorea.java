@@ -15,5 +15,8 @@
 /** */
 public class GenomeChorea extends Genome {
 	/** */
-	public Agent CreateAgent(Backpack b) { return new Oblivion();}
+	public Agent CreateAgent(Backpack b) {
+		Skeleton.methodCall(this, "b");
+		Skeleton.methodReturn(this);
+		return new Oblivion();}
 }

@@ -16,25 +16,32 @@
 public class Cloak extends Equipment {
 	/** */
 	public void Apply(Virologist v) {
+		Skeleton.methodCall(this, "v");
+		Skeleton.methodReturn(this);
 	}
 	
 	/** */
 	public void Remove(Virologist v) {
+		Skeleton.methodCall(this, "v");
+		Skeleton.methodReturn(this);
 	}
 
 	/**
-	 * @param p
+	 * @param b
 	 */
 	@Override
-	public boolean AddToBackpack(Backpack p) {
+	public boolean AddToBackpack(Backpack b) {
+		Skeleton.methodCall(this, "b");
+		Skeleton.methodReturn(this);
 		return false;
 	}
 
 	/**
-	 * @param p
+	 * @param b
 	 */
 	@Override
-	public void RemoveFromBackpack(Backpack p) {
-
+	public void RemoveFromBackpack(Backpack b) {
+		Skeleton.methodCall(this, "b");
+		Skeleton.methodReturn(this);
 	}
 }

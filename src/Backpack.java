@@ -28,14 +28,20 @@ public class Backpack {
 	
 	/** */
 	public void Add(Equipment e) {
+		Skeleton.methodCall(this);
+		Skeleton.methodReturn(this);
 	}
 	
 	/** */
 	public void Add(Aminoacid a) {
+		Skeleton.methodCall(this);
+		Skeleton.methodReturn(this);
 	}
 	
 	/** */
 	public void Add(Nucleotide n) {
+		Skeleton.methodCall(this);
+		Skeleton.methodReturn(this);
 	}
 	
 	/** */
@@ -49,13 +55,19 @@ public class Backpack {
 	
 	/** */
 	public void Remove(Equipment e) {
+		Skeleton.methodCall(this, "e");
+		Skeleton.methodReturn(this);
 	}
 	
 	/** */
 	public void Remove(Aminoacid a) {
+		Skeleton.methodCall(this, "a");
+		Skeleton.methodReturn(this);
 	}
 	
 	/** */
 	public void Remove(Nucleotide n) {
+		Skeleton.methodCall(this, "n");
+		Skeleton.methodReturn(this);
 	}
 }

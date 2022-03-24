@@ -16,5 +16,7 @@
 public class Normal extends Field {
 	/** */
 	public void Accept(Virologist v) {
+		Skeleton.methodCall(this, "v");
+		Skeleton.methodReturn(this);
 	}
 }

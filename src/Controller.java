@@ -22,13 +22,19 @@ public class Controller {
 	
 	/** */
 	public void Start() {
+		Skeleton.methodCall(this);
+		Skeleton.methodReturn(this);
 	}
 	
 	/** */
 	public void End() {
+		Skeleton.methodCall(this);
+		Skeleton.methodReturn(this);
 	}
 	
 	/** */
 	public void NextPlayer() {
+		Skeleton.methodCall(this);
+		Skeleton.methodReturn(this);
 	}
 }

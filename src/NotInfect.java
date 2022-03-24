@@ -21,6 +21,7 @@ public class NotInfect implements InfectBehavior {
      */
     @Override
     public void Infect(Virologist v1, Virologist v2, Agent a) {
-
+        Skeleton.methodCall(this, "v1", "v2", "a");
+        Skeleton.methodReturn(this);
     }
 }

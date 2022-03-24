@@ -18,9 +18,15 @@ public class Route {
 	public Field fields;
 	
 	/** */
-	//public Field GetLocation() {}
+	public Field GetLocation() {
+		Skeleton.methodCall(this);
+		Skeleton.methodReturn(this);
+		return null;
+	}
 	
 	/** */
 	public void Add(Field f) {
+		Skeleton.methodCall(this, "f");
+		Skeleton.methodReturn(this);
 	}
 }

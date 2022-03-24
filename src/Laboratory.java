@@ -18,9 +18,15 @@ public class Laboratory extends Field {
 	private Genome genome;
 	
 	/** */
-	public Genome GetGenome() {return new GenomeChorea();}
+	public Genome GetGenome() {
+		Skeleton.methodCall(this, "g");
+		Skeleton.methodReturn(this);
+		return new GenomeChorea();
+	}
 	
 	/** */
 	public void Accept(Virologist v) {
+		Skeleton.methodCall(this, "v");
+		Skeleton.methodReturn(this);
 	}
 }

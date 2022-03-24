@@ -58,64 +58,106 @@ public class Virologist {
 	
 	/** */
 	public void Move(int d) {
+		Skeleton.methodCall(this, "d");
+		Skeleton.methodReturn(this);
 	}
 	
 	/** */
 	public void PickUpCollectable(ArrayList<Collectable> c) {
+		Skeleton.methodCall(this, "c");
+		Skeleton.methodReturn(this);
 	}
 	
 	/** */
 	public void DropCollectable(ArrayList<Collectable> c) {
+		Skeleton.methodCall(this, "c");
+		Skeleton.methodReturn(this);
 	}
 	
 	/** */
 	public void Steal(Virologist v, ArrayList<Collectable> c) {
+		Skeleton.methodCall(this, "c");
+		Skeleton.methodReturn(this);
 	}
 	
 	/** */
-	public boolean GetStolenFrom(ArrayList<Collectable> c) {return false;}
+	public boolean GetStolenFrom(ArrayList<Collectable> c) {
+		Skeleton.methodCall(this,"c");
+		Skeleton.methodReturn(this);
+		return false;}
 	
 	/** */
 	public void Infect(Virologist v, Agent a) {
+		Skeleton.methodCall(this, "v", "a");
+		Skeleton.methodReturn(this);
 	}
 	
 	/** */
-	public boolean Add(Genome g) {return false;}
+	public boolean Add(Genome g) {
+		Skeleton.methodCall(this, "g");
+		Skeleton.methodReturn(this);
+		return false;}
 	
 	/** */
 	public void Learn() {
+		Skeleton.methodCall(this);
+		Skeleton.methodReturn(this);
 	}
 	
 	/** */
 	public void ListCollectables() {
+		Skeleton.methodCall(this);
+		Skeleton.methodReturn(this);
 	}
 	
 	/** */
-	//public Agent CreateAgent(Genome g) {}
+	public Agent CreateAgent(Genome g) {
+		Skeleton.methodCall(this, "g");
+		Skeleton.methodReturn(this);
+		return null;
+	}
 	
 	/** */
 	public void GetInfected(Virologist v, Agent a) {
+		Skeleton.methodCall(this, "v", "a");
+		Skeleton.methodReturn(this);
 	}
 	
 	/** */
 	public void SetState(State s) {
+		Skeleton.methodCall(this, "s");
+		Skeleton.methodReturn(this);
 	}
 	
 	/** */
-	//public State GetState() {}
+	public State GetState() {
+		Skeleton.methodCall(this);
+		Skeleton.methodReturn(this);
+		return null;
+	}
 	
 	/** */
-	//public Route GetRoute() {}
+	public Route GetRoute() {
+		Skeleton.methodCall(this);
+		Skeleton.methodReturn(this);
+		return null;
+	}
 	
 	/** */
 	public void EndTurn() {
+		Skeleton.methodCall(this);
+		Skeleton.methodReturn(this);
 	}
 	
 	/** */
 	public void RefreshEffects() {
+		Skeleton.methodCall(this);
+		Skeleton.methodReturn(this);
 	}
 	
 	/** */
 	public void ForgetGenome(Genome g) {
+		Skeleton.methodCall(this, "g");
+		Skeleton.methodReturn(this);
 	}
 }

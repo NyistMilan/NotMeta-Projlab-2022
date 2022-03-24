@@ -37,7 +37,11 @@ public abstract class Field {
 	/**
 	 *
 	 */
-	//public Field GetNeighbour(int d) {}
+	public Field GetNeighbour(int d) {
+		Skeleton.methodCall(this, "d");
+		Skeleton.methodReturn(this);
+		return null;
+	}
 
 	/**
 	 *
@@ -48,28 +52,40 @@ public abstract class Field {
 	 *
 	 */
 	public void Remove(Virologist v) {
+		Skeleton.methodCall(this, "v");
+		Skeleton.methodReturn(this);
 	}
 
 	/**
 	 *
 	 */
 	public void Add(Collectable c) {
+		Skeleton.methodCall(this, "c");
+		Skeleton.methodReturn(this);
 	}
 
 	/**
 	 *
 	 */
 	public void Remove(Collectable c) {
+		Skeleton.methodCall(this, "c");
+		Skeleton.methodReturn(this);
 	}
 
 	/**
 	 *
 	 */
 	public void SetNeighbour(Field f) {
+		Skeleton.methodCall(this, "f");
+		Skeleton.methodReturn(this);
 	}
 
 	/**
 	 *
 	 */
-	//public ArrayList<Integer> GetDirections() {}
+	public ArrayList<Integer> GetDirections() {
+		Skeleton.methodCall(this);
+		Skeleton.methodReturn(this);
+		return null;
+	}
 }

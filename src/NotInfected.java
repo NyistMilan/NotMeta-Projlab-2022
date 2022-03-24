@@ -19,6 +19,8 @@ public class NotInfected implements GetInfectedBehavior {
      */
     @Override
     public int GetPriority() {
+        Skeleton.methodCall(this);
+        Skeleton.methodReturn(this);
         return 0;
     }
 
@@ -29,6 +31,7 @@ public class NotInfected implements GetInfectedBehavior {
      */
     @Override
     public void GetInfected(Virologist v1, Virologist v2, Agent a) {
-
+        Skeleton.methodCall(this, "v1", "v2", "a");
+        Skeleton.methodReturn(this);
     }
 }

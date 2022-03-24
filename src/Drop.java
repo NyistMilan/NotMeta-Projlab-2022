@@ -20,6 +20,7 @@ public class Drop implements DropBehavior {
      */
     @Override
     public void DropCollectable(ArrayList<Collectable> c) {
-
+        Skeleton.methodCall(this, "c");
+        Skeleton.methodReturn(this);
     }
 }

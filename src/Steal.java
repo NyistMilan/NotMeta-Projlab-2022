@@ -19,6 +19,7 @@ public class Steal implements StealBehavior {
      */
     @Override
     public void Steal(Virologist v, ArrayList<Collectable> c) {
-
+        Skeleton.methodCall(this, "v", "c");
+        Skeleton.methodReturn(this);
     }
 }

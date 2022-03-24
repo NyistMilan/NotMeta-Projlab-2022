@@ -15,18 +15,21 @@
 /** */
 public class Aminoacid extends Materials {
     /**
-     * @param p
+     * @param b
      */
     @Override
-    public boolean AddToBackpack(Backpack p) {
+    public boolean AddToBackpack(Backpack b) {
+        Skeleton.methodCall(this, "b");
+        Skeleton.methodReturn(this);
         return false;
     }
 
     /**
-     * @param p
+     * @param b
      */
     @Override
-    public void RemoveFromBackpack(Backpack p) {
-
+    public void RemoveFromBackpack(Backpack b) {
+        Skeleton.methodCall(this, "b");
+        Skeleton.methodReturn(this);
     }
 }

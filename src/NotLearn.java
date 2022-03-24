@@ -19,6 +19,7 @@ public class NotLearn implements LearnBehavior {
      */
     @Override
     public void Learn() {
-
+        Skeleton.methodCall(this);
+        Skeleton.methodReturn(this);
     }
 }

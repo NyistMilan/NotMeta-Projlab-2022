@@ -19,6 +19,8 @@ public class NotMove implements MoveBehavior {
      */
     @Override
     public int GetPriority() {
+        Skeleton.methodCall(this);
+        Skeleton.methodReturn(this);
         return 0;
     }
 
@@ -28,6 +30,7 @@ public class NotMove implements MoveBehavior {
      */
     @Override
     public void Move(Virologist v, int d) {
-
+        Skeleton.methodCall(this, "v", "d");
+        Skeleton.methodReturn(this);
     }
 }

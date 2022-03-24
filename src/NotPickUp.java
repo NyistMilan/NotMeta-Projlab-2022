@@ -19,6 +19,7 @@ public class NotPickUp implements PickUpBehavior {
      */
     @Override
     public void PickUpCollectable(Virologist v, ArrayList<Collectable> c) {
-
+        Skeleton.methodCall(this, "v", "c");
+        Skeleton.methodReturn(this);
     }
 }

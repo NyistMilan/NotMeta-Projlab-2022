@@ -16,9 +16,13 @@
 public class Protection extends Agent {
 	/** */
 	public void Apply(Virologist v) {
+		Skeleton.methodCall(this, "v");
+		Skeleton.methodReturn(this);
 	}
 	
 	/** */
 	public void Remove(Virologist v) {
+		Skeleton.methodCall(this, "v");
+		Skeleton.methodReturn(this);
 	}
 }

@@ -24,10 +24,18 @@ public abstract class Agent implements Collectable {
 	private int duration;
 	
 	/** */
-	public int DecreaseWarranty() {return 0;}
+	public int DecreaseWarranty() {
+		Skeleton.methodCall(this);
+		Skeleton.methodReturn(this);
+		return 0;
+	}
 	
 	/** */
-	public int DecreaseDuration() {return 0;}
+	public int DecreaseDuration() {
+		Skeleton.methodCall(this);
+		Skeleton.methodReturn(this);
+		return 0;
+	}
 	
 	/** */
 	public abstract void Apply(Virologist v);
@@ -36,12 +44,15 @@ public abstract class Agent implements Collectable {
 	public abstract void Remove(Virologist v);
 
 	@Override
-	public void RemoveFromBackpack(Backpack p) {
-
+	public void RemoveFromBackpack(Backpack b) {
+		Skeleton.methodCall(this, "b");
+		Skeleton.methodReturn(this);
 	}
 
 	@Override
-	public boolean AddToBackpack(Backpack p) {
+	public boolean AddToBackpack(Backpack b) {
+		Skeleton.methodCall(this, "b");
+		Skeleton.methodReturn(this);
 		return false;
 	}
 }

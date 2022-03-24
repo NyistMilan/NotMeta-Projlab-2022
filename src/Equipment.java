@@ -24,12 +24,15 @@ public abstract class Equipment implements Collectable {
 	public abstract void Remove(Virologist v);
 
 	@Override
-	public boolean AddToBackpack(Backpack p) {
+	public boolean AddToBackpack(Backpack b) {
+		Skeleton.methodCall(this, "b");
+		Skeleton.methodReturn(this);
 		return false;
 	}
 
 	@Override
-	public void RemoveFromBackpack(Backpack p) {
-
+	public void RemoveFromBackpack(Backpack b) {
+		Skeleton.methodCall(this, "b");
+		Skeleton.methodReturn(this);
 	}
 }

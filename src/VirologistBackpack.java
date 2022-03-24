@@ -22,38 +22,64 @@ public class VirologistBackpack extends Backpack {
 	
 	/** */
 	public void Add(Equipment e) {
+		Skeleton.methodCall(this, "e");
+		Skeleton.methodReturn(this);
 	}
 	
 	/** */
 	public void Add(Agent a) {
+		Skeleton.methodCall(this, "a");
+		Skeleton.methodReturn(this);
 	}
 	
 	/** */
 	public void AddApplied(Agent a) {
+		Skeleton.methodCall(this, "a");
+		Skeleton.methodReturn(this);
 	}
 	
 	/** */
-	//public ArrayList<Agent> GetAgents() {}
+	public ArrayList<Agent> GetAgents() {
+		Skeleton.methodCall(this);
+		Skeleton.methodReturn(this);
+		return null;
+	}
 	
 	/** */
-	//public ArrayList<Agent> GetAppliedAgents() {}
+	public ArrayList<Agent> GetAppliedAgents() {
+		Skeleton.methodCall(this);
+		Skeleton.methodReturn(this);
+		return null;
+	}
 	
 	/** */
 	public void Remove(Agent a) {
+		Skeleton.methodCall(this, "a");
+		Skeleton.methodReturn(this);
 	}
 	
 	/** */
 	public void RemoveApplied(Agent a) {
+		Skeleton.methodCall(this, "a");
+		Skeleton.methodReturn(this);
 	}
 	
 	/** */
 	public void Remove(Equipment e) {
+		Skeleton.methodCall(this, "e");
+		Skeleton.methodReturn(this);
 	}
 	
 	/** */
 	public void DecreaseWarranties() {
+		Skeleton.methodCall(this);
+		Skeleton.methodReturn(this);
 	}
 	
 	/** */
-	//public boolean EnoughMaterials(int a, int n) {}
+	public boolean EnoughMaterials(int a, int n) {
+		Skeleton.methodCall(this, "a", "n");
+		Skeleton.methodReturn(this);
+		return false;
+	}
 }
