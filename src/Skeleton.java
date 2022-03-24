@@ -203,8 +203,8 @@ public class Skeleton {
      * @return signals if we exit the program or not.
      */
     public boolean run(){
-        boolean running = true;
-        while(running){
+        while(true){
+            System.out.println();
             printList(menu);
             int input = askForInput("Input a number", 1, 12);
             System.out.println("\n" + menu[input - 1]);
@@ -287,7 +287,6 @@ public class Skeleton {
                     return false;
             }
         }
-        return true;
     }
 
     public void moveToField(){}
