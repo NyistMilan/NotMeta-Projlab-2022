@@ -9,9 +9,9 @@ public class Skeleton {
     /** Keeps count of how many tabs deep we are currently.*/
     private static int tabNum = 0;
     /** Helps with scanning user input from the console.*/
-    private static Scanner scanner = new Scanner(System.in);
+    private static final Scanner scanner = new Scanner(System.in);
     /** The main use case options that the user can select from.*/
-    private String[] menu = {
+    private final String[] menu = {
             "1. Move To Field",
             "2. Move To Laboratory",
             "3. Take Aminoacid",
@@ -29,21 +29,21 @@ public class Skeleton {
             "15. Exit This Program"
     };
     /** When the user enters 12. for the main option, these sub-options pop up.*/
-    private String[] agents = {
+    private final String[] agents = {
             "1. Oblivion",
             "2. Chorea",
             "3. Protection",
             "4. Paralysis"
     };
     /** When the user enters 13. for the main option, these sub-options pop up.*/
-    private String[] protections = {
+    private final String[] protections = {
             "1. Protected agent",
             "2. Cloak",
             "3. Gloves",
-            "4. Gloves and you have Gloves aswell"
+            "4. Gloves and you have Gloves as well"
     };
     /** When the user enters 14. for the main option, these sub-options pop up.*/
-    private String[] endings = {
+    private final String[] endings = {
             "1. doesn't remove anything",
             "2. remove applied Oblivion",
             "3. remove not applied Oblivion"
@@ -136,7 +136,7 @@ public class Skeleton {
     public static boolean yesOrNoInput(String message) {
         while (true){
             indent();
-            System.out.printf("? " + message + " (Y/N): ");
+            System.out.print("? " + message + " (Y/N): ");
             String answer = scanner.next();
             if (answer.equalsIgnoreCase("y"))
                 return true;
@@ -156,7 +156,7 @@ public class Skeleton {
     public static int askForInput(String message) {
         while (true){
             indent();
-            System.out.printf(message);
+            System.out.print(message);
             if (scanner.hasNextInt())
                 return scanner.nextInt();
             scanner.next();
@@ -260,58 +260,36 @@ public class Skeleton {
                     printList(agents);
                     int agent = askForInput("What agent would you like to infect with?", 1, 4);
                     System.out.println("\n" + agents[agent - 1]);
-                    switch(agent){
-                        case 1:
-                            infectWithOblivion();
-                            break;
-                        case 2:
-                            infectWithChorea();
-                            break;
-                        case 3:
-                            infectWithProtection();
-                            break;
-                        case 4:
-                            infectWithParalysis();
-                            break;
+                    switch (agent) {
+                        case 1 -> infectWithOblivion();
+                        case 2 -> infectWithChorea();
+                        case 3 -> infectWithProtection();
+                        case 4 -> infectWithParalysis();
                     }
                     break;
                 case 13:
                     printList(protections);
                     int protection = askForInput("What kind of protection the other virologist has?", 1, 4);
                     System.out.println("\n" + protections[protection - 1]);
-                    switch(protection){
-                        case 1:
-                            infectProtectedVirologist();
-                            break;
-                        case 2:
-                            infectVirologistWithCloak();
-                            break;
-                        case 3:
-                            infectVirologistWithGloves();
-                            break;
-                        case 4:
-                            infectVirologistWithGlovesAndYouHaveGlovesToo();
-                            break;
+                    switch (protection) {
+                        case 1 -> infectProtectedVirologist();
+                        case 2 -> infectVirologistWithCloak();
+                        case 3 -> infectVirologistWithGloves();
+                        case 4 -> infectVirologistWithGlovesAndYouHaveGlovesToo();
                     }
                     break;
                 case 14:
                     printList(endings);
                     int ending = askForInput("Do you need to remove any agents after ending your turn?", 1, 3);
                     System.out.println("\n" + endings[ending - 1]);
-                    switch(ending){
-                        case 1:
-                            endTurnAndNoRemove();
-                            break;
-                        case 2:
-                            endTurnAndRemoveOblivionFromAppliedAgents();
-                            break;
-                        case 3:
-                            endTurnAndRemoveOblivionFromNotAppliedAgents();
-                            break;
+                    switch (ending) {
+                        case 1 -> endTurnAndNoRemove();
+                        case 2 -> endTurnAndRemoveOblivionFromAppliedAgents();
+                        case 3 -> endTurnAndRemoveOblivionFromNotAppliedAgents();
                     }
                     break;
                 case 15:
-                    return false;
+                    running = false;
             }
         }
         return true;
