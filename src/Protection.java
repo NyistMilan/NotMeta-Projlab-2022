@@ -14,10 +14,16 @@
 
 /** */
 public class Protection extends Agent {
+	Protection(){
+		warranty = baseWarranty;
+		duration = effectDuration;
+	}
+	private static int baseWarranty;
+	private static int effectDuration;
 	/** */
 	public void Apply(Virologist v) {
 		Skeleton.methodCall(this, "v");
-		v.SetGetinfectedBehavior(new NotInfected());
+		v.SetGetInfectedBehavior(new NotInfected());
 		Skeleton.methodReturn(this);
 	}
 }

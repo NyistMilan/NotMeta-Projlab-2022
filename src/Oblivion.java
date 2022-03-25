@@ -14,6 +14,12 @@
 
 /** */
 public class Oblivion extends Agent {
+	Oblivion(){
+		warranty = baseWarranty;
+		duration = effectDuration;
+	}
+	private static int baseWarranty;
+	private static int effectDuration;
 	/** */
 	public void Apply(Virologist v) {
 		Skeleton.methodCall(this, "v");

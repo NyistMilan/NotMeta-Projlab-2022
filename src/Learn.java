@@ -19,7 +19,7 @@ public class Learn implements LearnBehavior {
      */
     @Override
     public void Learn(Virologist v) {
-        Skeleton.methodCall(this);
+        Skeleton.methodCall(this, "v");
         Laboratory l = (Laboratory) v.GetRoute().GetLocation();
         Genome g = l.GetGenome();
         boolean added = v.Add(g);

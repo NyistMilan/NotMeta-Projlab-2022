@@ -10,15 +10,29 @@
 //
 
 
-import java.util.ArrayList;
 
 /** */
 public class GenomeChorea extends Genome {
 	/** */
+
+	private static int aminocost;
+	private static int nucleocost;
+
 	public void CreateAgent(Virologist v) {
-		Skeleton.methodCall(this, "b");
+		Skeleton.methodCall(this, "v");
 		Chorea agent = new Chorea();
 		agent.AddToBackpack(v, v.GetBackpack());
 		Skeleton.methodReturn(this);
 	}
+
+	@Override
+	public int getAminoCost() {
+		return aminocost;
+	}
+
+	@Override
+	public int getNucleoCost() {
+		return nucleocost;
+	}
+
 }

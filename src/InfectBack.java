@@ -19,7 +19,9 @@ public class InfectBack implements GetInfectedBehavior {
      */
     @Override
     public int GetPriority() {
-        return 0;
+        Skeleton.methodCall(this);
+        Skeleton.methodReturn(this);
+        return 3;
     }
 
     /**

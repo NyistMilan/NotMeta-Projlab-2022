@@ -15,19 +15,19 @@ import java.util.ArrayList;
 /** */
 public class Backpack {
 	Backpack(){
-		nucleotids = new ArrayList<Nucleotide>();
-		aminoacids = new ArrayList<Aminoacid>();
-		equipments = new ArrayList<Equipment>();
+		nucleotids = new ArrayList<>();
+		aminoacids = new ArrayList<>();
+		equipments = new ArrayList<>();
 	}
 	
 	/** */
-	protected ArrayList<Nucleotide> nucleotids;
+	protected final ArrayList<Nucleotide> nucleotids;
 	
 	/** */
-	protected ArrayList<Aminoacid> aminoacids;
+	protected final ArrayList<Aminoacid> aminoacids;
 	
 	/** */
-	protected ArrayList<Equipment> equipments;
+	protected final ArrayList<Equipment> equipments;
 	
 	/** */
 	public void Add(Equipment e) {

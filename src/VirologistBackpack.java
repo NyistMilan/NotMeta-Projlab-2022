@@ -24,10 +24,10 @@ public class VirologistBackpack extends Backpack {
 	private int capacity;
 
 	/** */
-	private ArrayList<Agent> agents;
+	private final ArrayList<Agent> agents;
 	
 	/** */
-	private ArrayList<Agent> appliedAgents;
+	private final ArrayList<Agent> appliedAgents;
 	
 	/** */
 	public void Add(Equipment e) {
@@ -104,9 +104,9 @@ public class VirologistBackpack extends Backpack {
 	/** */
 	public boolean EnoughMaterials(int a, int n) {
 		Skeleton.methodCall(this, "a", "n");
-		boolean isenough = Skeleton.yesOrNoInput("Has enough materials?");
+		boolean isEnough = Skeleton.yesOrNoInput("Has enough materials?");
 		Skeleton.methodReturn(this);
-		return isenough;
+		return isEnough;
 	}
 
 	public int getCapacity() {

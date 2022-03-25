@@ -14,8 +14,8 @@
 
 /** */
 public class Sack extends Equipment {
-	private static int enhanced = 30;
-	private static  int normal = 20;
+	private static int enhanced;
+	private static  int normal;
 	/** */
 	public void Apply(Virologist v) {
 		Skeleton.methodCall(this, "v");

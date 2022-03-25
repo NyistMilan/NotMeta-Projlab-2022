@@ -15,7 +15,9 @@ import java.util.ArrayList;
 /** */
 public class NotSteal implements StealBehavior {
     /**
-     * @param v
+     * @param v1
+     * @param v2
+     * @param c
      */
     @Override
     public void Steal(Virologist v1, Virologist v2, ArrayList<Collectable> c) {

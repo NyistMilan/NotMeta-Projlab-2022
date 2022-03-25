@@ -10,7 +10,6 @@
 //
 
 
-import java.math.*;
 
 /** */
 public class MaybeInfected implements GetInfectedBehavior {
@@ -18,7 +17,7 @@ public class MaybeInfected implements GetInfectedBehavior {
     public int GetPriority() {
         Skeleton.methodCall(this);
         Skeleton.methodReturn(this);
-        return 0;
+        return 1;
     }
 
     @Override

@@ -17,7 +17,7 @@ public class Gloves extends Equipment {
 	/** */
 	public void Apply(Virologist v) {
 		Skeleton.methodCall(this, "v");
-		v.SetGetinfectedBehavior(new InfectBack());
+		v.SetGetInfectedBehavior(new InfectBack());
 		Skeleton.methodReturn(this);
 	}
 }

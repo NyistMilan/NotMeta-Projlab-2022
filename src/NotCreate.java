@@ -19,7 +19,7 @@ public class NotCreate implements CreateBehavior {
      */
     @Override
     public void CreateAgent(Virologist v, Genome g) {
-        Skeleton.methodCall(this, "g");
+        Skeleton.methodCall(this, "v","g");
         Skeleton.methodReturn(this);
     }
 }

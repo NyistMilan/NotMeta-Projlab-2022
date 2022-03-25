@@ -16,11 +16,13 @@
 public abstract class Materials implements Collectable {
     @Override
     public void Apply(Virologist v) {
-
+        Skeleton.methodCall(this, "v");
+        Skeleton.methodReturn(this);
     }
 
     @Override
     public void Remove(Virologist v) {
-
+        Skeleton.methodCall(this, "v");
+        Skeleton.methodReturn(this);
     }
 }

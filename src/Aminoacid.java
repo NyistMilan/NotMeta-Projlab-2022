@@ -16,22 +16,24 @@
 public class Aminoacid extends Materials {
     /**
      * @param v
+     * @param b
      */
     @Override
     public boolean AddToBackpack(Virologist v, Backpack b) {
-        Skeleton.methodCall(this, "v");
+        Skeleton.methodCall(this, "v", "b");
         b.Add(this);
-        boolean isadded = Skeleton.yesOrNoInput("Was added?");
+        boolean isAdded = Skeleton.yesOrNoInput("Was added?");
         Skeleton.methodReturn(this);
-        return isadded;
+        return isAdded;
     }
 
     /**
      * @param v
+     * @param b
      */
     @Override
     public void RemoveFromBackpack(Virologist v, Backpack b) {
-        Skeleton.methodCall(this, "v");
+        Skeleton.methodCall(this, "v", "b");
         b.Remove(this);
         Skeleton.methodReturn(this);
     }

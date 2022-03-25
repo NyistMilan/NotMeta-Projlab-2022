@@ -304,7 +304,6 @@ public class Skeleton {
         f1.SetNeighbour(f2);
         f2.SetNeighbour(f1);
         v.Move(1);
-
     }
     public void moveToLaboratory(){}
     public void takeAminoacid(){}

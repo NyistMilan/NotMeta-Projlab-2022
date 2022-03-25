@@ -17,25 +17,7 @@ public class Cloak extends Equipment {
 	/** */
 	public void Apply(Virologist v) {
 		Skeleton.methodCall(this, "v");
-		v.SetGetinfectedBehavior(new MaybeInfected());
-		Skeleton.methodReturn(this);
-	}
-	/**
-	 * @param v
-	 */
-	@Override
-	public boolean AddToBackpack(Virologist v, Backpack b) {
-		Skeleton.methodCall(this, "v");
-		Skeleton.methodReturn(this);
-		return false;
-	}
-
-	/**
-	 * @param v
-	 */
-	@Override
-	public void RemoveFromBackpack(Virologist v, Backpack b) {
-		Skeleton.methodCall(this, "v");
+		v.SetGetInfectedBehavior(new MaybeInfected());
 		Skeleton.methodReturn(this);
 	}
 }

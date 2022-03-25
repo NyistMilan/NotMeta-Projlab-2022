@@ -16,39 +16,18 @@ import java.util.ArrayList;
 public class Laboratory extends Field {
 	Laboratory(){
 		Skeleton.methodCall(this);
-		virologists = new ArrayList<Virologist>();
-		items = new ArrayList<Collectable>();
-		neighbours = new ArrayList<Field>();
+		virologists = new ArrayList<>();
+		neighbours = new ArrayList<>();
 		backpack = new Backpack();
 		Skeleton.methodReturn(this);
 	}
-
-	/*private Genome GenerateGemon() {
-		int i = Skeleton.askForInput("Which genom is in this Laboratory?", 1, 4);
-		Genome ret = null;
-		switch (i){
-			case 1:
-					Oblivion obl = new Oblivion();
-					ret = obl;
-			case 2:
-					Paralysis par = new Paralysis();
-					ret = par;
-			case 3:
-					Protection pro = new Protection();
-					ret = pro;
-			case 4:
-					Chorea cho = new Chorea();
-					ret  = cho;
-		}
-		return ret;
-	}*/
 
 	/** */
 	private Genome genome;
 	
 	/** */
 	public Genome GetGenome() {
-		Skeleton.methodCall(this, "g");
+		Skeleton.methodCall(this);
 		Skeleton.methodReturn(this);
 		return genome;
 	}

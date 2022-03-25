@@ -30,13 +30,13 @@ public class Virologist {
 	private String name;
 	
 	/** */
-	private VirologistBackpack backPack;
+	private final VirologistBackpack backPack;
 	
 	/** */
-	private Route route;
+	private final Route route;
 	
 	/** */
-	private ArrayList<Genome> learnedGenomes;
+	private final ArrayList<Genome> learnedGenomes;
 	
 	/** */
 	private PickUpBehavior pickUpBehavior;
@@ -116,13 +116,13 @@ public class Virologist {
 	/** */
 	public boolean GetStolenFrom(ArrayList<Collectable> c) {
 		Skeleton.methodCall(this,"c");
-		getStolenBehavior.GetStolenFrom(this, c);
+		boolean result = getStolenBehavior.GetStolenFrom(this, c);
 		Skeleton.methodReturn(this);
-		return false;}
+		return result;}
 	
 	/** */
 	public void Infect(Virologist v2, Agent a) {
-		Skeleton.methodCall(this, "v", "a");
+		Skeleton.methodCall(this, "v2", "a");
 		if(state == State.BEFORE_ACTION){
 			infectBehavior.Infect(this, v2, a);
 		}
@@ -132,9 +132,9 @@ public class Virologist {
 	/** */
 	public boolean Add(Genome g) {
 		Skeleton.methodCall(this, "g");
-		learnedGenomes.add(g);
+		boolean result = learnedGenomes.add(g);
 		Skeleton.methodReturn(this);
-		return false;}
+		return result;}
 	
 	/** */
 	public void Learn() {
@@ -152,18 +152,17 @@ public class Virologist {
 	}
 	
 	/** */
-	public Agent CreateAgent(Genome g) {
+	public void CreateAgent(Genome g) {
 		Skeleton.methodCall(this, "g");
 		if(state == State.BEFORE_ACTION){
 			createBehavior.CreateAgent(this, g);
 		}
 		Skeleton.methodReturn(this);
-		return null;
 	}
 	
 	/** */
 	public void GetInfected(Virologist v1, Agent a) {
-		Skeleton.methodCall(this, "v", "a");
+		Skeleton.methodCall(this, "v1", "a");
 		if(state == State.NOT_IN_TURN){
 			getInfectedBehavior.GetInfected(v1, this, a);
 		}
@@ -222,8 +221,8 @@ public class Virologist {
 	public void ForgetGenome() {
 		Skeleton.methodCall(this);
 		int s = learnedGenomes.size();
-		for(int i = s-1; i >= 0; i--){
-			learnedGenomes.remove(i);
+		if (s > 0) {
+			learnedGenomes.subList(0, s).clear();
 		}
 		Skeleton.methodReturn(this);
 	}
@@ -243,7 +242,7 @@ public class Virologist {
 		infectBehavior = b;
 		Skeleton.methodReturn(this);
 	}
-	public void SetGetinfectedBehavior(GetInfectedBehavior b){
+	public void SetGetInfectedBehavior(GetInfectedBehavior b){
 		Skeleton.methodCall(this, "b");
 		getInfectedBehavior = b;
 		Skeleton.methodReturn(this);
@@ -279,7 +278,7 @@ public class Virologist {
 		SetMoveBehavior(new Move());
 		SetDropBehavior(new Drop());
 		SetInfectBehavior(new Infect());
-		SetGetinfectedBehavior(new GetInfected());
+		SetGetInfectedBehavior(new GetInfected());
 		SetPickUpBehavior(new PickUp());
 		SetGetStolenBehavior(new NotGetStolen());
 		SetStealBehavior(new Steal());

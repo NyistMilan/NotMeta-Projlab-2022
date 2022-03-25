@@ -12,32 +12,29 @@
 /** */
 public abstract class Agent implements Collectable {
 
-	private static int basewarranty;
-
 	/** */
-	private int warranty;
+	protected int warranty;
 	
 	/** */
-	private String name;
-
-	/** */
-	private static int effectDuration;
+	protected String name;
 	
 	/** */
-	private int duration;
+	protected int duration;
 	
 	/** */
 	public int DecreaseWarranty() {
 		Skeleton.methodCall(this);
+		warranty--;
 		Skeleton.methodReturn(this);
-		return 0;
+		return warranty;
 	}
 	
 	/** */
 	public int DecreaseDuration() {
 		Skeleton.methodCall(this);
+		duration--;
 		Skeleton.methodReturn(this);
-		return 0;
+		return duration;
 	}
 	
 	/** */
@@ -54,9 +51,9 @@ public abstract class Agent implements Collectable {
 	public boolean AddToBackpack(Virologist v, Backpack b) {
 		Skeleton.methodCall(this, "v", "b");
 		v.GetBackpack().Add(this);
-		boolean isadded = Skeleton.yesOrNoInput("Was added?");
+		boolean isAdded = Skeleton.yesOrNoInput("Was added?");
 		Skeleton.methodReturn(this);
-		return isadded;
+		return isAdded;
 	}
 
 	@Override

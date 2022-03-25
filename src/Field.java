@@ -47,7 +47,11 @@ public abstract class Field {
 	/**
 	 *
 	 */
-	public abstract void Accept(Virologist v);
+	public void Accept(Virologist v){
+		Skeleton.methodCall(this, "v");
+		v.SetLearnBehavior(new NotLearn());
+		Skeleton.methodReturn(this);
+	}
 
 	/**
 	 *
@@ -61,7 +65,7 @@ public abstract class Field {
 	 *
 	 */
 	public void Add(Virologist v, Collectable c) {
-		Skeleton.methodCall(this, "c");
+		Skeleton.methodCall(this, "v","c");
 		c.AddToBackpack(v, this.backpack);
 		Skeleton.methodReturn(this);
 	}
@@ -70,7 +74,7 @@ public abstract class Field {
 	 *
 	 */
 	public void Remove(Virologist v, Collectable c) {
-		Skeleton.methodCall(this, "c");
+		Skeleton.methodCall(this, "v","c");
 		c.RemoveFromBackpack(v, this.backpack);
 		Skeleton.methodReturn(this);
 	}
@@ -89,7 +93,11 @@ public abstract class Field {
 	 */
 	public ArrayList<Integer> GetDirections() {
 		Skeleton.methodCall(this);
+		ArrayList<Integer> directions = new ArrayList<>();
+		for(Field f: neighbours){
+			directions.add(neighbours.indexOf(f));
+		}
 		Skeleton.methodReturn(this);
-		return null;
+		return directions;
 	}
 }

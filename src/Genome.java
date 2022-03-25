@@ -14,11 +14,6 @@
 
 /** */
 public abstract class Genome {
-	/** */
-	private int aminoCost;
-	
-	/** */
-	private int nucleoCost;
 	
 	/** */
 	private String name;
@@ -26,11 +21,7 @@ public abstract class Genome {
 	/** */
 	public abstract void CreateAgent(Virologist v);
 
-	public int getAminoCost() {
-		return aminoCost;
-	}
+	public abstract int getAminoCost();
 
-	public int getNucleoCost() {
-		return nucleoCost;
-	}
+	public abstract int getNucleoCost();
 }

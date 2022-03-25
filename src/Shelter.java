@@ -16,15 +16,9 @@ import java.util.ArrayList;
 public class Shelter extends Field {
 	Shelter(){
 		Skeleton.methodCall(this);
-		this.virologists = new ArrayList<Virologist>();
-		this.items = new ArrayList<Collectable>();
-		this.neighbours = new ArrayList<Field>();
+		this.virologists = new ArrayList<>();
+		this.neighbours = new ArrayList<>();
 		backpack = new Backpack();
-		Skeleton.methodReturn(this);
-	}
-	/** */
-	public void Accept(Virologist v) {
-		Skeleton.methodCall(this, "v");
 		Skeleton.methodReturn(this);
 	}
 }

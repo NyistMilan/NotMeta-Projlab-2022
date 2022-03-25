@@ -21,7 +21,7 @@ public class NotInfected implements GetInfectedBehavior {
     public int GetPriority() {
         Skeleton.methodCall(this);
         Skeleton.methodReturn(this);
-        return 0;
+        return 2;
     }
 
     /**

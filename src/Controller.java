@@ -27,6 +27,7 @@ public class Controller {
 		virologists = new ArrayList<>();
 		Field f = new Normal();
 		Virologist v = new Virologist();
+		index = 0;
 		NextPlayer();
 		Skeleton.methodReturn(this);
 	}

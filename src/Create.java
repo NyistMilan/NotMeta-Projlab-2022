@@ -16,14 +16,15 @@ import java.util.ArrayList;
 public class Create implements CreateBehavior {
     /**
      * @param g
+     * @param v
      */
     @Override
     public void CreateAgent(Virologist v, Genome g) {
         Skeleton.methodCall(this, "v","g");
         int aminocost = g.getAminoCost();
         int nucleocost = g.getNucleoCost();
-        boolean isenough = v.GetBackpack().EnoughMaterials(aminocost, nucleocost);
-        if(isenough){
+        boolean isEnough = v.GetBackpack().EnoughMaterials(aminocost, nucleocost);
+        if(isEnough){
             ArrayList<Aminoacid> aminos = v.GetBackpack().GetAminos();
             for(int i = 0; i < g.getAminoCost(); i++){
                 v.GetBackpack().Remove(aminos.get(i));

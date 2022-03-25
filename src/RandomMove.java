@@ -9,7 +9,6 @@
 //
 //
 
-import java.math.*;
 import java.util.ArrayList;
 
 /** */
@@ -25,7 +24,7 @@ public class RandomMove implements MoveBehavior {
     public int GetPriority() {
         Skeleton.methodCall(this);
         Skeleton.methodReturn(this);
-        return 0;
+        return 1;
     }
 
     /**
@@ -41,6 +40,7 @@ public class RandomMove implements MoveBehavior {
         Field f2 = f.GetNeighbour(newD);
         f.Remove(v);
         f2.Accept(v);
+        v.SetLearnBehavior(new NotLearn());
         v.GetRoute().Add(f2);
         v.SetState(State.BEFORE_ACTION);
         Skeleton.methodReturn(this);

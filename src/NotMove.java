@@ -21,7 +21,7 @@ public class NotMove implements MoveBehavior {
     public int GetPriority() {
         Skeleton.methodCall(this);
         Skeleton.methodReturn(this);
-        return 0;
+        return 2;
     }
 
     /**

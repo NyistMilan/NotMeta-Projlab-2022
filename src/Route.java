@@ -16,11 +16,11 @@ import java.util.ArrayList;
 public class Route {
 	Route(){
 		Skeleton.methodCall(this);
-		fields = new ArrayList<Field>();
+		fields = new ArrayList<>();
 		Skeleton.methodReturn(this);
 	}
 	/** */
-	public ArrayList<Field> fields;
+	public final ArrayList<Field> fields;
 	
 	/** */
 	public Field GetLocation() {

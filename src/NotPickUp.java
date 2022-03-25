@@ -16,6 +16,7 @@ import java.util.ArrayList;
 public class NotPickUp implements PickUpBehavior {
     /**
      * @param v
+     * @param c
      */
     @Override
     public void PickUpCollectable(Virologist v, ArrayList<Collectable> c) {

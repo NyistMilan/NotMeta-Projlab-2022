@@ -19,9 +19,9 @@ public class Steal implements StealBehavior {
      */
     @Override
     public void Steal(Virologist v1,Virologist v2, ArrayList<Collectable> c) {
-        Skeleton.methodCall(this, "v", "c");
-        boolean isstolen = v2.GetStolenFrom(c);
-        if(isstolen){
+        Skeleton.methodCall(this, "v1", "v2", "c");
+        boolean isStolen = v2.GetStolenFrom(c);
+        if(isStolen){
             v1.PickUpCollectable(c);
             v1.SetState(State.AFTER_ACTION);
         }

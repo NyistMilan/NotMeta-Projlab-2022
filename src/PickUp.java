@@ -16,15 +16,16 @@ import java.util.ArrayList;
 public class PickUp implements PickUpBehavior {
     /**
      * @param v
+     * @param c
      */
     @Override
     public void PickUpCollectable(Virologist v, ArrayList<Collectable> c) {
         Skeleton.methodCall(this, "v", "c");
         for(Collectable collectable: c){
             v.GetRoute().GetLocation().Remove(v, collectable);
-            boolean isadded = collectable.AddToBackpack(v, v.GetBackpack());
+            boolean isAdded = collectable.AddToBackpack(v, v.GetBackpack());
             collectable.Apply(v);
-            if(!isadded){
+            if(!isAdded){
                 v.SetState(State.AFTER_ACTION);
                 break;
             }
