@@ -14,15 +14,19 @@
 
 /** */
 public class Sack extends Equipment {
+	private static int enhanced = 30;
+	private static  int normal = 20;
 	/** */
 	public void Apply(Virologist v) {
 		Skeleton.methodCall(this, "v");
+		v.GetBackpack().setCapacity(enhanced);
 		Skeleton.methodReturn(this);
 	}
 	
 	/** */
 	public void Remove(Virologist v) {
 		Skeleton.methodCall(this, "v");
+		v.GetBackpack().setCapacity(normal);
 		Skeleton.methodReturn(this);
 	}
 }

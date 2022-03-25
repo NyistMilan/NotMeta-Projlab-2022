@@ -15,7 +15,7 @@ import java.util.ArrayList;
 /** */
 public class Controller {
 	/** */
-	private Field map;
+	private ArrayList<Field> map;
 	
 	/** */
 	private ArrayList<Virologist> virologists;
@@ -23,15 +23,17 @@ public class Controller {
 	/** */
 	public void Start() {
 		Skeleton.methodCall(this);
+		map = new ArrayList<>();
+		virologists = new ArrayList<>();
 		Field f = new Normal();
 		Virologist v = new Virologist();
+		NextPlayer();
 		Skeleton.methodReturn(this);
 	}
 	
 	/** */
-	public void End() {
-		Skeleton.methodCall(this);
-		Skeleton.methodReturn(this);
+	public static void End() {
+		Skeleton.printWithIndent("GAME OVER!");
 	}
 	
 	/** */

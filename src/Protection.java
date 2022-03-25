@@ -20,10 +20,4 @@ public class Protection extends Agent {
 		v.SetGetinfectedBehavior(new NotInfected());
 		Skeleton.methodReturn(this);
 	}
-	
-	/** */
-	public void Remove(Virologist v) {
-		Skeleton.methodCall(this, "v");
-		Skeleton.methodReturn(this);
-	}
 }

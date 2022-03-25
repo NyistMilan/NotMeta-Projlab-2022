@@ -44,19 +44,24 @@ public abstract class Agent implements Collectable {
 	public abstract void Apply(Virologist v);
 	
 	/** */
-	public abstract void Remove(Virologist v);
-
-	@Override
-	public void RemoveFromBackpack(Virologist v, Backpack b) {
-		Skeleton.methodCall(this, "b");
+	public void Remove(Virologist v) {
+		Skeleton.methodCall(this, "v");
+		v.RefreshEffects();
 		Skeleton.methodReturn(this);
 	}
 
 	@Override
-	public boolean AddToBackpack(Virologist v) {
-		Skeleton.methodCall(this, "b");
+	public boolean AddToBackpack(Virologist v, Backpack b) {
+		Skeleton.methodCall(this, "v", "b");
 		v.GetBackpack().Add(this);
+		boolean isadded = Skeleton.yesOrNoInput("Was added?");
 		Skeleton.methodReturn(this);
-		return false;
+		return isadded;
+	}
+
+	@Override
+	public void RemoveFromBackpack(Virologist v, Backpack b) {
+		Skeleton.methodCall(this, "v","b");
+		Skeleton.methodReturn(this);
 	}
 }

@@ -14,35 +14,38 @@ import java.util.ArrayList;
 
 /** */
 public class Backpack {
-	/** */
-	public int capacity;
+	Backpack(){
+		nucleotids = new ArrayList<Nucleotide>();
+		aminoacids = new ArrayList<Aminoacid>();
+		equipments = new ArrayList<Equipment>();
+	}
 	
 	/** */
-	private ArrayList<Nucleotide> nucleotids;
+	protected ArrayList<Nucleotide> nucleotids;
 	
 	/** */
-	private ArrayList<Aminoacid> aminoacids;
+	protected ArrayList<Aminoacid> aminoacids;
 	
 	/** */
-	private ArrayList<Equipment> equipments;
+	protected ArrayList<Equipment> equipments;
 	
 	/** */
 	public void Add(Equipment e) {
-		Skeleton.methodCall(this);
+		Skeleton.methodCall(this, "e");
 		equipments.add(e);
 		Skeleton.methodReturn(this);
 	}
 	
 	/** */
 	public void Add(Aminoacid a) {
-		Skeleton.methodCall(this);
+		Skeleton.methodCall(this, "a");
 		aminoacids.add(a);
 		Skeleton.methodReturn(this);
 	}
 	
 	/** */
 	public void Add(Nucleotide n) {
-		Skeleton.methodCall(this);
+		Skeleton.methodCall(this, "n");
 		nucleotids.add(n);
 		Skeleton.methodReturn(this);
 	}

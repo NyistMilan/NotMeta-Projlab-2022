@@ -22,7 +22,7 @@ public class PickUp implements PickUpBehavior {
         Skeleton.methodCall(this, "v", "c");
         for(Collectable collectable: c){
             v.GetRoute().GetLocation().Remove(v, collectable);
-            boolean isadded = collectable.AddToBackpack(v);
+            boolean isadded = collectable.AddToBackpack(v, v.GetBackpack());
             collectable.Apply(v);
             if(!isadded){
                 v.SetState(State.AFTER_ACTION);

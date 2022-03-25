@@ -14,4 +14,13 @@
 
 /** */
 public abstract class Materials implements Collectable {
+    @Override
+    public void Apply(Virologist v) {
+
+    }
+
+    @Override
+    public void Remove(Virologist v) {
+
+    }
 }

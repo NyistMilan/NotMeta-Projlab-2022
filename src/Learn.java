@@ -27,6 +27,10 @@ public class Learn implements LearnBehavior {
             Skeleton.methodReturn(this);
             return;
         }
+        boolean win = Skeleton.yesOrNoInput("Did the player win?");
+        if(win){
+            Controller.End();
+        }
         v.SetState(State.AFTER_ACTION);
         Skeleton.methodReturn(this);
     }

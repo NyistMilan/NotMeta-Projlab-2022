@@ -14,37 +14,34 @@ import java.util.ArrayList;
 
 /** */
 public abstract class Field {
-	Field(){
-		Skeleton.methodCall(this);
-		Skeleton.methodReturn(this);
-	}
 	/**
 	 *
 	 */
-	private Virologist virologists;
+	protected ArrayList<Virologist> virologists;
 
 	/**
 	 *
 	 */
-	private Collectable items;
+	protected ArrayList<Collectable> items;
 
 	/**
 	 *
 	 */
-	private Field neighbours;
+	protected ArrayList<Field> neighbours;
 
 	/**
 	 *
 	 */
-	private Backpack backpack;
+	protected Backpack backpack;
 
 	/**
 	 *
 	 */
 	public Field GetNeighbour(int d) {
 		Skeleton.methodCall(this, "d");
+		Field f = neighbours.get(d-1);
 		Skeleton.methodReturn(this);
-		return null;
+		return f;
 	}
 
 	/**
@@ -65,7 +62,7 @@ public abstract class Field {
 	 */
 	public void Add(Virologist v, Collectable c) {
 		Skeleton.methodCall(this, "c");
-		c.AddToBackpack(v);
+		c.AddToBackpack(v, this.backpack);
 		Skeleton.methodReturn(this);
 	}
 
@@ -83,6 +80,7 @@ public abstract class Field {
 	 */
 	public void SetNeighbour(Field f) {
 		Skeleton.methodCall(this, "f");
+		neighbours.add(f);
 		Skeleton.methodReturn(this);
 	}
 

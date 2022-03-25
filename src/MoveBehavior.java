@@ -21,5 +21,5 @@ interface MoveBehavior {
 	int GetPriority();
 	
 	/** */
-	Field Move(Virologist v, int d);
+	void Move(Virologist v, int d);
 }

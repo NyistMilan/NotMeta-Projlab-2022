@@ -14,6 +14,15 @@ import java.util.ArrayList;
 
 /** */
 public class VirologistBackpack extends Backpack {
+	VirologistBackpack(){
+		super();
+		capacity = 20;
+		agents = new ArrayList<>();
+		appliedAgents = new ArrayList<>();
+	}
+	/** */
+	private int capacity;
+
 	/** */
 	private ArrayList<Agent> agents;
 	
@@ -98,5 +107,23 @@ public class VirologistBackpack extends Backpack {
 		boolean isenough = Skeleton.yesOrNoInput("Has enough materials?");
 		Skeleton.methodReturn(this);
 		return isenough;
+	}
+
+	public int getCapacity() {
+		return capacity;
+	}
+
+	public void setCapacity(int capacity) {
+		int aminoBonus = aminoacids.size() - capacity;
+		while(aminoBonus > 0){
+			Remove(aminoacids.remove(aminoacids.size()-1));
+			aminoBonus = aminoacids.size() - capacity;
+		}
+		int nucleoBonus = nucleotids.size() - capacity;
+		while(nucleoBonus > 0){
+			Remove(nucleotids.remove(nucleotids.size()-1));
+			nucleoBonus = nucleotids.size() - capacity;
+		}
+		this.capacity = capacity;
 	}
 }

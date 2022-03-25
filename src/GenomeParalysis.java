@@ -20,7 +20,7 @@ public class GenomeParalysis extends Genome {
 	public void CreateAgent(Virologist v) {
 		Skeleton.methodCall(this, "b");
 		Paralysis agent = new Paralysis();
-		agent.AddToBackpack(v);
+		agent.AddToBackpack(v, v.GetBackpack());
 		Skeleton.methodReturn(this);
 	}
 

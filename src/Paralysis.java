@@ -27,10 +27,4 @@ public class Paralysis extends Agent {
 		v.SetGetStolenBehavior(new GetStolen());
 		Skeleton.methodReturn(this);
 	}
-	
-	/** */
-	public void Remove(Virologist v) {
-		Skeleton.methodCall(this, "v");
-		Skeleton.methodReturn(this);
-	}
 }

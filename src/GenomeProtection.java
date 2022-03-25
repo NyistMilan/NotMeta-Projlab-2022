@@ -18,7 +18,7 @@ public class GenomeProtection extends Genome {
 	public void CreateAgent(Virologist v) {
 		Skeleton.methodCall(this, "b");
 		Protection agent = new Protection();
-		agent.AddToBackpack(v);
+		agent.AddToBackpack(v, v.GetBackpack());
 		Skeleton.methodReturn(this);
 	}
 }

@@ -19,14 +19,17 @@ public abstract class Equipment implements Collectable {
 	
 	/** */
 	public abstract void Apply(Virologist v);
-	
+
 	/** */
-	public abstract void Remove(Virologist v);
+	public void Remove(Virologist v) {
+		Skeleton.methodCall(this, "v");
+		v.RefreshEffects();
+		Skeleton.methodReturn(this);
+	}
 
 	@Override
-	public boolean AddToBackpack(Virologist v) {
-		Skeleton.methodCall(this, "b");
-		Backpack b = v.GetBackpack();
+	public boolean AddToBackpack(Virologist v, Backpack b) {
+		Skeleton.methodCall(this, "v");
 		b.Add(this);
 		if(b.GetEquipments().size() == 3){
 			int i = Skeleton.askForInput("Which equipment do you wnat to drop?", 1, 3);
@@ -35,13 +38,14 @@ public abstract class Equipment implements Collectable {
 			list.add(e);
 			v.DropCollectable(list);
 		}
+		boolean isadded = Skeleton.yesOrNoInput("Was added?");
 		Skeleton.methodReturn(this);
-		return false;
+		return isadded;
 	}
 
 	@Override
 	public void RemoveFromBackpack(Virologist v, Backpack b) {
-		Skeleton.methodCall(this, "b");
+		Skeleton.methodCall(this, "v");
 		b.Remove(this);
 		Skeleton.methodReturn(this);
 	}

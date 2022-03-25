@@ -20,29 +20,4 @@ public class Chorea extends Agent {
 		v.SetMoveBehavior(new RandomMove());
 		Skeleton.methodReturn(this);
 	}
-	
-	/** */
-	public void Remove(Virologist v) {
-		Skeleton.methodCall(this, "v");
-		Skeleton.methodReturn(this);
-	}
-
-	/**
-	 * @param v
-	 */
-	@Override
-	public boolean AddToBackpack(Virologist v) {
-		Skeleton.methodCall(this, "b");
-		Skeleton.methodReturn(this);
-		return false;
-	}
-
-	/**
-	 * @param b
-	 */
-	@Override
-	public void RemoveFromBackpack(Virologist v, Backpack b) {
-		Skeleton.methodCall(this, "b");
-		Skeleton.methodReturn(this);
-	}
 }

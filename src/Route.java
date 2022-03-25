@@ -10,27 +10,29 @@
 //
 
 
-
+import java.util.ArrayList;
 
 /** */
 public class Route {
 	Route(){
 		Skeleton.methodCall(this);
+		fields = new ArrayList<Field>();
 		Skeleton.methodReturn(this);
 	}
 	/** */
-	public Field fields;
+	public ArrayList<Field> fields;
 	
 	/** */
 	public Field GetLocation() {
 		Skeleton.methodCall(this);
 		Skeleton.methodReturn(this);
-		return null;
+		return fields.get(fields.size()-1);
 	}
 	
 	/** */
 	public void Add(Field f) {
 		Skeleton.methodCall(this, "f");
+		fields.add(f);
 		Skeleton.methodReturn(this);
 	}
 }

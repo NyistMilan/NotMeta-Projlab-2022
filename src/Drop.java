@@ -16,11 +16,12 @@ import java.util.ArrayList;
 public class Drop implements DropBehavior {
 
     /**
+     * @param v
      * @param c
      */
     @Override
     public void DropCollectable(Virologist v, ArrayList<Collectable> c) {
-        Skeleton.methodCall(this, "c");
+        Skeleton.methodCall(this, "v","c");
         Field f = v.GetRoute().GetLocation();
         for(Collectable collectable: c){
             collectable.RemoveFromBackpack(v, v.GetBackpack());

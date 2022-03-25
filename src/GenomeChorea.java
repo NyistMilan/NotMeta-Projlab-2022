@@ -18,7 +18,7 @@ public class GenomeChorea extends Genome {
 	public void CreateAgent(Virologist v) {
 		Skeleton.methodCall(this, "b");
 		Chorea agent = new Chorea();
-		agent.AddToBackpack(v);
+		agent.AddToBackpack(v, v.GetBackpack());
 		Skeleton.methodReturn(this);
 	}
 }

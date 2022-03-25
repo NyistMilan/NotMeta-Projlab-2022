@@ -10,10 +10,18 @@
 //
 
 
-
+import java.util.ArrayList;
 
 /** */
 public class Normal extends Field {
+	Normal(){
+		Skeleton.methodCall(this);
+		virologists = new ArrayList<Virologist>();
+		items = new ArrayList<Collectable>();
+		neighbours = new ArrayList<Field>();
+		backpack = new Backpack();
+		Skeleton.methodReturn(this);
+	}
 	/** */
 	public void Accept(Virologist v) {
 		Skeleton.methodCall(this, "v");

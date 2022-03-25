@@ -18,8 +18,8 @@ public class Create implements CreateBehavior {
      * @param g
      */
     @Override
-    public Agent CreateAgent(Virologist v, Genome g) {
-        Skeleton.methodCall(this, "g");
+    public void CreateAgent(Virologist v, Genome g) {
+        Skeleton.methodCall(this, "v","g");
         int aminocost = g.getAminoCost();
         int nucleocost = g.getNucleoCost();
         boolean isenough = v.GetBackpack().EnoughMaterials(aminocost, nucleocost);
@@ -36,6 +36,5 @@ public class Create implements CreateBehavior {
             v.SetState(State.AFTER_ACTION);
         }
         Skeleton.methodReturn(this);
-        return null;
     }
 }

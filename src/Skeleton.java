@@ -297,6 +297,8 @@ public class Skeleton {
     public void moveToField(){
         Field f1 = new Normal();
         Virologist v = new Virologist();
+        v.SetState(State.BEFORE_MOVE);
+        v.SetMoveBehavior(new Move());
         v.GetRoute().Add(f1);
         Field f2 = new Normal();
         f1.SetNeighbour(f2);

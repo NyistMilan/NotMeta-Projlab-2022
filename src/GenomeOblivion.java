@@ -18,7 +18,7 @@ public class GenomeOblivion extends Genome {
 	public void CreateAgent(Virologist v) {
 		Skeleton.methodCall(this, "b");
 		Oblivion agent = new Oblivion();
-		agent.AddToBackpack(v);
+		agent.AddToBackpack(v, v.GetBackpack());
 		Skeleton.methodReturn(this);
 	}
 }

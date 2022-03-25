@@ -29,11 +29,10 @@ public class NotMove implements MoveBehavior {
      * @param d
      */
     @Override
-    public Field Move(Virologist v, int d) {
+    public void Move(Virologist v, int d) {
         Skeleton.methodCall(this, "v", "d");
         Field f = v.GetRoute().GetLocation();
         v.SetState(State.BEFORE_ACTION);
         Skeleton.methodReturn(this);
-        return f;
     }
 }
