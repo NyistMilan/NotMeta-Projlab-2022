@@ -11,14 +11,17 @@
 
 /** */
 public abstract class Agent implements Collectable {
+
+	private static int basewarranty;
+
 	/** */
 	private int warranty;
 	
 	/** */
 	private String name;
-	
+
 	/** */
-	private int effectDuration;
+	private static int effectDuration;
 	
 	/** */
 	private int duration;
@@ -44,14 +47,15 @@ public abstract class Agent implements Collectable {
 	public abstract void Remove(Virologist v);
 
 	@Override
-	public void RemoveFromBackpack(Backpack b) {
+	public void RemoveFromBackpack(Virologist v, Backpack b) {
 		Skeleton.methodCall(this, "b");
 		Skeleton.methodReturn(this);
 	}
 
 	@Override
-	public boolean AddToBackpack(Backpack b) {
+	public boolean AddToBackpack(Virologist v) {
 		Skeleton.methodCall(this, "b");
+		v.GetBackpack().Add(this);
 		Skeleton.methodReturn(this);
 		return false;
 	}

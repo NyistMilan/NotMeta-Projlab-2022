@@ -18,7 +18,7 @@ public class NotDrop implements DropBehavior {
      *
      */
     @Override
-    public void DropCollectable(ArrayList<Collectable> c) {
+    public void DropCollectable(Virologist v, ArrayList<Collectable> c) {
         Skeleton.methodCall(this, "c");
         Skeleton.methodReturn(this);
     }

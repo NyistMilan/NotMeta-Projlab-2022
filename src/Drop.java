@@ -19,8 +19,14 @@ public class Drop implements DropBehavior {
      * @param c
      */
     @Override
-    public void DropCollectable(ArrayList<Collectable> c) {
+    public void DropCollectable(Virologist v, ArrayList<Collectable> c) {
         Skeleton.methodCall(this, "c");
+        Field f = v.GetRoute().GetLocation();
+        for(Collectable collectable: c){
+            collectable.RemoveFromBackpack(v, v.GetBackpack());
+            collectable.Remove(v);
+            f.Add(v, collectable);
+        }
         Skeleton.methodReturn(this);
     }
 }

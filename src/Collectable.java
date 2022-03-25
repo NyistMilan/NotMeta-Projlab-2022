@@ -10,13 +10,17 @@
 //
 
 
-
+import java.nio.file.FileVisitResult;
 
 /** */
 interface Collectable {
 	/** */
-	boolean AddToBackpack(Backpack p);
+	boolean AddToBackpack(Virologist v);
 	
 	/** */
-	void RemoveFromBackpack(Backpack p);
+	void RemoveFromBackpack(Virologist v, Backpack p);
+
+	void Apply(Virologist v);
+
+	void Remove(Virologist v);
 }

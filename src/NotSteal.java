@@ -18,7 +18,7 @@ public class NotSteal implements StealBehavior {
      * @param v
      */
     @Override
-    public void Steal(Virologist v, ArrayList<Collectable> c) {
+    public void Steal(Virologist v1, Virologist v2, ArrayList<Collectable> c) {
         Skeleton.methodCall(this, "v", "c");
         Skeleton.methodReturn(this);
     }

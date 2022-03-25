@@ -15,5 +15,5 @@ import java.util.ArrayList;
 /** */
 interface GetStolenBehavior {
 	/** */
-	boolean GetStolenFrom(ArrayList<Collectable> c);
+	boolean GetStolenFrom(Virologist v, ArrayList<Collectable> c);
 }

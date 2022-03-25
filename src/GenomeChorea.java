@@ -10,13 +10,15 @@
 //
 
 
-
+import java.util.ArrayList;
 
 /** */
 public class GenomeChorea extends Genome {
 	/** */
-	public Agent CreateAgent(Backpack b) {
+	public void CreateAgent(Virologist v) {
 		Skeleton.methodCall(this, "b");
+		Chorea agent = new Chorea();
+		agent.AddToBackpack(v);
 		Skeleton.methodReturn(this);
-		return new Oblivion();}
+	}
 }

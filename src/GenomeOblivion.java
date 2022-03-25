@@ -15,8 +15,10 @@
 /** */
 public class GenomeOblivion extends Genome {
 	/** */
-	public Agent CreateAgent(Backpack b) {
+	public void CreateAgent(Virologist v) {
 		Skeleton.methodCall(this, "b");
+		Oblivion agent = new Oblivion();
+		agent.AddToBackpack(v);
 		Skeleton.methodReturn(this);
-		return new Oblivion();}
+	}
 }

@@ -17,6 +17,14 @@ public class Paralysis extends Agent {
 	/** */
 	public void Apply(Virologist v) {
 		Skeleton.methodCall(this, "v");
+		v.SetMoveBehavior(new NotMove());
+		v.SetCreateBehavior(new NotCreate());
+		v.SetLearnBehavior(new NotLearn());
+		v.SetStealBehavior(new NotSteal());
+		v.SetPickUpBehavior(new NotPickUp());
+		v.SetInfectBehavior(new NotInfect());
+		v.SetDropBehavior(new NotDrop());
+		v.SetGetStolenBehavior(new GetStolen());
 		Skeleton.methodReturn(this);
 	}
 	

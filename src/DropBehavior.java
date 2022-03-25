@@ -15,6 +15,6 @@ import java.util.ArrayList;
 /** */
 interface DropBehavior {
 	/** */
-	void DropCollectable(ArrayList<Collectable> c);
+	void DropCollectable(Virologist v, ArrayList<Collectable> c);
 
 }

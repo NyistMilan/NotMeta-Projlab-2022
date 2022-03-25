@@ -14,6 +14,10 @@ import java.util.ArrayList;
 
 /** */
 public abstract class Field {
+	Field(){
+		Skeleton.methodCall(this);
+		Skeleton.methodReturn(this);
+	}
 	/**
 	 *
 	 */
@@ -59,16 +63,18 @@ public abstract class Field {
 	/**
 	 *
 	 */
-	public void Add(Collectable c) {
+	public void Add(Virologist v, Collectable c) {
 		Skeleton.methodCall(this, "c");
+		c.AddToBackpack(v);
 		Skeleton.methodReturn(this);
 	}
 
 	/**
 	 *
 	 */
-	public void Remove(Collectable c) {
+	public void Remove(Virologist v, Collectable c) {
 		Skeleton.methodCall(this, "c");
+		c.RemoveFromBackpack(v, this.backpack);
 		Skeleton.methodReturn(this);
 	}
 

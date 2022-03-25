@@ -17,6 +17,7 @@ public class Oblivion extends Agent {
 	/** */
 	public void Apply(Virologist v) {
 		Skeleton.methodCall(this, "v");
+		v.ForgetGenome();
 		Skeleton.methodReturn(this);
 	}
 	

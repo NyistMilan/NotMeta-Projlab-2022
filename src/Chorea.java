@@ -17,6 +17,7 @@ public class Chorea extends Agent {
 	/** */
 	public void Apply(Virologist v) {
 		Skeleton.methodCall(this, "v");
+		v.SetMoveBehavior(new RandomMove());
 		Skeleton.methodReturn(this);
 	}
 	
@@ -27,10 +28,10 @@ public class Chorea extends Agent {
 	}
 
 	/**
-	 * @param b
+	 * @param v
 	 */
 	@Override
-	public boolean AddToBackpack(Backpack b) {
+	public boolean AddToBackpack(Virologist v) {
 		Skeleton.methodCall(this, "b");
 		Skeleton.methodReturn(this);
 		return false;
@@ -40,7 +41,7 @@ public class Chorea extends Agent {
 	 * @param b
 	 */
 	@Override
-	public void RemoveFromBackpack(Backpack b) {
+	public void RemoveFromBackpack(Virologist v, Backpack b) {
 		Skeleton.methodCall(this, "b");
 		Skeleton.methodReturn(this);
 	}

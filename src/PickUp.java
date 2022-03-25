@@ -20,6 +20,16 @@ public class PickUp implements PickUpBehavior {
     @Override
     public void PickUpCollectable(Virologist v, ArrayList<Collectable> c) {
         Skeleton.methodCall(this, "v", "c");
+        for(Collectable collectable: c){
+            v.GetRoute().GetLocation().Remove(v, collectable);
+            boolean isadded = collectable.AddToBackpack(v);
+            collectable.Apply(v);
+            if(!isadded){
+                v.SetState(State.AFTER_ACTION);
+                break;
+            }
+        }
+        v.SetState(State.AFTER_ACTION);
         Skeleton.methodReturn(this);
     }
 }

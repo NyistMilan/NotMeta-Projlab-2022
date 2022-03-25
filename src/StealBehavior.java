@@ -15,5 +15,5 @@ import java.util.ArrayList;
 /** */
 interface StealBehavior {
 	/** */
-	void Steal(Virologist v, ArrayList<Collectable> c);
+	void Steal(Virologist v1,Virologist v2, ArrayList<Collectable> c);
 }

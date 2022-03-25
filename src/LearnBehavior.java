@@ -15,5 +15,5 @@
 /** */
 interface LearnBehavior {
 	/** */
-	void Learn();
+	void Learn(Virologist v);
 }

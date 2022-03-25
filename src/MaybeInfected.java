@@ -10,7 +10,7 @@
 //
 
 
-
+import java.math.*;
 
 /** */
 public class MaybeInfected implements GetInfectedBehavior {
@@ -24,6 +24,11 @@ public class MaybeInfected implements GetInfectedBehavior {
     @Override
     public void GetInfected(Virologist v1, Virologist v2, Agent a) {
         Skeleton.methodCall(this, "v1", "v2", "a");
+        double d = Math.random();
+        if(d < 0.823){
+            a.Apply(v2);
+            v2.GetBackpack().AddApplied(a);
+        }
         Skeleton.methodReturn(this);
     }
 }

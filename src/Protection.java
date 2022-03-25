@@ -17,6 +17,7 @@ public class Protection extends Agent {
 	/** */
 	public void Apply(Virologist v) {
 		Skeleton.methodCall(this, "v");
+		v.SetGetinfectedBehavior(new NotInfected());
 		Skeleton.methodReturn(this);
 	}
 	

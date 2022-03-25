@@ -15,5 +15,5 @@
 /** */
 interface CreateBehavior {
 	/** */
-	Agent CreateAgent(Genome g);
+	Agent CreateAgent(Virologist v, Genome g);
 }

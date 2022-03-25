@@ -294,7 +294,16 @@ public class Skeleton {
         }
     }
 
-    public void moveToField(){}
+    public void moveToField(){
+        Field f1 = new Normal();
+        Virologist v = new Virologist();
+        v.GetRoute().Add(f1);
+        Field f2 = new Normal();
+        f1.SetNeighbour(f2);
+        f2.SetNeighbour(f1);
+        v.Move(1);
+
+    }
     public void moveToLaboratory(){}
     public void takeAminoacid(){}
     public void takeSack(){}

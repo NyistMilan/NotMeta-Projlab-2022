@@ -29,45 +29,63 @@ public class Backpack {
 	/** */
 	public void Add(Equipment e) {
 		Skeleton.methodCall(this);
+		equipments.add(e);
 		Skeleton.methodReturn(this);
 	}
 	
 	/** */
 	public void Add(Aminoacid a) {
 		Skeleton.methodCall(this);
+		aminoacids.add(a);
 		Skeleton.methodReturn(this);
 	}
 	
 	/** */
 	public void Add(Nucleotide n) {
 		Skeleton.methodCall(this);
+		nucleotids.add(n);
 		Skeleton.methodReturn(this);
 	}
 	
 	/** */
-	//public ArrayList<Equipment> GetEquipments() {}
+	public ArrayList<Equipment> GetEquipments() {
+		Skeleton.methodCall(this);
+		Skeleton.methodReturn(this);
+		return equipments;
+	}
 	
 	/** */
-	//public ArrayList<Aminoacid> GetAminos() {}
+	public ArrayList<Aminoacid> GetAminos() {
+		Skeleton.methodCall(this);
+		Skeleton.methodReturn(this);
+		return  aminoacids;
+	}
 	
 	/** */
-	//public ArrayList<Nucleotide> GetNucleotide() {}
+	public ArrayList<Nucleotide> GetNucleotide() {
+		Skeleton.methodCall(this);
+		Skeleton.methodReturn(this);
+		return nucleotids;
+	}
 	
 	/** */
 	public void Remove(Equipment e) {
 		Skeleton.methodCall(this, "e");
+		equipments.remove(e);
 		Skeleton.methodReturn(this);
 	}
 	
 	/** */
 	public void Remove(Aminoacid a) {
 		Skeleton.methodCall(this, "a");
+		aminoacids.remove(a);
 		Skeleton.methodReturn(this);
 	}
 	
 	/** */
 	public void Remove(Nucleotide n) {
 		Skeleton.methodCall(this, "n");
+		nucleotids.remove(n);
 		Skeleton.methodReturn(this);
 	}
 }

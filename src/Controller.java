@@ -10,7 +10,7 @@
 //
 
 
-
+import java.util.ArrayList;
 
 /** */
 public class Controller {
@@ -18,11 +18,13 @@ public class Controller {
 	private Field map;
 	
 	/** */
-	private Virologist virologists;
-	
+	private ArrayList<Virologist> virologists;
+	private static int index;
 	/** */
 	public void Start() {
 		Skeleton.methodCall(this);
+		Field f = new Normal();
+		Virologist v = new Virologist();
 		Skeleton.methodReturn(this);
 	}
 	
@@ -33,8 +35,15 @@ public class Controller {
 	}
 	
 	/** */
-	public void NextPlayer() {
+	public ArrayList<Integer> NextPlayer() {
 		Skeleton.methodCall(this);
+		index++;
+		Virologist v = virologists.get(index);
+		Route r = v.GetRoute();
+		Field f  = r.GetLocation();
+		ArrayList<Integer> d = f.GetDirections();
+		v.SetState(State.BEFORE_MOVE);
 		Skeleton.methodReturn(this);
+		return d;
 	}
 }

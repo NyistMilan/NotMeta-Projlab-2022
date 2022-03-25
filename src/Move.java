@@ -29,8 +29,15 @@ public class Move implements MoveBehavior {
      * @param d
      */
     @Override
-    public void Move(Virologist v, int d) {
+    public Field Move(Virologist v, int d) {
         Skeleton.methodCall(this, "v", "d");
+        Field f = v.GetRoute().GetLocation();
+        Field f2 = f.GetNeighbour(d);
+        f.Remove(v);
+        f2.Accept(v);
+        v.GetRoute().Add(f2);
+        v.SetState(State.BEFORE_ACTION);
         Skeleton.methodReturn(this);
+        return f2;
     }
 }

@@ -10,7 +10,7 @@
 //
 
 
-
+import java.util.ArrayList;
 
 /** */
 public abstract class Equipment implements Collectable {
@@ -24,15 +24,25 @@ public abstract class Equipment implements Collectable {
 	public abstract void Remove(Virologist v);
 
 	@Override
-	public boolean AddToBackpack(Backpack b) {
+	public boolean AddToBackpack(Virologist v) {
 		Skeleton.methodCall(this, "b");
+		Backpack b = v.GetBackpack();
+		b.Add(this);
+		if(b.GetEquipments().size() == 3){
+			int i = Skeleton.askForInput("Which equipment do you wnat to drop?", 1, 3);
+			Equipment e = b.GetEquipments().get(i-1);
+			ArrayList<Collectable> list = new ArrayList<Collectable>();
+			list.add(e);
+			v.DropCollectable(list);
+		}
 		Skeleton.methodReturn(this);
 		return false;
 	}
 
 	@Override
-	public void RemoveFromBackpack(Backpack b) {
+	public void RemoveFromBackpack(Virologist v, Backpack b) {
 		Skeleton.methodCall(this, "b");
+		b.Remove(this);
 		Skeleton.methodReturn(this);
 	}
 }

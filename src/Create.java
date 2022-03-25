@@ -10,7 +10,7 @@
 //
 
 
-
+import java.util.ArrayList;
 
 /** */
 public class Create implements CreateBehavior {
@@ -18,8 +18,23 @@ public class Create implements CreateBehavior {
      * @param g
      */
     @Override
-    public Agent CreateAgent(Genome g) {
+    public Agent CreateAgent(Virologist v, Genome g) {
         Skeleton.methodCall(this, "g");
+        int aminocost = g.getAminoCost();
+        int nucleocost = g.getNucleoCost();
+        boolean isenough = v.GetBackpack().EnoughMaterials(aminocost, nucleocost);
+        if(isenough){
+            ArrayList<Aminoacid> aminos = v.GetBackpack().GetAminos();
+            for(int i = 0; i < g.getAminoCost(); i++){
+                v.GetBackpack().Remove(aminos.get(i));
+            }
+            ArrayList<Nucleotide> nucleos = v.GetBackpack().GetNucleotide();
+            for(int i = 0; i < g.getNucleoCost(); i++){
+                v.GetBackpack().Remove(nucleos.get(i));
+            }
+            g.CreateAgent(v);
+            v.SetState(State.AFTER_ACTION);
+        }
         Skeleton.methodReturn(this);
         return null;
     }

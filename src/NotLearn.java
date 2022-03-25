@@ -18,7 +18,7 @@ public class NotLearn implements LearnBehavior {
      *
      */
     @Override
-    public void Learn() {
+    public void Learn(Virologist v) {
         Skeleton.methodCall(this);
         Skeleton.methodReturn(this);
     }

@@ -24,5 +24,13 @@ public abstract class Genome {
 	private String name;
 	
 	/** */
-	public abstract Agent CreateAgent(Backpack b);
+	public abstract void CreateAgent(Virologist v);
+
+	public int getAminoCost() {
+		return aminoCost;
+	}
+
+	public int getNucleoCost() {
+		return nucleoCost;
+	}
 }

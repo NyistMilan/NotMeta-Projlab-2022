@@ -22,6 +22,8 @@ public class Infect implements InfectBehavior {
     @Override
     public void Infect(Virologist v1, Virologist v2, Agent a) {
         Skeleton.methodCall(this, "v1", "v2", "a");
+        v2.GetInfected(v1, a);
+        v1.SetState(State.AFTER_ACTION);
         Skeleton.methodReturn(this);
     }
 }

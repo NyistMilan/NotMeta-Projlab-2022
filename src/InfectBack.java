@@ -30,6 +30,7 @@ public class InfectBack implements GetInfectedBehavior {
     @Override
     public void GetInfected(Virologist v1, Virologist v2, Agent a) {
         Skeleton.methodCall(this, "v1", "v2", "a");
+        v1.GetInfected(v2, a);
         Skeleton.methodReturn(this);
     }
 }

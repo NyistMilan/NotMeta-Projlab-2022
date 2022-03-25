@@ -14,6 +14,10 @@
 
 /** */
 public class Route {
+	Route(){
+		Skeleton.methodCall(this);
+		Skeleton.methodReturn(this);
+	}
 	/** */
 	public Field fields;
 	

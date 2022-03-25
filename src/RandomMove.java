@@ -9,11 +9,15 @@
 //
 //
 
-
-
+import java.math.*;
+import java.util.ArrayList;
 
 /** */
 public class RandomMove implements MoveBehavior {
+
+    public int getRandomNumber(int min, int max) {
+        return (int) ((Math.random() * (max - min)) + min);
+    }
     /**
      *
      */
@@ -29,8 +33,17 @@ public class RandomMove implements MoveBehavior {
      * @param d
      */
     @Override
-    public void Move(Virologist v, int d) {
+    public Field Move(Virologist v, int d) {
         Skeleton.methodCall(this, "v", "d");
+        Field f = v.GetRoute().GetLocation();
+        ArrayList<Integer> directions = f.GetDirections();
+        int newD = getRandomNumber(0, directions.size());
+        Field f2 = f.GetNeighbour(newD);
+        f.Remove(v);
+        f2.Accept(v);
+        v.GetRoute().Add(f2);
+        v.SetState(State.BEFORE_ACTION);
         Skeleton.methodReturn(this);
+        return f2;
     }
 }

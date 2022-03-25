@@ -18,9 +18,10 @@ public class GetStolen implements GetStolenBehavior {
      *
      */
     @Override
-    public boolean GetStolenFrom(ArrayList<Collectable> c) {
+    public boolean GetStolenFrom(Virologist v, ArrayList<Collectable> c) {
         Skeleton.methodCall(this, "c");
+        v.DropCollectable(c);
         Skeleton.methodReturn(this);
-        return false;
+        return true;
     }
 }

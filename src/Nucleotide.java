@@ -15,14 +15,25 @@
 /** */
 public class Nucleotide extends Materials{
     @Override
-    public boolean AddToBackpack(Backpack b) {
+    public boolean AddToBackpack(Virologist v) {
         Skeleton.methodCall(this, "b");
         Skeleton.methodReturn(this);return false;
     }
 
     @Override
-    public void RemoveFromBackpack(Backpack b) {
+    public void RemoveFromBackpack(Virologist v, Backpack b) {
         Skeleton.methodCall(this,"b");
+        b.Remove(this);
         Skeleton.methodReturn(this);
+    }
+
+    @Override
+    public void Apply(Virologist v) {
+
+    }
+
+    @Override
+    public void Remove(Virologist v) {
+
     }
 }

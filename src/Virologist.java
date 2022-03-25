@@ -14,6 +14,13 @@ import java.util.ArrayList;
 
 /** */
 public class Virologist {
+
+	Virologist(){
+		Skeleton.methodCall(this);
+		route = new Route();
+		DefaultBehaviors();
+		Skeleton.methodReturn(this);
+	}
 	/** */
 	private State state;
 	
@@ -55,40 +62,70 @@ public class Virologist {
 	
 	/** */
 	private GetStolenBehavior getStolenBehavior;
-	
-	/** */
-	public void Move(int d) {
-		Skeleton.methodCall(this, "d");
+	public VirologistBackpack GetBackpack(){
+		Skeleton.methodCall(this);
 		Skeleton.methodReturn(this);
+		return backPack;
+	}
+	/** */
+	public Field Move(int d) {
+		Skeleton.methodCall(this, "d");
+		Field f = null;
+		if(state == State.BEFORE_MOVE) {
+			f = moveBehavior.Move(this, d);
+		}
+		Skeleton.methodReturn(this);
+		return f;
 	}
 	
 	/** */
 	public void PickUpCollectable(ArrayList<Collectable> c) {
 		Skeleton.methodCall(this, "c");
+		if(state == State.BEFORE_ACTION){
+			pickUpBehavior.PickUpCollectable(this, c);
+		}
 		Skeleton.methodReturn(this);
 	}
 	
 	/** */
 	public void DropCollectable(ArrayList<Collectable> c) {
 		Skeleton.methodCall(this, "c");
+		if(state == State.BEFORE_ACTION){
+			dropBehavior.DropCollectable(this, c);
+		}
+		if(state == State.NOT_IN_TURN){
+			Field f = GetRoute().GetLocation();
+			for(Collectable collectable: c){
+				collectable.RemoveFromBackpack(this, GetBackpack());
+				collectable.Remove(this);
+				f.Add(this, collectable);
+			}
+		}
 		Skeleton.methodReturn(this);
 	}
 	
 	/** */
-	public void Steal(Virologist v, ArrayList<Collectable> c) {
+	public void Steal(Virologist v2, ArrayList<Collectable> c) {
 		Skeleton.methodCall(this, "c");
+		if(state == State.BEFORE_ACTION){
+			stealBehavior.Steal(this, v2, c);
+		}
 		Skeleton.methodReturn(this);
 	}
 	
 	/** */
 	public boolean GetStolenFrom(ArrayList<Collectable> c) {
 		Skeleton.methodCall(this,"c");
+		getStolenBehavior.GetStolenFrom(this, c);
 		Skeleton.methodReturn(this);
 		return false;}
 	
 	/** */
-	public void Infect(Virologist v, Agent a) {
+	public void Infect(Virologist v2, Agent a) {
 		Skeleton.methodCall(this, "v", "a");
+		if(state == State.BEFORE_ACTION){
+			infectBehavior.Infect(this, v2, a);
+		}
 		Skeleton.methodReturn(this);
 	}
 	
@@ -101,6 +138,9 @@ public class Virologist {
 	/** */
 	public void Learn() {
 		Skeleton.methodCall(this);
+		if(state == State.BEFORE_ACTION){
+			learnBehavior.Learn(this);
+		}
 		Skeleton.methodReturn(this);
 	}
 	
@@ -113,13 +153,23 @@ public class Virologist {
 	/** */
 	public Agent CreateAgent(Genome g) {
 		Skeleton.methodCall(this, "g");
+		if(state == State.BEFORE_ACTION){
+			createBehavior.CreateAgent(this, g);
+		}
 		Skeleton.methodReturn(this);
 		return null;
 	}
 	
 	/** */
-	public void GetInfected(Virologist v, Agent a) {
+	public void GetInfected(Virologist v1, Agent a) {
 		Skeleton.methodCall(this, "v", "a");
+		if(state == State.NOT_IN_TURN){
+			getInfectedBehavior.GetInfected(v1, this, a);
+		}
+		else{
+			a.Apply(this);
+			backPack.AddApplied(a);
+		}
 		Skeleton.methodReturn(this);
 	}
 	
@@ -140,24 +190,87 @@ public class Virologist {
 	public Route GetRoute() {
 		Skeleton.methodCall(this);
 		Skeleton.methodReturn(this);
-		return null;
+		return route;
 	}
 	
 	/** */
 	public void EndTurn() {
 		Skeleton.methodCall(this);
+		backPack.DecreaseWarranties();
+		SetState(State.NOT_IN_TURN);
 		Skeleton.methodReturn(this);
 	}
 	
 	/** */
 	public void RefreshEffects() {
 		Skeleton.methodCall(this);
+		DefaultBehaviors();
+		ArrayList<Equipment> eqs = backPack.GetEquipments();
+		for(Equipment e : eqs){
+			e.Apply(this);
+		}
+		ArrayList<Agent> ags = backPack.GetAppliedAgents();
+		for(Agent a: ags){
+			a.Apply(this);
+		}
 		Skeleton.methodReturn(this);
 	}
 	
 	/** */
-	public void ForgetGenome(Genome g) {
-		Skeleton.methodCall(this, "g");
+	public void ForgetGenome() {
+		Skeleton.methodCall(this);
 		Skeleton.methodReturn(this);
 	}
+
+	public void SetMoveBehavior(MoveBehavior b){
+		Skeleton.methodCall(this, "b");
+		Skeleton.methodReturn(this);
+	}
+	public void SetDropBehavior(DropBehavior b){
+		Skeleton.methodCall(this, "b");
+		Skeleton.methodReturn(this);
+	}
+	public void SetInfectBehavior(InfectBehavior b){
+		Skeleton.methodCall(this, "b");
+		Skeleton.methodReturn(this);
+	}
+	public void SetGetinfectedBehavior(GetInfectedBehavior b){
+		Skeleton.methodCall(this, "b");
+		Skeleton.methodReturn(this);
+	}
+	public void SetPickUpBehavior(PickUpBehavior b){
+		Skeleton.methodCall(this, "b");
+		Skeleton.methodReturn(this);
+	}
+	public void SetGetStolenBehavior(GetStolenBehavior b){
+		Skeleton.methodCall(this, "b");
+		Skeleton.methodReturn(this);
+	}
+	public void SetStealBehavior(StealBehavior b){
+		Skeleton.methodCall(this, "b");
+		Skeleton.methodReturn(this);
+	}
+	public void SetLearnBehavior(LearnBehavior b){
+		Skeleton.methodCall(this, "b");
+		Skeleton.methodReturn(this);
+	}
+	public void SetCreateBehavior(CreateBehavior b){
+		Skeleton.methodCall(this, "b");
+		Skeleton.methodReturn(this);
+	}
+
+	public void DefaultBehaviors(){
+		Skeleton.methodCall(this);
+		SetMoveBehavior(new Move());
+		SetDropBehavior(new Drop());
+		SetInfectBehavior(new Infect());
+		SetGetinfectedBehavior(new GetInfected());
+		SetPickUpBehavior(new PickUp());
+		SetGetStolenBehavior(new NotGetStolen());
+		SetStealBehavior(new Steal());
+		SetLearnBehavior(new NotLearn());
+		SetCreateBehavior(new Create());
+		Skeleton.methodReturn(this);
+	}
+
 }
