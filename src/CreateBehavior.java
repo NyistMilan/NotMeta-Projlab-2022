@@ -9,11 +9,12 @@
 //
 //
 
-
-
-
-/** */
+/** The behavior which decides if the Virologist can create an Agent */
 interface CreateBehavior {
-	/** */
+	/**
+	 *
+	 * @param v the Virologist who wants to create an agent
+	 * @param g the Genome he wants to use to create the Agent
+	 */
 	void CreateAgent(Virologist v, Genome g);
 }

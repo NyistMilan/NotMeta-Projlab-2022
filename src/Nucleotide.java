@@ -9,11 +9,14 @@
 //
 //
 
-
-
-
-/** */
 public class Nucleotide extends Materials{
+    /**
+     * Adds a Nucleotide to a Backpack
+     *
+     * @param v the Virologist the backpack belongs to(Only used sometimes)
+     * @param b the Backpack it gets added to
+     * @return true if added successfully, false if cannot be added
+     */
     @Override
     public boolean AddToBackpack(Virologist v, Backpack b) {
         Skeleton.methodCall(this, "b");
@@ -22,6 +25,12 @@ public class Nucleotide extends Materials{
         return isAdded;
     }
 
+    /**
+     * Removes a Nucleotide from a Backpack
+     *
+     * @param v the Virologist the backpack belongs to(Only used sometimes)
+     * @param b the Backpack it gets removed from
+     */
     @Override
     public void RemoveFromBackpack(Virologist v, Backpack b) {
         Skeleton.methodCall(this,"v", "b");

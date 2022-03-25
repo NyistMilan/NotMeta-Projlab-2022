@@ -9,13 +9,12 @@
 //
 //
 
-
-
-
-/** */
 public class NotCreate implements CreateBehavior {
     /**
-     * @param g
+     * Nothing happens
+     * 
+     * @param v the Virologist who wants to create an agent
+     * @param g the Genome he wants to use to create the Agent
      */
     @Override
     public void CreateAgent(Virologist v, Genome g) {

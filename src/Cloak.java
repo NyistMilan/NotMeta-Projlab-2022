@@ -9,15 +9,15 @@
 //
 //
 
-
-
-
-/** */
+/** The Cloak protects the Virologist from Agents with a 82.3% chance*/
 public class Cloak extends Equipment {
-	/** */
+	private static String name;
+
+	/** Applies the effect to the Virologist if there is no stronger effect on him*/
 	public void Apply(Virologist v) {
 		Skeleton.methodCall(this, "v");
-		v.SetGetInfectedBehavior(new MaybeInfected());
+		if(v.GetGetInfectedBehavior().GetPriority() < 1)
+			v.SetGetInfectedBehavior(new MaybeInfected());
 		Skeleton.methodReturn(this);
 	}
 }

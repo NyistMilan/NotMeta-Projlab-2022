@@ -9,15 +9,17 @@
 //
 //
 
-
-
-/** */
+/** The GenomeChorea is used to create the Chorea Agent*/
 public class GenomeChorea extends Genome {
-	/** */
-
 	private static int aminocost;
 	private static int nucleocost;
+	private static String name;
 
+	/**
+	 * Creates a Chorea Agent and puts it into the Backpack of the Virologist that created it
+	 *
+	 * @param v the Virologist who creates the Agent
+	 */
 	public void CreateAgent(Virologist v) {
 		Skeleton.methodCall(this, "v");
 		Chorea agent = new Chorea();
@@ -34,5 +36,4 @@ public class GenomeChorea extends Genome {
 	public int getNucleoCost() {
 		return nucleocost;
 	}
-
 }

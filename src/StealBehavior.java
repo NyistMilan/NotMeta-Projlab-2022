@@ -9,11 +9,15 @@
 //
 //
 
-
 import java.util.ArrayList;
 
-/** */
+/** The behavior which decides if the Virologist can steal from another Virologist */
 interface StealBehavior {
-	/** */
+	/**
+	 *
+	 * @param v1 the Virologist who wants to steal
+	 * @param v2 the target of the action
+	 * @param c the Collectables v1 wants to steal
+	 */
 	void Steal(Virologist v1,Virologist v2, ArrayList<Collectable> c);
 }

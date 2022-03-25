@@ -9,83 +9,71 @@
 //
 //
 
-
 import java.util.ArrayList;
 
-/** */
+/** Stores materials and Equipments*/
 public class Backpack {
+	/** Constructor*/
 	Backpack(){
 		nucleotids = new ArrayList<>();
 		aminoacids = new ArrayList<>();
 		equipments = new ArrayList<>();
 	}
-	
-	/** */
+
 	protected final ArrayList<Nucleotide> nucleotids;
-	
-	/** */
+
 	protected final ArrayList<Aminoacid> aminoacids;
-	
-	/** */
+
 	protected final ArrayList<Equipment> equipments;
-	
-	/** */
+
 	public void Add(Equipment e) {
 		Skeleton.methodCall(this, "e");
 		equipments.add(e);
 		Skeleton.methodReturn(this);
 	}
-	
-	/** */
+
 	public void Add(Aminoacid a) {
 		Skeleton.methodCall(this, "a");
 		aminoacids.add(a);
 		Skeleton.methodReturn(this);
 	}
-	
-	/** */
+
 	public void Add(Nucleotide n) {
 		Skeleton.methodCall(this, "n");
 		nucleotids.add(n);
 		Skeleton.methodReturn(this);
 	}
-	
-	/** */
+
 	public ArrayList<Equipment> GetEquipments() {
 		Skeleton.methodCall(this);
 		Skeleton.methodReturn(this);
 		return equipments;
 	}
-	
-	/** */
+
 	public ArrayList<Aminoacid> GetAminos() {
 		Skeleton.methodCall(this);
 		Skeleton.methodReturn(this);
 		return  aminoacids;
 	}
-	
-	/** */
+
 	public ArrayList<Nucleotide> GetNucleotide() {
 		Skeleton.methodCall(this);
 		Skeleton.methodReturn(this);
 		return nucleotids;
 	}
-	
-	/** */
+
 	public void Remove(Equipment e) {
 		Skeleton.methodCall(this, "e");
 		equipments.remove(e);
 		Skeleton.methodReturn(this);
 	}
-	
-	/** */
+
 	public void Remove(Aminoacid a) {
 		Skeleton.methodCall(this, "a");
 		aminoacids.remove(a);
 		Skeleton.methodReturn(this);
 	}
-	
-	/** */
+
 	public void Remove(Nucleotide n) {
 		Skeleton.methodCall(this, "n");
 		nucleotids.remove(n);

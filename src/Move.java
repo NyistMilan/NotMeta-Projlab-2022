@@ -9,14 +9,7 @@
 //
 //
 
-
-
-
-/** */
 public class Move implements MoveBehavior {
-    /**
-     *
-     */
     @Override
     public int GetPriority() {
         Skeleton.methodCall(this);
@@ -25,8 +18,10 @@ public class Move implements MoveBehavior {
     }
 
     /**
-     * @param v
-     * @param d
+     * The Virologist finds the Field on the desired direction and steps on it.
+     *
+     * @param v the Virologist who tries to move
+     * @param d the direction he wants to move
      */
     @Override
     public void Move(Virologist v, int d) {

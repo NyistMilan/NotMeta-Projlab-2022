@@ -9,11 +9,13 @@
 //
 //
 
-
-
-
-/** */
+/** The behavior which decides if the Virologist can infect another Virologist */
 interface InfectBehavior {
-	/** */
+	/**
+	 *
+	 * @param v1 the Virologist who wants to infect
+	 * @param v2 the target of the action
+	 * @param a the Agents v1 wants to infect v2 with
+	 */
 	void Infect(Virologist v1, Virologist v2, Agent a);
 }

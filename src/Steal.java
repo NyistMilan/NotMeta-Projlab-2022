@@ -9,13 +9,16 @@
 //
 //
 
-
 import java.util.ArrayList;
 
-/** */
 public class Steal implements StealBehavior {
     /**
+     * v1 tries to steal from v2. If he succeeds he picks up the item
+     * and sets his state to AFTER_ACTION.
      *
+     * @param v1 the Virologist who wants to steal
+     * @param v2 the target of the action
+     * @param c the Collectables v1 wants to steal
      */
     @Override
     public void Steal(Virologist v1,Virologist v2, ArrayList<Collectable> c) {

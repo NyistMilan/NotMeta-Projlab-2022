@@ -9,14 +9,13 @@
 //
 //
 
-
 import java.util.ArrayList;
 
-/** */
 public class NotPickUp implements PickUpBehavior {
     /**
-     * @param v
-     * @param c
+     * Nothing happens
+     * @param v the Virologist who wants to pick up something
+     * @param c the Collectables the Virologist wants to pick up
      */
     @Override
     public void PickUpCollectable(Virologist v, ArrayList<Collectable> c) {

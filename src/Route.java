@@ -9,27 +9,26 @@
 //
 //
 
-
 import java.util.ArrayList;
 
-/** */
+/** The Fields the Virologist was on*/
 public class Route {
+	/** Constructor*/
 	Route(){
 		Skeleton.methodCall(this);
 		fields = new ArrayList<>();
 		Skeleton.methodReturn(this);
 	}
-	/** */
+	/** The List where the Route Stores the Fields*/
 	public final ArrayList<Field> fields;
 	
-	/** */
+	/** Returns the Location of the Wizard by looking at the last Field he moved to*/
 	public Field GetLocation() {
 		Skeleton.methodCall(this);
 		Skeleton.methodReturn(this);
 		return fields.get(fields.size()-1);
 	}
-	
-	/** */
+
 	public void Add(Field f) {
 		Skeleton.methodCall(this, "f");
 		fields.add(f);

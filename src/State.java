@@ -1,3 +1,4 @@
+/** The states the Virologist can be in*/
 public enum State {
     BEFORE_MOVE,
     BEFORE_ACTION,

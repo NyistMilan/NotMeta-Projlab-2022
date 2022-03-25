@@ -9,13 +9,16 @@
 //
 //
 
-
 import java.util.ArrayList;
 
 /** */
 public class NotGetStolen implements GetStolenBehavior {
     /**
+     * Nothing happens.
      *
+     * @param v the target of the action
+     * @param c the Collectable that the other Virologist wants to steal from the target
+     * @return false. because the action failed
      */
     @Override
     public boolean GetStolenFrom(Virologist v, ArrayList<Collectable> c) {

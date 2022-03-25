@@ -9,24 +9,31 @@
 //
 //
 
-
 import java.util.ArrayList;
 
-/** */
+/**
+ * The Virologist can pick up up to 3 Equipment.
+ * They apply their effects on the Virologist until he drops them
+ * or another Virologist steal them from him
+ * */
 public abstract class Equipment implements Collectable {
-	/** */
-	private String name;
-	
-	/** */
+	/** Applies its effect to a Virologist*/
 	public abstract void Apply(Virologist v);
 
-	/** */
+	/** Removes its effect from a Virologist*/
 	public void Remove(Virologist v) {
 		Skeleton.methodCall(this, "v");
 		v.RefreshEffects();
 		Skeleton.methodReturn(this);
 	}
 
+	/**
+	 * The Equipment is added to the Backpack.
+	 * If there is not enough space to pick it up the Virologist can drop another Equipment.
+	 *
+	 * @param v the Virologist the backpack belongs to(Only used sometimes)
+	 * @param b the Backpack it gets added to
+	 */
 	@Override
 	public boolean AddToBackpack(Virologist v, Backpack b) {
 		Skeleton.methodCall(this, "v","b");
@@ -43,6 +50,11 @@ public abstract class Equipment implements Collectable {
 		return isAdded;
 	}
 
+	/**
+	 * The Equipment is removed from the Backpack.
+	 * @param v the Virologist the backpack belongs to(Only used sometimes)
+	 * @param b the Backpack it gets removed from
+	 */
 	@Override
 	public void RemoveFromBackpack(Virologist v, Backpack b) {
 		Skeleton.methodCall(this, "v", "b");

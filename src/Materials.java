@@ -9,17 +9,16 @@
 //
 //
 
-
-
-
-/** */
+/** The Materials are the things that the Agents are made of*/
 public abstract class Materials implements Collectable {
+    /** Nothing happens*/
     @Override
     public void Apply(Virologist v) {
         Skeleton.methodCall(this, "v");
         Skeleton.methodReturn(this);
     }
 
+    /** Nothing happens*/
     @Override
     public void Remove(Virologist v) {
         Skeleton.methodCall(this, "v");

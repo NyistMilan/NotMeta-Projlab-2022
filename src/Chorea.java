@@ -9,21 +9,24 @@
 //
 //
 
-
-
-
-/** */
+/** Chorea makes the infected Virologist move to random directions*/
 public class Chorea extends Agent {
+	/** Constructor*/
 	Chorea(){
 		warranty = baseWarranty;
 		duration = effectDuration;
 	}
+
+	/** The number of turns the Agent can be used after its creation*/
 	private static int baseWarranty;
 	private static int effectDuration;
-	/** */
+	private static String name;
+
+	/** Applies the effect to the Virologist if there is no stronger effect on him*/
 	public void Apply(Virologist v) {
 		Skeleton.methodCall(this, "v");
-		v.SetMoveBehavior(new RandomMove());
+		if(v.GetMoveBehavior().GetPriority() < 1)
+			v.SetMoveBehavior(new RandomMove());
 		Skeleton.methodReturn(this);
 	}
 }

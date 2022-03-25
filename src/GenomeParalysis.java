@@ -9,15 +9,16 @@
 //
 //
 
-
-
-
-/** */
+/** The GenomeChorea is used to create the Paralysis Agent*/
 public class GenomeParalysis extends Genome {
 	private static int aminocost;
 	private static int nucleocost;
+	private static String name;
+
 	/**
+	 * Creates a Paralysis Agent and puts it into the Backpack of the Virologist that created it
 	 *
+	 * @param v the Virologist who creates the Agent
 	 */
 	public void CreateAgent(Virologist v) {
 		Skeleton.methodCall(this, "v");
@@ -34,5 +35,4 @@ public class GenomeParalysis extends Genome {
 	public int getNucleoCost() {
 		return nucleocost;
 	}
-
 }

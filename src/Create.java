@@ -9,14 +9,14 @@
 //
 //
 
-
 import java.util.ArrayList;
 
-/** */
 public class Create implements CreateBehavior {
     /**
-     * @param g
-     * @param v
+     * If the Virologist has enough Materials he removes them from his Backpack and creates the Agent.
+     *
+     * @param v the Virologist who wants to create an agent
+     * @param g the Genome he wants to use to create the Agent
      */
     @Override
     public void CreateAgent(Virologist v, Genome g) {

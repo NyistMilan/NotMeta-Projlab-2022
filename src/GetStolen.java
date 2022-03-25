@@ -9,13 +9,15 @@
 //
 //
 
-
 import java.util.ArrayList;
 
-/** */
 public class GetStolen implements GetStolenBehavior {
     /**
+     * The Virologist drops the desired item to the Field.
      *
+     * @param v the target of the action
+     * @param c the Collectable that the other Virologist wants to steal from the target
+     * @return true, because the action was successful
      */
     @Override
     public boolean GetStolenFrom(Virologist v, ArrayList<Collectable> c) {

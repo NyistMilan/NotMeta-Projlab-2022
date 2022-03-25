@@ -9,13 +9,14 @@
 //
 //
 
-
 import java.util.ArrayList;
 
-/** */
 public class NotDrop implements DropBehavior {
     /**
+     * Nothing happens.
      *
+     * @param v The Virologist who wants to drop
+     * @param c The Collectables he wants to drop
      */
     @Override
     public void DropCollectable(Virologist v, ArrayList<Collectable> c) {

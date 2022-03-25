@@ -9,14 +9,17 @@
 //
 //
 
-
-
-
-/** */
+/** The GenomeChorea is used to create the Oblivion Agent*/
 public class GenomeOblivion extends Genome {
 	private static int aminocost;
 	private static int nucleocost;
-	/** */
+	private static String name;
+
+	/**
+	 * Creates an Oblivion Agent and puts it into the Backpack of the Virologist that created it
+	 *
+	 * @param v the Virologist who creates the Agent
+	 */
 	public void CreateAgent(Virologist v) {
 		Skeleton.methodCall(this, "v");
 		Oblivion agent = new Oblivion();

@@ -9,17 +9,19 @@
 //
 //
 
-
-
-
-/** */
+/** The behavior which decides if the Virologist can be infected by another Virologist */
 interface GetInfectedBehavior {
-	/** */
+
+	/** The Behavior will only be changed if the new behavior has higher priority*/
 	int priority = 0;
-	
-	/** */
+
 	int GetPriority();
-	
-	/** */
+
+	/**
+	 *
+	 * @param v1 the Virologist who wants to infect
+	 * @param v2 the target of the action
+	 * @param a the Agents v1 wants to infect v2 with
+	 */
 	void GetInfected(Virologist v1, Virologist v2, Agent a);
 }

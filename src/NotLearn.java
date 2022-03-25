@@ -9,13 +9,11 @@
 //
 //
 
-
-
-
-/** */
 public class NotLearn implements LearnBehavior {
     /**
+     * Nothing happens
      *
+     * @param v the Virologist who wants to learn the Genome
      */
     @Override
     public void Learn(Virologist v) {

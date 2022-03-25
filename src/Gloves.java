@@ -9,15 +9,15 @@
 //
 //
 
-
-
-
-/** */
+/** The Gloves protect the Virologist from any Agent, and it Infects back the Virologist who tris to infect him*/
 public class Gloves extends Equipment {
-	/** */
+	private static String name;
+
+	/** Applies the effect to the Virologist if there is no stronger effect on him*/
 	public void Apply(Virologist v) {
 		Skeleton.methodCall(this, "v");
-		v.SetGetInfectedBehavior(new InfectBack());
+		if(v.GetGetInfectedBehavior().GetPriority() < 3)
+			v.SetGetInfectedBehavior(new InfectBack());
 		Skeleton.methodReturn(this);
 	}
 }

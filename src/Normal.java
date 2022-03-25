@@ -9,11 +9,11 @@
 //
 //
 
-
 import java.util.ArrayList;
 
-/** */
+/** A normal Field*/
 public class Normal extends Field {
+	/** Constructor*/
 	Normal(){
 		Skeleton.methodCall(this);
 		virologists = new ArrayList<>();

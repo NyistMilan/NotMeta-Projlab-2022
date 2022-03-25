@@ -9,16 +9,14 @@
 //
 //
 
-
 import java.util.ArrayList;
 
-/** */
+/** Controls the Game and the turns of the players*/
 public class Controller {
-	/** */
 	private ArrayList<Field> map;
-	
-	/** */
+
 	private ArrayList<Virologist> virologists;
+	/** the next player*/
 	private static int index;
 	/** */
 	public void Start() {
@@ -37,7 +35,7 @@ public class Controller {
 		Skeleton.printWithIndent("GAME OVER!");
 	}
 	
-	/** */
+	/** Calls the next player and him in which directions can he move*/
 	public ArrayList<Integer> NextPlayer() {
 		Skeleton.methodCall(this);
 		index++;

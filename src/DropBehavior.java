@@ -9,12 +9,14 @@
 //
 //
 
-
 import java.util.ArrayList;
 
-/** */
+/** The behavior which decides if the Virologist can drop a few Collectables */
 interface DropBehavior {
-	/** */
+	/**
+	 *
+	 * @param v The Virologist who wants to drop
+	 * @param c The Collectables he wants to drop
+	 */
 	void DropCollectable(Virologist v, ArrayList<Collectable> c);
-
 }

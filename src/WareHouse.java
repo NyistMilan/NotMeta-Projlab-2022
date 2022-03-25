@@ -9,11 +9,11 @@
 //
 //
 
-
 import java.util.ArrayList;
 
-/** */
+/** At the start of the game Materials are placed in the WarHouses*/
 public class WareHouse extends Field {
+	/** Constructor*/
 	WareHouse(){
 		Skeleton.methodCall(this);
 		this.virologists = new ArrayList<>();

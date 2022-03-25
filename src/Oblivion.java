@@ -9,18 +9,19 @@
 //
 //
 
-
-
-
-/** */
+/** The Virologist forgets every Genome he learned so far*/
 public class Oblivion extends Agent {
+	/** Constructor*/
 	Oblivion(){
 		warranty = baseWarranty;
 		duration = effectDuration;
 	}
+	/** The number of turns the Agent can be used after its creation*/
 	private static int baseWarranty;
 	private static int effectDuration;
-	/** */
+	private static String name;
+
+	/** Applies the effect on the Virologist*/
 	public void Apply(Virologist v) {
 		Skeleton.methodCall(this, "v");
 		v.ForgetGenome();

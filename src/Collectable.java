@@ -9,18 +9,28 @@
 //
 //
 
-
-
-
-/** */
+/** Things the Virologists can store in their Backpack*/
 interface Collectable {
-	/** */
+	/**
+	 * Adds the Collectable to a Backpack
+	 *
+	 * @param v the Virologist the backpack belongs to(Only used sometimes)
+	 * @param b the Backpack it gets added to
+	 * @return true if added successfully, false if cannot be added
+	 */
 	boolean AddToBackpack(Virologist v, Backpack b);
-	
-	/** */
+
+	/**
+	 * Removes the Collectable from a Backpack
+	 *
+	 * @param v the Virologist the backpack belongs to(Only used sometimes)
+	 * @param b the Backpack it gets removed from
+	 */
 	void RemoveFromBackpack(Virologist v, Backpack b);
 
+	/** Applies the effect of the Collectable to the Virologist*/
 	void Apply(Virologist v);
 
+	/** Removes the effect of the Collectable from the Virologist*/
 	void Remove(Virologist v);
 }

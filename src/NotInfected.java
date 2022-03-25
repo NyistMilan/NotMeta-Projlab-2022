@@ -9,14 +9,7 @@
 //
 //
 
-
-
-
-/** */
 public class NotInfected implements GetInfectedBehavior {
-    /**
-     *
-     */
     @Override
     public int GetPriority() {
         Skeleton.methodCall(this);
@@ -25,9 +18,11 @@ public class NotInfected implements GetInfectedBehavior {
     }
 
     /**
-     * @param v1
-     * @param v2
-     * @param a
+     * Nothing happens.
+     *
+     * @param v1 the Virologist who wants to infect
+     * @param v2 the target of the action
+     * @param a the Agents v1 wants to infect v2 with
      */
     @Override
     public void GetInfected(Virologist v1, Virologist v2, Agent a) {

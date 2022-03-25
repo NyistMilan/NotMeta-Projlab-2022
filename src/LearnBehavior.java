@@ -9,11 +9,11 @@
 //
 //
 
-
-
-
-/** */
+/** The behavior which decides if the Virologist can learn a Genome */
 interface LearnBehavior {
-	/** */
+	/**
+	 *
+	 * @param v the Virologist who wants to learn the Genome
+	 */
 	void Learn(Virologist v);
 }

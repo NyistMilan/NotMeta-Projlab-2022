@@ -9,40 +9,37 @@
 //
 //
 
-
 import java.util.ArrayList;
 
-/** */
+/**
+ * The backpack of the Virologist. He keeps here his Aminoacids, Nucleotide, Equipments, the Agents he Created
+ * and the Agents he was infected with.
+ * */
 public class VirologistBackpack extends Backpack {
+	/** Constructor*/
 	VirologistBackpack(){
 		super();
 		capacity = 20;
 		agents = new ArrayList<>();
 		appliedAgents = new ArrayList<>();
 	}
-	/** */
+	/** The number of materials the Virologist can carry*/
 	private int capacity;
 
-	/** */
+	/** The Agents the Virologist created and ready to use*/
 	private final ArrayList<Agent> agents;
 	
-	/** */
+	/** The Agents the Virologist was infected with*/
 	private final ArrayList<Agent> appliedAgents;
 	
-	/** */
-	public void Add(Equipment e) {
-		Skeleton.methodCall(this, "e");
-		Skeleton.methodReturn(this);
-	}
-	
-	/** */
+	/** Adds the created Agent to the Backpack*/
 	public void Add(Agent a) {
 		Skeleton.methodCall(this, "a");
 		agents.add(a);
 		Skeleton.methodReturn(this);
 	}
 	
-	/** */
+	/** Adds the applied Aget to the Backpack*/
 	public void AddApplied(Agent a) {
 		Skeleton.methodCall(this, "a");
 		appliedAgents.add(a);
@@ -55,35 +52,35 @@ public class VirologistBackpack extends Backpack {
 		Skeleton.methodReturn(this);
 		return agents;
 	}
-	
-	/** */
+
+	/**
+	 * Returns the Agents applied to the Virologist
+	 * @return The Agents applied to the Virologist
+	 */
 	public ArrayList<Agent> GetAppliedAgents() {
 		Skeleton.methodCall(this);
 		Skeleton.methodReturn(this);
 		return appliedAgents;
 	}
 	
-	/** */
+	/** Removes an Agent from the Backpack*/
 	public void Remove(Agent a) {
 		Skeleton.methodCall(this, "a");
 		agents.remove(a);
 		Skeleton.methodReturn(this);
 	}
 	
-	/** */
+	/** Removes an active Agent from the Virologist*/
 	public void RemoveApplied(Agent a) {
 		Skeleton.methodCall(this, "a");
 		appliedAgents.remove(a);
 		Skeleton.methodReturn(this);
 	}
 	
-	/** */
-	public void Remove(Equipment e) {
-		Skeleton.methodCall(this, "e");
-		Skeleton.methodReturn(this);
-	}
-	
-	/** */
+	/**
+	 * Decreases the warranties of the stored Agents and the Duration of the applied Agents
+	 * If one's warranty or duration reaches 0, it gets removed from the Backpack
+	 * */
 	public void DecreaseWarranties() {
 		Skeleton.methodCall(this);
 		for(Agent a: agents){
@@ -100,19 +97,30 @@ public class VirologistBackpack extends Backpack {
 		}
 		Skeleton.methodReturn(this);
 	}
-	
-	/** */
+
+	/**
+	 * Decides if there is enough material in the Backpack for the Agent the Virologist wants to create
+	 *
+	 * @param a the required number of aminoacid
+	 * @param n the required number of nucleotide
+	 * @return true if there is enough material, false if there isn't
+	 */
 	public boolean EnoughMaterials(int a, int n) {
 		Skeleton.methodCall(this, "a", "n");
 		boolean isEnough = Skeleton.yesOrNoInput("Has enough materials?");
 		Skeleton.methodReturn(this);
 		return isEnough;
 	}
-
+	/** */
 	public int getCapacity() {
 		return capacity;
 	}
 
+	/**
+	 * Sets the capacity of the Backpack to a given value. If there are more materials in the Backpack
+	 * then the amount it can store, it removes the extra materials
+	 * @param capacity the new capacity
+	 */
 	public void setCapacity(int capacity) {
 		int aminoBonus = aminoacids.size() - capacity;
 		while(aminoBonus > 0){

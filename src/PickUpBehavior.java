@@ -9,11 +9,14 @@
 //
 //
 
-
 import java.util.ArrayList;
 
-/** */
+/** The behavior which decides if the Virologist can pick up a Collectable */
 interface PickUpBehavior {
-	/** */
+	/**
+	 *
+	 * @param v the Virologist who wants to pick up something
+	 * @param c the Collectables the Virologist wants to pick up
+	 */
 	void PickUpCollectable(Virologist v, ArrayList<Collectable> c);
 }

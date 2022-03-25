@@ -9,11 +9,11 @@
 //
 //
 
-
 import java.util.ArrayList;
 
-/** */
+/** At the start of the game the Equipments are placed in Shelters*/
 public class Shelter extends Field {
+	/** Constructor*/
 	Shelter(){
 		Skeleton.methodCall(this);
 		this.virologists = new ArrayList<>();

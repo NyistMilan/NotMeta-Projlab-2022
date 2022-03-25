@@ -9,23 +9,18 @@
 //
 //
 
-
-
-
-/** */
 public class GetInfected implements GetInfectedBehavior {
-    /**
-     *
-     */
     @Override
     public int GetPriority() {
         return 0;
     }
 
     /**
-     * @param v1
-     * @param v2
-     * @param a
+     * v2 gets infected with the Agent.
+     *
+     * @param v1 the Virologist who wants to infect
+     * @param v2 the target of the action
+     * @param a the Agents v1 wants to infect v2 with
      */
     @Override
     public void GetInfected(Virologist v1, Virologist v2, Agent a) {

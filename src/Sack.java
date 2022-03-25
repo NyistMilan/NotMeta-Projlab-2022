@@ -9,21 +9,20 @@
 //
 //
 
-
-
-
-/** */
+/** The Virologist can store more items than usually*/
 public class Sack extends Equipment {
 	private static int enhanced;
 	private static  int normal;
-	/** */
+	private static String name;
+
+	/** Applies the Effect to the Virologist*/
 	public void Apply(Virologist v) {
 		Skeleton.methodCall(this, "v");
 		v.GetBackpack().setCapacity(enhanced);
 		Skeleton.methodReturn(this);
 	}
 	
-	/** */
+	/** Removes the effect From the Virologist*/
 	public void Remove(Virologist v) {
 		Skeleton.methodCall(this, "v");
 		v.GetBackpack().setCapacity(normal);

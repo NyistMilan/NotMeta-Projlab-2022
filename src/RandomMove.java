@@ -11,15 +11,15 @@
 
 import java.util.ArrayList;
 
-/** */
 public class RandomMove implements MoveBehavior {
-
+    /**
+     * Generates a random number between to numbers.
+     * Both the minimum and the maximum number can be generated.
+     */
     public int getRandomNumber(int min, int max) {
         return (int) ((Math.random() * (max - min)) + min);
     }
-    /**
-     *
-     */
+
     @Override
     public int GetPriority() {
         Skeleton.methodCall(this);
@@ -28,8 +28,10 @@ public class RandomMove implements MoveBehavior {
     }
 
     /**
-     * @param v
-     * @param d
+     * The Virologist moves to a random direction.
+     *
+     * @param v the Virologist who tries to move
+     * @param d the direction he wants to move
      */
     @Override
     public void Move(Virologist v, int d) {

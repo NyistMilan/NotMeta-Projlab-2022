@@ -9,13 +9,13 @@
 //
 //
 
-
-
-
-/** */
 public class Learn implements LearnBehavior {
     /**
+     * The Virologist learns the Genome from the Laboratory if he didn't know it already.
+     * If he has learned all the available Genomes he wins the game.
+     * After that he sets his state to AFTER_ACTION
      *
+     * @param v the Virologist who wants to learn the Genome
      */
     @Override
     public void Learn(Virologist v) {

@@ -9,34 +9,18 @@
 //
 //
 
-
 import java.util.ArrayList;
 
-/** */
+/** The Virologists move from Field to Field during the game. The Fields can also store Collectables*/
 public abstract class Field {
-	/**
-	 *
-	 */
+	/** The Virologists on the Field*/
 	protected ArrayList<Virologist> virologists;
 
-	/**
-	 *
-	 */
-	protected ArrayList<Collectable> items;
-
-	/**
-	 *
-	 */
 	protected ArrayList<Field> neighbours;
 
-	/**
-	 *
-	 */
 	protected Backpack backpack;
 
-	/**
-	 *
-	 */
+	/** Retruns the neighbour in the given direction*/
 	public Field GetNeighbour(int d) {
 		Skeleton.methodCall(this, "d");
 		Field f = neighbours.get(d-1);
@@ -44,25 +28,24 @@ public abstract class Field {
 		return f;
 	}
 
-	/**
-	 *
-	 */
+	/** Accepts a Virologist in the Field. He can not learn here unless it is a Laboratory(Overwrite)*/
 	public void Accept(Virologist v){
 		Skeleton.methodCall(this, "v");
 		v.SetLearnBehavior(new NotLearn());
 		Skeleton.methodReturn(this);
 	}
 
-	/**
-	 *
-	 */
 	public void Remove(Virologist v) {
 		Skeleton.methodCall(this, "v");
 		Skeleton.methodReturn(this);
 	}
 
+
 	/**
+	 * Adds a Collectable to the Field
 	 *
+	 * @param v the Virologist who drops the Collectable
+	 * @param c the Collectable
 	 */
 	public void Add(Virologist v, Collectable c) {
 		Skeleton.methodCall(this, "v","c");
@@ -71,7 +54,10 @@ public abstract class Field {
 	}
 
 	/**
+	 * Removes a Collectable from the Field
 	 *
+	 * @param v the Virologist who picks up the Collectable
+	 * @param c the Collectable
 	 */
 	public void Remove(Virologist v, Collectable c) {
 		Skeleton.methodCall(this, "v","c");
@@ -79,18 +65,13 @@ public abstract class Field {
 		Skeleton.methodReturn(this);
 	}
 
-	/**
-	 *
-	 */
 	public void SetNeighbour(Field f) {
 		Skeleton.methodCall(this, "f");
 		neighbours.add(f);
 		Skeleton.methodReturn(this);
 	}
 
-	/**
-	 *
-	 */
+	/** Returns the direction a Virologist can move from this Field*/
 	public ArrayList<Integer> GetDirections() {
 		Skeleton.methodCall(this);
 		ArrayList<Integer> directions = new ArrayList<>();

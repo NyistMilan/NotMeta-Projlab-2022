@@ -9,21 +9,24 @@
 //
 //
 
-
-
-
-/** */
+/** The Virologist can not get infected by other Virologists*/
 public class Protection extends Agent {
+	/** Constructor*/
 	Protection(){
 		warranty = baseWarranty;
 		duration = effectDuration;
 	}
+
+	/** The number of turns the Agent can be used after its creation*/
 	private static int baseWarranty;
 	private static int effectDuration;
-	/** */
+	private static String name;
+
+	/** Applies the effect to the Virologist if there is no stronger effect on him*/
 	public void Apply(Virologist v) {
 		Skeleton.methodCall(this, "v");
-		v.SetGetInfectedBehavior(new NotInfected());
+		if(v.GetGetInfectedBehavior().GetPriority() < 2)
+			v.SetGetInfectedBehavior(new NotInfected());
 		Skeleton.methodReturn(this);
 	}
 }

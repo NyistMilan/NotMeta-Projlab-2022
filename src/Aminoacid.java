@@ -9,14 +9,14 @@
 //
 //
 
-
-
-
-/** */
+/** Aminoacids are used to create Agents*/
 public class Aminoacid extends Materials {
     /**
-     * @param v
-     * @param b
+     * Adds the Aminoacid to a Backpack.
+     *
+     * @param v the Virologist the backpack belongs to(Only used sometimes)
+     * @param b the Backpack it gets added to
+     * @return true if added successfully, false if cannot be added
      */
     @Override
     public boolean AddToBackpack(Virologist v, Backpack b) {
@@ -28,8 +28,10 @@ public class Aminoacid extends Materials {
     }
 
     /**
-     * @param v
-     * @param b
+     * Removes the Aminoacid from a Backpack.
+     *
+     * @param v the Virologist the backpack belongs to(Only used sometimes)
+     * @param b the Backpack it gets removed from
      */
     @Override
     public void RemoveFromBackpack(Virologist v, Backpack b) {

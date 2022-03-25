@@ -9,17 +9,17 @@
 //
 //
 
-
-
-
-/** */
+/** The behavior which decides if the Virologist can move to a Field */
 interface MoveBehavior {
-	/** */
+	/** The Behavior will only be changed if the new behavior has higher priority*/
 	int priority = 0;
-	
-	/** */
+
 	int GetPriority();
-	
-	/** */
+
+	/**
+	 *
+	 * @param v the Virologist who tries to move
+	 * @param d the direction he wants to move
+	 */
 	void Move(Virologist v, int d);
 }

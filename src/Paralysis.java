@@ -9,21 +9,24 @@
 //
 //
 
-
-
-
-/** */
+/** The Virologist can not do anything. Other Virologists can steal from him*/
 public class Paralysis extends Agent {
+	/** Constructor*/
 	Paralysis(){
 		warranty = baseWarranty;
 		duration = effectDuration;
 	}
+
+	/** The number of turns the Agent can be used after its creation*/
 	private static int baseWarranty;
 	private static int effectDuration;
-	/** */
+	private static String name;
+
+	/** Applies the effects on a Virologist*/
 	public void Apply(Virologist v) {
 		Skeleton.methodCall(this, "v");
-		v.SetMoveBehavior(new NotMove());
+		if(v.GetMoveBehavior().GetPriority() < 2)
+			v.SetMoveBehavior(new NotMove());
 		v.SetCreateBehavior(new NotCreate());
 		v.SetLearnBehavior(new NotLearn());
 		v.SetStealBehavior(new NotSteal());

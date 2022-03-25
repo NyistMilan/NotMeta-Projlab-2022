@@ -9,27 +9,21 @@
 //
 //
 
-/** */
+/** A Virologist can use an Agent to infect another Virologist (or himself).*/
 public abstract class Agent implements Collectable {
-
-	/** */
+	/** The number of turns a Virologist can store the Agent in his Backpack.*/
 	protected int warranty;
-	
-	/** */
-	protected String name;
-	
-	/** */
+
+	/** The number of turns an Agent stays active on an infected Virologist*/
 	protected int duration;
-	
-	/** */
+
 	public int DecreaseWarranty() {
 		Skeleton.methodCall(this);
 		warranty--;
 		Skeleton.methodReturn(this);
 		return warranty;
 	}
-	
-	/** */
+
 	public int DecreaseDuration() {
 		Skeleton.methodCall(this);
 		duration--;
@@ -37,16 +31,31 @@ public abstract class Agent implements Collectable {
 		return duration;
 	}
 	
-	/** */
+	/**
+	 * Applies the effects of the Agent to a Virologist
+	 *
+	 * @param v the Virologist the Agent gets applied to
+	 * */
 	public abstract void Apply(Virologist v);
 	
-	/** */
+	/**
+	 * Removes the effects of the Agent from a Virologist
+	 *
+	 * @param v the Virologist the Agent gets removed from
+	 * */
 	public void Remove(Virologist v) {
 		Skeleton.methodCall(this, "v");
 		v.RefreshEffects();
 		Skeleton.methodReturn(this);
 	}
 
+	/**
+	 * Adds the Agent to a Virologist's Backpack
+	 *
+	 * @param v the Virologist
+	 * @param b the Backpack
+	 * @return true if the adding was successful, false if the adding failed
+	 */
 	@Override
 	public boolean AddToBackpack(Virologist v, Backpack b) {
 		Skeleton.methodCall(this, "v", "b");
@@ -56,9 +65,16 @@ public abstract class Agent implements Collectable {
 		return isAdded;
 	}
 
+	/**
+	 * Removes the Agent from a Virologist's Backpack
+	 *
+	 * @param v the Virologist
+	 * @param b the Backpack
+	 */
 	@Override
 	public void RemoveFromBackpack(Virologist v, Backpack b) {
 		Skeleton.methodCall(this, "v","b");
+		v.GetBackpack().Remove(this);
 		Skeleton.methodReturn(this);
 	}
 }

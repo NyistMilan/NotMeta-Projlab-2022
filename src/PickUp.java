@@ -9,14 +9,14 @@
 //
 //
 
-
 import java.util.ArrayList;
 
-/** */
 public class PickUp implements PickUpBehavior {
     /**
-     * @param v
-     * @param c
+     * The Virologist picks up the Collectables and sets the state to AFTER_ACTION
+     *
+     * @param v the Virologist who wants to pick up something
+     * @param c the Collectables the Virologist wants to pick up
      */
     @Override
     public void PickUpCollectable(Virologist v, ArrayList<Collectable> c) {

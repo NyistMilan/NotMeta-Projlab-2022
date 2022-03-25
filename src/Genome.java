@@ -9,19 +9,21 @@
 //
 //
 
-
-
-
-/** */
+/**
+ * The Genome is a genetic gode to an Agent. The Virologist can Learn a
+ * Genome and Create the Agent if he has enough materials
+ * */
 public abstract class Genome {
-	
-	/** */
-	private String name;
-	
-	/** */
+	/**
+	 * Creates an Agent and puts it into the Backpack of a Virologist
+	 *
+	 * @param v the Virologist who creates the Agent
+	 */
 	public abstract void CreateAgent(Virologist v);
 
+	/** returns how many Aminoacid is needed to create the Agent*/
 	public abstract int getAminoCost();
 
+	/** returns how many Nucleotide is needed to create the Agent*/
 	public abstract int getNucleoCost();
 }

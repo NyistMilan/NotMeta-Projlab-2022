@@ -9,15 +9,14 @@
 //
 //
 
-
 import java.util.ArrayList;
 
-/** */
 public class Drop implements DropBehavior {
-
     /**
-     * @param v
-     * @param c
+     * Drops the Collectables on the Field the Virologist stands on
+     *
+     * @param v The Virologist who wants to drop
+     * @param c The Collectables he wants to drop
      */
     @Override
     public void DropCollectable(Virologist v, ArrayList<Collectable> c) {

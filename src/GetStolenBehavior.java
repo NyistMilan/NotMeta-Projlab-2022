@@ -9,11 +9,15 @@
 //
 //
 
-
 import java.util.ArrayList;
 
-/** */
+/** The behavior which decides if another Virologist can steal from this Virologist */
 interface GetStolenBehavior {
-	/** */
+	/**
+	 *
+	 * @param v the target of the action
+	 * @param c the Collectable that the other Virologist wants to steal from the target
+	 * @return true if the action was successful, false if the action fails
+	 */
 	boolean GetStolenFrom(Virologist v, ArrayList<Collectable> c);
 }

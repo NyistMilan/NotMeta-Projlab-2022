@@ -9,14 +9,17 @@
 //
 //
 
-
-
-
-/** */
+/** The GenomeChorea is used to create the Protection Agent*/
 public class GenomeProtection extends Genome {
 	private static int aminocost;
 	private static int nucleocost;
-	/** */
+	private static String name;
+
+	/**
+	 * Creates a Protection Agent and puts it into the Backpack of the Virologist that created it
+	 *
+	 * @param v the Virologist who creates the Agent
+	 */
 	public void CreateAgent(Virologist v) {
 		Skeleton.methodCall(this, "v");
 		Protection agent = new Protection();
