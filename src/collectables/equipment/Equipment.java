@@ -65,4 +65,7 @@ public abstract class Equipment implements Collectable {
 		b.Remove(this);
 		Skeleton.methodReturn(this);
 	}
+
+	abstract public String GetName();
+
 }

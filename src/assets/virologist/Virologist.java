@@ -14,7 +14,7 @@ import assets.virologist.behavior.dropbehavior.*;
 import assets.virologist.behavior.getinfectedbehavior.*;
 import assets.virologist.behavior.getstolenbehavior.*;
 import assets.virologist.behavior.infectbehavior.*;
-import assets.virologist.behavior.learnhevior.*;
+import assets.virologist.behavior.learnbehavior.*;
 import assets.virologist.behavior.movebehavior.*;
 import assets.virologist.behavior.pickupbehavior.*;
 import assets.virologist.behavior.stealbehavior.*;
@@ -26,6 +26,7 @@ import collectables.equipment.*;
 import main.Skeleton;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 
 /**
  * The field.virologist.Virologist is the avatar that the player controls.
@@ -337,6 +338,12 @@ public class Virologist{
 	/** I'm not sure we need this one*/
 	public void ListCollectables() {
 		Skeleton.methodCall(this);
+		ArrayList<Equipment> eqList= this.GetBackpack().GetEquipments();
+		for(int i=0; i< eqList.size(); i++){
+			System.out.println(eqList.get(i).GetName());
+		}
+
+
 		Skeleton.methodReturn(this);
 	}
 

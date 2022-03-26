@@ -32,6 +32,7 @@ public abstract class Agent implements Collectable {
 	public int DecreaseDuration() {
 		Skeleton.methodCall(this);
 		duration--;
+		Skeleton.printWithIndent("Duration:" + duration);
 		Skeleton.methodReturn(this);
 		return duration;
 	}

@@ -124,22 +124,33 @@ public class VirologistBackpack extends Backpack {
 		return capacity;
 	}
 
-	/**
+	/** Haho javits ki
 	 * Sets the capacity of the field.Backpack to a given value. If there are more materials in the field.Backpack
 	 * then the amount it can store, it removes the extra materials
 	 * @param capacity the new capacity
 	 */
-	public void setCapacity(int capacity) {
+
+	public void increaseCapacity(int addition){
+		Skeleton.methodCall(this, "addition");
+		capacity=capacity+addition;
+		Skeleton.methodReturn(this);
+	}
+
+	public void decreaseCapacity(int reduction){
+		Skeleton.methodCall(this, "reduction");
+		capacity=capacity-reduction;
 		int aminoBonus = aminoacids.size() - capacity;
 		while(aminoBonus > 0){
-			Remove(aminoacids.remove(aminoacids.size()-1));
-			aminoBonus = aminoacids.size() - capacity;
+			Remove(aminoacids.get(aminoacids.size()-1));
+
+			aminoBonus--;
 		}
 		int nucleoBonus = nucleotids.size() - capacity;
 		while(nucleoBonus > 0){
-			Remove(nucleotids.remove(nucleotids.size()-1));
-			nucleoBonus = nucleotids.size() - capacity;
+			Remove(nucleotids.get(nucleotids.size()-1));
+			nucleoBonus--;
 		}
-		this.capacity = capacity;
+		Skeleton.methodReturn(this);
 	}
+
 }

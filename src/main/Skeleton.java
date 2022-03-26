@@ -2,19 +2,21 @@ package main;
 
 import java.util.ArrayList;
 import java.util.Scanner;
-import assets.virologist.behavior.createbehavior.*;
 import assets.virologist.behavior.dropbehavior.*;
-import assets.virologist.behavior.getinfectedbehavior.*;
+import assets.virologist.behavior.getinfectedbehavior.InfectBack;
+import assets.virologist.behavior.getinfectedbehavior.MaybeInfected;
+import assets.virologist.behavior.getinfectedbehavior.NotInfected;
 import assets.virologist.behavior.getstolenbehavior.*;
-import assets.virologist.behavior.infectbehavior.*;
-import assets.virologist.behavior.learnhevior.*;
+import assets.virologist.behavior.learnbehavior.*;
 import assets.virologist.behavior.movebehavior.*;
-import assets.virologist.behavior.pickupbehavior.*;
-import assets.virologist.behavior.stealbehavior.*;
 import assets.field.*;
 import assets.virologist.*;
+import assets.virologist.behavior.pickupbehavior.PickUp;
 import collectables.Collectable;
-import collectables.agent.*;
+import collectables.agent.Chorea;
+import collectables.agent.Oblivion;
+import collectables.agent.Paralysis;
+import collectables.agent.Protection;
 import collectables.genome.*;
 import collectables.equipment.*;
 import collectables.material.Aminoacid;
@@ -248,9 +250,15 @@ public class Skeleton {
                         int takeEq = askForInput("Input a number", 1, 3);
                         System.out.println("\n" + takeEquipmentOptions[takeEq - 1]);
                         switch (takeEq) {
-                            case 1 -> takeSack();
-                            case 2 -> takeCloak();
-                            case 3 -> takeGloves();
+                            case 1 :
+                                takeSack();
+                                break;
+                            case 2 :
+                                takeCloak();
+                                break;
+                            case 3 :
+                                takeGloves();
+                                break;
                         }
                     }
                     else
@@ -260,16 +268,16 @@ public class Skeleton {
                     dropMaterials();
                     break;
                 case 6:
-                    if (yesOrNoInput("Can you store your items in your normal backpack?"))
-                        dropSack();
-                    else
+                    if (yesOrNoInput("Do you have more Materials than you can store in a normal sized Backpack?"))
                         dropSackNotEnoughSpace();
+                    else
+                        dropSack();
                     break;
                 case 7:
                     learn();
                     break;
                 case 8:
-                    if (yesOrNoInput("Do you have enough materials?"))
+                    if (yesOrNoInput("Do you have enough materials to create an Agent?"))
                         createAgent();
                     else
                         createAgentWithNotEnoughMaterial();
@@ -282,10 +290,18 @@ public class Skeleton {
                     int agent = askForInput("What agent would you like to infect with?", 1, 4);
                     System.out.println("\n" + agents[agent - 1]);
                     switch (agent) {
-                        case 1 -> infectWithOblivion();
-                        case 2 -> infectWithChorea();
-                        case 3 -> infectWithProtection();
-                        case 4 -> infectWithParalysis();
+                        case 1 :
+                            infectWithOblivion();
+                            break;
+                        case 2:
+                            infectWithChorea();
+                            break;
+                        case 3 :
+                            infectWithProtection();
+                            break;
+                        case 4:
+                            infectWithParalysis();
+                            break;
                     }
                     break;
                 case 11:
@@ -293,10 +309,19 @@ public class Skeleton {
                     int protection = askForInput("What kind of protection the other field.virologist has?", 1, 4);
                     System.out.println("\n" + protections[protection - 1]);
                     switch (protection) {
-                        case 1 -> infectProtectedVirologist();
-                        case 2 -> infectVirologistWithCloak();
-                        case 3 -> infectVirologistWithGloves();
-                        case 4 -> infectVirologistWithGlovesAndYouHaveGlovesToo();
+                        case 1 :
+                            infectProtectedVirologist();
+                            break;
+                        case 2 :
+                            infectVirologistWithCloak();
+                            break;
+                        case 3 :
+                            infectVirologistWithGloves();
+                            break;
+                        case 4 :
+                            infectVirologistWithGlovesAndYouHaveGlovesToo();
+                            break;
+
                     }
                     break;
                 case 12:
@@ -304,9 +329,15 @@ public class Skeleton {
                     int ending = askForInput("Do you need to remove any agents after ending your turn?", 1, 3);
                     System.out.println("\n" + endings[ending - 1]);
                     switch (ending) {
-                        case 1 -> endTurnAndNoRemove();
-                        case 2 -> endTurnAndRemoveOblivionFromAppliedAgents();
-                        case 3 -> endTurnAndRemoveOblivionFromNotAppliedAgents();
+                        case 1 :
+                            endTurnAndNoRemove();
+                            break;
+                        case 2 :
+                            endTurnAndRemoveOblivionFromAppliedAgents();
+                            break;
+                        case 3 :
+                            endTurnAndRemoveOblivionFromNotAppliedAgents();
+                            break;
                     }
                     break;
                 case 13:
@@ -352,6 +383,7 @@ public class Skeleton {
     public void dropMaterials(){
         Field f1 = new Normal();
         Virologist v = new Virologist();
+        v.SetState(State.BEFORE_ACTION);
         v.GetRoute().Add(f1);
         v.SetDropBehavior(new Drop());
         Aminoacid aminoacid = new Aminoacid();
@@ -360,10 +392,11 @@ public class Skeleton {
         aminoList.add(aminoacid);
         v.DropCollectable(aminoList);
     }
-    //nincs megírva a táska bővítés
+
     public void dropSack(){
         Field f1 = new Normal();
         Virologist v = new Virologist();
+        v.SetState(State.BEFORE_ACTION);
         v.GetRoute().Add(f1);
         Sack sack = new Sack();
         v.GetBackpack().Add(sack);
@@ -371,13 +404,25 @@ public class Skeleton {
         sackList.add(sack);
         v.DropCollectable(sackList);
     }
-    //nincs megírva a táska bővítés
+
     public void dropSackNotEnoughSpace(){
-        Field f1 = new Normal();
         Virologist v = new Virologist();
-        v.GetRoute().Add(f1);
-
-
+        Equipment sack = new Sack();
+        Field f = new Normal();
+        f.getBackpack().Add(sack);
+        v.GetRoute().Add(f);
+        v.SetState(State.BEFORE_ACTION);
+        v.SetPickUpBehavior(new PickUp());
+        ArrayList<Collectable> sackList = new ArrayList<>();
+        sackList.add(sack);
+        v.PickUpCollectable(sackList);
+        for(int i = 0; i < 6; i++){
+            v.GetBackpack().Add(new Aminoacid());
+        }
+        for(int i = 0; i < 6; i++){
+            v.GetBackpack().Add(new Nucleotide());
+        }
+        v.DropCollectable(sackList);
     }
     public void learn(){
         Field f1 = new Normal();
@@ -406,16 +451,116 @@ public class Skeleton {
         v.SetState(State.BEFORE_ACTION);
         v.CreateAgent(new GenomeProtection());
     }
-    public void steal(){}
-    public void infectWithOblivion(){}
-    public void infectWithChorea(){}
-    public void infectWithProtection(){}
-    public void infectWithParalysis(){}
-    public void infectProtectedVirologist(){}
-    public void infectVirologistWithCloak(){}
-    public void infectVirologistWithGloves(){}
-    public void infectVirologistWithGlovesAndYouHaveGlovesToo(){}
-    public void endTurnAndNoRemove(){}
-    public void endTurnAndRemoveOblivionFromAppliedAgents(){}
-    public void endTurnAndRemoveOblivionFromNotAppliedAgents(){}
+    public void steal(){
+        Virologist v1 = new Virologist();
+        Virologist v2 = new Virologist();
+
+        v2.SetGetStolenBehavior(new GetStolen());
+        Cloak cloak = new Cloak();
+        v2.GetBackpack().Add(cloak);
+        ArrayList<Collectable> cloakList = new ArrayList<>();
+        v1.Steal(v2,cloakList);
+
+    }
+    public void infectWithOblivion(){
+        Virologist v1 = new Virologist();
+        v1.SetState(State.BEFORE_ACTION);
+        Virologist v2 = new Virologist();
+        v2.SetState(State.NOT_IN_TURN);
+        Oblivion oblivion = new Oblivion();
+        v1.GetBackpack().Add(oblivion);
+        v1.Infect(v2,oblivion);
+
+    }
+    public void infectWithChorea(){
+        Virologist v1 = new Virologist();
+        v1.SetState(State.BEFORE_ACTION);
+        Virologist v2 = new Virologist();
+        v2.SetState(State.NOT_IN_TURN);
+        Chorea chorea = new Chorea();
+        v1.GetBackpack().Add(chorea);
+        v1.Infect(v2,chorea);
+    }
+    public void infectWithProtection(){
+        Virologist v1 = new Virologist();
+        v1.SetState(State.BEFORE_ACTION);
+        Virologist v2 = new Virologist();
+        v2.SetState(State.NOT_IN_TURN);
+        Protection protection = new Protection();
+        v1.GetBackpack().Add(protection);
+        v1.Infect(v2,protection);
+    }
+    public void infectWithParalysis(){
+        Virologist v1 = new Virologist();
+        v1.SetState(State.BEFORE_ACTION);
+        Virologist v2 = new Virologist();
+        v2.SetState(State.NOT_IN_TURN);
+        Paralysis paralysis = new Paralysis();
+        v1.GetBackpack().Add(paralysis);
+        v1.Infect(v2,paralysis);
+    }
+    public void infectProtectedVirologist(){
+        Virologist v1 = new Virologist();
+        v1.SetState(State.BEFORE_ACTION);
+        Virologist v2 = new Virologist();
+        v2.SetState(State.NOT_IN_TURN);
+        v2.SetGetInfectedBehavior(new NotInfected());
+        Paralysis paralysis = new Paralysis();
+        v1.GetBackpack().Add(paralysis);
+        v1.Infect(v2,paralysis);
+    }
+    public void infectVirologistWithCloak(){
+        Virologist v1 = new Virologist();
+        v1.SetState(State.BEFORE_ACTION);
+        Virologist v2 = new Virologist();
+        v2.SetState(State.NOT_IN_TURN);
+        v2.SetGetInfectedBehavior(new MaybeInfected());
+        Paralysis paralysis = new Paralysis();
+        v1.GetBackpack().Add(paralysis);
+        v1.Infect(v2,paralysis);
+    }
+    public void infectVirologistWithGloves(){
+        Virologist v1 = new Virologist();
+        v1.SetState(State.BEFORE_ACTION);
+        Virologist v2 = new Virologist();
+        v2.SetState(State.NOT_IN_TURN);
+        v2.SetGetInfectedBehavior(new InfectBack());
+        Paralysis paralysis = new Paralysis();
+        v1.GetBackpack().Add(paralysis);
+        v1.Infect(v2,paralysis);
+    }
+    public void infectVirologistWithGlovesAndYouHaveGlovesToo(){
+        Virologist v1 = new Virologist();
+        v1.SetState(State.BEFORE_ACTION);
+        Virologist v2 = new Virologist();
+        v2.SetState(State.NOT_IN_TURN);
+        v1.SetGetInfectedBehavior(new InfectBack());
+        v2.SetGetInfectedBehavior(new InfectBack());
+        Paralysis paralysis = new Paralysis();
+        v1.GetBackpack().Add(paralysis);
+        v1.Infect(v2,paralysis);
+
+    }
+    public void endTurnAndNoRemove(){
+        Virologist v1 = new Virologist();
+        Paralysis paralysis = new Paralysis();
+        v1.GetBackpack().Add(paralysis);
+        Chorea chorea = new Chorea();
+        v1.GetBackpack().AddApplied(chorea);
+        v1.EndTurn();
+    }
+    public void endTurnAndRemoveOblivionFromAppliedAgents(){
+        Virologist v1 = new Virologist();
+        Oblivion oblivion= new Oblivion();
+        v1.GetBackpack().AddApplied(oblivion);
+        v1.EndTurn();
+    }
+    public void endTurnAndRemoveOblivionFromNotAppliedAgents(){
+        Virologist v1 = new Virologist();
+        Oblivion oblivion= new Oblivion();
+        v1.GetBackpack().Add(oblivion);
+        for(int i = 0; i < 5; i++){
+            v1.EndTurn();
+        }
+    }
 }

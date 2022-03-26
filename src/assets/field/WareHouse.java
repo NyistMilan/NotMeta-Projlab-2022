@@ -12,6 +12,8 @@ package assets.field;//
 import assets.Backpack;
 
 import java.util.ArrayList;
+
+import collectables.genome.Genome;
 import main.Skeleton;
 /** At the start of the game collectables.material.Materials are placed in the WarHouses*/
 public class WareHouse extends Field {
@@ -22,5 +24,10 @@ public class WareHouse extends Field {
 		this.neighbours = new ArrayList<>();
 		backpack = new Backpack();
 		Skeleton.methodReturn(this);
+	}
+
+	@Override
+	public Genome GetGenome() {
+		return null;
 	}
 }

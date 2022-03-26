@@ -28,7 +28,12 @@ public class Sack extends Equipment {
 	/** Removes the effect From the field.virologist.Virologist*/
 	public void Remove(Virologist v) {
 		Skeleton.methodCall(this, "v");
-		v.GetBackpack().setCapacity(normal);
+		v.GetBackpack().decreaseCapacity(extraInventory);
 		Skeleton.methodReturn(this);
+	}
+
+	@Override
+	public String GetName() {
+		return "Sack";
 	}
 }

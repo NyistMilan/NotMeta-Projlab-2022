@@ -25,4 +25,9 @@ public class Cloak extends Equipment {
 			v.SetGetInfectedBehavior(new MaybeInfected());
 		Skeleton.methodReturn(this);
 	}
+
+	@Override
+	public String GetName() {
+		return "Cloak";
+	}
 }

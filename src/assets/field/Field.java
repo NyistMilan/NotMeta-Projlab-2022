@@ -12,7 +12,8 @@ package assets.field;//
 import collectables.Collectable;
 import assets.Backpack;
 import assets.virologist.Virologist;
-import assets.virologist.behavior.learnhevior.NotLearn;
+import assets.virologist.behavior.learnbehavior.NotLearn;
+import collectables.genome.Genome;
 import main.Skeleton;
 import java.util.ArrayList;
 
@@ -86,4 +87,10 @@ public abstract class Field {
 		Skeleton.methodReturn(this);
 		return directions;
 	}
+
+	public Backpack getBackpack() {
+		return backpack;
+	}
+
+	abstract public Genome GetGenome();
 }

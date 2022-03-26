@@ -12,7 +12,7 @@ package assets.field;//
 import collectables.genome.Genome;
 import assets.Backpack;
 import assets.virologist.Virologist;
-import assets.virologist.behavior.learnhevior.Learn;
+import assets.virologist.behavior.learnbehavior.Learn;
 import main.Skeleton;
 
 import java.util.ArrayList;

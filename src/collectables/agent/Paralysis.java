@@ -12,7 +12,7 @@ package collectables.agent;//
 import assets.virologist.behavior.createbehavior.NotCreate;
 import assets.virologist.behavior.getstolenbehavior.GetStolen;
 import assets.virologist.behavior.infectbehavior.NotInfect;
-import assets.virologist.behavior.learnhevior.NotLearn;
+import assets.virologist.behavior.learnbehavior.NotLearn;
 import assets.virologist.behavior.movebehavior.NotMove;
 import assets.virologist.behavior.pickupbehavior.NotPickUp;
 import assets.virologist.behavior.stealbehavior.NotSteal;

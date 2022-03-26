@@ -25,4 +25,9 @@ public class Gloves extends Equipment {
 			v.SetGetInfectedBehavior(new InfectBack());
 		Skeleton.methodReturn(this);
 	}
+
+	@Override
+	public String GetName() {
+		return "Gloves";
+	}
 }
