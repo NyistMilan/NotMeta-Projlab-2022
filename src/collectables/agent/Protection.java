@@ -17,7 +17,7 @@ import main.Skeleton;
 /** The field.virologist.Virologist can not get infected by other Virologists*/
 public class Protection extends Agent {
 	/** Constructor*/
-	Protection(){
+	public Protection(){
 		warranty = baseWarranty;
 		duration = effectDuration;
 	}

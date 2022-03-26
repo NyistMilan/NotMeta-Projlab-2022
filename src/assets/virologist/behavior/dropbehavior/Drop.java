@@ -31,6 +31,7 @@ public class Drop implements DropBehavior {
             collectable.Remove(v);
             f.Add(v, collectable);
         }
+
         Skeleton.methodReturn(this);
     }
 }

@@ -33,45 +33,45 @@ public class Skeleton {
     private static final Scanner scanner = new Scanner(System.in);
     /** The main use case options that the user can select from.*/
     private final String[] menu = {
-            "1. field.virologist.behavior.movebehavior.Move To field.field.Field",
-            "2. field.virologist.behavior.movebehavior.Move To field.field.Laboratory",
-            "3. Take collectables.material.Aminoacid...",
-            "4. Take collectables.equipment.Equipment...",
-            "5. field.virologist.behavior.dropbehavior.Drop collectables.material.Materials",
-            "6. field.virologist.behavior.dropbehavior.Drop collectables.equipment.Sack",
-            "7. field.virologist.behavior.learnhevior.Learn",
-            "8. field.virologist.behavior.createbehavior.Create collectables.agent.Agent",
-            "9. field.virologist.behavior.stealbehavior.Steal",
-            "10. field.virologist.behavior.infectbehavior.Infect With...",
-            "11. field.virologist.behavior.infectbehavior.Infect field.virologist.Virologist that has...",
+            "1. Move To Field",
+            "2. Move To Laboratory",
+            "3. Take Aminoacid...",
+            "4. Take Equipment...",
+            "5. Drop Materials",
+            "6. Drop Sack",
+            "7. Learn",
+            "8. Create Agent",
+            "9. Steal",
+            "10. Infect With...",
+            "11. Infect Virologist that has...",
             "12. End Turn and...",
             "13. Exit This Program"
     };
     /**When the user enters 4. for the main option, and decides that his/her bag is not full, these sub-options pop up.*/
     private final String[] takeEquipmentOptions = {
-            "1. collectables.equipment.Sack",
-            "2. collectables.equipment.Cloak",
-            "3. collectables.equipment.Gloves"
+            "1. Sack",
+            "2. Cloak",
+            "3. Gloves"
     };
     /** When the user enters 10. for the main option, these sub-options pop up.*/
     private final String[] agents = {
-            "1. collectables.agent.Oblivion",
-            "2. collectables.agent.Chorea",
-            "3. collectables.agent.Protection",
-            "4. collectables.agent.Paralysis"
+            "1. Oblivion",
+            "2. Chorea",
+            "3. Protection",
+            "4. Paralysis"
     };
     /** When the user enters 11. for the main option, these sub-options pop up.*/
     private final String[] protections = {
             "1. Protected agent",
-            "2. collectables.equipment.Cloak",
-            "3. collectables.equipment.Gloves",
-            "4. collectables.equipment.Gloves and you have collectables.equipment.Gloves as well"
+            "2. Cloak",
+            "3. Gloves",
+            "4. Gloves and you have Gloves as well"
     };
     /** When the user enters 12. for the main option, these sub-options pop up.*/
     private final String[] endings = {
             "1. doesn't remove anything",
-            "2. remove applied collectables.agent.Oblivion",
-            "3. remove not applied collectables.agent.Oblivion"
+            "2. remove applied Oblivion",
+            "3. remove not applied Oblivion"
     };
 
     /** Constructor.*/
@@ -326,8 +326,24 @@ public class Skeleton {
         f2.SetNeighbour(f1);
         v.Move(1);
     }
-    public void moveToLaboratory(){}
-    public void takeAminoacid(){}
+    public void moveToLaboratory(){
+        Field f1 = new Normal();
+        Virologist v = new Virologist();
+        v.GetRoute().Add(f1);
+        Field f2 = new Laboratory(new GenomeChorea());
+        f1.SetNeighbour(f2);
+        f2.SetNeighbour(f1);
+        v.SetState(State.BEFORE_MOVE);
+        v.Move(1);
+    }
+    public void takeAminoacid(){
+        Virologist v = new Virologist();
+        Materials a1 = new Aminoacid();
+        Materials a2 = new Aminoacid();
+        Field f = new Normal();
+
+
+    }
     public void takeSack(){}
     public void takeCloak(){}
     public void takeGloves(){}

@@ -14,7 +14,7 @@ import collectables.Collectable;
 import assets.virologist.Virologist;
 
 import java.util.ArrayList;
-
+import main.Skeleton;
 /** */
 public class NotSteal implements StealBehavior {
     /**
