@@ -30,22 +30,28 @@ public class Backpack {
 
 	protected final ArrayList<Equipment> equipments;
 
-	public void Add(Equipment e) {
+	/** The Backpack can always store the Equipment*/
+	public boolean Add(Equipment e) {
 		Skeleton.methodCall(this, "e");
 		equipments.add(e);
 		Skeleton.methodReturn(this);
+		return true;
 	}
 
-	public void Add(Aminoacid a) {
+
+	/** The Backpack can always store the Aminoacid*/
+	public boolean Add(Aminoacid a) {
 		Skeleton.methodCall(this, "a");
 		aminoacids.add(a);
 		Skeleton.methodReturn(this);
+		return true;
 	}
-
-	public void Add(Nucleotide n) {
+	/** The Backpack can always store the Nucleotide*/
+	public boolean Add(Nucleotide n) {
 		Skeleton.methodCall(this, "n");
 		nucleotids.add(n);
 		Skeleton.methodReturn(this);
+		return true;
 	}
 
 	public ArrayList<Equipment> GetEquipments() {

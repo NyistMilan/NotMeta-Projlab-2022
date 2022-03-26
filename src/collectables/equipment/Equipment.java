@@ -41,15 +41,15 @@ public abstract class Equipment implements Collectable {
 	@Override
 	public boolean AddToBackpack(Virologist v, Backpack b) {
 		Skeleton.methodCall(this, "v","b");
-		b.Add(this);
-		if(b.GetEquipments().size() == 3){
+		boolean isAdded = b.Add(this);
+		if(!isAdded) {
 			int i = Skeleton.askForInput("Which equipment do you want to drop?", 1, 3);
-			Equipment e = b.GetEquipments().get(i-1);
+			Equipment e = b.GetEquipments().get(i - 1);
 			ArrayList<Collectable> list = new ArrayList<>();
 			list.add(e);
 			v.DropCollectable(list);
+			isAdded = b.Add(this);
 		}
-		boolean isAdded = Skeleton.yesOrNoInput("Was added?");
 		Skeleton.methodReturn(this);
 		return isAdded;
 	}

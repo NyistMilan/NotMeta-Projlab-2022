@@ -11,6 +11,9 @@ package assets.virologist;//
 
 import collectables.agent.Agent;
 import assets.Backpack;
+import collectables.equipment.Equipment;
+import collectables.material.Aminoacid;
+import collectables.material.Nucleotide;
 import main.Skeleton;
 
 import java.util.ArrayList;
@@ -23,7 +26,7 @@ public class VirologistBackpack extends Backpack {
 	/** Constructor*/
 	VirologistBackpack(){
 		super();
-		capacity = 20;
+		capacity = 5;
 		agents = new ArrayList<>();
 		appliedAgents = new ArrayList<>();
 	}
@@ -35,12 +38,54 @@ public class VirologistBackpack extends Backpack {
 	
 	/** The Agents the field.virologist.Virologist was infected with*/
 	private final ArrayList<Agent> appliedAgents;
-	
+
+	/** A Virologist can store 3 Equipments in his Backpack*/
+	@Override
+	public boolean Add(Equipment e){
+		Skeleton.methodCall(this, "e");
+		if(equipments.size() < 3){
+			equipments.add(e);
+			Skeleton.printWithIndent("Equipment in Backpack:"+ equipments.size());
+			Skeleton.methodReturn(this);
+			return true;
+		}
+		Skeleton.methodReturn(this);
+		return false;
+	}
+
+	/** A Virologist can sture a certain amount of Aminoacids in his Backpack*/
+	@Override
+	public boolean Add(Aminoacid a){
+		Skeleton.methodCall(this, "a");
+		if(aminoacids.size() < capacity){
+			aminoacids.add(a);
+			Skeleton.printWithIndent("Aminoacids in Backpack:"+ aminoacids.size());
+			Skeleton.methodReturn(this);
+			return true;
+		}
+		Skeleton.methodReturn(this);
+		return false;
+	}
+
+	/** A Virologist can sture a certain amount of Nucleotide in his Backpack*/
+	@Override
+	public boolean Add(Nucleotide n){
+		Skeleton.methodCall(this, "n");
+		if(nucleotids.size() < capacity){
+			nucleotids.add(n);
+			Skeleton.printWithIndent("Nucleotide in Backpack:"+ nucleotids.size());
+			Skeleton.methodReturn(this);
+			return true;
+		}
+		Skeleton.methodReturn(this);
+		return false;
+	}
 	/** Adds the created collectables.agent.Agent to the field.Backpack*/
-	public void Add(Agent a) {
+	public boolean Add(Agent a) {
 		Skeleton.methodCall(this, "a");
 		agents.add(a);
 		Skeleton.methodReturn(this);
+		return true;
 	}
 	
 	/** Adds the applied Aget to the field.Backpack*/
@@ -87,18 +132,22 @@ public class VirologistBackpack extends Backpack {
 	 * */
 	public void DecreaseWarranties() {
 		Skeleton.methodCall(this);
-		for(Agent a: agents){
-			int w = a.DecreaseWarranty();
-			if(w == 0){
-				Remove(a);
+		for(int i = 0; i < agents.size(); i++) {
+			int w = agents.get(i).DecreaseWarranty();
+			if (w == 0) {
+				Remove(agents.get(i));
 			}
 		}
-		for(Agent a: appliedAgents){
-			int d = a.DecreaseDuration();
-			if(d == 0){
-				RemoveApplied(a);
+
+
+		for(int i = 0; i < appliedAgents.size(); i++) {
+			int w = appliedAgents.get(i).DecreaseDuration();
+			if (w == 0) {
+				RemoveApplied(appliedAgents.get(i));
 			}
 		}
+
+
 		Skeleton.methodReturn(this);
 	}
 

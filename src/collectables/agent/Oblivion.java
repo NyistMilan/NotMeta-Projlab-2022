@@ -21,8 +21,8 @@ public class Oblivion extends Agent {
 		duration = effectDuration;
 	}
 	/** The number of turns the collectables.agent.Agent can be used after its creation*/
-	private static int baseWarranty;
-	private static int effectDuration;
+	private static int baseWarranty = 5;
+	private static int effectDuration = 1;
 	private static String name;
 
 	/** Applies the effect on the field.virologist.Virologist*/

@@ -25,6 +25,7 @@ public abstract class Agent implements Collectable {
 	public int DecreaseWarranty() {
 		Skeleton.methodCall(this);
 		warranty--;
+		Skeleton.printWithIndent("Warranty:" + warranty);
 		Skeleton.methodReturn(this);
 		return warranty;
 	}
@@ -65,8 +66,7 @@ public abstract class Agent implements Collectable {
 	@Override
 	public boolean AddToBackpack(Virologist v, Backpack b) {
 		Skeleton.methodCall(this, "v", "b");
-		v.GetBackpack().Add(this);
-		boolean isAdded = Skeleton.yesOrNoInput("Was added?");
+		boolean isAdded = v.GetBackpack().Add(this);
 		Skeleton.methodReturn(this);
 		return isAdded;
 	}

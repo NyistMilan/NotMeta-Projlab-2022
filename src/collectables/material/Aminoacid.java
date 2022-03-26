@@ -24,8 +24,7 @@ public class Aminoacid extends Materials {
     @Override
     public boolean AddToBackpack(Virologist v, Backpack b) {
         Skeleton.methodCall(this, "v", "b");
-        b.Add(this);
-        boolean isAdded = Skeleton.yesOrNoInput("Was added?");
+        boolean isAdded = b.Add(this);
         Skeleton.methodReturn(this);
         return isAdded;
     }

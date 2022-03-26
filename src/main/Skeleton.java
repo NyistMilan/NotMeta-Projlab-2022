@@ -434,14 +434,10 @@ public class Skeleton {
     }
     public void createAgent(){
         Virologist v = new Virologist();
-        v.GetBackpack().Add(new Aminoacid());
-        v.GetBackpack().Add(new Aminoacid());
-        v.GetBackpack().Add(new Aminoacid());
-        v.GetBackpack().Add(new Aminoacid());
-        v.GetBackpack().Add(new Nucleotide());
-        v.GetBackpack().Add(new Nucleotide());
-        v.GetBackpack().Add(new Nucleotide());
-        v.GetBackpack().Add(new Nucleotide());
+        for(int i = 0; i<4; i++){
+            v.GetBackpack().Add(new Aminoacid());
+            v.GetBackpack().Add(new Nucleotide());
+        }
         v.SetState(State.BEFORE_ACTION);
         v.CreateAgent(new GenomeProtection());
 
