@@ -12,9 +12,9 @@ package assets.virologist.behavior.dropbehavior;//
 import assets.field.Field;
 import collectables.Collectable;
 import assets.virologist.Virologist;
-
 import java.util.ArrayList;
 import main.Skeleton;
+
 public class Drop implements DropBehavior {
     /**
      * Drops the Collectables on the field.field.Field the field.virologist.Virologist stands on

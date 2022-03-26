@@ -20,11 +20,12 @@ import java.util.ArrayList;
 /** In a field.field.Laboratory a field.virologist.Virologist can learn a collectables.genome.Genome*/
 public class Laboratory extends Field {
 	/** Constructor*/
-	public Laboratory(){
+	public Laboratory(Genome g){
 		Skeleton.methodCall(this);
 		virologists = new ArrayList<>();
 		neighbours = new ArrayList<>();
 		backpack = new Backpack();
+		genome = g;
 		Skeleton.methodReturn(this);
 	}
 

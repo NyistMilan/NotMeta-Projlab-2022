@@ -1,5 +1,6 @@
 package main;
 
+import java.util.ArrayList;
 import java.util.Scanner;
 import assets.virologist.behavior.createbehavior.*;
 import assets.virologist.behavior.dropbehavior.*;
@@ -16,6 +17,10 @@ import collectables.Collectable;
 import collectables.agent.*;
 import collectables.genome.*;
 import collectables.equipment.*;
+import collectables.material.Aminoacid;
+import collectables.material.Materials;
+import collectables.material.Nucleotide;
+
 /**
  * The main.Skeleton class helps test the Use-Cases. The class can be used for testing
  * through the console, where we can run specific use cases by inputting their number.
@@ -328,12 +333,63 @@ public class Skeleton {
     public void takeGloves(){}
     public void takeMaterialsNotEnoughSpace(){}
     public void takeEquipmentNotEnoughSpace(){}
-    public void dropMaterials(){}
-    public void dropSack(){}
-    public void dropSackNotEnoughSpace(){}
-    public void learn(){}
-    public void createAgent(){}
-    public void createAgentWithNotEnoughMaterial(){}
+    public void dropMaterials(){
+        Field f1 = new Normal();
+        Virologist v = new Virologist();
+        v.GetRoute().Add(f1);
+        v.SetDropBehavior(new Drop());
+        Aminoacid aminoacid = new Aminoacid();
+        v.GetBackpack().Add(aminoacid);
+        ArrayList<Collectable> aminoList = new ArrayList<>();
+        aminoList.add(aminoacid);
+        v.DropCollectable(aminoList);
+    }
+    //nincs megírva a táska bővítés
+    public void dropSack(){
+        Field f1 = new Normal();
+        Virologist v = new Virologist();
+        v.GetRoute().Add(f1);
+        Sack sack = new Sack();
+        v.GetBackpack().Add(sack);
+        ArrayList<Collectable> sackList = new ArrayList<>();
+        sackList.add(sack);
+        v.DropCollectable(sackList);
+    }
+    //nincs megírva a táska bővítés
+    public void dropSackNotEnoughSpace(){
+        Field f1 = new Normal();
+        Virologist v = new Virologist();
+        v.GetRoute().Add(f1);
+
+
+    }
+    public void learn(){
+        Field f1 = new Normal();
+        Virologist v = new Virologist();
+        v.GetRoute().Add(f1);
+        v.SetLearnBehavior(new Learn());
+        v.SetState(State.BEFORE_ACTION);
+        v.Learn();
+    }
+    public void createAgent(){
+        Virologist v = new Virologist();
+        v.GetBackpack().Add(new Aminoacid());
+        v.GetBackpack().Add(new Aminoacid());
+        v.GetBackpack().Add(new Aminoacid());
+        v.GetBackpack().Add(new Aminoacid());
+        v.GetBackpack().Add(new Nucleotide());
+        v.GetBackpack().Add(new Nucleotide());
+        v.GetBackpack().Add(new Nucleotide());
+        v.GetBackpack().Add(new Nucleotide());
+        v.SetState(State.BEFORE_ACTION);
+        v.CreateAgent(new GenomeProtection());
+
+    }
+    public void createAgentWithNotEnoughMaterial(){
+        Virologist v = new Virologist();
+        v.SetState(State.BEFORE_ACTION);
+        v.CreateAgent(new GenomeProtection());
+    }
     public void steal(){}
     public void infectWithOblivion(){}
     public void infectWithChorea(){}

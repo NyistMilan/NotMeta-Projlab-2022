@@ -212,7 +212,7 @@ public class Virologist{
 		SetStealBehavior(new Steal());
 		SetGetStolenBehavior(new NotGetStolen());
 		SetDropBehavior(new Drop());
-		SetLearnBehavior(new NotLearn());
+		SetLearnBehavior(new Learn());
 		SetCreateBehavior(new Create());
 		SetInfectBehavior(new Infect());
 		SetGetInfectedBehavior(new GetInfected());

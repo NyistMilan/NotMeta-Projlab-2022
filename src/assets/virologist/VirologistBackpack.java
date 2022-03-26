@@ -111,9 +111,13 @@ public class VirologistBackpack extends Backpack {
 	 */
 	public boolean EnoughMaterials(int a, int n) {
 		Skeleton.methodCall(this, "a", "n");
-		boolean isEnough = Skeleton.yesOrNoInput("Has enough materials?");
+	//	boolean isEnough = Skeleton.yesOrNoInput("Has enough materials?");
+		if (aminoacids.size() >= a && nucleotids.size() >= n){
+			Skeleton.methodReturn(this);
+			return true;
+		}
 		Skeleton.methodReturn(this);
-		return isEnough;
+		return false;
 	}
 	/** */
 	public int getCapacity() {
