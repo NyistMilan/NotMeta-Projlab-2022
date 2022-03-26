@@ -372,14 +372,89 @@ public class Skeleton {
         Materials a1 = new Aminoacid();
         Materials a2 = new Aminoacid();
         Field f = new Normal();
-
-
+        v.GetRoute().Add(f);
+        v.SetState(State.BEFORE_ACTION);
+        v.SetPickUpBehavior(new PickUp());
+        ArrayList<Collectable> takeable = new ArrayList<Collectable>();
+        takeable.add(a1);
+        takeable.add(a2);
+        v.PickUpCollectable(takeable);
     }
-    public void takeSack(){}
-    public void takeCloak(){}
-    public void takeGloves(){}
-    public void takeMaterialsNotEnoughSpace(){}
-    public void takeEquipmentNotEnoughSpace(){}
+    public void takeSack(){
+        Virologist v = new Virologist();
+        Equipment sack = new Sack();
+        Field f = new Normal();
+        f.getBackpack().Add(sack);
+        v.GetRoute().Add(f);
+        v.SetState(State.BEFORE_ACTION);
+        v.SetPickUpBehavior(new PickUp());
+        ArrayList<Collectable> takeable = new ArrayList<>();
+        takeable.add(sack);
+        v.PickUpCollectable(takeable);
+    }
+    public void takeCloak(){
+        Virologist v = new Virologist();
+        Equipment cloak = new Cloak();
+        Field f = new Normal();
+        f.getBackpack().Add(cloak);
+        v.GetRoute().Add(f);
+        v.SetState(State.BEFORE_ACTION);
+        v.SetPickUpBehavior(new PickUp());
+        ArrayList<Collectable> takeable = new ArrayList<Collectable>();
+        takeable.add(cloak);
+        v.PickUpCollectable(takeable);
+    }
+    public void takeGloves(){
+        Virologist v = new Virologist();
+        Equipment gloves = new Gloves();
+        Field f = new Normal();
+        f.getBackpack().Add(gloves);
+        v.GetRoute().Add(f);
+        v.SetState(State.BEFORE_ACTION);
+        v.SetPickUpBehavior(new PickUp());
+        ArrayList<Collectable> takeable = new ArrayList<Collectable>();
+        takeable.add(gloves);
+        v.PickUpCollectable(takeable);
+    }
+    public void takeMaterialsNotEnoughSpace(){
+        Virologist v = new Virologist();
+        Aminoacid aminoToTake1 = new Aminoacid();
+        Aminoacid aminoToTake2 = new Aminoacid();
+        Field f = new Normal();
+        f.getBackpack().Add(aminoToTake1);
+        f.getBackpack().Add(aminoToTake2);
+
+        for(int i = 0; i<4; i++){
+            v.GetBackpack().Add(new Aminoacid());
+        }
+        v.GetRoute().Add(f);
+        v.SetState(State.BEFORE_ACTION);
+        v.SetPickUpBehavior(new PickUp());
+
+        ArrayList<Collectable> takeable = new ArrayList<>();
+        takeable.add(aminoToTake1);
+        takeable.add(aminoToTake2);
+        v.PickUpCollectable(takeable);
+    }
+    public void takeEquipmentNotEnoughSpace(){
+        Virologist v = new Virologist();
+        Equipment gloves = new Cloak();
+        Field f = new Normal();
+        f.getBackpack().Add(gloves);
+        Equipment sack1 = new Sack();
+        Equipment sack2 = new Sack();
+        Equipment cloak = new Cloak();
+        v.GetBackpack().Add(sack1);
+        v.GetBackpack().Add(sack2);
+        v.GetBackpack().Add(cloak);
+        v.GetRoute().Add(f);
+        v.SetState(State.BEFORE_ACTION);
+        v.SetPickUpBehavior(new PickUp());
+
+        ArrayList<Collectable> takeable = new ArrayList<Collectable>();
+        takeable.add(gloves);
+        v.PickUpCollectable(takeable);
+    }
     public void dropMaterials(){
         Field f1 = new Normal();
         Virologist v = new Virologist();
@@ -402,6 +477,7 @@ public class Skeleton {
         v.GetBackpack().Add(sack);
         ArrayList<Collectable> sackList = new ArrayList<>();
         sackList.add(sack);
+        v.PickUpCollectable(sackList);
         v.DropCollectable(sackList);
     }
 
