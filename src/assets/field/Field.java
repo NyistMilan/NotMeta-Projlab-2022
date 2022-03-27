@@ -26,7 +26,7 @@ public abstract class Field {
 
 	protected Backpack backpack;
 
-	/** Retruns the neighbour in the given direction*/
+	/** Returns the neighbour in the given direction*/
 	public Field GetNeighbour(int d) {
 		Skeleton.methodCall(this, "d");
 		Field f = neighbours.get(d-1);
@@ -37,12 +37,14 @@ public abstract class Field {
 	/** Accepts a field.virologist.Virologist in the field.field.Field. He can not learn here unless it is a field.field.Laboratory(Overwrite)*/
 	public void Accept(Virologist v){
 		Skeleton.methodCall(this, "v");
+		virologists.add(v);
 		v.SetLearnBehavior(new NotLearn());
 		Skeleton.methodReturn(this);
 	}
 
 	public void Remove(Virologist v) {
 		Skeleton.methodCall(this, "v");
+		virologists.remove(v);
 		Skeleton.methodReturn(this);
 	}
 
@@ -92,5 +94,7 @@ public abstract class Field {
 		return backpack;
 	}
 
-	abstract public Genome GetGenome();
+	public Genome GetGenome(){
+		return null;
+	}
 }

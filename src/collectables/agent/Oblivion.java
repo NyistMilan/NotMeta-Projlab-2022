@@ -14,6 +14,7 @@ import collectables.agent.Agent;
 import main.Skeleton;
 
 /** The field.virologist.Virologist forgets every collectables.genome.Genome he learned so far*/
+@SuppressWarnings("GrazieInspection")
 public class Oblivion extends Agent {
 	/** Constructor*/
 	public Oblivion(){
@@ -21,8 +22,8 @@ public class Oblivion extends Agent {
 		duration = effectDuration;
 	}
 	/** The number of turns the collectables.agent.Agent can be used after its creation*/
-	private static int baseWarranty = 5;
-	private static int effectDuration = 1;
+	private static final int baseWarranty = 5;
+	private static final int effectDuration = 1;
 	private static String name;
 
 	/** Applies the effect on the field.virologist.Virologist*/

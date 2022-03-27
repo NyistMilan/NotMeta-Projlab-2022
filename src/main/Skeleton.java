@@ -390,7 +390,7 @@ public class Skeleton {
         v.GetRoute().Add(f);
         v.SetState(State.BEFORE_ACTION);
         v.SetPickUpBehavior(new PickUp());
-        ArrayList<Collectable> takeable = new ArrayList<Collectable>();
+        ArrayList<Collectable> takeable = new ArrayList<>();
         takeable.add(a1);
         takeable.add(a2);
         v.PickUpCollectable(takeable);
@@ -419,7 +419,7 @@ public class Skeleton {
      * 5.4.5 Communication diagram
      * This test-case represent the Take Cloak call on the Virologist.
      * The Virologist picks up a Cloak from a Normal Field,
-     * so the Virologist will have better percentage to defend against an infection.
+     * so the Virologist will have better chance to defend against an infection.
      */
     public static  void takeCloak(){
         Virologist v = new Virologist();
@@ -448,7 +448,7 @@ public class Skeleton {
         v.GetRoute().Add(f);
         v.SetState(State.BEFORE_ACTION);
         v.SetPickUpBehavior(new PickUp());
-        ArrayList<Collectable> takeable = new ArrayList<Collectable>();
+        ArrayList<Collectable> takeable = new ArrayList<>();
         takeable.add(gloves);
         v.PickUpCollectable(takeable);
         v.ListCollectables();
@@ -482,7 +482,7 @@ public class Skeleton {
     /**
      * 5.4.8 Communication diagram
      *  This test-case represent the Take Equipment not enough space call on the Virologist.
-     *  The Virologist tries to pick up a glove from a Normal Field,
+     *  The Virologist tries to pick up Gloves from a Normal Field,
      *  however the Virologist's backpack is full therefore the Virologist can drop selected equipment from the backpack.
      */
     public static void takeEquipmentNotEnoughSpace(){

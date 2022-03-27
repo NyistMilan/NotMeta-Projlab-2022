@@ -88,7 +88,7 @@ public class VirologistBackpack extends Backpack {
 		return true;
 	}
 	
-	/** Adds the applied Aget to the field.Backpack*/
+	/** Adds the applied Agent to the field.Backpack*/
 	public void AddApplied(Agent a) {
 		Skeleton.methodCall(this, "a");
 		appliedAgents.add(a);
@@ -112,7 +112,7 @@ public class VirologistBackpack extends Backpack {
 		return appliedAgents;
 	}
 	
-	/** Removes an collectables.agent.Agent from the field.Backpack*/
+	/** Removes a collectables.agent.Agent from the field.Backpack*/
 	public void Remove(Agent a) {
 		Skeleton.methodCall(this, "a");
 		agents.remove(a);
@@ -173,25 +173,30 @@ public class VirologistBackpack extends Backpack {
 		return capacity;
 	}
 
-	/** Haho javits ki
-	 * Sets the capacity of the field.Backpack to a given value. If there are more materials in the field.Backpack
-	 * then the amount it can store, it removes the extra materials
-	 * @param capacity the new capacity
+	/**
+	 * Increases the capacity of the Backpack by a given value.
+	 *
+	 * @param addition the value of the increase
 	 */
-
 	public void increaseCapacity(int addition){
 		Skeleton.methodCall(this, "addition");
-		capacity=+addition;
+		capacity += addition;
 		Skeleton.printWithIndent("Extended capacity:"+capacity);
 		Skeleton.methodReturn(this);
 	}
 
+	/**
+	 * Decreases the capacity of the Backpack by a given value. If there are more materials in the field.Backpack
+	 * then the amount it can store, it removes the extra materials.
+	 *
+	 * @param reduction the value of the decrease
+	 */
 	public void decreaseCapacity(int reduction){
 		Skeleton.methodCall(this, "reduction");
-		capacity=capacity-reduction;
+		capacity -= reduction;
 		int aminoBonus = aminoacids.size() - capacity;
 		while(aminoBonus > 0){
-			Skeleton.printWithIndent("Aminobonus:"+aminoBonus+"Aminoacids size"+aminoacids.size()+"capacity"+capacity);
+			Skeleton.printWithIndent("AminoBonus:"+aminoBonus+"Aminoacids size"+aminoacids.size()+"capacity"+capacity);
 			Remove(aminoacids.get(aminoacids.size()-1));
 			aminoBonus--;
 		}

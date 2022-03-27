@@ -14,7 +14,7 @@ import assets.virologist.Virologist;
 
 /** The field.virologist.Virologist can store more items than usually*/
 public class Sack extends Equipment {
-	private static int extraInventory = 20;
+	private static final int extraInventory = 20;
 	private static String name;
 
 	/** Applies the Effect to the field.virologist.Virologist*/

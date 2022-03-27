@@ -22,8 +22,8 @@ public class Chorea extends Agent {
 	}
 
 	/** The number of turns the collectables.agent.Agent can be used after its creation*/
-	private static int baseWarranty = 5;
-	private static int effectDuration = 3;
+	private static final int baseWarranty = 5;
+	private static final int effectDuration = 3;
 	private static String name;
 
 	/** Applies the effect to the field.virologist.Virologist if there is no stronger effect on him*/

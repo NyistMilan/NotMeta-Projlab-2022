@@ -25,9 +25,4 @@ public class WareHouse extends Field {
 		backpack = new Backpack();
 		Skeleton.methodReturn(this);
 	}
-
-	@Override
-	public Genome GetGenome() {
-		return null;
-	}
 }

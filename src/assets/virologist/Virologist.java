@@ -26,7 +26,6 @@ import collectables.equipment.*;
 import main.Skeleton;
 
 import java.util.ArrayList;
-import java.util.Iterator;
 
 /**
  * The field.virologist.Virologist is the avatar that the player controls.
@@ -170,7 +169,7 @@ public class Virologist{
 	public void GetInfected(Virologist v1, Agent a) {
 		Skeleton.methodCall(this, "v1", "a");
 		if(state == State.NOT_IN_TURN){
-			getInfectedBehavior.GetInfected(v1, this, a);
+			getInfectedBehavior.getInfected(v1, this, a);
 		}
 		else{
 			a.Apply(this);
@@ -335,7 +334,7 @@ public class Virologist{
 		return this.getInfectedBehavior;
 	}
 
-	/** I'm not sure we need this one*/
+	/** I'm not sure if we need this one*/
 	public void ListCollectables() {
 		Skeleton.methodCall(this);
 		ArrayList<Equipment> eqList= this.GetBackpack().GetEquipments();

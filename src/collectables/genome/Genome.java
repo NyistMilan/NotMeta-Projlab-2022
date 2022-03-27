@@ -12,12 +12,12 @@ package collectables.genome;//
 import assets.virologist.Virologist;
 
 /**
- * The collectables.genome.Genome is a genetic gode to an collectables.agent.Agent. The field.virologist.Virologist can field.virologist.behavior.learnhevior.Learn a
+ * The collectables.genome.Genome is a genetic code to a collectables.agent.Agent. The field.virologist.Virologist can field.virologist.behavior.learnbehavior.Learn a
  * collectables.genome.Genome and field.virologist.behavior.createbehavior.Create the collectables.agent.Agent if he has enough materials
  * */
 public abstract class Genome {
 	/**
-	 * Creates an collectables.agent.Agent and puts it into the field.Backpack of a field.virologist.Virologist
+	 * Creates a collectables.agent.Agent and puts it into the field.Backpack of a field.virologist.Virologist
 	 *
 	 * @param v the field.virologist.Virologist who creates the collectables.agent.Agent
 	 */
