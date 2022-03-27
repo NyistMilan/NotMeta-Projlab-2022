@@ -20,6 +20,7 @@ import main.Skeleton;
  * They apply their effects on the field.virologist.Virologist until he drops them
  * or another field.virologist.Virologist steal them from him
  * */
+@SuppressWarnings("GrazieInspection")
 public abstract class Equipment implements Collectable {
 	/** Applies its effect to a field.virologist.Virologist*/
 	public abstract void Apply(Virologist v);

@@ -14,12 +14,12 @@ import main.Skeleton;
 import assets.virologist.Virologist;
 import assets.*;
 
-/** A field.virologist.Virologist can use an collectables.agent.Agent to infect another field.virologist.Virologist (or himself).*/
+/** A field.virologist.Virologist can use a collectables.agent.Agent to infect another field.virologist.Virologist (or himself).*/
 public abstract class Agent implements Collectable {
 	/** The number of turns a field.virologist.Virologist can store the collectables.agent.Agent in his field.Backpack.*/
 	protected int warranty;
 
-	/** The number of turns an collectables.agent.Agent stays active on an infected field.virologist.Virologist*/
+	/** The number of turns a collectables.agent.Agent stays active on an infected field.virologist.Virologist*/
 	protected int duration;
 
 	public int DecreaseWarranty() {

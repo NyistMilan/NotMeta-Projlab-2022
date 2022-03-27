@@ -22,7 +22,7 @@ public class NotMove implements MoveBehavior {
     }
 
     /**
-     * Nothing happens.
+     * Nothing happens. The Virologist can not move.
      *
      * @param v the field.virologist.Virologist who tries to move
      * @param d the direction he wants to move
@@ -30,7 +30,6 @@ public class NotMove implements MoveBehavior {
     @Override
     public void Move(Virologist v, int d) {
         Skeleton.methodCall(this, "v", "d");
-        Field f = v.GetRoute().GetLocation();
         v.SetState(State.BEFORE_ACTION);
         Skeleton.methodReturn(this);
     }

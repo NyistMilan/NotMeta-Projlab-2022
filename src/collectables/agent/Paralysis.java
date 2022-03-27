@@ -29,8 +29,8 @@ public class Paralysis extends Agent {
 	}
 
 	/** The number of turns the collectables.agent.Agent can be used after its creation*/
-	private static int baseWarranty = 5;
-	private static int effectDuration = 1;
+	private static final int baseWarranty = 5;
+	private static final int effectDuration = 1;
 	private static String name;
 
 	/** Applies the effects on a field.virologist.Virologist*/

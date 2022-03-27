@@ -14,8 +14,8 @@ import main.Skeleton;
 
 /** The collectables.genome.GenomeChorea is used to create the collectables.agent.Chorea collectables.agent.Agent*/
 public class GenomeChorea extends Genome {
-	private static int aminocost=2;
-	private static int nucleocost=1;
+	private static final int aminocost=2;
+	private static final int nucleocost=1;
 	private static String name;
 
 	/**

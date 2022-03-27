@@ -12,7 +12,7 @@ package assets.virologist.behavior.createbehavior;//
 import collectables.genome.Genome;
 import assets.virologist.Virologist;
 
-/** The field.virologist.behavior which decides if the field.virologist.Virologist can create an collectables.agent.Agent */
+/** The field.virologist.behavior which decides if the field.virologist.Virologist can create a collectables.agent.Agent */
 public interface CreateBehavior {
 	/**
 	 *
