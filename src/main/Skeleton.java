@@ -346,7 +346,11 @@ public class Skeleton {
         }
     }
 
-   public void moveToField(){
+    /**
+     * 5.4.1 Communication diagram
+     * This test-case represent the move call on the Virologist to a Normal field.
+     */
+     public static void moveToField(){
         Field f1 = new Normal();
         Virologist v = new Virologist();
         v.SetState(State.BEFORE_MOVE);
@@ -357,7 +361,12 @@ public class Skeleton {
         f2.SetNeighbour(f1);
         v.Move(1);
     }
-    public void moveToLaboratory(){
+
+    /**
+     * 5.4.2 Communication diagram
+     * This test-case represent the move call on the Virologist to a Laboratory field.
+     */
+    public static void moveToLaboratory(){
         Field f1 = new Normal();
         Virologist v = new Virologist();
         v.GetRoute().Add(f1);
@@ -367,7 +376,13 @@ public class Skeleton {
         v.SetState(State.BEFORE_MOVE);
         v.Move(1);
     }
-    public void takeAminoacid(){
+
+    /**
+     * 5.4.3 Communication diagram
+     * This test-case represent the Take Aminoacid call on the Virologist.
+     * The Virologist picks up 2 aminoacids from the field.
+     */
+    public static void takeAminoacid(){
         Virologist v = new Virologist();
         Materials a1 = new Aminoacid();
         Materials a2 = new Aminoacid();
@@ -379,8 +394,15 @@ public class Skeleton {
         takeable.add(a1);
         takeable.add(a2);
         v.PickUpCollectable(takeable);
+
     }
-    public void takeSack(){
+    /**
+     * 5.4.4 Communication diagram
+     * This test-case represent the Take Sack call on the Virologist.
+     * The Virologist picks up a Sack from a Normal Field,
+     * so the Virologist's backpack's capacity will be extended.
+     */
+    public static void takeSack(){
         Virologist v = new Virologist();
         Equipment sack = new Sack();
         Field f = new Normal();
@@ -391,8 +413,15 @@ public class Skeleton {
         ArrayList<Collectable> takeable = new ArrayList<>();
         takeable.add(sack);
         v.PickUpCollectable(takeable);
+        v.ListCollectables();
     }
-    public void takeCloak(){
+    /**
+     * 5.4.5 Communication diagram
+     * This test-case represent the Take Cloak call on the Virologist.
+     * The Virologist picks up a Cloak from a Normal Field,
+     * so the Virologist will have better percentage to defend against an infection.
+     */
+    public static  void takeCloak(){
         Virologist v = new Virologist();
         Equipment cloak = new Cloak();
         Field f = new Normal();
@@ -400,11 +429,18 @@ public class Skeleton {
         v.GetRoute().Add(f);
         v.SetState(State.BEFORE_ACTION);
         v.SetPickUpBehavior(new PickUp());
-        ArrayList<Collectable> takeable = new ArrayList<Collectable>();
+        ArrayList<Collectable> takeable = new ArrayList<>();
         takeable.add(cloak);
         v.PickUpCollectable(takeable);
+        v.ListCollectables();
     }
-    public void takeGloves(){
+    /**
+     * 5.4.6 Communication diagram
+     *  This test-case represent the Take Gloves call on the Virologist.
+     *  The Virologist picks up a Glove from a Normal Field,
+     *  so the Virologist will fend off an infection.
+     */
+    public static void takeGloves(){
         Virologist v = new Virologist();
         Equipment gloves = new Gloves();
         Field f = new Normal();
@@ -415,8 +451,15 @@ public class Skeleton {
         ArrayList<Collectable> takeable = new ArrayList<Collectable>();
         takeable.add(gloves);
         v.PickUpCollectable(takeable);
+        v.ListCollectables();
     }
-    public void takeMaterialsNotEnoughSpace(){
+    /**
+     * 5.4.7 Communication diagram
+     *  This test-case represent the Take Materials not enough space call on the Virologist.
+     *  The Virologist tries to pick up materials from a Normal Field,
+     *  however the Virologist's backpack is full therefore nothing happens.
+     */
+    public static  void takeMaterialsNotEnoughSpace(){
         Virologist v = new Virologist();
         Aminoacid aminoToTake1 = new Aminoacid();
         Aminoacid aminoToTake2 = new Aminoacid();
@@ -436,26 +479,52 @@ public class Skeleton {
         takeable.add(aminoToTake2);
         v.PickUpCollectable(takeable);
     }
-    public void takeEquipmentNotEnoughSpace(){
+    /**
+     * 5.4.8 Communication diagram
+     *  This test-case represent the Take Equipment not enough space call on the Virologist.
+     *  The Virologist tries to pick up a glove from a Normal Field,
+     *  however the Virologist's backpack is full therefore the Virologist can drop selected equipment from the backpack.
+     */
+    public static void takeEquipmentNotEnoughSpace(){
         Virologist v = new Virologist();
-        Equipment gloves = new Cloak();
+        Equipment sack = new Sack();
         Field f = new Normal();
-        f.getBackpack().Add(gloves);
-        Equipment sack1 = new Sack();
-        Equipment sack2 = new Sack();
-        Equipment cloak = new Cloak();
-        v.GetBackpack().Add(sack1);
-        v.GetBackpack().Add(sack2);
-        v.GetBackpack().Add(cloak);
+        f.getBackpack().Add(sack);
         v.GetRoute().Add(f);
         v.SetState(State.BEFORE_ACTION);
         v.SetPickUpBehavior(new PickUp());
+        ArrayList<Collectable> takeable1 = new ArrayList<>();
+        ArrayList<Collectable> takeable2 = new ArrayList<>();
+        takeable1.add(sack);
+        takeable2.add(sack);
+        v.PickUpCollectable(takeable1);
+        v.SetState(State.BEFORE_ACTION);
+        v.PickUpCollectable(takeable2);
+        Equipment cloak = new Cloak();
+        f.getBackpack().Add(cloak);
+        ArrayList<Collectable> takeable3 = new ArrayList<>();
+        takeable3.add(cloak);
+        v.SetState(State.BEFORE_ACTION);
+        v.PickUpCollectable(takeable3);
+        v.ListCollectables();
+        v.GetRoute().Add(f);
+        Equipment gloves = new Gloves();
+        f.getBackpack().Add(gloves);
 
-        ArrayList<Collectable> takeable = new ArrayList<Collectable>();
-        takeable.add(gloves);
-        v.PickUpCollectable(takeable);
+        v.SetPickUpBehavior(new PickUp());
+
+        ArrayList<Collectable> takeable4 = new ArrayList<>();
+        takeable4.add(gloves);
+        v.SetState(State.BEFORE_ACTION);
+        v.PickUpCollectable(takeable4);
+        v.ListCollectables();
     }
-    public void dropMaterials(){
+    /**
+     * 5.4.8 Communication diagram
+     *  This test-case represent the Drop Materials call on the Virologist.
+     *  The Virologist drops materials to a Normal Field.
+     */
+    public static void dropMaterials(){
         Field f1 = new Normal();
         Virologist v = new Virologist();
         v.SetState(State.BEFORE_ACTION);
@@ -467,8 +536,13 @@ public class Skeleton {
         aminoList.add(aminoacid);
         v.DropCollectable(aminoList);
     }
-
-    public void dropSack(){
+    /**
+     * 5.4.9 Communication diagram
+     *  This test-case represent the Drop Sack call on the Virologist.
+     *  The Virologist drops its sack to a Normal Field,
+     *  and there is no additional collectable in the extra capacity caused by the sack.
+     */
+    public static void dropSack(){
         Field f1 = new Normal();
         Virologist v = new Virologist();
         v.SetState(State.BEFORE_ACTION);
@@ -481,7 +555,14 @@ public class Skeleton {
         v.DropCollectable(sackList);
     }
 
-    public void dropSackNotEnoughSpace(){
+    /**
+     * 5.4.9 Communication diagram
+     *  This test-case represent the Drop Sack call on the Virologist.
+     *  The Virologist drops its sack to a Normal Field,
+     *  and there is  additional collectable in the extra capacity caused by the sack,
+     *  so it drops the extra collectables.
+     */
+    public static void dropSackNotEnoughSpace(){
         Virologist v = new Virologist();
         Equipment sack = new Sack();
         Field f = new Normal();
@@ -500,7 +581,7 @@ public class Skeleton {
         }
         v.DropCollectable(sackList);
     }
-    public void learn(){
+    public static void learn(){
         Field f1 = new Normal();
         Virologist v = new Virologist();
         v.GetRoute().Add(f1);
@@ -508,7 +589,7 @@ public class Skeleton {
         v.SetState(State.BEFORE_ACTION);
         v.Learn();
     }
-    public void createAgent(){
+    public static void createAgent(){
         Virologist v = new Virologist();
         for(int i = 0; i<4; i++){
             v.GetBackpack().Add(new Aminoacid());
@@ -518,12 +599,12 @@ public class Skeleton {
         v.CreateAgent(new GenomeProtection());
 
     }
-    public void createAgentWithNotEnoughMaterial(){
+    public static  void createAgentWithNotEnoughMaterial(){
         Virologist v = new Virologist();
         v.SetState(State.BEFORE_ACTION);
         v.CreateAgent(new GenomeProtection());
     }
-    public void steal(){
+    public static void steal(){
         Virologist v1 = new Virologist();
         Virologist v2 = new Virologist();
 
@@ -534,7 +615,7 @@ public class Skeleton {
         v1.Steal(v2,cloakList);
 
     }
-    public void infectWithOblivion(){
+    public static void infectWithOblivion(){
         Virologist v1 = new Virologist();
         v1.SetState(State.BEFORE_ACTION);
         Virologist v2 = new Virologist();
@@ -544,7 +625,7 @@ public class Skeleton {
         v1.Infect(v2,oblivion);
 
     }
-    public void infectWithChorea(){
+    public static void infectWithChorea(){
         Virologist v1 = new Virologist();
         v1.SetState(State.BEFORE_ACTION);
         Virologist v2 = new Virologist();
@@ -553,7 +634,7 @@ public class Skeleton {
         v1.GetBackpack().Add(chorea);
         v1.Infect(v2,chorea);
     }
-    public void infectWithProtection(){
+    public static void infectWithProtection(){
         Virologist v1 = new Virologist();
         v1.SetState(State.BEFORE_ACTION);
         Virologist v2 = new Virologist();
@@ -562,7 +643,7 @@ public class Skeleton {
         v1.GetBackpack().Add(protection);
         v1.Infect(v2,protection);
     }
-    public void infectWithParalysis(){
+    public static void infectWithParalysis(){
         Virologist v1 = new Virologist();
         v1.SetState(State.BEFORE_ACTION);
         Virologist v2 = new Virologist();
@@ -571,7 +652,7 @@ public class Skeleton {
         v1.GetBackpack().Add(paralysis);
         v1.Infect(v2,paralysis);
     }
-    public void infectProtectedVirologist(){
+    public static void infectProtectedVirologist(){
         Virologist v1 = new Virologist();
         v1.SetState(State.BEFORE_ACTION);
         Virologist v2 = new Virologist();
@@ -581,7 +662,7 @@ public class Skeleton {
         v1.GetBackpack().Add(paralysis);
         v1.Infect(v2,paralysis);
     }
-    public void infectVirologistWithCloak(){
+    public static void infectVirologistWithCloak(){
         Virologist v1 = new Virologist();
         v1.SetState(State.BEFORE_ACTION);
         Virologist v2 = new Virologist();
@@ -591,7 +672,7 @@ public class Skeleton {
         v1.GetBackpack().Add(paralysis);
         v1.Infect(v2,paralysis);
     }
-    public void infectVirologistWithGloves(){
+    public static void infectVirologistWithGloves(){
         Virologist v1 = new Virologist();
         v1.SetState(State.BEFORE_ACTION);
         Virologist v2 = new Virologist();
@@ -601,7 +682,7 @@ public class Skeleton {
         v1.GetBackpack().Add(paralysis);
         v1.Infect(v2,paralysis);
     }
-    public void infectVirologistWithGlovesAndYouHaveGlovesToo(){
+    public static void infectVirologistWithGlovesAndYouHaveGlovesToo(){
         Virologist v1 = new Virologist();
         v1.SetState(State.BEFORE_ACTION);
         Virologist v2 = new Virologist();
@@ -613,7 +694,7 @@ public class Skeleton {
         v1.Infect(v2,paralysis);
 
     }
-    public void endTurnAndNoRemove(){
+    public static void endTurnAndNoRemove(){
         Virologist v1 = new Virologist();
         Paralysis paralysis = new Paralysis();
         v1.GetBackpack().Add(paralysis);
@@ -621,13 +702,13 @@ public class Skeleton {
         v1.GetBackpack().AddApplied(chorea);
         v1.EndTurn();
     }
-    public void endTurnAndRemoveOblivionFromAppliedAgents(){
+    public static void endTurnAndRemoveOblivionFromAppliedAgents(){
         Virologist v1 = new Virologist();
         Oblivion oblivion= new Oblivion();
         v1.GetBackpack().AddApplied(oblivion);
         v1.EndTurn();
     }
-    public void endTurnAndRemoveOblivionFromNotAppliedAgents(){
+    public static void endTurnAndRemoveOblivionFromNotAppliedAgents(){
         Virologist v1 = new Virologist();
         Oblivion oblivion= new Oblivion();
         v1.GetBackpack().Add(oblivion);

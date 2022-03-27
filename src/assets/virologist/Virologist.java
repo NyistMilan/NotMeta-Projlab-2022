@@ -339,10 +339,10 @@ public class Virologist{
 	public void ListCollectables() {
 		Skeleton.methodCall(this);
 		ArrayList<Equipment> eqList= this.GetBackpack().GetEquipments();
+		Skeleton.printWithIndent("Equipment(s) in Backpack:");
 		for(int i=0; i< eqList.size(); i++){
-			System.out.println(eqList.get(i).GetName());
+			Skeleton.printWithIndent("\t-"+eqList.get(i).GetName());
 		}
-
 
 		Skeleton.methodReturn(this);
 	}

@@ -181,7 +181,8 @@ public class VirologistBackpack extends Backpack {
 
 	public void increaseCapacity(int addition){
 		Skeleton.methodCall(this, "addition");
-		capacity=capacity+addition;
+		capacity=+addition;
+		Skeleton.printWithIndent("Extended capacity:"+capacity);
 		Skeleton.methodReturn(this);
 	}
 
@@ -190,8 +191,8 @@ public class VirologistBackpack extends Backpack {
 		capacity=capacity-reduction;
 		int aminoBonus = aminoacids.size() - capacity;
 		while(aminoBonus > 0){
+			Skeleton.printWithIndent("Aminobonus:"+aminoBonus+"Aminoacids size"+aminoacids.size()+"capacity"+capacity);
 			Remove(aminoacids.get(aminoacids.size()-1));
-
 			aminoBonus--;
 		}
 		int nucleoBonus = nucleotids.size() - capacity;
