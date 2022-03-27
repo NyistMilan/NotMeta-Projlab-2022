@@ -169,7 +169,7 @@ public class Virologist{
 	public void GetInfected(Virologist v1, Agent a) {
 		Skeleton.methodCall(this, "v1", "a");
 		if(state == State.NOT_IN_TURN){
-			getInfectedBehavior.GetInfected(v1, this, a);
+			getInfectedBehavior.getInfected(v1, this, a);
 		}
 		else{
 			a.Apply(this);
