@@ -16,6 +16,13 @@ import main.Skeleton;
 
 /** The field.virologist.Virologist can not get infected by other Virologists*/
 public class Protection extends Agent {
+
+	/** The number of turns a field.virologist.Virologist can store the collectables.agent.Agent in his field.Backpack.*/
+	private static int warranty;
+
+	/** The number of turns a collectables.agent.Agent stays active on an infected field.virologist.Virologist*/
+	private static int duration;
+
 	/** Constructor*/
 	public Protection(){
 		warranty = baseWarranty;
@@ -26,6 +33,26 @@ public class Protection extends Agent {
 	private static final int baseWarranty = 5;
 	private static final int effectDuration = 3;
 	private static String name;
+
+	@Override
+	public int getDuration() {
+		return duration;
+	}
+
+	@Override
+	public void setDuration(int duration) {
+		Protection.duration = duration;
+	}
+
+	@Override
+	public int getWarranty() {
+		return warranty;
+	}
+
+	@Override
+	public void setWarranty(int warranty) {
+		Protection.warranty = warranty;
+	}
 
 	/** Applies the effect to the field.virologist.Virologist if there is no stronger effect on him*/
 	public void Apply(Virologist v) {

@@ -17,6 +17,35 @@ import main.Skeleton;
 /** The collectables.equipment.Gloves protect the field.virologist.Virologist from any collectables.agent.Agent, and it Infects back the field.virologist.Virologist who tris to infect him*/
 public class Gloves extends Equipment {
 	private static String name;
+	private static int aminoacidcost;
+	private static int nucleicacidcost;
+
+	public static void setAminoacidcost(int aminoacidcost) {
+		Gloves.aminoacidcost = aminoacidcost;
+	}
+
+	public static void setNucleicacidcost(int nucleicacidcost) {
+		Gloves.nucleicacidcost = nucleicacidcost;
+	}
+	@Override
+	public int getAminoAcidCost() {
+		return aminoacidcost;
+	}
+
+	@Override
+	public void setAminoAcidCost(int cost) {
+		aminoacidcost = cost;
+	}
+
+	@Override
+	public int getNucleotideCost() {
+		return nucleicacidcost;
+	}
+
+	@Override
+	public void setNucleotideCost(int cost) {
+		nucleicacidcost = cost;
+	}
 
 	/** Applies the effect to the field.virologist.Virologist if there is no stronger effect on him*/
 	public void Apply(Virologist v) {
