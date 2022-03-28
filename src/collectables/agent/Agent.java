@@ -17,12 +17,6 @@ import assets.*;
 /** A field.virologist.Virologist can use a collectables.agent.Agent to infect another field.virologist.Virologist (or himself).*/
 public abstract class Agent implements Collectable {
 
-	/** The number of turns a field.virologist.Virologist can store the collectables.agent.Agent in his field.Backpack.*/
-	//protected int getWarranty();
-
-	/** The number of turns a collectables.agent.Agent stays active on an infected field.virologist.Virologist*/
-	//protected int getDuration();
-
 	/**
 	 * Gets the duration of the collectables.agent.Agent
 	 * @return the duration
@@ -108,4 +102,6 @@ public abstract class Agent implements Collectable {
 		v.GetBackpack().Remove(this);
 		Skeleton.methodReturn(this);
 	}
+
+	public abstract String GetName();
 }

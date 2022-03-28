@@ -17,7 +17,6 @@ import main.Skeleton;
 public class GenomeOblivion extends Genome {
 	private static int aminocost;
 	private static int nucleocost;
-	private static String name;
 
 	/**
 	 * Creates a collectables.agent.Oblivion collectables.agent.Agent and puts it into the field.Backpack of the field.virologist.Virologist that created it
@@ -39,4 +38,7 @@ public class GenomeOblivion extends Genome {
 	public int getNucleoCost() {
 		return nucleocost;
 	}
+
+	@Override
+	public String GetName() {return "Oblivion Genome";}
 }

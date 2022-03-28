@@ -84,7 +84,7 @@ public class Virologist{
 	public void Move(int d) {
 		Skeleton.methodCall(this, "d");
 		if(this.state == State.BEFORE_MOVE) {
-			moveBehavior.Move(this, d);
+			moveBehavior.MoveToField(this, d);
 		}
 		Skeleton.methodReturn(this);
 	}
@@ -102,7 +102,7 @@ public class Virologist{
 	public void Steal(Virologist v2, ArrayList<Collectable> c) {
 		Skeleton.methodCall(this, "c");
 		if(state == State.BEFORE_ACTION){
-			stealBehavior.Steal(this, v2, c);
+			stealBehavior.StealFromVirologist(this, v2, c);
 		}
 		Skeleton.methodReturn(this);
 	}
@@ -139,7 +139,7 @@ public class Virologist{
 	public void Learn() {
 		Skeleton.methodCall(this);
 		if(state == State.BEFORE_ACTION){
-			learnBehavior.Learn(this);
+			learnBehavior.LearnGenome(this);
 		}
 		Skeleton.methodReturn(this);
 	}
@@ -157,7 +157,7 @@ public class Virologist{
 	public void Infect(Virologist v2, Agent a) {
 		Skeleton.methodCall(this, "v2", "a");
 		if(state == State.BEFORE_ACTION){
-			infectBehavior.Infect(this, v2, a);
+			infectBehavior.InfectVirologist(this, v2, a);
 		}
 		Skeleton.methodReturn(this);
 	}

@@ -29,4 +29,6 @@ public abstract class Materials implements Collectable {
         Skeleton.methodCall(this, "v");
         Skeleton.methodReturn(this);
     }
+
+    public abstract String GetName();
 }

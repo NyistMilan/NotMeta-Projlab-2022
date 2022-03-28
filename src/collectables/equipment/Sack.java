@@ -15,36 +15,6 @@ import assets.virologist.Virologist;
 /** The field.virologist.Virologist can store more items than usually*/
 public class Sack extends Equipment {
 	private static final int extraInventory = 20;
-	private static String name;
-	private static int aminoacidcost;
-	private static int nucleicacidcost;
-
-	public static void setAminoacidcost(int aminoacidcost) {
-		Sack.aminoacidcost = aminoacidcost;
-	}
-
-	public static void setNucleicacidcost(int nucleicacidcost) {
-		Sack.nucleicacidcost = nucleicacidcost;
-	}
-	@Override
-	public int getAminoAcidCost() {
-		return aminoacidcost;
-	}
-
-	@Override
-	public void setAminoAcidCost(int cost) {
-		aminoacidcost = cost;
-	}
-
-	@Override
-	public int getNucleotideCost() {
-		return nucleicacidcost;
-	}
-
-	@Override
-	public void setNucleotideCost(int cost) {
-		nucleicacidcost = cost;
-	}
 
 	/** Applies the Effect to the field.virologist.Virologist*/
 	public void Apply(Virologist v) {

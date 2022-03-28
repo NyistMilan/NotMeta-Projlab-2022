@@ -587,6 +587,7 @@ public class Skeleton {
      *  This test-case represent the Learn call on the Virologist.
      *  The Virologist stands on a Laboratory, and learns the Genome of it.
      */
+    @SuppressWarnings("GrazieInspection")
     public static void learn(){
         Field f1 = new Laboratory(new GenomeChorea());
         Virologist v = new Virologist();
@@ -651,6 +652,7 @@ public class Skeleton {
      *  the other Virologist doesn't have protection or something else
      *  to avoid the infection, so the infection has effect on him.
      */
+    @SuppressWarnings("GrazieInspection")
     public static void infectWithOblivion(){
         Virologist v1 = new Virologist();
         v1.SetState(State.BEFORE_ACTION);
@@ -669,6 +671,7 @@ public class Skeleton {
      *  the other Virologist can't avoid the infection,
      *  so the infection has effect on him.
      */
+    @SuppressWarnings("GrazieInspection")
     public static void infectWithChorea(){
         Virologist v1 = new Virologist();
         v1.SetState(State.BEFORE_ACTION);
@@ -686,6 +689,7 @@ public class Skeleton {
      *  the other Virologist can't avoid the infection,
      *  so the infection has effect on him.
      */
+    @SuppressWarnings("GrazieInspection")
     public static void infectWithProtection(){
         Virologist v1 = new Virologist();
         v1.SetState(State.BEFORE_ACTION);
@@ -703,6 +707,7 @@ public class Skeleton {
      *  the other Virologist can't avoid the infection,
      *  so the infection has effect on him.
      */
+    @SuppressWarnings("GrazieInspection")
     public static void infectWithParalysis(){
         Virologist v1 = new Virologist();
         v1.SetState(State.BEFORE_ACTION);
@@ -720,6 +725,7 @@ public class Skeleton {
      *  but the other one has an applied protection agent, so the infection has no effect on him,
      *  and it isn't modify the behaviors of the other Virologist
      */
+    @SuppressWarnings("GrazieInspection")
     public static void infectProtectedVirologist(){
         Virologist v1 = new Virologist();
         v1.SetState(State.BEFORE_ACTION);
@@ -737,6 +743,7 @@ public class Skeleton {
      *  The Virologist infect another Virologist,
      *  but the other one has a Cloak, so the infection has only sometimes effect on him
      */
+    @SuppressWarnings("GrazieInspection")
     public static void infectVirologistWithCloak(){
         Virologist v1 = new Virologist();
         v1.SetState(State.BEFORE_ACTION);
@@ -754,6 +761,7 @@ public class Skeleton {
      *  The Virologist infect another Virologist,
      *  but the other one has Gloves, so the infection has no effect on him
      */
+    @SuppressWarnings("GrazieInspection")
     public static void infectVirologistWithGloves(){
         Virologist v1 = new Virologist();
         v1.SetState(State.BEFORE_ACTION);
@@ -770,10 +778,11 @@ public class Skeleton {
      *  This test-case represent the Infect call on the Virologist.
      *  The Virologist infect another Virologist,
      *  but the other one has Gloves and me have Gloves as well.
-     *  This test-case shows that there is no loop caused by the two glowes.
+     *  This test-case shows that there is no loop caused by the two Gloves.
      *  The other virologist can prevent the infection, but we can't.
      *  So the infection has effect on our Virologist.
      */
+    @SuppressWarnings("GrazieInspection")
     public static void infectVirologistWithGlovesAndYouHaveGlovesToo(){
         Virologist v1 = new Virologist();
         v1.SetState(State.BEFORE_ACTION);

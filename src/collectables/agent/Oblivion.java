@@ -31,7 +31,6 @@ public class Oblivion extends Agent {
 	/** The number of turns the collectables.agent.Agent can be used after its creation*/
 	private static final int baseWarranty = 5;
 	private static final int effectDuration = 1;
-	private static String name;
 
 	@Override
 	public int getDuration() {
@@ -59,4 +58,7 @@ public class Oblivion extends Agent {
 		v.ForgetGenome();
 		Skeleton.methodReturn(this);
 	}
+
+	@Override
+	public String GetName(){ return "Oblivion Agent";}
 }

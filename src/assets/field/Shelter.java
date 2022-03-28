@@ -10,7 +10,6 @@ package assets.field;//
 //
 
 import assets.Backpack;
-import collectables.genome.Genome;
 import main.Skeleton;
 import java.util.ArrayList;
 

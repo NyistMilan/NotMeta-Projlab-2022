@@ -33,30 +33,6 @@ public abstract class Equipment implements Collectable {
 	}
 
 	/**
-	 * Gets the amino acid cost of the collectables.equipment.Equipment.
-	 * @return the amino acid cost
-	 */
-	public abstract int getAminoAcidCost();
-
-	/**
-	 * Sets the amino acid cost of the collectables.equipment.Equipment.
-	 * @param cost the amino acid cost
-	 */
-	public abstract void setAminoAcidCost(int cost);
-
-	/**
-	 * Gets the nucleotide cost of the collectables.equipment.Equipment.
-	 * @return the nucleotide cost
-	 */
-	public abstract int getNucleotideCost();
-
-	/**
-	 * Sets the nucleotide cost of the collectables.equipment.Equipment.
-	 * @param cost the nucleotide cost
-	 */
-	public abstract void setNucleotideCost(int cost);
-
-	/**
 	 * The collectables.equipment.Equipment is added to the field.Backpack.
 	 * If there is not enough space to pick it up the field.virologist.Virologist can drop another collectables.equipment.Equipment.
 	 *
@@ -90,7 +66,5 @@ public abstract class Equipment implements Collectable {
 		b.Remove(this);
 		Skeleton.methodReturn(this);
 	}
-
-	abstract public String GetName();
-
+	public abstract String GetName();
 }

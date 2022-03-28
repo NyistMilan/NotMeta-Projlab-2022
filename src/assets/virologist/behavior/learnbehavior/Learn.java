@@ -23,7 +23,7 @@ public class Learn implements LearnBehavior {
      * @param v the field.virologist.Virologist who wants to learn the collectables.genome.Genome
      */
     @Override
-    public void Learn(Virologist v) {
+    public void LearnGenome(Virologist v) {
         Skeleton.methodCall(this, "v");
         Genome g = v.GetRoute().GetLocation().GetGenome();
         if( g == null){
