@@ -23,7 +23,7 @@ public class Learn implements LearnBehavior {
      * @param v the field.virologist.Virologist who wants to learn the collectables.genome.Genome
      */
     @Override
-    public void Learn(Virologist v) {
+    public void LearnGenome(Virologist v) {
         Skeleton.methodCall(this, "v");
         Genome g = v.GetRoute().GetLocation().GetGenome();
         if( g == null){
@@ -35,10 +35,7 @@ public class Learn implements LearnBehavior {
             Skeleton.methodReturn(this);
             return;
         }
-        boolean win = Skeleton.yesOrNoInput("Did the player win?");
-        if(win){
-            Controller.End();
-        }
+        Controller.TestWin(v);
         v.SetState(State.AFTER_ACTION);
         Skeleton.methodReturn(this);
     }

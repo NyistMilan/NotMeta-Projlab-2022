@@ -17,5 +17,5 @@ public interface LearnBehavior {
 	 *
 	 * @param v the field.virologist.Virologist who wants to learn the collectables.genome.Genome
 	 */
-	void Learn(Virologist v);
+	void LearnGenome(Virologist v);
 }

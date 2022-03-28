@@ -32,7 +32,6 @@ public class Protection extends Agent {
 	/** The number of turns the collectables.agent.Agent can be used after its creation*/
 	private static final int baseWarranty = 5;
 	private static final int effectDuration = 3;
-	private static String name;
 
 	@Override
 	public int getDuration() {
@@ -61,4 +60,7 @@ public class Protection extends Agent {
 			v.SetGetInfectedBehavior(new NotInfected());
 		Skeleton.methodReturn(this);
 	}
+
+	@Override
+	public String GetName(){ return "Protection Agent";}
 }

@@ -16,7 +16,6 @@ import main.Skeleton;
 public class GenomeProtection extends Genome {
 	private static final int aminocost=2;
 	private static final int nucleocost=2;
-	private static String name;
 
 	/**
 	 * Creates a collectables.agent.Protection collectables.agent.Agent and puts it into the field.Backpack of the field.virologist.Virologist that created it
@@ -38,4 +37,7 @@ public class GenomeProtection extends Genome {
 	public int getNucleoCost() {
 		return nucleocost;
 	}
+
+	@Override
+	public String GetName(){ return "Protection Genome";}
 }

@@ -41,4 +41,7 @@ public class Aminoacid extends Materials {
         b.Remove(this);
         Skeleton.methodReturn(this);
     }
+
+    @Override
+    public String GetName(){ return "Aminoacid";}
 }

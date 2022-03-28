@@ -81,6 +81,7 @@ public class VirologistBackpack extends Backpack {
 		return false;
 	}
 	/** Adds the created collectables.agent.Agent to the field.Backpack*/
+	@SuppressWarnings("SameReturnValue")
 	public boolean Add(Agent a) {
 		Skeleton.methodCall(this, "a");
 		agents.add(a);
@@ -93,13 +94,6 @@ public class VirologistBackpack extends Backpack {
 		Skeleton.methodCall(this, "a");
 		appliedAgents.add(a);
 		Skeleton.methodReturn(this);
-	}
-	
-	/** */
-	public ArrayList<Agent> GetAgents() {
-		Skeleton.methodCall(this);
-		Skeleton.methodReturn(this);
-		return agents;
 	}
 
 	/**
@@ -167,10 +161,6 @@ public class VirologistBackpack extends Backpack {
 		}
 		Skeleton.methodReturn(this);
 		return false;
-	}
-	/** */
-	public int getCapacity() {
-		return capacity;
 	}
 
 	/**

@@ -13,6 +13,7 @@ import collectables.genome.Genome;
 import assets.Backpack;
 import assets.virologist.Virologist;
 import assets.virologist.behavior.learnbehavior.Learn;
+import main.Controller;
 import main.Skeleton;
 
 import java.util.ArrayList;
@@ -26,6 +27,7 @@ public class Laboratory extends Field {
 		neighbours = new ArrayList<>();
 		backpack = new Backpack();
 		genome = g;
+		Controller.AddLearnableGenome(g);
 		Skeleton.methodReturn(this);
 	}
 

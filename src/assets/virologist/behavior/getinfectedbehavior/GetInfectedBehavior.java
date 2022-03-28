@@ -16,8 +16,6 @@ import assets.virologist.Virologist;
 public interface GetInfectedBehavior {
 
 	/** The Behavior will only be changed if the new field.virologist.behavior has higher priority*/
-	int priority = 0;
-
 	int GetPriority();
 
 	/**

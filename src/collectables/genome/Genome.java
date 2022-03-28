@@ -28,4 +28,6 @@ public abstract class Genome {
 
 	/** returns how many collectables.material.Nucleotide is needed to create the collectables.agent.Agent*/
 	public abstract int getNucleoCost();
+
+	public abstract String GetName();
 }

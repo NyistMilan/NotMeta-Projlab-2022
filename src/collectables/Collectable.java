@@ -36,4 +36,6 @@ public interface Collectable {
 
 	/** Removes the effect of the collectables.Collectable from the field.virologist.Virologist*/
 	void Remove(Virologist v);
+
+	String GetName();
 }
