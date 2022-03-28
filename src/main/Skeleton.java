@@ -520,7 +520,7 @@ public class Skeleton {
         v.ListCollectables();
     }
     /**
-     * 5.4.8 Communication diagram
+     * 5.4.9 Communication diagram
      *  This test-case represent the Drop Materials call on the Virologist.
      *  The Virologist drops materials to a Normal Field.
      */
@@ -537,7 +537,7 @@ public class Skeleton {
         v.DropCollectable(aminoList);
     }
     /**
-     * 5.4.9 Communication diagram
+     * 5.4.10 Communication diagram
      *  This test-case represent the Drop Sack call on the Virologist.
      *  The Virologist drops its sack to a Normal Field,
      *  and there is no additional collectable in the extra capacity caused by the sack.
@@ -556,7 +556,7 @@ public class Skeleton {
     }
 
     /**
-     * 5.4.9 Communication diagram
+     * 5.4.11 Communication diagram
      *  This test-case represent the Drop Sack call on the Virologist.
      *  The Virologist drops its sack to a Normal Field,
      *  and there is  additional collectable in the extra capacity caused by the sack,
@@ -581,14 +581,27 @@ public class Skeleton {
         }
         v.DropCollectable(sackList);
     }
+
+    /**
+     * 5.3.12 Communication diagram
+     *  This test-case represent the Learn call on the Virologist.
+     *  The Virologist stands on a Laboratory, and learns the Genome of it.
+     */
     public static void learn(){
-        Field f1 = new Normal();
+        Field f1 = new Laboratory(new GenomeChorea());
         Virologist v = new Virologist();
         v.GetRoute().Add(f1);
         v.SetLearnBehavior(new Learn());
         v.SetState(State.BEFORE_ACTION);
         v.Learn();
     }
+
+    /**
+     * 5.3.13 Communication diagram
+     *  This test-case represent the CreateAgent call on the Virologist.
+     *  The Virologist create an Agent from a known Genome, the number
+     *  of the amino-acids and nucleotides decreases in the Virologist's backpack.
+     */
     public static void createAgent(){
         Virologist v = new Virologist();
         for(int i = 0; i<4; i++){
@@ -599,15 +612,30 @@ public class Skeleton {
         v.CreateAgent(new GenomeProtection());
 
     }
+
+    /**
+     * 5.3.14 Communication diagram
+     *  This test-case represent the CreateAgent call on the Virologist.
+     *  The Virologist create an Agent from a known Genome, but he has
+     *  fewer materials, than needed to create the Agent
+     */
     public static  void createAgentWithNotEnoughMaterial(){
         Virologist v = new Virologist();
         v.SetState(State.BEFORE_ACTION);
         v.CreateAgent(new GenomeProtection());
     }
+
+    /**
+     * 5.3.15 Communication diagram
+     *  This test-case represent the Steal call on the Virologist.
+     *  The Virologist steal equipment from another Virologist, who can't
+     *  prevent us from doing it
+     */
     public static void steal(){
         Virologist v1 = new Virologist();
         Virologist v2 = new Virologist();
-
+        v1.SetState(State.BEFORE_ACTION);
+        v2.SetState(State.NOT_IN_TURN);
         v2.SetGetStolenBehavior(new GetStolen());
         Cloak cloak = new Cloak();
         v2.GetBackpack().Add(cloak);
@@ -615,6 +643,14 @@ public class Skeleton {
         v1.Steal(v2,cloakList);
 
     }
+
+    /**
+     * 5.3.16 Communication diagram
+     *  This test-case represent the Infect call on the Virologist.
+     *  The Virologist infect another Virologist with Oblivion,
+     *  the other Virologist doesn't have protection or something else
+     *  to avoid the infection, so the infection has effect on him.
+     */
     public static void infectWithOblivion(){
         Virologist v1 = new Virologist();
         v1.SetState(State.BEFORE_ACTION);
@@ -625,6 +661,14 @@ public class Skeleton {
         v1.Infect(v2,oblivion);
 
     }
+
+    /**
+     * 5.3.17 Communication diagram
+     *  This test-case represent the Infect call on the Virologist.
+     *  The Virologist infect another Virologist with Chorea,
+     *  the other Virologist can't avoid the infection,
+     *  so the infection has effect on him.
+     */
     public static void infectWithChorea(){
         Virologist v1 = new Virologist();
         v1.SetState(State.BEFORE_ACTION);
@@ -634,6 +678,14 @@ public class Skeleton {
         v1.GetBackpack().Add(chorea);
         v1.Infect(v2,chorea);
     }
+
+    /**
+     * 5.3.18 Communication diagram
+     *  This test-case represent the Infect call on the Virologist.
+     *  The Virologist infect another Virologist with Protection,
+     *  the other Virologist can't avoid the infection,
+     *  so the infection has effect on him.
+     */
     public static void infectWithProtection(){
         Virologist v1 = new Virologist();
         v1.SetState(State.BEFORE_ACTION);
@@ -643,6 +695,14 @@ public class Skeleton {
         v1.GetBackpack().Add(protection);
         v1.Infect(v2,protection);
     }
+
+    /**
+     * 5.3.19 Communication diagram
+     *  This test-case represent the Infect call on the Virologist.
+     *  The Virologist infect another Virologist with Paralysis,
+     *  the other Virologist can't avoid the infection,
+     *  so the infection has effect on him.
+     */
     public static void infectWithParalysis(){
         Virologist v1 = new Virologist();
         v1.SetState(State.BEFORE_ACTION);
@@ -652,6 +712,14 @@ public class Skeleton {
         v1.GetBackpack().Add(paralysis);
         v1.Infect(v2,paralysis);
     }
+
+    /**
+     * 5.3.20 Communication diagram
+     *  This test-case represent the Infect call on the Virologist.
+     *  The Virologist infect another Virologist,
+     *  but the other one has an applied protection agent, so the infection has no effect on him,
+     *  and it isn't modify the behaviors of the other Virologist
+     */
     public static void infectProtectedVirologist(){
         Virologist v1 = new Virologist();
         v1.SetState(State.BEFORE_ACTION);
@@ -662,6 +730,13 @@ public class Skeleton {
         v1.GetBackpack().Add(paralysis);
         v1.Infect(v2,paralysis);
     }
+
+    /**
+     * 5.3.21 Communication diagram
+     *  This test-case represent the Infect call on the Virologist.
+     *  The Virologist infect another Virologist,
+     *  but the other one has a Cloak, so the infection has only sometimes effect on him
+     */
     public static void infectVirologistWithCloak(){
         Virologist v1 = new Virologist();
         v1.SetState(State.BEFORE_ACTION);
@@ -672,6 +747,13 @@ public class Skeleton {
         v1.GetBackpack().Add(paralysis);
         v1.Infect(v2,paralysis);
     }
+
+    /**
+     * 5.3.22 Communication diagram
+     *  This test-case represent the Infect call on the Virologist.
+     *  The Virologist infect another Virologist,
+     *  but the other one has Gloves, so the infection has no effect on him
+     */
     public static void infectVirologistWithGloves(){
         Virologist v1 = new Virologist();
         v1.SetState(State.BEFORE_ACTION);
@@ -682,6 +764,16 @@ public class Skeleton {
         v1.GetBackpack().Add(paralysis);
         v1.Infect(v2,paralysis);
     }
+
+    /**
+     * 5.3.23 Communication diagram
+     *  This test-case represent the Infect call on the Virologist.
+     *  The Virologist infect another Virologist,
+     *  but the other one has Gloves and me have Gloves as well.
+     *  This test-case shows that there is no loop caused by the two glowes.
+     *  The other virologist can prevent the infection, but we can't.
+     *  So the infection has effect on our Virologist.
+     */
     public static void infectVirologistWithGlovesAndYouHaveGlovesToo(){
         Virologist v1 = new Virologist();
         v1.SetState(State.BEFORE_ACTION);
@@ -694,6 +786,13 @@ public class Skeleton {
         v1.Infect(v2,paralysis);
 
     }
+
+    /**
+     * 5.3.24 Communication diagram
+     *  This test-case represent the End turn call on the Virologist.
+     *  At the end of the turn the virologist decrease the warranties and
+     *  the durations of the agents in his backpack and neither decreased to 0.
+     */
     public static void endTurnAndNoRemove(){
         Virologist v1 = new Virologist();
         Paralysis paralysis = new Paralysis();
@@ -702,12 +801,29 @@ public class Skeleton {
         v1.GetBackpack().AddApplied(chorea);
         v1.EndTurn();
     }
+
+    /**
+     * 5.3.25 Communication diagram
+     *  This test-case represent the End turn call on the Virologist.
+     *  At the end of the turn the virologist decrease the warranties and
+     *  the durations of the agents in his backpack.
+     *  The duration of the applied Oblivion decreased to 0, so we remove it from backpack.
+     */
     public static void endTurnAndRemoveOblivionFromAppliedAgents(){
         Virologist v1 = new Virologist();
         Oblivion oblivion= new Oblivion();
         v1.GetBackpack().AddApplied(oblivion);
         v1.EndTurn();
     }
+
+    /**
+     * 5.3.26 Communication diagram
+     *  This test-case represent the End turn call on the Virologist.
+     *  At the end of the turn the virologist decrease the warranties and
+     *  the durations of the agents in his backpack.
+     *  The duration of the not applied Oblivion decreased to 0,
+     *  so we remove it from backpack.
+     */
     public static void endTurnAndRemoveOblivionFromNotAppliedAgents(){
         Virologist v1 = new Virologist();
         Oblivion oblivion= new Oblivion();

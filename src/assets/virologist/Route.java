@@ -29,6 +29,9 @@ public class Route {
 	public Field GetLocation() {
 		Skeleton.methodCall(this);
 		Skeleton.methodReturn(this);
+		if(fields.isEmpty()){
+			return null;
+		}
 		return fields.get(fields.size()-1);
 	}
 
