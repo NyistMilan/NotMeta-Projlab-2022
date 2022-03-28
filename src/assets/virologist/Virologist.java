@@ -265,6 +265,10 @@ public class Virologist{
 		Skeleton.methodReturn(this);
 		return route;
 	}
+
+	public int GetLearnedGenomes(){
+		return learnedGenomes.size();
+	}
 	
 
 

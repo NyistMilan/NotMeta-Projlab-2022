@@ -367,6 +367,7 @@ public class Skeleton {
      * This test-case represent the move call on the Virologist to a Laboratory field.
      */
     public static void moveToLaboratory(){
+        Controller c = new Controller();
         Field f1 = new Normal();
         Virologist v = new Virologist();
         v.GetRoute().Add(f1);
