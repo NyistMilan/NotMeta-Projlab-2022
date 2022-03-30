@@ -14,6 +14,7 @@ import assets.field.Normal;
 import assets.virologist.Route;
 import assets.virologist.State;
 import assets.virologist.Virologist;
+import collectables.material.Aminoacid;
 
 import java.util.ArrayList;
 
@@ -52,6 +53,7 @@ public class Controller {
 		if(v.GetState()==State.KILLED){
 			virologists.remove(v);
 			v = virologists.get(index);
+
 		}
 		Route r = v.GetRoute();
 		Field f  = r.GetLocation();

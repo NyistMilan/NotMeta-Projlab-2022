@@ -17,6 +17,14 @@ public class Sack extends Equipment {
 	private static int extraInventory = 20;
 	private static String name;
 
+	public Sack(){
+		durability=-1;
+	}
+	@Override
+	public void DecreaseEquipmentDurability() {
+
+	}
+
 	/** Applies the Effect to the field.virologist.Virologist*/
 	public void Apply(Virologist v) {
 		Skeleton.methodCall(this, "v");

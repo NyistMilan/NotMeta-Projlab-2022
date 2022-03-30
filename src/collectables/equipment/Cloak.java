@@ -16,7 +16,15 @@ import main.Skeleton;
 
 /** The collectables.equipment.Cloak protects the field.virologist.Virologist from Agents with a 82.3% chance*/
 public class Cloak extends Equipment {
+	public Cloak(){
+		durability=-1;
+	}
 	private static String name;
+
+	@Override
+	public void DecreaseEquipmentDurability() {
+
+	}
 
 	/** Applies the effect to the field.virologist.Virologist if there is no stronger effect on him*/
 	public void Apply(Virologist v) {

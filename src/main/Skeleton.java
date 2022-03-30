@@ -496,7 +496,8 @@ public class Skeleton {
         ArrayList<Collectable> takeable1 = new ArrayList<>();
         ArrayList<Collectable> takeable2 = new ArrayList<>();
         takeable1.add(sack);
-        takeable2.add(sack);
+        Equipment axe = new Axe();
+        takeable2.add(axe);
         v.PickUpCollectable(takeable1);
         v.SetState(State.BEFORE_ACTION);
         v.PickUpCollectable(takeable2);
@@ -677,7 +678,7 @@ public class Skeleton {
         v1.SetState(State.BEFORE_ACTION);
         Virologist v2 = new Virologist();
         v2.SetState(State.NOT_IN_TURN);
-        v2.SetGetInfectedBehavior(new InfectBack());
+        v2.SetGetInfectedBehavior(new InfectBack(new Gloves()));
         Paralysis paralysis = new Paralysis();
         v1.GetBackpack().Add(paralysis);
         v1.Infect(v2,paralysis);
@@ -687,8 +688,8 @@ public class Skeleton {
         v1.SetState(State.BEFORE_ACTION);
         Virologist v2 = new Virologist();
         v2.SetState(State.NOT_IN_TURN);
-        v1.SetGetInfectedBehavior(new InfectBack());
-        v2.SetGetInfectedBehavior(new InfectBack());
+        v1.SetGetInfectedBehavior(new InfectBack(new Gloves()));
+        v2.SetGetInfectedBehavior(new InfectBack(new Gloves()));
         Paralysis paralysis = new Paralysis();
         v1.GetBackpack().Add(paralysis);
         v1.Infect(v2,paralysis);

@@ -21,6 +21,14 @@ import main.Skeleton;
  * or another field.virologist.Virologist steal them from him
  * */
 public abstract class Equipment implements Collectable {
+
+	protected int durability;
+
+	public abstract void DecreaseEquipmentDurability();
+
+	public int GetDurability(){
+		return durability;
+	}
 	/** Applies its effect to a field.virologist.Virologist*/
 	public abstract void Apply(Virologist v);
 

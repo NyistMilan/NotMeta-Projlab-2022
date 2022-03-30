@@ -173,12 +173,10 @@ public class VirologistBackpack extends Backpack {
 		return capacity;
 	}
 
-	/** Haho javits ki
-	 * Sets the capacity of the field.Backpack to a given value. If there are more materials in the field.Backpack
-	 * then the amount it can store, it removes the extra materials
-	 * @param capacity the new capacity
+	/**
+	 * Extends the capacity with a given value.
+	 * @param addition the new capacity
 	 */
-
 	public void increaseCapacity(int addition){
 		Skeleton.methodCall(this, "addition");
 		capacity=+addition;
@@ -186,6 +184,11 @@ public class VirologistBackpack extends Backpack {
 		Skeleton.methodReturn(this);
 	}
 
+	/**
+	 * Decrease the capacity with a given value, whether there is more material then the decreased capacity,
+	 * the extra materials will be dropped to the field.
+	 * @param reduction
+	 */
 	public void decreaseCapacity(int reduction){
 		Skeleton.methodCall(this, "reduction");
 		capacity=capacity-reduction;
@@ -203,4 +206,8 @@ public class VirologistBackpack extends Backpack {
 		Skeleton.methodReturn(this);
 	}
 
+
+	public void checkEquipmentDurability(){
+		equipments.removeIf(eq -> eq.GetDurability() == 0);
+	}
 }

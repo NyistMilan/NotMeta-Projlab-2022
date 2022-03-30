@@ -26,7 +26,7 @@ public abstract class Field {
 
 	protected Backpack backpack;
 
-	/** Retruns the neighbour in the given direction*/
+	/** Returns the neighbour in the given direction*/
 	public Field GetNeighbour(int d) {
 		Skeleton.methodCall(this, "d");
 		Field f = neighbours.get(d-1);
@@ -92,5 +92,12 @@ public abstract class Field {
 		return backpack;
 	}
 
+	public ArrayList<Virologist> GetVirologists() {
+		return virologists;
+	}
+
 	abstract public Genome GetGenome();
+	public void DestroyMaterials(){
+
+	}
 }

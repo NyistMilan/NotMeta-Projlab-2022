@@ -14,6 +14,8 @@ import assets.virologist.behavior.dropbehavior.*;
 import assets.virologist.behavior.getinfectedbehavior.*;
 import assets.virologist.behavior.getstolenbehavior.*;
 import assets.virologist.behavior.infectbehavior.*;
+import assets.virologist.behavior.killbehavior.KillBehavior;
+import assets.virologist.behavior.killbehavior.NotKill;
 import assets.virologist.behavior.learnbehavior.*;
 import assets.virologist.behavior.movebehavior.*;
 import assets.virologist.behavior.pickupbehavior.*;
@@ -74,6 +76,8 @@ public class Virologist{
 	private InfectBehavior infectBehavior;
 
 	private GetInfectedBehavior getInfectedBehavior;
+
+	private KillBehavior killBehavior;
 
 	public VirologistBackpack GetBackpack(){
 		Skeleton.methodCall(this);
@@ -180,6 +184,15 @@ public class Virologist{
 	}
 
 	/**
+	 * TODO
+	 * @param v
+	 */
+	public void KillVirologist(Virologist v){
+		Skeleton.methodCall(this,"v");
+		killBehavior.Kill(this,v);
+		Skeleton.methodReturn(this);
+	}
+	/**
 	 * The field.virologist.Virologist Ends his turn. The warranty of all of his Agents will be decreased,
 	 * as well as the durations of his applied Agents.
 	 * */
@@ -217,7 +230,9 @@ public class Virologist{
 		SetCreateBehavior(new Create());
 		SetInfectBehavior(new Infect());
 		SetGetInfectedBehavior(new GetInfected());
+		SetKillBehavior(new NotKill());
 		Skeleton.methodReturn(this);
+
 	}
 
 	/**
@@ -333,6 +348,12 @@ public class Virologist{
 		Skeleton.methodCall(this);
 		Skeleton.methodReturn(this);
 		return this.getInfectedBehavior;
+	}
+
+	public void SetKillBehavior(KillBehavior k) {
+		Skeleton.methodCall(this, "k");
+		killBehavior = k;
+		Skeleton.methodReturn(this);
 	}
 
 	/** I'm not sure we need this one*/
