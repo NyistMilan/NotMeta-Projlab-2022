@@ -15,6 +15,8 @@ import main.Skeleton;
 public class GetInfected implements GetInfectedBehavior {
     @Override
     public int GetPriority() {
+        Skeleton.methodCall(this);
+        Skeleton.methodReturn(this);
         return 0;
     }
 
@@ -26,7 +28,7 @@ public class GetInfected implements GetInfectedBehavior {
      * @param a the Agents v1 wants to infect v2 with
      */
     @Override
-    public void GetInfected(Virologist v1, Virologist v2, Agent a) {
+    public void getInfected(Virologist v1, Virologist v2, Agent a) {
         Skeleton.methodCall(this, "v1", "v2", "a");
         a.Apply(v2);
         v2.GetBackpack().AddApplied(a);

@@ -15,6 +15,7 @@ import main.Skeleton;
 
 /** The collectables.material.Materials are the things that the Agents are made of*/
 public abstract class Materials implements Collectable {
+
     /** Nothing happens*/
     @Override
     public void Apply(Virologist v) {
@@ -28,4 +29,6 @@ public abstract class Materials implements Collectable {
         Skeleton.methodCall(this, "v");
         Skeleton.methodReturn(this);
     }
+
+    public abstract String GetName();
 }

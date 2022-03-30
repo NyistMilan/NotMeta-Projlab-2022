@@ -26,7 +26,7 @@ public class Steal implements StealBehavior {
      * @param c the Collectables v1 wants to steal
      */
     @Override
-    public void Steal(Virologist v1, Virologist v2, ArrayList<Collectable> c) {
+    public void StealFromVirologist(Virologist v1, Virologist v2, ArrayList<Collectable> c) {
         Skeleton.methodCall(this, "v1", "v2", "c");
         boolean isStolen = v2.GetStolenFrom(c);
         if(isStolen){

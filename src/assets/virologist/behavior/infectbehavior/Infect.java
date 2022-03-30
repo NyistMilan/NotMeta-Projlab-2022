@@ -22,7 +22,7 @@ public class Infect implements InfectBehavior {
      * @param a the Agents v1 wants to infect v2 with
      */
     @Override
-    public void Infect(Virologist v1, Virologist v2, Agent a) {
+    public void InfectVirologist(Virologist v1, Virologist v2, Agent a) {
         Skeleton.methodCall(this, "v1", "v2", "a");
         v1.GetBackpack().Remove(a);
         v2.GetInfected(v1, a);

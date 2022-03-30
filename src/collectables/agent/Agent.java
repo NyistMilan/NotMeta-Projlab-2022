@@ -14,28 +14,47 @@ import main.Skeleton;
 import assets.virologist.Virologist;
 import assets.*;
 
-/** A field.virologist.Virologist can use an collectables.agent.Agent to infect another field.virologist.Virologist (or himself).*/
+/** A field.virologist.Virologist can use a collectables.agent.Agent to infect another field.virologist.Virologist (or himself).*/
 public abstract class Agent implements Collectable {
-	/** The number of turns a field.virologist.Virologist can store the collectables.agent.Agent in his field.Backpack.*/
-	protected int warranty;
 
-	/** The number of turns an collectables.agent.Agent stays active on an infected field.virologist.Virologist*/
-	protected int duration;
+	/**
+	 * Gets the duration of the collectables.agent.Agent
+	 * @return the duration
+	 */
+	public abstract int getDuration();
+
+	/**
+	 * Sets the duration of the collectables.agent.Agent
+	 * @param duration the duration
+	 */
+	public abstract void setDuration(int duration);
+
+	/**
+	 * Gets the warranty of the collectables.agent.Agent
+	 * @return the warranty
+	 */
+	public abstract int getWarranty();
+
+	/**
+	 * Sets the warranty of the collectables.agent.Agent
+	 * @param warranty the warranty
+	 */
+	public abstract void setWarranty(int warranty);
 
 	public int DecreaseWarranty() {
 		Skeleton.methodCall(this);
-		warranty--;
-		Skeleton.printWithIndent("Warranty:" + warranty);
+		setWarranty(getWarranty() - 1);
+		Skeleton.printWithIndent("Warranty:" + getWarranty());
 		Skeleton.methodReturn(this);
-		return warranty;
+		return getWarranty();
 	}
 
 	public int DecreaseDuration() {
 		Skeleton.methodCall(this);
-		duration--;
-		Skeleton.printWithIndent("Duration:" + duration);
+		setDuration(getDuration() - 1);
+		Skeleton.printWithIndent("Duration:" + getDuration());
 		Skeleton.methodReturn(this);
-		return duration;
+		return getDuration();
 	}
 	
 	/**
@@ -83,4 +102,6 @@ public abstract class Agent implements Collectable {
 		v.GetBackpack().Remove(this);
 		Skeleton.methodReturn(this);
 	}
+
+	public abstract String GetName();
 }

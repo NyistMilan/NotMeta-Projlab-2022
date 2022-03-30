@@ -81,6 +81,7 @@ public class VirologistBackpack extends Backpack {
 		return false;
 	}
 	/** Adds the created collectables.agent.Agent to the field.Backpack*/
+	@SuppressWarnings("SameReturnValue")
 	public boolean Add(Agent a) {
 		Skeleton.methodCall(this, "a");
 		agents.add(a);
@@ -88,18 +89,11 @@ public class VirologistBackpack extends Backpack {
 		return true;
 	}
 	
-	/** Adds the applied Aget to the field.Backpack*/
+	/** Adds the applied Agent to the field.Backpack*/
 	public void AddApplied(Agent a) {
 		Skeleton.methodCall(this, "a");
 		appliedAgents.add(a);
 		Skeleton.methodReturn(this);
-	}
-	
-	/** */
-	public ArrayList<Agent> GetAgents() {
-		Skeleton.methodCall(this);
-		Skeleton.methodReturn(this);
-		return agents;
 	}
 
 	/**
@@ -112,7 +106,7 @@ public class VirologistBackpack extends Backpack {
 		return appliedAgents;
 	}
 	
-	/** Removes an collectables.agent.Agent from the field.Backpack*/
+	/** Removes a collectables.agent.Agent from the field.Backpack*/
 	public void Remove(Agent a) {
 		Skeleton.methodCall(this, "a");
 		agents.remove(a);
@@ -168,10 +162,6 @@ public class VirologistBackpack extends Backpack {
 		Skeleton.methodReturn(this);
 		return false;
 	}
-	/** */
-	public int getCapacity() {
-		return capacity;
-	}
 
 	/**
 	 * Extends the capacity with a given value.
@@ -179,7 +169,7 @@ public class VirologistBackpack extends Backpack {
 	 */
 	public void increaseCapacity(int addition){
 		Skeleton.methodCall(this, "addition");
-		capacity=+addition;
+		capacity += addition;
 		Skeleton.printWithIndent("Extended capacity:"+capacity);
 		Skeleton.methodReturn(this);
 	}
@@ -191,10 +181,10 @@ public class VirologistBackpack extends Backpack {
 	 */
 	public void decreaseCapacity(int reduction){
 		Skeleton.methodCall(this, "reduction");
-		capacity=capacity-reduction;
+		capacity -= reduction;
 		int aminoBonus = aminoacids.size() - capacity;
 		while(aminoBonus > 0){
-			Skeleton.printWithIndent("Aminobonus:"+aminoBonus+"Aminoacids size"+aminoacids.size()+"capacity"+capacity);
+			Skeleton.printWithIndent("AminoBonus:"+aminoBonus+"Aminoacids size"+aminoacids.size()+"capacity"+capacity);
 			Remove(aminoacids.get(aminoacids.size()-1));
 			aminoBonus--;
 		}

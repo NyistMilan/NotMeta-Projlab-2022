@@ -9,7 +9,6 @@ package assets.virologist.behavior.movebehavior;//
 //
 //
 
-import assets.field.Field;
 import assets.virologist.State;
 import assets.virologist.Virologist;
 import main.Skeleton;
@@ -22,15 +21,14 @@ public class NotMove implements MoveBehavior {
     }
 
     /**
-     * Nothing happens.
+     * Nothing happens. The Virologist can not move.
      *
      * @param v the field.virologist.Virologist who tries to move
      * @param d the direction he wants to move
      */
     @Override
-    public void Move(Virologist v, int d) {
+    public void MoveToField(Virologist v, int d) {
         Skeleton.methodCall(this, "v", "d");
-        Field f = v.GetRoute().GetLocation();
         v.SetState(State.BEFORE_ACTION);
         Skeleton.methodReturn(this);
     }

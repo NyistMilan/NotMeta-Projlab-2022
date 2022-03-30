@@ -10,7 +10,6 @@ package assets.field;//
 //
 
 import assets.Backpack;
-import collectables.genome.Genome;
 import main.Skeleton;
 import java.util.ArrayList;
 
@@ -23,10 +22,5 @@ public class Normal extends Field {
 		neighbours = new ArrayList<>();
 		backpack = new Backpack();
 		Skeleton.methodReturn(this);
-	}
-
-	@Override
-	public Genome GetGenome() {
-		return null;
 	}
 }

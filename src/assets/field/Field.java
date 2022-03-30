@@ -37,12 +37,14 @@ public abstract class Field {
 	/** Accepts a field.virologist.Virologist in the field.field.Field. He can not learn here unless it is a field.field.Laboratory(Overwrite)*/
 	public void Accept(Virologist v){
 		Skeleton.methodCall(this, "v");
+		virologists.add(v);
 		v.SetLearnBehavior(new NotLearn());
 		Skeleton.methodReturn(this);
 	}
 
 	public void Remove(Virologist v) {
 		Skeleton.methodCall(this, "v");
+		virologists.remove(v);
 		Skeleton.methodReturn(this);
 	}
 

@@ -39,7 +39,7 @@ public class RandomMove implements MoveBehavior {
      * @param d the direction he wants to move
      */
     @Override
-    public void Move(Virologist v, int d) {
+    public void MoveToField(Virologist v, int d) {
         Skeleton.methodCall(this, "v", "d");
         Field f = v.GetRoute().GetLocation();
         ArrayList<Integer> directions = f.GetDirections();

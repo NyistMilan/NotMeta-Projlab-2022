@@ -22,6 +22,13 @@ import assets.virologist.behavior.dropbehavior.*;
 
 /** The field.virologist.Virologist can not do anything. Other Virologists can steal from him*/
 public class Paralysis extends Agent {
+
+	/** The number of turns a field.virologist.Virologist can store the collectables.agent.Agent in his field.Backpack.*/
+	private static int warranty;
+
+	/** The number of turns a collectables.agent.Agent stays active on an infected field.virologist.Virologist*/
+	private static int duration;
+
 	/** Constructor*/
 	public Paralysis(){
 		warranty = baseWarranty;
@@ -29,9 +36,28 @@ public class Paralysis extends Agent {
 	}
 
 	/** The number of turns the collectables.agent.Agent can be used after its creation*/
-	private static int baseWarranty = 5;
-	private static int effectDuration = 1;
-	private static String name;
+	private static final int baseWarranty = 5;
+	private static final int effectDuration = 1;
+
+	@Override
+	public int getDuration() {
+		return duration;
+	}
+
+	@Override
+	public void setDuration(int duration) {
+		Paralysis.duration = duration;
+	}
+
+	@Override
+	public int getWarranty() {
+		return warranty;
+	}
+
+	@Override
+	public void setWarranty(int warranty) {
+		Paralysis.warranty = warranty;
+	}
 
 	/** Applies the effects on a field.virologist.Virologist*/
 	public void Apply(Virologist v) {
@@ -47,4 +73,7 @@ public class Paralysis extends Agent {
 		v.SetGetStolenBehavior(new GetStolen());
 		Skeleton.methodReturn(this);
 	}
+
+	@Override
+	public String GetName(){ return "Paralysis Agent";}
 }

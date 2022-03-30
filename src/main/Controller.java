@@ -20,29 +20,42 @@ import java.util.ArrayList;
 
 /** Controls the Game and the turns of the players*/
 public class Controller {
-	private ArrayList<Field> map;
-
-	private ArrayList<Virologist> virologists;
+	private static ArrayList<Field> map;
+	private static ArrayList<collectables.genome.Genome>  learnableGenomes;
+	private static ArrayList<Virologist> virologists;
 	/** the next player*/
 	private static int index;
+
+	Controller(){
+		map = new ArrayList<>();
+		learnableGenomes = new ArrayList<>();
+		virologists = new ArrayList<>();
+	}
 	/** */
 	public void Start() {
 		Skeleton.methodCall(this);
-		map = new ArrayList<>();
-		virologists = new ArrayList<>();
 		Field f = new Normal();
 		Virologist v = new Virologist();
 		index = 0;
 		NextPlayer();
 		Skeleton.methodReturn(this);
 	}
-	
-	/** */
-	public static void End() {
-		Skeleton.printWithIndent("GAME OVER!");
+
+	public static void TestWin(Virologist v){
+		if(v.GetLearnedGenomes() == learnableGenomes.size()){
+			End();
+		}
+	}
+
+	public static void AddLearnableGenome(collectables.genome.Genome g){
+		if(!learnableGenomes.contains(g))
+			learnableGenomes.add(g);
 	}
 
 
+	/** */
+	public static void End() {}
+	
 	/** Calls the next player and him in which directions can he move*/
 	public ArrayList<Integer> NextPlayer() {
 

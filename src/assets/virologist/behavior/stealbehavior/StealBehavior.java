@@ -22,5 +22,5 @@ public interface StealBehavior {
 	 * @param v2 the target of the action
 	 * @param c the Collectables v1 wants to steal
 	 */
-	void Steal(Virologist v1, Virologist v2, ArrayList<Collectable> c);
+	void StealFromVirologist(Virologist v1, Virologist v2, ArrayList<Collectable> c);
 }

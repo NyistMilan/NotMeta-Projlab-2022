@@ -18,7 +18,7 @@ public class Nucleotide extends Materials{
      *
      * @param v the field.virologist.Virologist the backpack belongs to(Only used sometimes)
      * @param b the field.Backpack it gets added to
-     * @return true if added successfully, false if cannot be added
+     * @return true if added successfully, false if the Nucleotide cannot be added
      */
     @Override
     public boolean AddToBackpack(Virologist v, Backpack b) {
@@ -40,4 +40,7 @@ public class Nucleotide extends Materials{
         b.Remove(this);
         Skeleton.methodReturn(this);
     }
+
+    @Override
+    public String GetName(){ return "Nucleotide";}
 }

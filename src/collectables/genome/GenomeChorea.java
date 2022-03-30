@@ -14,9 +14,8 @@ import main.Skeleton;
 
 /** The collectables.genome.GenomeChorea is used to create the collectables.agent.Chorea collectables.agent.Agent*/
 public class GenomeChorea extends Genome {
-	private static int aminocost=2;
-	private static int nucleocost=1;
-	private static String name;
+	private static final int aminocost=2;
+	private static final int nucleocost=1;
 
 	/**
 	 * Creates a collectables.agent.Chorea collectables.agent.Agent and puts it into the field.Backpack of the field.virologist.Virologist that created it
@@ -39,4 +38,7 @@ public class GenomeChorea extends Genome {
 	public int getNucleoCost() {
 		return nucleocost;
 	}
+
+	@Override
+	public String GetName(){return "Chorea Genome";}
 }

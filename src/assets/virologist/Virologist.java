@@ -28,7 +28,6 @@ import collectables.equipment.*;
 import main.Skeleton;
 
 import java.util.ArrayList;
-import java.util.Iterator;
 
 /**
  * The field.virologist.Virologist is the avatar that the player controls.
@@ -89,7 +88,7 @@ public class Virologist{
 	public void Move(int d) {
 		Skeleton.methodCall(this, "d");
 		if(this.state == State.BEFORE_MOVE) {
-			moveBehavior.Move(this, d);
+			moveBehavior.MoveToField(this, d);
 		}
 		Skeleton.methodReturn(this);
 	}
@@ -107,7 +106,7 @@ public class Virologist{
 	public void Steal(Virologist v2, ArrayList<Collectable> c) {
 		Skeleton.methodCall(this, "c");
 		if(state == State.BEFORE_ACTION){
-			stealBehavior.Steal(this, v2, c);
+			stealBehavior.StealFromVirologist(this, v2, c);
 		}
 		Skeleton.methodReturn(this);
 	}
@@ -144,7 +143,7 @@ public class Virologist{
 	public void Learn() {
 		Skeleton.methodCall(this);
 		if(state == State.BEFORE_ACTION){
-			learnBehavior.Learn(this);
+			learnBehavior.LearnGenome(this);
 		}
 		Skeleton.methodReturn(this);
 	}
@@ -162,7 +161,7 @@ public class Virologist{
 	public void Infect(Virologist v2, Agent a) {
 		Skeleton.methodCall(this, "v2", "a");
 		if(state == State.BEFORE_ACTION){
-			infectBehavior.Infect(this, v2, a);
+			infectBehavior.InfectVirologist(this, v2, a);
 		}
 		Skeleton.methodReturn(this);
 	}
@@ -174,7 +173,7 @@ public class Virologist{
 	public void GetInfected(Virologist v1, Agent a) {
 		Skeleton.methodCall(this, "v1", "a");
 		if(state == State.NOT_IN_TURN){
-			getInfectedBehavior.GetInfected(v1, this, a);
+			getInfectedBehavior.getInfected(v1, this, a);
 		}
 		else{
 			a.Apply(this);
@@ -281,6 +280,10 @@ public class Virologist{
 		Skeleton.methodReturn(this);
 		return route;
 	}
+
+	public int GetLearnedGenomes(){
+		return learnedGenomes.size();
+	}
 	
 
 
@@ -356,7 +359,8 @@ public class Virologist{
 		Skeleton.methodReturn(this);
 	}
 
-	/** I'm not sure we need this one*/
+	/** I'm not sure if we need this one*/
+
 	public void ListCollectables() {
 		Skeleton.methodCall(this);
 		ArrayList<Equipment> eqList= this.GetBackpack().GetEquipments();

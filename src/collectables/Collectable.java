@@ -19,7 +19,7 @@ public interface Collectable {
 	 *
 	 * @param v the field.virologist.Virologist the backpack belongs to(Only used sometimes)
 	 * @param b the field.Backpack it gets added to
-	 * @return true if added successfully, false if cannot be added
+	 * @return true if added successfully, false if the Collectable cannot be added
 	 */
 	boolean AddToBackpack(Virologist v, Backpack b);
 
@@ -36,4 +36,6 @@ public interface Collectable {
 
 	/** Removes the effect of the collectables.Collectable from the field.virologist.Virologist*/
 	void Remove(Virologist v);
+
+	String GetName();
 }

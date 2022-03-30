@@ -14,7 +14,7 @@ import assets.virologist.behavior.getinfectedbehavior.MaybeInfected;
 import collectables.equipment.Equipment;
 import main.Skeleton;
 
-/** The collectables.equipment.Cloak protects the field.virologist.Virologist from Agents with a 82.3% chance*/
+/** The collectables.equipment.Cloak protects the field.virologist.Virologist from Agents with an 82.3% chance*/
 public class Cloak extends Equipment {
 	public Cloak(){
 		durability=-1;
