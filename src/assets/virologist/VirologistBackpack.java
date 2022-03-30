@@ -164,9 +164,8 @@ public class VirologistBackpack extends Backpack {
 	}
 
 	/**
-	 * Increases the capacity of the Backpack by a given value.
-	 *
-	 * @param addition the value of the increase
+	 * Extends the capacity with a given value.
+	 * @param addition the new capacity
 	 */
 	public void increaseCapacity(int addition){
 		Skeleton.methodCall(this, "addition");
@@ -176,10 +175,9 @@ public class VirologistBackpack extends Backpack {
 	}
 
 	/**
-	 * Decreases the capacity of the Backpack by a given value. If there are more materials in the field.Backpack
-	 * then the amount it can store, it removes the extra materials.
-	 *
-	 * @param reduction the value of the decrease
+	 * Decrease the capacity with a given value, whether there is more material then the decreased capacity,
+	 * the extra materials will be dropped to the field.
+	 * @param reduction
 	 */
 	public void decreaseCapacity(int reduction){
 		Skeleton.methodCall(this, "reduction");
@@ -198,4 +196,8 @@ public class VirologistBackpack extends Backpack {
 		Skeleton.methodReturn(this);
 	}
 
+
+	public void checkEquipmentDurability(){
+		equipments.removeIf(eq -> eq.GetDurability() == 0);
+	}
 }

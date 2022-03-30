@@ -17,11 +17,20 @@ import main.Skeleton;
 /** The collectables.equipment.Gloves protect the field.virologist.Virologist from any collectables.agent.Agent, and it Infects back the field.virologist.Virologist who tris to infect him*/
 public class Gloves extends Equipment {
 
+	public Gloves(){
+		durability=3;
+	}
+
+	@Override
+	public void DecreaseEquipmentDurability() {
+		durability--;
+	}
+
 	/** Applies the effect to the field.virologist.Virologist if there is no stronger effect on him*/
 	public void Apply(Virologist v) {
 		Skeleton.methodCall(this, "v");
 		if(v.GetGetInfectedBehavior().GetPriority() < 3)
-			v.SetGetInfectedBehavior(new InfectBack());
+			v.SetGetInfectedBehavior(new InfectBack(this));
 		Skeleton.methodReturn(this);
 	}
 

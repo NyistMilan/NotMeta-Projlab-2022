@@ -94,7 +94,12 @@ public abstract class Field {
 		return backpack;
 	}
 
-	public Genome GetGenome(){
-		return null;
+	public ArrayList<Virologist> GetVirologists() {
+		return virologists;
+	}
+
+	abstract public Genome GetGenome();
+	public void DestroyMaterials(){
+
 	}
 }

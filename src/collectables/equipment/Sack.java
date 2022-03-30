@@ -16,6 +16,14 @@ import assets.virologist.Virologist;
 public class Sack extends Equipment {
 	private static final int extraInventory = 20;
 
+	public Sack(){
+		durability=-1;
+	}
+	@Override
+	public void DecreaseEquipmentDurability() {
+
+	}
+
 	/** Applies the Effect to the field.virologist.Virologist*/
 	public void Apply(Virologist v) {
 		Skeleton.methodCall(this, "v");

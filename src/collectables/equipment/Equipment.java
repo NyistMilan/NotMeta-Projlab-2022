@@ -22,6 +22,14 @@ import main.Skeleton;
  * */
 @SuppressWarnings("GrazieInspection")
 public abstract class Equipment implements Collectable {
+
+	protected int durability;
+
+	public abstract void DecreaseEquipmentDurability();
+
+	public int GetDurability(){
+		return durability;
+	}
 	/** Applies its effect to a field.virologist.Virologist*/
 	public abstract void Apply(Virologist v);
 
