@@ -90,7 +90,7 @@ public abstract class Field {
 		return directions;
 	}
 
-	public Backpack getBackpack() {
+	public Backpack GetBackpack() {
 		return backpack;
 	}
 

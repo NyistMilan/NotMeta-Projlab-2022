@@ -1,5 +1,6 @@
 package main;
 
+import java.io.FileInputStream;
 import java.util.ArrayList;
 import java.util.Scanner;
 import assets.virologist.behavior.dropbehavior.*;
@@ -13,10 +14,7 @@ import assets.field.*;
 import assets.virologist.*;
 import assets.virologist.behavior.pickupbehavior.PickUp;
 import collectables.Collectable;
-import collectables.agent.Chorea;
-import collectables.agent.Oblivion;
-import collectables.agent.Paralysis;
-import collectables.agent.Protection;
+import collectables.agent.*;
 import collectables.genome.*;
 import collectables.equipment.*;
 import collectables.material.Aminoacid;
@@ -47,7 +45,8 @@ public class Skeleton {
             "10. Infect With...",
             "11. Infect Virologist that has...",
             "12. End Turn and...",
-            "13. Exit This Program"
+            "13. Test BearInfection with gloves",
+            "14. Exit This Program"
     };
     /**When the user enters 4. for the main option, and decides that his/her bag is not full, these sub-options pop up.*/
     private final String[] takeEquipmentOptions = {
@@ -229,7 +228,7 @@ public class Skeleton {
         while(true){
             System.out.println();
             printList(menu);
-            int input = askForInput("Input a number", 1, 13);
+            int input = askForInput("Input a number", 1, 14);
             System.out.println("\n" + menu[input - 1]);
             switch(input){
                 case 1:
@@ -341,6 +340,9 @@ public class Skeleton {
                     }
                     break;
                 case 13:
+                    bearTestwithgloves();
+                    break;
+                case 14:
                     return false;
             }
         }
@@ -354,7 +356,6 @@ public class Skeleton {
         Field f1 = new Normal();
         Virologist v = new Virologist();
         v.SetState(State.BEFORE_MOVE);
-        v.SetMoveBehavior(new Move());
         v.GetRoute().Add(f1);
         Field f2 = new Normal();
         f1.SetNeighbour(f2);
@@ -407,7 +408,7 @@ public class Skeleton {
         Virologist v = new Virologist();
         Equipment sack = new Sack();
         Field f = new Normal();
-        f.getBackpack().Add(sack);
+        f.GetBackpack().Add(sack);
         v.GetRoute().Add(f);
         v.SetState(State.BEFORE_ACTION);
         v.SetPickUpBehavior(new PickUp());
@@ -426,7 +427,7 @@ public class Skeleton {
         Virologist v = new Virologist();
         Equipment cloak = new Cloak();
         Field f = new Normal();
-        f.getBackpack().Add(cloak);
+        f.GetBackpack().Add(cloak);
         v.GetRoute().Add(f);
         v.SetState(State.BEFORE_ACTION);
         v.SetPickUpBehavior(new PickUp());
@@ -443,9 +444,9 @@ public class Skeleton {
      */
     public static void takeGloves(){
         Virologist v = new Virologist();
-        Equipment gloves = new Gloves();
         Field f = new Normal();
-        f.getBackpack().Add(gloves);
+        Equipment gloves = new Gloves();
+        f.GetBackpack().Add(gloves);
         v.GetRoute().Add(f);
         v.SetState(State.BEFORE_ACTION);
         v.SetPickUpBehavior(new PickUp());
@@ -465,8 +466,8 @@ public class Skeleton {
         Aminoacid aminoToTake1 = new Aminoacid();
         Aminoacid aminoToTake2 = new Aminoacid();
         Field f = new Normal();
-        f.getBackpack().Add(aminoToTake1);
-        f.getBackpack().Add(aminoToTake2);
+        f.GetBackpack().Add(aminoToTake1);
+        f.GetBackpack().Add(aminoToTake2);
 
         for(int i = 0; i<4; i++){
             v.GetBackpack().Add(new Aminoacid());
@@ -490,7 +491,7 @@ public class Skeleton {
         Virologist v = new Virologist();
         Equipment sack = new Sack();
         Field f = new Normal();
-        f.getBackpack().Add(sack);
+        f.GetBackpack().Add(sack);
         v.GetRoute().Add(f);
         v.SetState(State.BEFORE_ACTION);
         v.SetPickUpBehavior(new PickUp());
@@ -503,7 +504,7 @@ public class Skeleton {
         v.SetState(State.BEFORE_ACTION);
         v.PickUpCollectable(takeable2);
         Equipment cloak = new Cloak();
-        f.getBackpack().Add(cloak);
+        f.GetBackpack().Add(cloak);
         ArrayList<Collectable> takeable3 = new ArrayList<>();
         takeable3.add(cloak);
         v.SetState(State.BEFORE_ACTION);
@@ -511,7 +512,7 @@ public class Skeleton {
         v.ListCollectables();
         v.GetRoute().Add(f);
         Equipment gloves = new Gloves();
-        f.getBackpack().Add(gloves);
+        f.GetBackpack().Add(gloves);
 
         v.SetPickUpBehavior(new PickUp());
 
@@ -568,7 +569,7 @@ public class Skeleton {
         Virologist v = new Virologist();
         Equipment sack = new Sack();
         Field f = new Normal();
-        f.getBackpack().Add(sack);
+        f.GetBackpack().Add(sack);
         v.GetRoute().Add(f);
         v.SetState(State.BEFORE_ACTION);
         v.SetPickUpBehavior(new PickUp());
@@ -842,5 +843,26 @@ public class Skeleton {
         for(int i = 0; i < 5; i++){
             v1.EndTurn();
         }
+    }
+
+    public static void bearTestwithgloves(){
+        Virologist v1 = new Virologist();
+        Field f1 = new Normal();
+        Equipment gloves = new Gloves();
+        f1.GetBackpack().Add(gloves);
+        v1.GetRoute().Add(f1);
+        v1.SetState(State.BEFORE_ACTION);
+        v1.SetPickUpBehavior(new PickUp());
+        ArrayList<Collectable> takeable = new ArrayList<>();
+        takeable.add(gloves);
+        v1.PickUpCollectable(takeable);
+        v1.ListCollectables();
+
+        Field f2 = new BearLaboratory();
+        f1.SetNeighbour(f2);
+        f2.SetNeighbour(f1);
+        v1.Move(1);
+
+
     }
 }

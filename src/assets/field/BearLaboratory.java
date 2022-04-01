@@ -1,5 +1,6 @@
 package assets.field;
 
+import assets.Backpack;
 import assets.virologist.Virologist;
 import assets.virologist.behavior.learnbehavior.Learn;
 import assets.virologist.behavior.movebehavior.BearMove;
@@ -7,14 +8,16 @@ import collectables.agent.Bear;
 import collectables.genome.Genome;
 import main.Skeleton;
 
-public class BearLaboratory extends Laboratory{
-    /**
-     * Constructor
-     *
-     * @param g
-     */
-    public BearLaboratory(Genome g) {
-        super(g);
+import java.util.ArrayList;
+
+public class BearLaboratory extends Field{
+
+    public BearLaboratory(){
+        Skeleton.methodCall(this);
+        virologists = new ArrayList<>();
+        neighbours = new ArrayList<>();
+        backpack = new Backpack();
+        Skeleton.methodReturn(this);
     }
 
     @Override
@@ -23,5 +26,10 @@ public class BearLaboratory extends Laboratory{
         Skeleton.methodCall(this, "v");
         v.GetInfected(v,new Bear());
         Skeleton.methodReturn(this);
+    }
+
+    @Override
+    public Genome GetGenome() {
+        return null;
     }
 }

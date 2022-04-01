@@ -13,6 +13,7 @@ import assets.Backpack;
 
 import java.util.ArrayList;
 
+import collectables.genome.Genome;
 import main.Skeleton;
 /** At the start of the game collectables.material.Materials are placed in the WarHouses*/
 public class WareHouse extends Field {
@@ -31,7 +32,9 @@ public class WareHouse extends Field {
 
 	@Override
 	public void DestroyMaterials(){
+		Skeleton.methodCall(this);
 		backpack.GetAminos().clear();
 		backpack.GetNucleotide().clear();
+		Skeleton.methodReturn(this);
 	}
 }

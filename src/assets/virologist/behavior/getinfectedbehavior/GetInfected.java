@@ -30,6 +30,9 @@ public class GetInfected implements GetInfectedBehavior {
     @Override
     public void getInfected(Virologist v1, Virologist v2, Agent a) {
         Skeleton.methodCall(this, "v1", "v2", "a");
+        if(v1==v2){
+            return;
+        }
         a.Apply(v2);
         v2.GetBackpack().AddApplied(a);
         Skeleton.methodReturn(this);
