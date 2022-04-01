@@ -846,6 +846,7 @@ public class Skeleton {
     }
 
     public static void bearTestwithgloves(){
+        Controller c = new Controller();
         Virologist v1 = new Virologist();
         Field f1 = new Normal();
         Equipment gloves = new Gloves();
@@ -858,7 +859,7 @@ public class Skeleton {
         v1.PickUpCollectable(takeable);
         v1.ListCollectables();
 
-        Field f2 = new BearLaboratory();
+        Field f2 = new BearLaboratory(new GenomeProtection());
         f1.SetNeighbour(f2);
         f2.SetNeighbour(f1);
         v1.Move(1);

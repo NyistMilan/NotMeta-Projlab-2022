@@ -196,7 +196,9 @@ public class VirologistBackpack extends Backpack {
 		Skeleton.methodReturn(this);
 	}
 
-
+	/**
+	 * Remove equipments with 0 durability.
+	 */
 	public void checkEquipmentDurability(){
 		equipments.removeIf(eq -> eq.GetDurability() == 0);
 	}
