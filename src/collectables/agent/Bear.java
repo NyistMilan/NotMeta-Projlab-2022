@@ -7,7 +7,7 @@ import main.Skeleton;
 public class Bear extends Agent {
     @Override
     public int getDuration() {
-        return 0;
+        return -1;
     }
 
     @Override
@@ -17,7 +17,7 @@ public class Bear extends Agent {
 
     @Override
     public int getWarranty() {
-        return 0;
+        return -1;
     }
 
     @Override
