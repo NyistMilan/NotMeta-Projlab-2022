@@ -172,12 +172,13 @@ public class Virologist{
 	 * */
 	public void GetInfected(Virologist v1, Agent a) {
 		Skeleton.methodCall(this, "v1", "a");
-		if(state == State.NOT_IN_TURN){
+		if(state ==State.NOT_IN_TURN || state == State.BEFORE_ACTION){
 			getInfectedBehavior.getInfected(v1, this, a);
 		}
-		else{
+		else {
 			a.Apply(this);
 			backPack.AddApplied(a);
+
 		}
 		Skeleton.methodReturn(this);
 	}

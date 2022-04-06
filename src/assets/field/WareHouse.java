@@ -33,7 +33,9 @@ public class WareHouse extends Field {
 
 	@Override
 	public void DestroyMaterials(){
+		Skeleton.methodCall(this);
 		backpack.GetAminos().clear();
 		backpack.GetNucleotide().clear();
+		Skeleton.methodReturn(this);
 	}
 }

@@ -2,7 +2,6 @@ package collectables.agent;
 
 import assets.virologist.Virologist;
 import assets.virologist.behavior.movebehavior.BearMove;
-import assets.virologist.behavior.movebehavior.RandomMove;
 import main.Skeleton;
 
 public class Bear extends Agent {

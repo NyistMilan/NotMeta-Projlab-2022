@@ -42,6 +42,7 @@ public class BearMove implements MoveBehavior{
             vOnField.GetInfected(v,new Bear());
         }
         v.GetRoute().Add(f2);
+        v.SetState(State.BEFORE_ACTION);
         Skeleton.methodReturn(this);
     }
 }

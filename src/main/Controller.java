@@ -14,6 +14,7 @@ import assets.field.Normal;
 import assets.virologist.Route;
 import assets.virologist.State;
 import assets.virologist.Virologist;
+import collectables.genome.Genome;
 import collectables.material.Aminoacid;
 
 import java.util.ArrayList;
@@ -47,9 +48,12 @@ public class Controller {
 		}
 	}
 
-	public static void AddLearnableGenome(collectables.genome.Genome g){
-		if(!learnableGenomes.contains(g))
-			learnableGenomes.add(g);
+	public static void AddLearnableGenome(Genome g){
+
+			if(!learnableGenomes.contains(g))
+				learnableGenomes.add(g);
+
+
 	}
 
 

@@ -1,13 +1,19 @@
 package assets.field;
 
+import assets.Backpack;
 import assets.virologist.Virologist;
 import assets.virologist.behavior.learnbehavior.Learn;
 import assets.virologist.behavior.movebehavior.BearMove;
 import collectables.agent.Bear;
 import collectables.genome.Genome;
+import collectables.genome.GenomeProtection;
 import main.Skeleton;
 
+import java.util.ArrayList;
+
 public class BearLaboratory extends Laboratory{
+
+
     /**
      * Constructor
      *
@@ -22,6 +28,12 @@ public class BearLaboratory extends Laboratory{
     public void Accept(Virologist v) {
         Skeleton.methodCall(this, "v");
         v.GetInfected(v,new Bear());
+        virologists.add(v);
         Skeleton.methodReturn(this);
+    }
+
+    @Override
+    public Genome GetGenome() {
+        return null;
     }
 }
