@@ -36,6 +36,8 @@ import java.util.ArrayList;
  * */
 public class Virologist{
 
+
+
 	/** Constructor, creates the attributes of the field.virologist.Virologist and sets his field.virologist.behaviors to the default value*/
 	public Virologist(){
 		Skeleton.methodCall(this);
@@ -83,7 +85,6 @@ public class Virologist{
 		Skeleton.methodReturn(this);
 		return backPack;
 	}
-
 	/** If the field.virologist.Virologist didn't move yet in his turn he calls his MoveBehavior*/
 	public void Move(int d) {
 		Skeleton.methodCall(this, "d");
@@ -92,7 +93,6 @@ public class Virologist{
 		}
 		Skeleton.methodReturn(this);
 	}
-
 	/** If the field.virologist.Virologist didn't do action in his turn he calls his PickUpBehavior*/
 	public void PickUpCollectable(ArrayList<Collectable> c) {
 		Skeleton.methodCall(this, "c");
@@ -118,7 +118,7 @@ public class Virologist{
 		Skeleton.methodReturn(this);
 		return result;
 	}
-
+	//TODO
 	/**
 	 * If the field.virologist.Virologist is in turn, and he moved he calls his DropBehavior.
 	 * If he is not in turn he just drops the items
@@ -138,7 +138,6 @@ public class Virologist{
 		}
 		Skeleton.methodReturn(this);
 	}
-
 	/** If the field.virologist.Virologist didn't do action in his turn he calls his LearnBehavior*/
 	public void Learn() {
 		Skeleton.methodCall(this);
@@ -184,7 +183,6 @@ public class Virologist{
 	}
 
 	/**
-	 * TODO
 	 * @param v
 	 */
 	public void KillVirologist(Virologist v){
@@ -202,7 +200,7 @@ public class Virologist{
 		SetState(State.NOT_IN_TURN);
 		Skeleton.methodReturn(this);
 	}
-
+	//TODO
 	/** Sets all the effects to default. Then applies the effects of all collectables.equipment.Equipment and applies collectables.agent.Agent*/
 	public void RefreshEffects() {
 		Skeleton.methodCall(this);
@@ -218,6 +216,7 @@ public class Virologist{
 		Skeleton.methodReturn(this);
 	}
 
+	//TODO
 	/** Sets the field.virologist.behaviors to the default value*/
 	public void DefaultBehaviors(){
 		Skeleton.methodCall(this);
@@ -232,9 +231,9 @@ public class Virologist{
 		SetGetInfectedBehavior(new GetInfected());
 		SetKillBehavior(new NotKill());
 		Skeleton.methodReturn(this);
-
 	}
 
+	//TODO
 	/**
 	 * Adds a collectables.genome.Genome to learnedGenomes if it wasn't learned yet
 	 *
@@ -251,6 +250,7 @@ public class Virologist{
 		return true;
 	}
 
+	//TODO
 	/** Forgets all known genomes*/
 	public void ForgetGenome() {
 		Skeleton.methodCall(this);
@@ -282,6 +282,7 @@ public class Virologist{
 		return route;
 	}
 
+	//TODO
 	public int GetLearnedGenomes(){
 		return learnedGenomes.size();
 	}
@@ -362,6 +363,7 @@ public class Virologist{
 
 	/** I'm not sure if we need this one*/
 
+	//TODO
 	public void ListCollectables() {
 		Skeleton.methodCall(this);
 		ArrayList<Equipment> eqList= this.GetBackpack().GetEquipments();
@@ -369,7 +371,6 @@ public class Virologist{
 		for(int i=0; i< eqList.size(); i++){
 			Skeleton.printWithIndent("\t-"+eqList.get(i).GetName());
 		}
-
 		Skeleton.methodReturn(this);
 	}
 

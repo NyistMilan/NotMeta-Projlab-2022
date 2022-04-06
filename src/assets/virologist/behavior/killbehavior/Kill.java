@@ -5,7 +5,6 @@ import assets.virologist.Virologist;
 import collectables.equipment.Axe;
 
 public class Kill implements KillBehavior{
-
     Axe axe;
     public Kill(Axe axe){
         this.axe=axe;

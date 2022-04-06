@@ -24,13 +24,15 @@ public class Sack extends Equipment {
 
 	}
 
+	//TODO
 	/** Applies the Effect to the field.virologist.Virologist*/
 	public void Apply(Virologist v) {
 		Skeleton.methodCall(this, "v");
 		v.GetBackpack().increaseCapacity(extraInventory);
 		Skeleton.methodReturn(this);
 	}
-	
+
+	//TODO
 	/** Removes the effect From the field.virologist.Virologist*/
 	public void Remove(Virologist v) {
 		Skeleton.methodCall(this, "v");

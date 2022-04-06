@@ -18,7 +18,6 @@ public class Axe extends Equipment {
     @Override
     public void Apply(Virologist v) {
         v.SetKillBehavior(new Kill(this));
-
     }
 
     @Override

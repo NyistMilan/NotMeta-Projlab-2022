@@ -23,6 +23,7 @@ public class PickUp implements PickUpBehavior {
      * @param v the field.virologist.Virologist who wants to pick up something
      * @param c the Collectables the field.virologist.Virologist wants to pick up
      */
+    //TODO
     @Override
     public void PickUpCollectable(Virologist v, ArrayList<Collectable> c) {
         Skeleton.methodCall(this, "v", "c");

@@ -59,6 +59,7 @@ public class Paralysis extends Agent {
 		Paralysis.warranty = warranty;
 	}
 
+	//TODO
 	/** Applies the effects on a field.virologist.Virologist*/
 	public void Apply(Virologist v) {
 		Skeleton.methodCall(this, "v");

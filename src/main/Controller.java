@@ -49,11 +49,8 @@ public class Controller {
 	}
 
 	public static void AddLearnableGenome(Genome g){
-
 			if(!learnableGenomes.contains(g))
 				learnableGenomes.add(g);
-
-
 	}
 
 
@@ -62,15 +59,12 @@ public class Controller {
 	
 	/** Calls the next player and him in which directions can he move*/
 	public ArrayList<Integer> NextPlayer() {
-
 		Skeleton.methodCall(this);
-
 		index++;
 		Virologist v = virologists.get(index);
 		if(v.GetState()==State.KILLED){
 			virologists.remove(v);
 			v = virologists.get(index);
-
 		}
 		Route r = v.GetRoute();
 		Field f  = r.GetLocation();
