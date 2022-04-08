@@ -15,7 +15,6 @@ import assets.virologist.Route;
 import assets.virologist.State;
 import assets.virologist.Virologist;
 import collectables.genome.Genome;
-import collectables.material.Aminoacid;
 
 import java.util.ArrayList;
 
@@ -79,4 +78,106 @@ public class Controller {
 		Skeleton.methodReturn(this);
 		return d;
 	}
+
+	public void CreateField(String type, String fieldID) {
+	}
+
+	public void NeighborFields(String fieldID1, String fieldID2) {
+	}
+
+	public void CreateVirologist(String name, String fieldID) {
+	}
+
+	public void PutAminoacidOnField(int quantity, String fieldID) {
+	}
+
+	public void PutNucleotideOnField(int quantity, String fieldID) {
+	}
+
+	public void PutEquipmentOnField(String type, String fieldID) {
+	}
+
+	public void GiveAminoacidToVirologist(int quantity, String name) {
+	}
+
+	public void GiveNucleotideToVirologist(int quantity, String name) {
+	}
+
+	public void GiveEquipmentToVirologist(String type, String name) {
+	}
+
+	public void GiveAgentToVirologist(String type, String name) {
+	}
+
+	public Virologist GetVirologist(String name) {
+		return null;
+	}
+
+	public Field GetField(String fieldID) {
+		return null;
+	}
+
+	public Field GetCurrentField() {
+		return null;
+	}
+
+	public void MoveVirologistRandomOff(int direction) {
+	}
+
+	public void MoveVirologist(int direction) {
+	}
+
+	public Virologist GetCurrentVirologist() {
+		return null;
+	}
+
+	public void DropAminoacid(int quantity) {
+	}
+
+	public void DropNucleotide(int quantity) {
+	}
+
+	public void DropEquipment(int index) {
+	}
+
+	public void TakeAminoacid(int quantity) {
+	}
+
+	public void TakeNucleotide(int quantity) {
+	}
+
+	public void TakeEquipment(int index) {
+	}
+
+	public void StealAminoacid(String name, int quantity) {
+	}
+
+	public void StealNucleotide(String name, int quantity) {
+	}
+
+	public void StealEquipment(String name, int index) {
+	}
+
+	public void LearnGenome() {
+	}
+
+	public void TeachGenome(String type, String name) {
+	}
+
+	public void CreateAgent(String type) {
+	}
+
+	public void InfectVirologist(String name, int index) {
+	}
+
+	public void InfectVirologistRandomOff(String name, int index) {
+	}
+
+	public void KillVirologist(String name) {
+	}
+
+	public void EndTurn() {
+	}
+
+
 }
