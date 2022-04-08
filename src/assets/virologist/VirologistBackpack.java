@@ -38,7 +38,7 @@ public class VirologistBackpack extends Backpack {
 	
 	/** The Agents the field.virologist.Virologist was infected with*/
 	private final ArrayList<Agent> appliedAgents;
-
+	//TODO
 	/** A Virologist can store 3 Equipments in his Backpack*/
 	@Override
 	public boolean Add(Equipment e){
@@ -53,6 +53,7 @@ public class VirologistBackpack extends Backpack {
 		return false;
 	}
 
+	//TODO
 	/** A Virologist can sture a certain amount of Aminoacids in his Backpack*/
 	@Override
 	public boolean Add(Aminoacid a){
@@ -66,7 +67,7 @@ public class VirologistBackpack extends Backpack {
 		Skeleton.methodReturn(this);
 		return false;
 	}
-
+	//TODO
 	/** A Virologist can sture a certain amount of Nucleotide in his Backpack*/
 	@Override
 	public boolean Add(Nucleotide n){
@@ -119,7 +120,7 @@ public class VirologistBackpack extends Backpack {
 		appliedAgents.remove(a);
 		Skeleton.methodReturn(this);
 	}
-	
+	//TODO
 	/**
 	 * Decreases the warranties of the stored Agents and the Duration of the applied Agents
 	 * If one's warranty or duration reaches 0, it gets removed from the field.Backpack
@@ -133,18 +134,15 @@ public class VirologistBackpack extends Backpack {
 			}
 		}
 
-
 		for(int i = 0; i < appliedAgents.size(); i++) {
 			int w = appliedAgents.get(i).DecreaseDuration();
 			if (w == 0) {
 				RemoveApplied(appliedAgents.get(i));
 			}
 		}
-
-
 		Skeleton.methodReturn(this);
 	}
-
+	//TODO
 	/**
 	 * Decides if there is enough material in the field.Backpack for the collectables.agent.Agent the field.virologist.Virologist wants to create
 	 *
@@ -154,7 +152,6 @@ public class VirologistBackpack extends Backpack {
 	 */
 	public boolean EnoughMaterials(int a, int n) {
 		Skeleton.methodCall(this, "a", "n");
-	//	boolean isEnough = Skeleton.yesOrNoInput("Has enough materials?");
 		if (aminoacids.size() >= a && nucleotids.size() >= n){
 			Skeleton.methodReturn(this);
 			return true;
@@ -173,7 +170,7 @@ public class VirologistBackpack extends Backpack {
 		Skeleton.printWithIndent("Extended capacity:"+capacity);
 		Skeleton.methodReturn(this);
 	}
-
+	//TODO
 	/**
 	 * Decrease the capacity with a given value, whether there is more material then the decreased capacity,
 	 * the extra materials will be dropped to the field.
@@ -195,7 +192,7 @@ public class VirologistBackpack extends Backpack {
 		}
 		Skeleton.methodReturn(this);
 	}
-
+	//TODO
 	/**
 	 * Remove equipments with 0 durability.
 	 */

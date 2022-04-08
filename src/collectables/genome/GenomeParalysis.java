@@ -16,6 +16,7 @@ public class GenomeParalysis extends Genome {
 	private static int aminocost;
 	private static int nucleocost;
 
+	//TODO
 	/**
 	 * Creates a collectables.agent.Paralysis collectables.agent.Agent and puts it into the field.Backpack of the field.virologist.Virologist that created it
 	 *

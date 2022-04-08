@@ -17,6 +17,7 @@ public class GenomeChorea extends Genome {
 	private static final int aminocost=2;
 	private static final int nucleocost=1;
 
+	//TODO
 	/**
 	 * Creates a collectables.agent.Chorea collectables.agent.Agent and puts it into the field.Backpack of the field.virologist.Virologist that created it
 	 *

@@ -25,6 +25,7 @@ public class Bear extends Agent {
 
     }
 
+    //TODO
     @Override
     public void Apply(Virologist v) {
         Skeleton.methodCall(this, "v");

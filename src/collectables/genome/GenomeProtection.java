@@ -17,6 +17,7 @@ public class GenomeProtection extends Genome {
 	private static final int aminocost=2;
 	private static final int nucleocost=2;
 
+	//TODO
 	/**
 	 * Creates a collectables.agent.Protection collectables.agent.Agent and puts it into the field.Backpack of the field.virologist.Virologist that created it
 	 *

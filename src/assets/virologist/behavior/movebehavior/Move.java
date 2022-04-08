@@ -27,9 +27,9 @@ public class Move implements MoveBehavior {
      * @param v the field.virologist.Virologist who tries to move
      * @param d the direction he wants to move
      */
+    //TODO
     @Override
     public void MoveToField(Virologist v, int d) {
-
         Skeleton.methodCall(this, "v", "d");
         Field f = v.GetRoute().GetLocation();
         Field f2 = f.GetNeighbour(d);

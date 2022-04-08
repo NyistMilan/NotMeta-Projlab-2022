@@ -52,6 +52,7 @@ public class Oblivion extends Agent {
 		Oblivion.warranty = warranty;
 	}
 
+	//TODO
 	/** Applies the effect on the field.virologist.Virologist*/
 	public void Apply(Virologist v) {
 		Skeleton.methodCall(this, "v");
