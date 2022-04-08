@@ -8,12 +8,12 @@ import java.io.*;
 public class ProtoUI {
     public static void main(String[] args){
         boolean running = true;
-        Controller controller = new Controller();
-        BufferedReader cbr = new BufferedReader(new InputStreamReader(System.in));
-        BufferedWriter cbw = new BufferedWriter(new OutputStreamWriter(System.out));
-        Controller ct = controller;
-        BufferedReader br = cbr;
-        BufferedWriter bw = cbw;
+        Controller controller = new Controller(); //base controller when a test ends this will be in control
+        final BufferedReader cbr = new BufferedReader(new InputStreamReader(System.in)); //BufferedReader for the console
+        final BufferedWriter cbw = new BufferedWriter(new OutputStreamWriter(System.out)); //BufferedWriter for the console
+        Controller ct = controller; //the currently used Controller
+        BufferedReader br = cbr; //the currently used BufferedReader
+        BufferedWriter bw = cbw; //the currently used BufferedWriter
         while(running){
             try {
                 String input = br.readLine();
@@ -89,7 +89,8 @@ public class ProtoUI {
                         }
                         break;
                     case "new":
-                        ct = new Controller();
+                        controller = new Controller();
+                        ct = controller;
                         bw.write("new game created");
                         break;
                     case "load":
@@ -98,6 +99,7 @@ public class ProtoUI {
                             ObjectInputStream in = new ObjectInputStream(new FileInputStream(command[1]));
                             loadedGame = (Controller) in.readObject();
                             controller = loadedGame;
+                            ct = controller;
                             bw.write("game loaded");
                             in.close();
                         }
@@ -253,42 +255,96 @@ public class ProtoUI {
         }
     }
 
-    private static void ShowAgents(Virologist virologist, BufferedWriter bw) {
 
-    }
 
+    /**
+     * Show the Virologists the current Virologist can interact with.
+     * @param field the field the Virologist is on.
+     * @param bw the output will be written there
+     */
     private static void ShowVirologists(Field field, BufferedWriter bw) {
 
     }
 
-    private static void ShowCreatable(Virologist virologist, BufferedWriter bw) {
-
-    }
-
+    /**
+     * Show the Virologists the current Virologist can steal from.
+     * @param field the field the Virologist is on.
+     * @param bw the output will be written there
+     */
     private static void ShowStealableVirologists(Field field, BufferedWriter bw) {
 
     }
 
+    /**
+     * Shows the creatable Agents, their cost and the Materials the Virologist has.
+     * @param virologist the current Virologist
+     * @param bw the output will be written there
+     */
+    private static void ShowCreatable(Virologist virologist, BufferedWriter bw) {
+
+    }
+
+    /**
+     * Shows the agents that a Virologist has.
+     * @param virologist the current virologist
+     * @param bw the output will be written there
+     */
+    private static void ShowAgents(Virologist virologist, BufferedWriter bw) {
+
+    }
+
+    /**
+     * Shows the items that are on the Field
+     * @param field the Field the current Virologist is on
+     * @param bw the output will be written there
+     */
     private static void ShowFieldBackpack(Field field, BufferedWriter bw) {
 
     }
 
+    /**
+     * Show the Materials and Equipments that are in a Virologist's backpack
+     * @param virologist the Virologist who owns the Backpack
+     * @param bw the output will be written there
+     */
     private static void ShowVirologistBackpack(Virologist virologist, BufferedWriter bw) {
 
     }
 
+    /**
+     * Shows the neighbors of a Field
+     * @param field The Field the Current Virologist is on
+     * @param bw the output will be written there
+     */
     private static void ShowDirections(Field field, BufferedWriter bw) {
 
     }
 
+    /**
+     * Shows every important information about the Field
+     * @param field the Field
+     * @param bw the output will be written there
+     */
     private static void ShowField(Field field, BufferedWriter bw) {
 
     }
 
+    /**
+     * Shows every important information about the Virologist
+     * @param virologist the Vriologist
+     * @param bw the output will be written there
+     */
     private static void ShowVirologist(Virologist virologist, BufferedWriter bw) {
 
     }
 
+    /**
+     * Compares the content of two files.
+     * @param expected reader for the expected output
+     * @param actual reader for the actual output
+     * @return the first line of mismatch if the files are different. else -1
+     * @throws IOException reading failed
+     */
     private static int CompareFiles(BufferedReader expected, BufferedReader actual) throws IOException {
         int lineNumber = 1;
         String line1, line2;
