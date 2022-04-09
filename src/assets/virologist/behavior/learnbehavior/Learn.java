@@ -22,7 +22,7 @@ public class Learn implements LearnBehavior {
      *
      * @param v the field.virologist.Virologist who wants to learn the collectables.genome.Genome
      */
-    //TODO
+
     @Override
     public void LearnGenome(Virologist v) {
         Skeleton.methodCall(this, "v");

@@ -53,7 +53,7 @@ public class VirologistBackpack extends Backpack {
 		return false;
 	}
 
-	//TODO
+
 	/** A Virologist can sture a certain amount of Aminoacids in his Backpack*/
 	@Override
 	public boolean Add(Aminoacid a){
@@ -67,7 +67,7 @@ public class VirologistBackpack extends Backpack {
 		Skeleton.methodReturn(this);
 		return false;
 	}
-	//TODO
+
 	/** A Virologist can sture a certain amount of Nucleotide in his Backpack*/
 	@Override
 	public boolean Add(Nucleotide n){

@@ -22,7 +22,7 @@ public class Drop implements DropBehavior {
      * @param v The field.virologist.Virologist who wants to drop
      * @param c The Collectables he wants to drop
      */
-    //TODO
+
     @Override
     public void DropCollectable(Virologist v, ArrayList<Collectable> c) {
         Skeleton.methodCall(this, "v","c");

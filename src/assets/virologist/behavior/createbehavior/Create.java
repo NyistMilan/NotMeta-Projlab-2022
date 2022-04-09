@@ -24,7 +24,7 @@ public class Create implements CreateBehavior {
      * @param v the field.virologist.Virologist who wants to create an agent
      * @param g the collectables.genome.Genome he wants to use to create the collectables.agent.Agent
      */
-    //TODO
+    //TODOg
     @Override
     public void CreateAgent(Virologist v, Genome g) {
         Skeleton.methodCall(this, "v","g");
