@@ -6,37 +6,58 @@ import assets.virologist.Virologist;
 import java.io.*;
 
 public class ProtoUI {
+    private static Controller ct;  //the currently used Controller
+    private static BufferedReader br; //the currently used BufferedReader
+    private static BufferedWriter bw; //the currently used BufferedWriter
+    private static String runOutputFileName;
     public static void main(String[] args){
-        boolean running = true;
         Controller controller = new Controller(); //base controller when a test ends this will be in control
         final BufferedReader cbr = new BufferedReader(new InputStreamReader(System.in)); //BufferedReader for the console
         final BufferedWriter cbw = new BufferedWriter(new OutputStreamWriter(System.out)); //BufferedWriter for the console
-        Controller ct = controller; //the currently used Controller
-        BufferedReader br = cbr; //the currently used BufferedReader
-        BufferedWriter bw = cbw; //the currently used BufferedWriter
+        ct = controller;
+        br = cbr;
+        bw = cbw;
+        Run(ct, bw, br, ct, bw, br);
+    }
+
+    private static void Run(Controller parentCt, BufferedWriter parentBw, BufferedReader parentBr, Controller currentCt, BufferedWriter currentBw, BufferedReader currentBr) {
+        ct = currentCt;
+        bw = currentBw;
+        br = currentBr;
+        boolean running = true;
         while(running){
             try {
                 String input = br.readLine();
                 String[] command = input.split("\\s+");
                 switch (command[0]){
                     case "runTest":
-                        ct = new Controller();
-                        br = new BufferedReader(new FileReader(command[1]));
-                        bw = new BufferedWriter(new FileWriter("testOutput.txt"));
+                        String inputFileName = command[1] + "_Input.txt";
+                        runOutputFileName = command[1] + "_RunOutput.txt";
+                        Controller testCt = new Controller();
+                        BufferedWriter testBw = new BufferedWriter(new FileWriter(runOutputFileName));
+                        BufferedReader testBr = new BufferedReader(new FileReader(inputFileName));
+                        Run(ct, bw, br, testCt, testBw, testBr);
                         break;
                     case "endTest":
-                        br = cbr;
-                        bw = cbw;
-                        ct = controller;
-                        BufferedReader expected = new BufferedReader(new FileReader(command[1]));
-                        BufferedReader actual = new BufferedReader(new FileReader("testOutput.txt"));
+                        br.close();
+                        bw.close();
+                        br = parentBr;
+                        bw = parentBw;
+                        ct = parentCt;
+                        runOutputFileName = command[1] + "_RunOutput.txt";
+                        BufferedReader actual = new BufferedReader(new FileReader(runOutputFileName));
+                        String expectedOutputFileName = command[1] + "_Output.txt";
+                        BufferedReader expected = new BufferedReader(new FileReader(expectedOutputFileName));
                         int FDL = CompareFiles(expected, actual); //First Different Line
+                        expected.close();
+                        actual.close();
                         if(FDL == -1){
                             bw.write("test succeeded\n");
                         }
                         else{
                             bw.write("test failed at line " + FDL);
                         }
+
                         break;
                     case "field":
                         ct.CreateField(command[1], command[2]);
@@ -89,8 +110,9 @@ public class ProtoUI {
                         }
                         break;
                     case "new":
-                        controller = new Controller();
-                        ct = controller;
+                        Controller newGame = new Controller();
+                        parentCt = newGame;
+                        ct = newGame;
                         bw.write("new game created");
                         break;
                     case "load":
@@ -98,8 +120,8 @@ public class ProtoUI {
                         try{
                             ObjectInputStream in = new ObjectInputStream(new FileInputStream(command[1]));
                             loadedGame = (Controller) in.readObject();
-                            controller = loadedGame;
-                            ct = controller;
+                            parentCt = loadedGame;
+                            ct = parentCt;
                             bw.write("game loaded");
                             in.close();
                         }
@@ -116,7 +138,7 @@ public class ProtoUI {
                     case "save":
                         try{
                             ObjectOutputStream out = new ObjectOutputStream(new FileOutputStream(command[1]));
-                            out.writeObject(controller);
+                            out.writeObject(parentCt);
                             bw.write("game saved");
                             out.close();
                         }
@@ -125,6 +147,9 @@ public class ProtoUI {
                             break;
                         }
                     case "exit":
+                        br = parentBr;
+                        bw = parentBw;
+                        ct = parentCt;
                         running = false;
                         break;
                     case "start":
@@ -256,7 +281,6 @@ public class ProtoUI {
             e.printStackTrace();
         }
     }
-
 
 
     /**

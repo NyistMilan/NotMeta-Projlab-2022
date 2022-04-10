@@ -253,7 +253,8 @@ public class Virologist{
 	/** Forgets all known genomes*/
 	public void ForgetGenome() {
 		Skeleton.methodCall(this);
-		if (learnedGenomes.size() > 0) {
+		int s = learnedGenomes.size();
+		if (s > 0) {
 			learnedGenomes.subList(0, s).clear();
 		}
 		Skeleton.methodReturn(this);
