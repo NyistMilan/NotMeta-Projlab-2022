@@ -231,6 +231,8 @@ public class ProtoUI {
                         }
                         ct.InfectVirologist(command[1], Integer.parseInt(command[2]));
                         break;
+                    case "effect":
+                        ct.EffectVirologist(command[1], command[2]);
                     case "kill":
                         if(command[1] == null){
                             Field field = ct.GetCurrentField();
