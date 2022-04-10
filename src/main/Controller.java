@@ -307,6 +307,14 @@ public class Controller implements  java.io.Serializable{
 	}
 
 	/**
+	 * The Controller effects a Virologist with an Agent.
+	 * @param type the Agent
+	 * @param name the target
+	 */
+	public void EffectVirologist(String type, String name){
+
+	}
+	/**
 	 * The current Virologist kills a Virologist.
 	 * @param name the name of the killed Virologist.
 	 */
