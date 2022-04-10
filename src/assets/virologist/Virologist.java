@@ -118,7 +118,7 @@ public class Virologist{
 		Skeleton.methodReturn(this);
 		return result;
 	}
-	//TODO
+
 	/**
 	 * If the field.virologist.Virologist is in turn, and he moved he calls his DropBehavior.
 	 * If he is not in turn he just drops the items
@@ -200,7 +200,7 @@ public class Virologist{
 		SetState(State.NOT_IN_TURN);
 		Skeleton.methodReturn(this);
 	}
-	//TODO
+	//
 	/** Sets all the effects to default. Then applies the effects of all collectables.equipment.Equipment and applies collectables.agent.Agent*/
 	public void RefreshEffects() {
 		Skeleton.methodCall(this);
@@ -216,7 +216,7 @@ public class Virologist{
 		Skeleton.methodReturn(this);
 	}
 
-	//TODO
+
 	/** Sets the field.virologist.behaviors to the default value*/
 	public void DefaultBehaviors(){
 		Skeleton.methodCall(this);
@@ -233,7 +233,7 @@ public class Virologist{
 		Skeleton.methodReturn(this);
 	}
 
-	//TODO
+
 	/**
 	 * Adds a collectables.genome.Genome to learnedGenomes if it wasn't learned yet
 	 *
@@ -250,12 +250,10 @@ public class Virologist{
 		return true;
 	}
 
-	//TODO
 	/** Forgets all known genomes*/
 	public void ForgetGenome() {
 		Skeleton.methodCall(this);
-		int s = learnedGenomes.size();
-		if (s > 0) {
+		if (learnedGenomes.size() > 0) {
 			learnedGenomes.subList(0, s).clear();
 		}
 		Skeleton.methodReturn(this);
@@ -282,7 +280,6 @@ public class Virologist{
 		return route;
 	}
 
-	//TODO
 	public int GetLearnedGenomes(){
 		return learnedGenomes.size();
 	}
@@ -363,7 +360,7 @@ public class Virologist{
 
 	/** I'm not sure if we need this one*/
 
-	//TODO
+
 	public void ListCollectables() {
 		Skeleton.methodCall(this);
 		ArrayList<Equipment> eqList= this.GetBackpack().GetEquipments();

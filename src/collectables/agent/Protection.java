@@ -53,7 +53,6 @@ public class Protection extends Agent {
 		Protection.warranty = warranty;
 	}
 
-	//TODO
 	/** Applies the effect to the field.virologist.Virologist if there is no stronger effect on him*/
 	public void Apply(Virologist v) {
 		Skeleton.methodCall(this, "v");
