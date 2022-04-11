@@ -40,5 +40,5 @@ public class GenomeChorea extends Genome {
 	}
 
 	@Override
-	public String GetName(){return "Chorea Genome";}
+	public String GetName(){return "chorea";}
 }

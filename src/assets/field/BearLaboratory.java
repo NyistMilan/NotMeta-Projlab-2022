@@ -17,14 +17,16 @@ public class BearLaboratory extends Laboratory{
     /**
      * Constructor
      *
-     * @param g
+     * @param g genome
      */
     public BearLaboratory(Genome g) {
         super(g);
     }
 
     @Override
-    /** If the field.virologist.Virologist steps on a field.field.BearLaboratory he got infected with bear agent*/
+    /**
+     *  If the field.virologist.Virologist steps on a field.field.BearLaboratory he got infected with bear agent
+     **/
     public void Accept(Virologist v) {
         Skeleton.methodCall(this, "v");
         v.GetInfected(v,new Bear());
@@ -35,5 +37,10 @@ public class BearLaboratory extends Laboratory{
     @Override
     public Genome GetGenome() {
         return null;
+    }
+
+    @Override
+    public String GetType(){
+        return "bearlaboratory";
     }
 }

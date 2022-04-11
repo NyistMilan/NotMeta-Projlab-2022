@@ -42,6 +42,6 @@ public class Sack extends Equipment {
 
 	@Override
 	public String GetName() {
-		return "Sack";
+		return "sack";
 	}
 }

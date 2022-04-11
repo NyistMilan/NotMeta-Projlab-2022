@@ -60,5 +60,5 @@ public class Oblivion extends Agent {
 	}
 
 	@Override
-	public String GetName(){ return "Oblivion Agent";}
+	public String GetName(){ return "oblivion";}
 }

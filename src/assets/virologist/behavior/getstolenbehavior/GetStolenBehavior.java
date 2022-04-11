@@ -23,4 +23,5 @@ public interface GetStolenBehavior {
 	 * @return true if the action was successful, false if the action fails
 	 */
 	boolean GetStolenFrom(Virologist v, ArrayList<Collectable> c);
+	boolean CanStealForm();
 }

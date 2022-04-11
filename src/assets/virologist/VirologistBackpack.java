@@ -173,7 +173,7 @@ public class VirologistBackpack extends Backpack {
 	/**
 	 * Decrease the capacity with a given value, whether there is more material then the decreased capacity,
 	 * the extra materials will be dropped to the field.
-	 * @param reduction
+	 * @param reduction -
 	 */
 	public void decreaseCapacity(int reduction){
 		Skeleton.methodCall(this, "reduction");
@@ -198,4 +198,12 @@ public class VirologistBackpack extends Backpack {
 	public void checkEquipmentDurability(){
 		equipments.removeIf(eq -> eq.GetDurability() == 0);
 	}
+
+    public ArrayList<Agent> GetAgets() {
+		return agents;
+    }
+
+    public int GetCapacity() {
+		return capacity;
+    }
 }

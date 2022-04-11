@@ -41,5 +41,5 @@ public class GenomeOblivion extends Genome {
 	}
 
 	@Override
-	public String GetName() {return "Oblivion Genome";}
+	public String GetName() {return "oblivion";}
 }

@@ -40,5 +40,5 @@ public class GenomeProtection extends Genome {
 	}
 
 	@Override
-	public String GetName(){ return "Protection Genome";}
+	public String GetName(){ return "protection";}
 }

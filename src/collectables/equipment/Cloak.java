@@ -36,6 +36,6 @@ public class Cloak extends Equipment {
 
 	@Override
 	public String GetName() {
-		return "Cloak";
+		return "cloak";
 	}
 }
