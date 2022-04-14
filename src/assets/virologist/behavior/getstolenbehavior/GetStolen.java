@@ -29,4 +29,9 @@ public class GetStolen implements GetStolenBehavior {
         Skeleton.methodReturn(this);
         return true;
     }
+
+    @Override
+    public boolean CanStealForm(){
+        return true;
+    }
 }

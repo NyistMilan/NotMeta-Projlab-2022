@@ -182,9 +182,6 @@ public class Virologist{
 		Skeleton.methodReturn(this);
 	}
 
-	/**
-	 * @param v
-	 */
 	public void KillVirologist(Virologist v){
 		Skeleton.methodCall(this,"v");
 		killBehavior.Kill(this,v);
@@ -253,7 +250,8 @@ public class Virologist{
 	/** Forgets all known genomes*/
 	public void ForgetGenome() {
 		Skeleton.methodCall(this);
-		if (learnedGenomes.size() > 0) {
+		int s = learnedGenomes.size();
+		if (s > 0) {
 			learnedGenomes.subList(0, s).clear();
 		}
 		Skeleton.methodReturn(this);
@@ -280,8 +278,8 @@ public class Virologist{
 		return route;
 	}
 
-	public int GetLearnedGenomes(){
-		return learnedGenomes.size();
+	public ArrayList<Genome> GetLearnedGenomes(){
+		return learnedGenomes;
 	}
 	
 
@@ -308,6 +306,10 @@ public class Virologist{
 		Skeleton.methodCall(this, "b");
 		getStolenBehavior = b;
 		Skeleton.methodReturn(this);
+	}
+
+	public GetStolenBehavior GetGetStolenBehavior(){
+		return getStolenBehavior;
 	}
 
 	public void SetDropBehavior(DropBehavior b){
@@ -358,6 +360,8 @@ public class Virologist{
 		Skeleton.methodReturn(this);
 	}
 
+
+
 	/** I'm not sure if we need this one*/
 
 
@@ -371,4 +375,7 @@ public class Virologist{
 		Skeleton.methodReturn(this);
 	}
 
+	public String GetName() {
+		return name;
+	}
 }

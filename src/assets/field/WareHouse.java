@@ -38,4 +38,9 @@ public class WareHouse extends Field {
 		backpack.GetNucleotide().clear();
 		Skeleton.methodReturn(this);
 	}
+
+	@Override
+	public String GetType(){
+		return "warehouse";
+	}
 }

@@ -36,6 +36,6 @@ public class Bear extends Agent {
 
     @Override
     public String GetName() {
-        return null;
+        return "bear";
     }
 }

@@ -42,7 +42,7 @@ public class Controller implements  java.io.Serializable{
 	}
 
 	public static void TestWin(Virologist v){
-		if(v.GetLearnedGenomes() == learnableGenomes.size()){
+		if(v.GetLearnedGenomes().size() == learnableGenomes.size()){
 			End();
 		}
 	}

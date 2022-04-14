@@ -29,4 +29,8 @@ public class Normal extends Field {
 	public Genome GetGenome() {
 		return null;
 	}
+	@Override
+	public String GetType(){
+		return "normal";
+	}
 }

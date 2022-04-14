@@ -62,5 +62,5 @@ public class Protection extends Agent {
 	}
 
 	@Override
-	public String GetName(){ return "Protection Agent";}
+	public String GetName(){ return "protection";}
 }

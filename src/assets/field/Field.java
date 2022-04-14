@@ -26,6 +26,8 @@ public abstract class Field {
 
 	protected Backpack backpack;
 
+	protected String fieldID;
+
 	/** Returns the neighbour in the given direction*/
 	public Field GetNeighbour(int d) {
 		Skeleton.methodCall(this, "d");
@@ -101,5 +103,11 @@ public abstract class Field {
 	abstract public Genome GetGenome();
 	public void DestroyMaterials(){
 
+	}
+
+    abstract public String GetType();
+
+	public String GetFieldID() {
+		return fieldID;
 	}
 }

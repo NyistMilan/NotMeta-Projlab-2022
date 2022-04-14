@@ -47,4 +47,9 @@ public class Laboratory extends Field {
 		virologists.add(v);
 		Skeleton.methodReturn(this);
 	}
+
+	@Override
+	public String GetType(){
+		return "laboratory";
+	}
 }

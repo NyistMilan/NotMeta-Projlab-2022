@@ -39,5 +39,5 @@ public class GenomeParalysis extends Genome {
 	}
 
 	@Override
-	public String GetName(){return "Paralysis Genome";}
+	public String GetName(){return "paralysis";}
 }

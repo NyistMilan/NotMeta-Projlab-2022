@@ -29,4 +29,8 @@ public class Shelter extends Field {
 	public Genome GetGenome() {
 		return null;
 	}
+	@Override
+	public String GetType(){
+		return "shelter";
+	}
 }
