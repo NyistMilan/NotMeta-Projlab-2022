@@ -82,6 +82,15 @@ public class Controller implements  java.io.Serializable{
 	}
 
 	/**
+	 * Creates a Laboratory
+	 * @param ganome the Genome that can be learned in the Laboratory
+	 * @param fieldID the ID of the created Field
+	 */
+	public void CreateLaboratory(String ganome, String fieldID){
+
+	}
+
+	/**
 	 * Makes two Field neighbors.
 	 * @param fieldID1 the ID of the first Field
 	 * @param fieldID2 the ID of the second Field
