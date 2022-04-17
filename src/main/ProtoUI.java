@@ -43,6 +43,7 @@ public class ProtoUI {
                             actual.close();
                             if (FDL == -1) {
                                 bw.write("test succeeded\n");
+
                             } else {
                                 bw.write("test failed at line " + FDL + "\n");
                             }
