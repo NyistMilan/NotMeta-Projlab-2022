@@ -199,7 +199,7 @@ public class VirologistBackpack extends Backpack {
 		equipments.removeIf(eq -> eq.GetDurability() == 0);
 	}
 
-    public ArrayList<Agent> GetAgets() {
+    public ArrayList<Agent> GetAgents() {
 		return agents;
     }
 

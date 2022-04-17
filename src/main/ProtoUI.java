@@ -48,8 +48,8 @@ public class ProtoUI {
                             }
                             break;
                         case "field":
-                            if (command[1].equals("laboratory"))
-                                ct.CreateLaboratory(command[2], command[3]);
+                            if (command[1].equals("laboratory") || command[1].equals("bearlaboratory"))
+                                ct.CreateLaboratory(command[1], command[2], command[3]);
                             else
                                 ct.CreateField(command[1], command[2]);
                             break;
@@ -288,6 +288,7 @@ public class ProtoUI {
         }
         try {
             br.close();
+            bw.close();
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -352,7 +353,7 @@ public class ProtoUI {
      */
     private static void ShowAgents(Virologist virologist, BufferedWriter bw) throws IOException {
         int index = 1;
-        for(Agent a : virologist.GetBackpack().GetAgets()){
+        for(Agent a : virologist.GetBackpack().GetAgents()){
             bw.write(index + ". "+ a.GetName() + " " + a.getWarranty() + "\n");
             index++;
         }
@@ -446,7 +447,7 @@ public class ProtoUI {
 
         bw.write("agents:\n");
         int aIndex = 1;
-        for(Agent a : backpack.GetAgets()){
+        for(Agent a : backpack.GetAgents()){
             bw.write(aIndex + ". " + a.GetName() + " " + a.getWarranty() + "\n");
         }
         bw.write("applied agents:\n");

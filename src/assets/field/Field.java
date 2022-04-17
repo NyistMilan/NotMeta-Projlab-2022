@@ -27,11 +27,10 @@ public abstract class Field {
 	protected Backpack backpack;
 
 	protected String fieldID;
-
 	/** Returns the neighbour in the given direction*/
 	public Field GetNeighbour(int d) {
 		Skeleton.methodCall(this, "d");
-		Field f = neighbours.get(d-1);
+		Field f = neighbours.get(d);
 		Skeleton.methodReturn(this);
 		return f;
 	}
@@ -109,5 +108,9 @@ public abstract class Field {
 
 	public String GetFieldID() {
 		return fieldID;
+	}
+
+	public void SetFieldID(String fieldID) {
+		this.fieldID = fieldID;
 	}
 }

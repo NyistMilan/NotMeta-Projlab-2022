@@ -9,332 +9,651 @@ package main;//
 //
 //
 
-import assets.field.Field;
-import assets.field.Normal;
+import assets.field.*;
 import assets.virologist.Route;
 import assets.virologist.State;
 import assets.virologist.Virologist;
-import collectables.genome.Genome;
+import collectables.Collectable;
+import collectables.agent.*;
+import collectables.equipment.*;
+import collectables.genome.*;
+import collectables.material.Aminoacid;
+import collectables.material.Nucleotide;
 
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 
-/** Controls the Game and the turns of the players*/
-public class Controller implements  java.io.Serializable{
-	private static ArrayList<Field> map;
-	private static ArrayList<collectables.genome.Genome>  learnableGenomes;
-	private static ArrayList<Virologist> virologists;
-	/** the next player*/
-	private static int index;
+/**
+ * Controls the Game and the turns of the players
+ */
+public class Controller implements java.io.Serializable {
+    private static ArrayList<Field> map;
+    private static ArrayList<collectables.genome.Genome> learnableGenomes;
+    private static ArrayList<Virologist> virologists;
+    /**
+     * the player
+     */
+    private static int index;
 
-	Controller(){
-		map = new ArrayList<>();
-		learnableGenomes = new ArrayList<>();
-		virologists = new ArrayList<>();
-	}
-	/** */
-	public void Start() {
-		Skeleton.methodCall(this);
-		Field f = new Normal();
-		Virologist v = new Virologist();
-		index = 0;
-		NextPlayer();
-		Skeleton.methodReturn(this);
-	}
+    Controller() {
+        map = new ArrayList<>();
+        learnableGenomes = new ArrayList<>();
+        virologists = new ArrayList<>();
+    }
 
-	public static void TestWin(Virologist v){
-		if(v.GetLearnedGenomes().size() == learnableGenomes.size()){
-			End();
-		}
-	}
+    /**
+     *
+     */
+    public void Start() {
+        Skeleton.methodCall(this);
+        index = 0;
+        NextPlayer();
+        Skeleton.methodReturn(this);
+    }
 
-	public static void AddLearnableGenome(Genome g){
-			if(!learnableGenomes.contains(g))
-				learnableGenomes.add(g);
-	}
+    public static void TestWin(Virologist v) {
+        if (v.GetLearnedGenomes().size() == learnableGenomes.size()) {
+            End();
+        }
+    }
 
-
-	/** */
-	public static void End() {}
-	
-	/** Calls the next player and him in which directions can he move*/
-	public ArrayList<Integer> NextPlayer() {
-		Skeleton.methodCall(this);
-		index++;
-		Virologist v = virologists.get(index);
-		if(v.GetState()==State.KILLED){
-			virologists.remove(v);
-			v = virologists.get(index);
-		}
-		Route r = v.GetRoute();
-		Field f  = r.GetLocation();
-		ArrayList<Integer> d = f.GetDirections();
-		v.SetState(State.BEFORE_MOVE);
-		Skeleton.methodReturn(this);
-		return d;
-	}
-
-	/**
-	 * Creates a field.
-	 * @param type the type of the Field (normal, laboratory etc.)
-	 * @param fieldID the ID of the created Field
-	 */
-	public void CreateField(String type, String fieldID) {
-	}
-
-	/**
-	 * Creates a Laboratory
-	 * @param ganome the Genome that can be learned in the Laboratory
-	 * @param fieldID the ID of the created Field
-	 */
-	public void CreateLaboratory(String ganome, String fieldID){
-
-	}
-
-	/**
-	 * Makes two Field neighbors.
-	 * @param fieldID1 the ID of the first Field
-	 * @param fieldID2 the ID of the second Field
-	 */
-	public void NeighborFields(String fieldID1, String fieldID2) {
-	}
-
-	/**
-	 * Create a Virologist.
-	 * @param name the name of the Virologist
-	 * @param fieldID the ID of the Field he will get created to
-	 */
-	public void CreateVirologist(String name, String fieldID) {
-	}
-
-	/**
-	 * Puts some Aminoacid on a Field.
-	 * @param quantity the number of the Aminoacids
-	 * @param fieldID the ID of the Field
-	 */
-	public void PutAminoacidOnField(int quantity, String fieldID) {
-	}
-
-	/**
-	 * Puts some Nucleotide on a Field.
-	 * @param quantity the number of the Nucleotide
-	 * @param fieldID the ID of the Field
-	 */
-	public void PutNucleotideOnField(int quantity, String fieldID) {
-	}
-
-	/**
-	 * Put Equipment on a Field.
-	 * @param type the type of the Equipment
-	 * @param fieldID the ID of the Field
-	 */
-	public void PutEquipmentOnField(String type, String fieldID) {
-	}
-
-	/**
-	 * Gives some Aminoacid to a Virologist.
-	 * @param quantity the number of the Aminoacids
-	 * @param name the name of the Virologist
-	 */
-	public void GiveAminoacidToVirologist(int quantity, String name) {
-	}
-
-	/**
-	 * Gives some Nucleotide to a Virologist.
-	 * @param quantity the number of the Nucleotide
-	 * @param name the name of the Virologist
-	 */
-	public void GiveNucleotideToVirologist(int quantity, String name) {
-	}
-
-	/**
-	 * Gives Equipment to a Virologist.
-	 * @param type the type of the Equipment
-	 * @param name the name of the Virologist
-	 */
-	public void GiveEquipmentToVirologist(String type, String name) {
-	}
-
-	/**
-	 * Gives Agent to a Virologist.
-	 * @param type the type of the Agent
-	 * @param name the name of the Virologist
-	 */
-	public void GiveAgentToVirologist(String type, String name) {
-	}
-
-	/**
-	 * Returns the Virologist who has the given name.
-	 * @param name the given name
-	 * @return the Virologist who has that name
-	 */
-	public Virologist GetVirologist(String name) {
-		return null;
-	}
-
-	/**
-	 * Returns the current Virologist.
-	 * @return the current Virologist
-	 */
-	public Virologist GetCurrentVirologist() {
-		return null;
-	}
-
-	/**
-	 * Returns a Field that's ID matches the given ID.
-	 * @param fieldID the given ID
-	 * @return the returned Field
-	 */
-	public Field GetField(String fieldID) {
-		return null;
-	}
-
-	/**
-	 * Returns the Field the current Virologist is on.
-	 * @return the Field
-	 */
-	public Field GetCurrentField() {
-		return null;
-	}
-
-	/**
-	 * Moves the current Virologist by the given direction.
-	 * Calling random functions is forbidden.
-	 * @param direction the given direction
-	 */
-	public void MoveVirologistRandomOff(int direction) {
-	}
-
-	/**
-	 * Moves the current Virologist by the given direction.
-	 * @param direction the given direction
-	 */
-	public void MoveVirologist(int direction) {
-	}
-
-	/**
-	 * The current Virologist drops some Aminoacid.
-	 * @param quantity the number of Aminoacid
-	 */
-	public void DropAminoacid(int quantity) {
-	}
-
-	/**
-	 * The current Virologist drops some Nucleotide.
-	 * @param quantity the number of Nucleotide
-	 */
-	public void DropNucleotide(int quantity) {
-	}
-
-	/**
-	 * The current Virologist drops an Equipment.
-	 * @param index the index of the Equipment in his Backpack
-	 */
-	public void DropEquipment(int index) {
-	}
-
-	/**
-	 * The current Virologist takes some Aminoacid.
-	 * @param quantity the number of Aminoacid
-	 */
-	public void TakeAminoacid(int quantity) {
-	}
-
-	/**
-	 * The current Virologist takes some Nucleotide.
-	 * @param quantity the number of Nucleotide
-	 */
-	public void TakeNucleotide(int quantity) {
-	}
-
-	/**
-	 * The current Virologist drops an Equipment.
-	 * @param index the index of the Equipment in the Field's Backpack
-	 */
-	public void TakeEquipment(int index) {
-	}
-
-	/**
-	 * The current Virologist steals some Aminoacid from another Virologist.
-	 * @param name the name of the Virologist he steals from
-	 * @param quantity the number of the Aminoacid
-	 */
-	public void StealAminoacid(String name, int quantity) {
-	}
-
-	/**
-	 * The current Virologist steals some Nucleotide from another Virologist.
-	 * @param name the name of the Virologist he steals from
-	 * @param quantity the number of the Nucleotide
-	 */
-	public void StealNucleotide(String name, int quantity) {
-	}
-
-	/**
-	 * The current Virologist steals Equipment from another Virologist.
-	 * @param name the name of the Virologist he steals from
-	 * @param index the index of the Equipment in the other Virologist's Backpack
-	 */
-	public void StealEquipment(String name, int index) {
-	}
-
-	/**
-	 * The Virologist Learns the Genome of the Laboratory he stands on.
-	 */
-	public void LearnGenome() {
-	}
-
-	/**
-	 * Teach a Genome to a Virologist.
-	 * @param type the type of the Genome
-	 * @param name the name of the Virologist
-	 */
-	public void TeachGenome(String type, String name) {
-	}
-
-	/**
-	 * The current Virologist creates a Genome.
-	 * @param type the type of the Genome
-	 */
-	public void CreateAgent(String type) {
-	}
-
-	/**
-	 * The current Virologist infects a Virologist with an Agent.
-	 * @param name the name of the infected Virologist
-	 * @param index the index of an Agent in the current Virologist's Backpack
-	 */
-	public void InfectVirologist(String name, int index) {
-	}
-
-	/**
-	 * The current Virologist infects a Virologist with an Agent.
-	 * Calling random functions is forbidden.
-	 * @param name the name of the infected Virologist
-	 * @param index the index of an Agent in the current Virologist's Backpack
-	 */
-	public void InfectVirologistRandomOff(String name, int index) {
-	}
-
-	/**
-	 * The Controller effects a Virologist with an Agent.
-	 * @param type the Agent
-	 * @param name the target
-	 */
-	public void EffectVirologist(String type, String name){
-
-	}
-	/**
-	 * The current Virologist kills a Virologist.
-	 * @param name the name of the killed Virologist.
-	 */
-	public void KillVirologist(String name) {
-	}
-
-	/**
-	 * The current Virologist ends his turn.
-	 */
-	public void EndTurn() {
-	}
+    public static void AddLearnableGenome(Genome g) {
+        if (!learnableGenomes.contains(g))
+            learnableGenomes.add(g);
+    }
 
 
+    /**
+     *
+     */
+    public static void End() {
+    }
+
+    /**
+     * Calls the next player and him in which directions can he move
+     */
+    public ArrayList<Integer> NextPlayer() {
+        Virologist v = virologists.get(index);
+        if (v.GetState() == State.KILLED) {
+            virologists.remove(v);
+            v = virologists.get(index);
+        }
+        Route r = v.GetRoute();
+        Field f = r.GetLocation();
+        ArrayList<Integer> d = f.GetDirections();
+        v.SetState(State.BEFORE_MOVE);
+        if (virologists.size() - 1 == index) {
+            index = 0;
+        } else {
+            index++;
+        }
+        return d;
+    }
+
+    /**
+     * Creates a field.
+     *
+     * @param type    the type of the Field (normal, laboratory etc.)
+     * @param fieldID the ID of the created Field
+     */
+    public void CreateField(String type, String fieldID) {
+        Field f;
+        switch (type) {
+            case "normal":
+                f = new Normal();
+                break;
+            case "shelter":
+                f = new Shelter();
+                break;
+            case "warehouse":
+                f = new WareHouse();
+                break;
+            default:
+                return;
+        }
+        f.SetFieldID(fieldID);
+        f.SetNeighbour(f);
+        map.add(f);
+    }
+
+    /**
+     * Creates a Laboratory
+     *
+     * @param genome  the Genome that can be learned in the Laboratory
+     * @param fieldID the ID of the created Field
+     */
+    public void CreateLaboratory(String type, String genome, String fieldID) {
+        Genome g;
+        switch (genome) {
+            case "chorea":
+                g = new GenomeChorea();
+                break;
+            case "obvilion":
+                g = new GenomeOblivion();
+                break;
+            case "paralysis":
+                g = new GenomeParalysis();
+                break;
+            case "protection":
+                g = new GenomeProtection();
+                break;
+            default:
+                return;
+        }
+        Field f;
+        switch (type) {
+            case "laboratory":
+                f = new Laboratory(g);
+                break;
+            case "bearlaboratory":
+                f = new BearLaboratory(g);
+                break;
+            default:
+                return;
+        }
+        f.SetFieldID(fieldID);
+        map.add(f);
+    }
+
+    /**
+     * Makes two Field neighbors.
+     *
+     * @param fieldID1 the ID of the first Field
+     * @param fieldID2 the ID of the second Field
+     */
+    public void NeighborFields(String fieldID1, String fieldID2) {
+        //if (fieldID1.equals(fieldID2)) return;
+        Field field1 = GetField(fieldID1);
+        Field field2 = GetField(fieldID2);
+        field1.SetNeighbour(field2);
+        field2.SetNeighbour(field1);
+    }
+
+    /**
+     * Create a Virologist.
+     *
+     * @param name    the name of the Virologist
+     * @param fieldID the ID of the Field he will get created to
+     */
+    public void CreateVirologist(String name, String fieldID) {
+        Virologist v = new Virologist();
+        v.SetName(name);
+        Field field = GetField(fieldID);
+        v.GetRoute().Add(field);
+        virologists.add(v);
+    }
+
+    /**
+     * Puts some Aminoacid on a Field.
+     *
+     * @param quantity the number of the Aminoacids
+     * @param fieldID  the ID of the Field
+     */
+    public void PutAminoacidOnField(int quantity, String fieldID) {
+        Field field = GetField(fieldID);
+        for (int i = 0; i < quantity; i++)
+            field.GetBackpack().Add(new Aminoacid());
+    }
+
+    /**
+     * Puts some Nucleotide on a Field.
+     *
+     * @param quantity the number of the Nucleotide
+     * @param fieldID  the ID of the Field
+     */
+    public void PutNucleotideOnField(int quantity, String fieldID) {
+        Field field = GetField(fieldID);
+        for (int i = 0; i < quantity; i++)
+            field.GetBackpack().Add(new Nucleotide());
+    }
+
+    /**
+     * Put Equipment on a Field.
+     *
+     * @param type    the type of the Equipment
+     * @param fieldID the ID of the Field
+     */
+    public void PutEquipmentOnField(String type, String fieldID) {
+        Equipment eq;
+        switch (type) {
+            case "axe":
+                eq = new Axe();
+                break;
+            case "cloak":
+                eq = new Cloak();
+                break;
+            case "sack":
+                eq = new Sack();
+                break;
+            case "gloves":
+                eq = new Gloves();
+                break;
+            default:
+                return;
+        }
+        Field field = GetField(fieldID);
+        field.GetBackpack().Add(eq);
+    }
+
+    /**
+     * Gives some Aminoacid to a Virologist.
+     *
+     * @param quantity the number of the Aminoacids
+     * @param name     the name of the Virologist
+     */
+    public void GiveAminoacidToVirologist(int quantity, String name) {
+        for (Virologist v : virologists) {
+            if (v.GetName().equals(name)) {
+                for (int i = 0; i < quantity; i++) {
+                    v.GetBackpack().Add(new Aminoacid());
+                }
+            }
+        }
+    }
+
+    /**
+     * Gives some Nucleotide to a Virologist.
+     *
+     * @param quantity the number of the Nucleotide
+     * @param name     the name of the Virologist
+     */
+    public void GiveNucleotideToVirologist(int quantity, String name) {
+        for (Virologist v : virologists) {
+            if (v.GetName().equals(name)) {
+                for (int i = 0; i < quantity; i++) {
+                    v.GetBackpack().Add(new Nucleotide());
+                }
+            }
+        }
+    }
+
+    /**
+     * Gives Equipment to a Virologist.
+     *
+     * @param type the type of the Equipment
+     * @param name the name of the Virologist
+     */
+    public void GiveEquipmentToVirologist(String type, String name) {
+        Equipment eq;
+        switch (type) {
+            case "axe":
+                eq = new Axe();
+                break;
+            case "cloak":
+                eq = new Cloak();
+                break;
+            case "sack":
+                eq = new Sack();
+                break;
+            case "gloves":
+                eq = new Gloves();
+                break;
+            default:
+                return;
+        }
+        for (Virologist v : virologists) {
+            if (v.GetName().equals(name)) {
+                v.GetBackpack().Add(eq);
+            }
+        }
+    }
+
+    /**
+     * Gives Agent to a Virologist.
+     *
+     * @param type the type of the Agent
+     * @param name the name of the Virologist
+     */
+    public void GiveAgentToVirologist(String type, String name) {
+        Agent a;
+        switch (type) {
+            case "bear":
+                a = new Bear();
+                break;
+            case "chorea":
+                a = new Chorea();
+                break;
+            case "obvilion":
+                a = new Oblivion();
+                break;
+            case "paralysis":
+                a = new Paralysis();
+                break;
+            case "protection":
+                a = new Protection();
+                break;
+            default:
+                return;
+        }
+        for (Virologist v : virologists) {
+            if (v.GetName().equals(name)) {
+                v.GetBackpack().Add(a);
+            }
+        }
+
+    }
+
+    /**
+     * Returns the Virologist who has the given name.
+     *
+     * @param name the given name
+     * @return the Virologist who has that name
+     */
+    public Virologist GetVirologist(String name) {
+        for (Virologist v : virologists) {
+            if (v.GetName().equals(name)) {
+                return v;
+            }
+        }
+        return null;
+    }
+
+    /**
+     * Returns the current Virologist.
+     *
+     * @return the current Virologist
+     */
+    public Virologist GetCurrentVirologist() {
+        return virologists.get(index);
+    }
+
+    /**
+     * Returns a Field that's ID matches the given ID.
+     *
+     * @param fieldID the given ID
+     * @return the returned Field
+     */
+    public Field GetField(String fieldID) {
+        for (Field field : map) {
+            if (field.GetFieldID().equals(fieldID))
+                return field;
+        }
+        return null;
+    }
+
+    /**
+     * Returns the Field the current Virologist is on.
+     *
+     * @return the Field
+     */
+    public Field GetCurrentField() {
+        return virologists.get(index).GetRoute().GetLocation();
+    }
+
+    /**
+     * Moves the current Virologist by the given direction.
+     * Calling random functions is forbidden.
+     *
+     * @param direction the given direction
+     */
+    public void MoveVirologistRandomOff(int direction) {
+        virologists.get(index).Move(direction);
+    }
+
+    /**
+     * Moves the current Virologist by the given direction.
+     *
+     * @param direction the given direction
+     */
+    public void MoveVirologist(int direction) {
+        GetCurrentVirologist().Move(direction);
+    }
+
+    /**
+     * The current Virologist drops some Aminoacid.
+     *
+     * @param quantity the number of Aminoacid
+     */
+    public void DropAminoacid(int quantity) {
+        ArrayList<Collectable> aminos = new ArrayList<>();
+        for (int i = 0; i < quantity; i++) {
+            aminos.add(new Aminoacid());
+            GetCurrentField().GetBackpack().Add(new Aminoacid());
+        }
+        GetCurrentVirologist().DropCollectable(aminos);
+    }
+
+    /**
+     * The current Virologist drops some Nucleotide.
+     *
+     * @param quantity the number of Nucleotide
+     */
+    public void DropNucleotide(int quantity) {
+        ArrayList<Collectable> nucleotides = new ArrayList<>();
+        for (int i = 0; i < quantity; i++) {
+            nucleotides.add(new Nucleotide());
+            GetCurrentField().GetBackpack().Add(new Nucleotide());
+        }
+        GetCurrentVirologist().DropCollectable(nucleotides);
+    }
+
+    /**
+     * The current Virologist drops an Equipment.
+     *
+     * @param equipmentIndex the index of the Equipment in his Backpack
+     */
+    public void DropEquipment(int equipmentIndex) {
+        ArrayList<Equipment> equipments = GetCurrentVirologist().GetBackpack().GetEquipments();
+        Equipment eq = equipments.get(equipmentIndex - 1);
+        ArrayList<Collectable> dropped = new ArrayList<>();
+        dropped.add(eq);
+        GetCurrentVirologist().DropCollectable(dropped);
+    }
+
+    /**
+     * The current Virologist takes some Aminoacid.
+     *
+     * @param quantity the number of Aminoacid
+     */
+    public void TakeAminoacid(int quantity) {
+        ArrayList<Collectable> aminos = new ArrayList<>();
+        for (int i = 0; i < quantity; i++)
+            aminos.add(new Aminoacid());
+        GetCurrentVirologist().PickUpCollectable(aminos);
+    }
+
+    /**
+     * The current Virologist takes some Nucleotide.
+     *
+     * @param quantity the number of Nucleotide
+     */
+    public void TakeNucleotide(int quantity) {
+        ArrayList<Collectable> nucleotides = new ArrayList<>();
+        for (int i = 0; i < quantity; i++)
+            nucleotides.add(new Nucleotide());
+        GetCurrentVirologist().PickUpCollectable(nucleotides);
+    }
+
+    /**
+     * The current Virologist takes an Equipment.
+     *
+     * @param index the index of the Equipment in the Field's Backpack
+     */
+    public void TakeEquipment(int index) {
+        ArrayList<Collectable> pickUp = new ArrayList<>();
+        pickUp.add(GetCurrentField().GetBackpack().GetEquipments().get(index - 1));
+        GetCurrentVirologist().PickUpCollectable(pickUp);
+    }
+
+    /**
+     * The current Virologist steals some Aminoacid from another Virologist.
+     *
+     * @param name     the name of the Virologist he steals from
+     * @param quantity the number of the Aminoacid
+     */
+    public void StealAminoacid(String name, int quantity) {
+        Virologist vStealer = GetCurrentVirologist();
+        Virologist vPoor = GetVirologist(name);
+        ArrayList<Collectable> aminos = new ArrayList<>();
+        for (int i = 0; i < quantity; i++) {
+            aminos.add(new Aminoacid());
+        }
+        vStealer.Steal(vPoor,aminos);
+    }
+
+    /**
+     * The current Virologist steals some Nucleotide from another Virologist.
+     *
+     * @param name     the name of the Virologist he steals from
+     * @param quantity the number of the Nucleotide
+     */
+    public void StealNucleotide(String name, int quantity) {
+        Virologist vStealer = GetCurrentVirologist();
+        Virologist vPoor = GetVirologist(name);
+        ArrayList<Collectable> nucleotides = new ArrayList<>();
+        for (int i = 0; i < quantity; i++) {
+            nucleotides.add(new Aminoacid());
+        }
+        vStealer.Steal(vPoor,nucleotides);
+    }
+
+    /**
+     * The current Virologist steals Equipment from another Virologist.
+     *
+     * @param name  the name of the Virologist he steals from
+     * @param index the index of the Equipment in the other Virologist's Backpack
+     */
+    public void StealEquipment(String name, int index) {
+        Virologist vStealer = GetCurrentVirologist();
+        Virologist vPoor = GetVirologist(name);
+        ArrayList<Collectable> stolenEq = new ArrayList<>();
+        stolenEq.add(GetVirologist(name).GetBackpack().GetEquipments().get(index - 1));
+        vStealer.Steal(vPoor,stolenEq);
+    }
+
+    /**
+     * The Virologist Learns the Genome of the Laboratory he stands on.
+     */
+    public void LearnGenome() {
+        GetCurrentVirologist().Learn();
+    }
+
+    /**
+     * Teach a Genome to a Virologist.
+     *
+     * @param type the type of the Genome
+     * @param name the name of the Virologist
+     */
+    public void TeachGenome(String type, String name) {
+        Genome g;
+        switch (type) {
+            case "chorea":
+                g = new GenomeChorea();
+                break;
+            case "obvilion":
+                g = new GenomeOblivion();
+                break;
+            case "paralysis":
+                g = new GenomeParalysis();
+                break;
+            case "protection":
+                g = new GenomeProtection();
+                break;
+            default:
+                return;
+        }
+        GetVirologist(name).Add(g);
+    }
+
+    /**
+     * The current Virologist creates an Agent.
+     *
+     * @param type the type of the Genome
+     */
+    public void CreateAgent(String type) {
+        Genome g;
+        switch (type) {
+            case "chorea":
+                g = new GenomeChorea();
+                break;
+            case "obvilion":
+                g = new GenomeOblivion();
+                break;
+            case "paralysis":
+                g = new GenomeParalysis();
+                break;
+            case "protection":
+                g = new GenomeProtection();
+                break;
+            default:
+                return;
+        }
+        GetCurrentVirologist().CreateAgent(g);
+    }
+
+    /**
+     * The current Virologist infects a Virologist with an Agent.
+     *
+     * @param name  the name of the infected Virologist
+     * @param index the index of an Agent in the current Virologist's Backpack
+     */
+    public void InfectVirologist(String name, int index) {
+        Virologist vInfecter = GetCurrentVirologist();
+        Virologist vInfected = GetVirologist(name);
+        Agent agent= vInfecter.GetBackpack().GetAgents().get(index-1);
+        vInfecter.Infect(vInfected, agent);
+    }
+
+    /**
+     * The current Virologist infects a Virologist with an Agent.
+     * Calling random functions is forbidden.
+     *
+     * @param name  the name of the infected Virologist
+     * @param index the index of an Agent in the current Virologist's Backpack
+     */
+    //TODO
+    public void InfectVirologistRandomOff(String name, int index) {
+        Virologist vInfecter = GetCurrentVirologist();
+        Virologist vInfected = GetVirologist(name);
+        Agent agent= vInfecter.GetBackpack().GetAgents().get(index-1);
+        vInfecter.Infect(vInfected, agent);
+    }
+
+    /**
+     * The Controller effects a Virologist with an Agent.
+     *
+     * @param type the Agent
+     * @param name the target
+     */
+    public void EffectVirologist(String type, String name) {
+        Agent g;
+        switch (type) {
+            case "chorea":
+                g = new Chorea();
+                break;
+            case "obvilion":
+                g = new Oblivion();
+                break;
+            case "paralysis":
+                g = new Paralysis();
+                break;
+            case "protection":
+                g = new Protection();
+                break;
+            default:
+                return;
+        }
+        Virologist vInfected = GetVirologist(name);
+        vInfected.GetBackpack().AddApplied(g);
+    }
+
+    /**
+     * The current Virologist kills a Virologist.
+     *
+     * @param name the name of the killed Virologist.
+     */
+    public void KillVirologist(String name) {
+        Virologist vKiller = GetCurrentVirologist();
+        Virologist vKilled = GetVirologist(name);
+
+        vKiller.KillVirologist(vKilled);
+    }
+
+    /**
+     * The current Virologist ends his turn.
+     */
+    public void EndTurn() {
+        GetCurrentVirologist().SetState(State.NOT_IN_TURN);
+        NextPlayer();
+    }
 }

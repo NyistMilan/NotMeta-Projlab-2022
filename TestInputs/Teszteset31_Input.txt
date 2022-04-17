@@ -1,0 +1,9 @@
+ield normal N1
+virologist V1 N1
+give nucleotide 3 V1
+start
+move 0
+drop nucleotide 3
+show virologist V1
+show field N1
+exit
