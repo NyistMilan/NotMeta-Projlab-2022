@@ -1,4 +1,4 @@
-ield normal N1
+field normal N1
 virologist V1 N1
 give nucleotide 3 V1
 start

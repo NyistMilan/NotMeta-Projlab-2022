@@ -14,11 +14,11 @@ public class ProtoUI {
     public static void main(String[] args){
         Controller controller = new Controller(); //base controller
         final BufferedReader cbr = new BufferedReader(new InputStreamReader(System.in)); //BufferedReader for the console
-        final BufferedWriter cbw = new BufferedWriter(new OutputStreamWriter(System.out)); //BufferedWriter for the console
-        Run(controller, cbw, cbr);
+        final PrintWriter cpw = new PrintWriter(new BufferedWriter(new OutputStreamWriter(System.out)), true); //BufferedWriter for the console
+        Run(controller, cpw, cbr);
     }
 
-    private static void Run(Controller ct, BufferedWriter bw, BufferedReader br) {
+    private static void Run(Controller ct, PrintWriter pw, BufferedReader br) {
         boolean running = true;
         boolean started = false;    //after the game starts no more system commands are allowed
         while(running){
@@ -28,24 +28,23 @@ public class ProtoUI {
                 if(!started) {
                     switch (command[0]) {
                         case "runTest":
-                            String inputFileName = command[1] + "_Input.txt";
-                            String runOutputFileName = command[1] + "_RunOutput.txt";
+                            String inputFileName = "TestInputs/" + command[1] + "_Input.txt";
+                            String runOutputFileName = "RunOutputs/" + command[1] + "_RunOutput.txt";
                             Controller testCt = new Controller();
-                            BufferedWriter testBw = new BufferedWriter(new FileWriter(runOutputFileName));
+                            PrintWriter testPw = new PrintWriter(new BufferedWriter(new FileWriter(runOutputFileName)));
                             BufferedReader testBr = new BufferedReader(new FileReader(inputFileName));
-                            Run(testCt, testBw, testBr);
-                            runOutputFileName = command[1] + "_RunOutput.txt";
+                            Run(testCt, testPw, testBr);
                             BufferedReader actual = new BufferedReader(new FileReader(runOutputFileName));
-                            String expectedOutputFileName = command[1] + "_Output.txt";
+                            String expectedOutputFileName = "TestOutputs/" + command[1] + "_Output.txt";
                             BufferedReader expected = new BufferedReader(new FileReader(expectedOutputFileName));
                             int FDL = CompareFiles(expected, actual); //First Different Line
                             expected.close();
                             actual.close();
                             if (FDL == -1) {
-                                bw.write("test succeeded\n");
+                                pw.printf("test succeeded\n");
 
                             } else {
-                                bw.write("test failed at line " + FDL + "\n");
+                                pw.printf("test failed at line %d\n", FDL);
                             }
                             break;
                         case "field":
@@ -93,17 +92,18 @@ public class ProtoUI {
                             switch (command[1]) {
                                 case "virologist":
                                     Virologist virologist = ct.GetVirologist(command[2]);
-                                    ShowVirologist(virologist, bw);
+                                    ShowVirologist(virologist, pw);
                                     break;
                                 case "field":
                                     assets.field.Field field = ct.GetField(command[2]);
-                                    ShowField(field, bw);
+                                    ShowField(field, pw);
                                     break;
                             }
                             break;
                         case "new":
                             ct = new Controller();
-                            bw.write("new game created\n");
+                            pw.printf("new game created\n");
+
                             break;
                         case "load":
                             Controller loadedGame;
@@ -111,13 +111,13 @@ public class ProtoUI {
                                 ObjectInputStream in = new ObjectInputStream(new FileInputStream(command[1]));
                                 loadedGame = (Controller) in.readObject();
                                 ct = loadedGame;
-                                bw.write("game loaded\n");
+                                pw.printf("game loaded\n");
                                 in.close();
                             } catch (IOException i) {
                                 i.printStackTrace();
                                 break;
                             } catch (ClassNotFoundException c) {
-                                bw.write("Controller class not found\n");
+                                pw.printf("Controller class not found\n");
                                 c.printStackTrace();
                                 break;
                             }
@@ -126,7 +126,7 @@ public class ProtoUI {
                             try {
                                 ObjectOutputStream out = new ObjectOutputStream(new FileOutputStream(command[1]));
                                 out.writeObject(ct);
-                                bw.write("game saved\n");
+                                pw.printf("game saved\n");
                                 out.close();
                             } catch (IOException i) {
                                 i.printStackTrace();
@@ -134,7 +134,7 @@ public class ProtoUI {
                             }
                         case "exit":
                             br.close();
-                            bw.close();
+                            pw.close();
                             running = false;
                             break;
                         case "effect":
@@ -146,6 +146,7 @@ public class ProtoUI {
                         case "start":
                             ct.Start();
                             started = true;
+                            pw.printf("the game has started\n");
                             break;
                     }
                 }
@@ -155,7 +156,7 @@ public class ProtoUI {
                             try{
                                 ObjectOutputStream out = new ObjectOutputStream(new FileOutputStream(command[1]));
                                 out.writeObject(ct);
-                                bw.write("game saved\n");
+                                pw.printf("game saved\n");
                                 out.close();
                             }
                             catch (IOException i){
@@ -164,25 +165,26 @@ public class ProtoUI {
                             }
                         case "exit":
                             br.close();
-                            bw.close();
+                            pw.close();
                             running = false;
                             break;
                         case "move":
                             if(command[1] == null){
                                 Field field = ct.GetCurrentField();
-                                ShowDirections(field, bw);
+                                ShowDirections(field, pw);
                                 break;
                             }
-                            if(command[1].equals("randomoff")){
+                            else if(command[1].equals("randomoff")){
                                 ct.MoveVirologistRandomOff(Integer.parseInt(command[2]));
                                 break;
                             }
-                            ct.MoveVirologist(Integer.parseInt(command[1]));
+                            else
+                                ct.MoveVirologist(Integer.parseInt(command[1]));
                             break;
                         case "drop":
                             if(command[1] == null){
                                 Virologist virologist = ct.GetCurrentVirologist();
-                                ShowVirologistBackpack(virologist, bw);
+                                ShowVirologistBackpack(virologist, pw);
                                 break;
                             }
                             switch (command[1]){
@@ -200,7 +202,7 @@ public class ProtoUI {
                         case "take":
                             if(command[1] == null){
                                 Field field = ct.GetCurrentField();
-                                ShowFieldBackpack(field, bw);
+                                ShowFieldBackpack(field, pw);
                                 break;
                             }
                             switch (command[1]){
@@ -218,12 +220,12 @@ public class ProtoUI {
                         case "steal":
                             if(command[1] == null){
                                 Field field = ct.GetCurrentField();
-                                ShowStealableVirologists(field, bw);
+                                ShowStealableVirologists(field, pw);
                                 break;
                             }
                             if(command[2] == null){
                                 Virologist virologist = ct.GetVirologist(command[1]);
-                                ShowVirologistBackpack(virologist, bw);
+                                ShowVirologistBackpack(virologist, pw);
                                 break;
                             }
                             switch (command[1]){
@@ -244,7 +246,7 @@ public class ProtoUI {
                         case "create":
                             if(command[1] == null){
                                 Virologist virologist = ct.GetCurrentVirologist();
-                                ShowCreatable(virologist, bw);
+                                ShowCreatable(virologist, pw);
                                 break;
                             }
                             ct.CreateAgent(command[1]);
@@ -252,12 +254,12 @@ public class ProtoUI {
                         case "infect":
                             if(command[1] == null){
                                 Field field = ct.GetCurrentField();
-                                ShowVirologists(field, bw);
+                                ShowVirologists(field, pw);
                                 break;
                             }
                             if(command[2] == null){
                                 Virologist virologist = ct.GetCurrentVirologist();
-                                ShowAgents(virologist, bw);
+                                ShowAgents(virologist, pw);
                                 break;
                             }
                             if(command[2].equals("randomoff")){
@@ -268,12 +270,25 @@ public class ProtoUI {
                         case "kill":
                             if(command[1] == null){
                                 Field field = ct.GetCurrentField();
-                                ShowVirologists(field, bw);
+                                ShowVirologists(field, pw);
                                 break;
                             }
                             ct.KillVirologist(command[1]);
                         case "endTurn":
                             ct.EndTurn();
+                            break;
+                        case "show":
+                            switch (command[1]) {
+                                case "virologist":
+                                    Virologist virologist = ct.GetVirologist(command[2]);
+                                    ShowVirologist(virologist, pw);
+                                    break;
+                                case "field":
+                                    assets.field.Field field = ct.GetField(command[2]);
+                                    ShowField(field, pw);
+                                    break;
+                            }
+                            break;
                     }
                 }
 
@@ -289,7 +304,7 @@ public class ProtoUI {
         }
         try {
             br.close();
-            bw.close();
+            pw.close();
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -297,65 +312,62 @@ public class ProtoUI {
 
 
 
-    private static void ShowBackpack(Backpack backpack, BufferedWriter bw) throws  IOException{
-        bw.write("materials:\n");
-        bw.write("aminoacid " + backpack.GetAminos().size() + "\n");
-        bw.write("nucleotide " +backpack.GetNucleotide().size() + "\n");
-        bw.write("equipments:\n");
+    private static void ShowBackpack(Backpack backpack, PrintWriter pw) {
+        pw.printf("materials:\naminoacid %d\nnucleotide %d\nequipments:\n", backpack.GetAminos().size(), backpack.GetNucleotide().size());
         int index = 1;
         for(Equipment e : backpack.GetEquipments()){
             if(e.GetDurability() < 0)
-                bw.write(index + ". " + e.GetName() +  "\n");
+                pw.printf("%d. %s\n", index, e.GetName());
             else
-                bw.write(index + ". " + e.GetName() + " " + e.GetDurability() + "\n");
+                pw.printf("%d. %s %d\n", index, e.GetName(), e.GetDurability());
         }
     }
     /**
      * Show the Virologists the current Virologist can interact with.
      * @param field the field the Virologist is on.
-     * @param bw the output will be written there
+     * @param pw the output will be written there
      */
-    private static void ShowVirologists(Field field, BufferedWriter bw) throws IOException {
+    private static void ShowVirologists(Field field, PrintWriter pw) throws IOException {
         for(Virologist v : field.GetVirologists()){
-            bw.write(v.GetName()+ "\n");
+            pw.printf("%s\n", v.GetName());
         }
     }
 
     /**
      * Show the Virologists the current Virologist can steal from.
      * @param field the field the Virologist is on.
-     * @param bw the output will be written there
+     * @param pw the output will be written there
      */
-    private static void ShowStealableVirologists(Field field, BufferedWriter bw) throws IOException {
+    private static void ShowStealableVirologists(Field field, PrintWriter pw) throws IOException {
         for(Virologist v : field.GetVirologists()){
             if(v.GetGetStolenBehavior().CanStealForm())
-                bw.write(v.GetName()+ "\n");
+                pw.printf("%s\n", v.GetName());
         }
     }
 
     /**
      * Shows the creatable Agents, their cost and the Materials the Virologist has.
      * @param virologist the current Virologist
-     * @param bw the output will be written there
+     * @param pw the output will be written there
      */
-    private static void ShowCreatable(Virologist virologist, BufferedWriter bw) throws IOException {
+    private static void ShowCreatable(Virologist virologist, PrintWriter pw) throws IOException {
         int aminoCount = virologist.GetBackpack().GetAminos().size();
         int nucleoCount = virologist.GetBackpack().GetNucleotide().size();
-        bw.write("you have: \t" + aminoCount + " aminoacid, \t" + nucleoCount + " nucleotide\n");
+        pw.printf("you have: \t%d aminoacid \t%d nucleotide\n", aminoCount, nucleoCount);
         for(Genome g : virologist.GetLearnedGenomes()){
-            bw.write(g.GetName() + " \t" + g.getAminoCost() + " aminoacid \t" + g.getNucleoCost() + " nucleotide\n");
+            pw.printf("%s \t%d aminoacid \t%d nucleotide\n",g.GetName() ,g.getAminoCost(), g.getNucleoCost());
         }
     }
 
     /**
      * Shows the agents that a Virologist has.
      * @param virologist the current virologist
-     * @param bw the output will be written there
+     * @param pw the output will be written there
      */
-    private static void ShowAgents(Virologist virologist, BufferedWriter bw) throws IOException {
+    private static void ShowAgents(Virologist virologist, PrintWriter pw) throws IOException {
         int index = 1;
         for(Agent a : virologist.GetBackpack().GetAgents()){
-            bw.write(index + ". "+ a.GetName() + " " + a.getWarranty() + "\n");
+            pw.printf("%d. %s %d\n", index, a.GetName(), a.getWarranty());
             index++;
         }
     }
@@ -363,62 +375,60 @@ public class ProtoUI {
     /**
      * Shows the items that are on the Field
      * @param field the Field the current Virologist is on
-     * @param bw the output will be written there
+     * @param pw the output will be written there
      */
-    private static void ShowFieldBackpack(Field field, BufferedWriter bw) throws IOException {
+    private static void ShowFieldBackpack(Field field, PrintWriter pw) throws IOException {
         Backpack backpack = field.GetBackpack();
-        ShowBackpack(backpack, bw);
+        ShowBackpack(backpack, pw);
 
     }
 
     /**
      * Show the Materials and Equipments that are in a Virologist's backpack
      * @param virologist the Virologist who owns the Backpack
-     * @param bw the output will be written there
+     * @param pw the output will be written there
      */
-    private static void ShowVirologistBackpack(Virologist virologist, BufferedWriter bw) throws IOException {
+    private static void ShowVirologistBackpack(Virologist virologist, PrintWriter pw) throws IOException {
         VirologistBackpack backpack = virologist.GetBackpack();
-        ShowBackpack(backpack, bw);
+        ShowBackpack(backpack, pw);
     }
 
     /**
      * Shows the neighbors of a Field
      * @param field The Field the Current Virologist is on
-     * @param bw the output will be written there
+     * @param pw the output will be written there
      */
-    private static void ShowDirections(Field field, BufferedWriter bw) throws IOException {
+    private static void ShowDirections(Field field, PrintWriter pw) throws IOException {
         for(int d: field.GetDirections()){
-            bw.write(d + " - " + field.GetNeighbour(d).GetType() + "\n");
+            pw.printf("%d - %s\n", d, field.GetNeighbour(d).GetType());
         }
     }
 
     /**
      * Shows every important information about the Field
      * @param field the Field
-     * @param bw the output will be written there
+     * @param pw the output will be written there
      */
-    private static void ShowField(Field field, BufferedWriter bw) throws IOException {
-        bw.write("fieldId: " + field.GetFieldID() + "\n");
-        bw.write("type: " + field.GetType() + "\n");
+    private static void ShowField(Field field, PrintWriter pw) throws IOException {
+        pw.printf("fieldId: %s\ntype: %s\n", field.GetFieldID(),field.GetType());
         if(field.GetGenome() != null){
-            bw.write("genome: " + field.GetGenome() + "\n");
+            pw.printf("genome: %s\n", field.GetGenome());
         }
-        bw.write("virologists:\n");
+        pw.printf("virologists:\n");
         for(Virologist v : field.GetVirologists()){
-            bw.write("-" + v.GetName()+"\n");
+            pw.printf("-%s\n", v.GetName());
         }
         Backpack backpack = field.GetBackpack();
-        ShowBackpack(backpack, bw);
+        ShowBackpack(backpack, pw);
     }
 
     /**
      * Shows every important information about the Virologist
      * @param virologist the Virologist
-     * @param bw the output will be written there
+     * @param pw the output will be written there
      */
-    private static void ShowVirologist(Virologist virologist, BufferedWriter bw) throws IOException {
-        bw.write("name: " + virologist.GetName() + "\n");
-        bw.write("field: " + virologist.GetRoute().GetLocation().GetFieldID()+ "\n");
+    private static void ShowVirologist(Virologist virologist, PrintWriter pw) throws IOException {
+        pw.printf("name: %s\nfield: %s\n", virologist.GetName(), virologist.GetRoute().GetLocation().GetFieldID());
         String state = "";
         switch (virologist.GetState()){
             case KILLED:
@@ -436,24 +446,22 @@ public class ProtoUI {
             case BEFORE_ACTION:
                 state = "before_action";
         }
-        bw.write("state: "+ state +"\n");
-        bw.write("learned genomes:\n");
+        pw.printf("state: %s\nlearned genomes:\n", state);
         for(Genome g :virologist.GetLearnedGenomes()){
-            bw.write("-" + g.GetName() + "\n");
+            pw.printf("-%s\n", g.GetName());
         }
-        bw.write("backpack:\n");
         VirologistBackpack backpack = virologist.GetBackpack();
-        bw.write("capacity: " + backpack.GetCapacity() + "\n");
-        ShowBackpack(backpack, bw);
+        pw.printf("backpack\ncapacity: %d", backpack.GetCapacity());
+        ShowBackpack(backpack, pw);
 
-        bw.write("agents:\n");
+        pw.printf("agents\n");
         int aIndex = 1;
         for(Agent a : backpack.GetAgents()){
-            bw.write(aIndex + ". " + a.GetName() + " " + a.getWarranty() + "\n");
+            pw.printf("%d. %s %d\n", aIndex, a.GetName(), a.getWarranty());
         }
-        bw.write("applied agents:\n");
+        pw.printf("applied agents\n");
         for(Agent a : backpack.GetAppliedAgents()){
-            bw.write("- " + a.GetName() + " " + a.getDuration()+ "\n");
+            pw.printf("- %s %d\n", a.GetName(), a.getDuration());
         }
     }
 
