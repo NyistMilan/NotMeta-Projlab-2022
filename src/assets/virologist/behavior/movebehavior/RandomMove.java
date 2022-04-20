@@ -16,7 +16,7 @@ import assets.virologist.behavior.learnbehavior.NotLearn;
 
 import java.util.ArrayList;
 import main.Skeleton;
-public class RandomMove implements MoveBehavior {
+public class RandomMove implements MoveBehavior, java.io.Serializable {
     /**
      * Generates a random number between to numbers.
      * Both the minimum and the maximum number can be generated.

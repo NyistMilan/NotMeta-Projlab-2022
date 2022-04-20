@@ -13,8 +13,8 @@ import collectables.agent.Agent;
 import assets.virologist.Virologist;
 import collectables.equipment.Gloves;
 import main.Skeleton;
-public class InfectBack implements GetInfectedBehavior {
-    private Gloves glove;
+public class InfectBack implements GetInfectedBehavior, java.io.Serializable{
+    final private Gloves glove;
     public InfectBack(Gloves glove){
         this.glove=glove;
     }

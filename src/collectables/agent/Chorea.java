@@ -14,7 +14,7 @@ import assets.virologist.Virologist;
 import assets.virologist.behavior.movebehavior.*;
 
 /** collectables.agent.Chorea makes the infected field.virologist.Virologist move to random directions*/
-public class Chorea extends Agent {
+public class Chorea extends Agent implements java.io.Serializable{
 
 	/** The number of turns a field.virologist.Virologist can store the collectables.agent.Agent in his field.Backpack.*/
 	private static int warranty;

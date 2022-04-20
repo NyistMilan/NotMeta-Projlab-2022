@@ -12,7 +12,7 @@ package assets.virologist.behavior.infectbehavior;//
 import collectables.agent.Agent;
 import assets.virologist.Virologist;
 import main.Skeleton;
-public class NotInfect implements InfectBehavior {
+public class NotInfect implements InfectBehavior, java.io.Serializable {
     /**
      * Nothing happens.
      *

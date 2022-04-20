@@ -13,7 +13,7 @@ import assets.field.Field;
 import assets.virologist.*;
 import main.Skeleton;
 
-public class Move implements MoveBehavior {
+public class Move implements MoveBehavior, java.io.Serializable {
     @Override
     public int GetPriority() {
         Skeleton.methodCall(this);

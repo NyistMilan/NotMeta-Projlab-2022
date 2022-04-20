@@ -11,7 +11,7 @@ package assets.virologist.behavior.learnbehavior;//
 
 import assets.virologist.Virologist;
 import main.Skeleton;
-public class NotLearn implements LearnBehavior {
+public class NotLearn implements LearnBehavior, java.io.Serializable {
     /**
      * Nothing happens
      *

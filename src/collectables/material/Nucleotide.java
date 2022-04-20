@@ -12,7 +12,7 @@ import assets.Backpack;
 import assets.virologist.Virologist;
 import main.Skeleton;
 
-public class Nucleotide extends Materials{
+public class Nucleotide extends Materials implements java.io.Serializable {
     /**
      * Adds a collectables.material.Nucleotide to a field.Backpack
      *

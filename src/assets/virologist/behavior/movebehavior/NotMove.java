@@ -12,7 +12,7 @@ package assets.virologist.behavior.movebehavior;//
 import assets.virologist.State;
 import assets.virologist.Virologist;
 import main.Skeleton;
-public class NotMove implements MoveBehavior {
+public class NotMove implements MoveBehavior, java.io.Serializable {
     @Override
     public int GetPriority() {
         Skeleton.methodCall(this);

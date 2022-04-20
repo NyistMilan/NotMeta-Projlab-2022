@@ -16,7 +16,7 @@ import assets.virologist.Virologist;
 import java.util.ArrayList;
 import main.Skeleton;
 
-public class PickUp implements PickUpBehavior {
+public class PickUp implements PickUpBehavior, java.io.Serializable {
     /**
      * The field.virologist.Virologist picks up the Collectables and sets the state to AFTER_ACTION
      *

@@ -14,7 +14,7 @@ import assets.virologist.Virologist;
 
 import java.util.ArrayList;
 import main.Skeleton;
-public class GetStolen implements GetStolenBehavior {
+public class GetStolen implements GetStolenBehavior, java.io.Serializable {
     /**
      * The field.virologist.Virologist drops the desired item to the field.field.Field.
      *

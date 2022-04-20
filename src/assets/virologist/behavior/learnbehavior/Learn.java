@@ -14,7 +14,7 @@ import collectables.genome.Genome;
 import main.Controller;
 import assets.virologist.Virologist;
 import main.Skeleton;
-public class Learn implements LearnBehavior {
+public class Learn implements LearnBehavior, java.io.Serializable {
     /**
      * The field.virologist.Virologist learns the collectables.genome.Genome from the field.field.Laboratory if he didn't know it already.
      * If he has learned all the available Genomes he wins the game.

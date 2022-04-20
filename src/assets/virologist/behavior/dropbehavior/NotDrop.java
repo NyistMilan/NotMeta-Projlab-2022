@@ -14,7 +14,7 @@ import assets.virologist.Virologist;
 import main.Skeleton;
 import java.util.ArrayList;
 
-public class NotDrop implements DropBehavior {
+public class NotDrop implements DropBehavior, java.io.Serializable {
     /**
      * Nothing happens.
      *

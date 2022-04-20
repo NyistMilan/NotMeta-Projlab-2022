@@ -16,7 +16,7 @@ import assets.virologist.Virologist;
 import java.util.ArrayList;
 import main.Skeleton;
 
-public class Steal implements StealBehavior {
+public class Steal implements StealBehavior, java.io.Serializable {
     /**
      * v1 tries to steal from v2. If he succeeds he picks up the item
      * and sets his state to AFTER_ACTION.

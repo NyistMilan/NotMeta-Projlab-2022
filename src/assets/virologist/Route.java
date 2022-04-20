@@ -15,7 +15,7 @@ import assets.field.Field;
 import main.Skeleton;
 
 /** The Fields the field.virologist.Virologist was on*/
-public class Route {
+public class Route implements java.io.Serializable{
 	/** Constructor*/
 	Route(){
 		Skeleton.methodCall(this);

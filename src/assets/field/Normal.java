@@ -15,7 +15,7 @@ import main.Skeleton;
 import java.util.ArrayList;
 
 /** A normal field.field.Field*/
-public class Normal extends Field {
+public class Normal extends Field implements java.io.Serializable{
 	/** Constructor*/
 	public Normal(){
 		Skeleton.methodCall(this);
@@ -23,6 +23,7 @@ public class Normal extends Field {
 		neighbours = new ArrayList<>();
 		backpack = new Backpack();
 		Skeleton.methodReturn(this);
+		neighbours.add(this);
 	}
 
 	@Override

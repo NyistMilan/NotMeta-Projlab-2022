@@ -4,7 +4,7 @@ import assets.virologist.Virologist;
 import assets.virologist.behavior.movebehavior.BearMove;
 import main.Skeleton;
 
-public class Bear extends Agent {
+public class Bear extends Agent implements java.io.Serializable{
     @Override
     public int getDuration() {
         return -1;

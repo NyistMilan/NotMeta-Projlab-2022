@@ -10,7 +10,7 @@ import main.Skeleton;
 
 import java.util.ArrayList;
 
-public class BearMove implements MoveBehavior{
+public class BearMove implements MoveBehavior, java.io.Serializable{
     public int getRandomNumber(int min, int max) {
         return (int) ((Math.random() * (max - min)) + min);
     }

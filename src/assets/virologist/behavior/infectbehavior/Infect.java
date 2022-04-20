@@ -13,7 +13,7 @@ import assets.virologist.State;
 import collectables.agent.Agent;
 import assets.virologist.Virologist;
 import main.Skeleton;
-public class Infect implements InfectBehavior {
+public class Infect implements InfectBehavior, java.io.Serializable {
     /**
      * v1 tries to infect v2.
      *

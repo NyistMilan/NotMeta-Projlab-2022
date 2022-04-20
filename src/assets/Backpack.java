@@ -16,7 +16,7 @@ import main.Skeleton;
 import java.util.ArrayList;
 
 /** Stores materials and Equipments*/
-public class Backpack {
+public class Backpack implements java.io.Serializable{
 	/** Constructor*/
 	public Backpack(){
 		nucleotids = new ArrayList<>();

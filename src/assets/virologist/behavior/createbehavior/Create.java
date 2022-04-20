@@ -17,7 +17,7 @@ import assets.virologist.Virologist;
 import main.Skeleton;
 import java.util.ArrayList;
 
-public class Create implements CreateBehavior {
+public class Create implements CreateBehavior, java.io.Serializable{
     /**
      * If the field.virologist.Virologist has enough collectables.material.Materials he removes them from his field.Backpack and creates the collectables.agent.Agent.
      *

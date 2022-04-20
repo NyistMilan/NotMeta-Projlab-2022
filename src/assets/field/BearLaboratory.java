@@ -11,7 +11,7 @@ import main.Skeleton;
 
 import java.util.ArrayList;
 
-public class BearLaboratory extends Laboratory{
+public class BearLaboratory extends Laboratory implements java.io.Serializable{
 
 
     /**
@@ -26,17 +26,14 @@ public class BearLaboratory extends Laboratory{
     @Override
     /**
      *  If the field.virologist.Virologist steps on a field.field.BearLaboratory he got infected with bear agent
+     *
+     * @param v virologist
      **/
     public void Accept(Virologist v) {
         Skeleton.methodCall(this, "v");
         v.GetInfected(v,new Bear());
         virologists.add(v);
         Skeleton.methodReturn(this);
-    }
-
-    @Override
-    public Genome GetGenome() {
-        return null;
     }
 
     @Override

@@ -15,7 +15,7 @@ import main.Skeleton;
 
 /** The field.virologist.Virologist forgets every collectables.genome.Genome he learned so far*/
 @SuppressWarnings("GrazieInspection")
-public class Oblivion extends Agent {
+public class Oblivion extends Agent implements java.io.Serializable{
 
 	/** The number of turns a field.virologist.Virologist can store the collectables.agent.Agent in his field.Backpack.*/
 	private static int warranty;

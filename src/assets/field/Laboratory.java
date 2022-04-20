@@ -19,7 +19,7 @@ import main.Skeleton;
 import java.util.ArrayList;
 
 /** In a field.field.Laboratory a field.virologist.Virologist can learn a collectables.genome.Genome*/
-public class Laboratory extends Field {
+public class Laboratory extends Field implements java.io.Serializable{
 	/** Constructor*/
 	public Laboratory(Genome g){
 		Skeleton.methodCall(this);
@@ -29,6 +29,7 @@ public class Laboratory extends Field {
 		genome = g;
 		Controller.AddLearnableGenome(g);
 		Skeleton.methodReturn(this);
+		neighbours.add(this);
 	}
 
 	/** The collectables.genome.Genome that can be learned from the field.field.Laboratory*/

@@ -12,7 +12,7 @@ package assets.virologist.behavior.getinfectedbehavior;//
 import collectables.agent.Agent;
 import assets.virologist.Virologist;
 import main.Skeleton;
-public class NotInfected implements GetInfectedBehavior {
+public class NotInfected implements GetInfectedBehavior, java.io.Serializable {
     @Override
     public int GetPriority() {
         Skeleton.methodCall(this);

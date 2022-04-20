@@ -27,6 +27,8 @@ public abstract class Field implements java.io.Serializable{
 	protected Backpack backpack;
 
 	protected String fieldID;
+
+
 	/** Returns the neighbour in the given direction*/
 	public Field GetNeighbour(int d) {
 		Skeleton.methodCall(this, "d");

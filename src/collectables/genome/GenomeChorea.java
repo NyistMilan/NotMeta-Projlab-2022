@@ -13,7 +13,7 @@ import assets.virologist.Virologist;
 import main.Skeleton;
 
 /** The collectables.genome.GenomeChorea is used to create the collectables.agent.Chorea collectables.agent.Agent*/
-public class GenomeChorea extends Genome {
+public class GenomeChorea extends Genome implements java.io.Serializable{
 	private static final int aminocost=2;
 	private static final int nucleocost=1;
 

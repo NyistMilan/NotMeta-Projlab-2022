@@ -14,7 +14,7 @@ import assets.virologist.Virologist;
 
 import java.util.ArrayList;
 import main.Skeleton;
-public class NotPickUp implements PickUpBehavior {
+public class NotPickUp implements PickUpBehavior, java.io.Serializable {
     /**
      * Nothing happens
      * @param v the field.virologist.Virologist who wants to pick up something

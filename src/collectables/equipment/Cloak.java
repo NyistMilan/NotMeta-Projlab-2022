@@ -15,7 +15,7 @@ import collectables.equipment.Equipment;
 import main.Skeleton;
 
 /** The collectables.equipment.Cloak protects the field.virologist.Virologist from Agents with an 82.3% chance*/
-public class Cloak extends Equipment {
+public class Cloak extends Equipment implements java.io.Serializable{
 	public Cloak(){
 		durability=-1;
 	}

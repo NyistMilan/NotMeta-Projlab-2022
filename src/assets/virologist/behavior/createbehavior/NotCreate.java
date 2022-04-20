@@ -12,7 +12,7 @@ package assets.virologist.behavior.createbehavior;//
 import collectables.genome.Genome;
 import assets.virologist.Virologist;
 import main.Skeleton;
-public class NotCreate implements CreateBehavior {
+public class NotCreate implements CreateBehavior, java.io.Serializable{
     /**
      * Nothing happens
      * 

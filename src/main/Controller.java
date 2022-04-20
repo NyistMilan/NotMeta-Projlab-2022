@@ -540,7 +540,7 @@ public class Controller implements java.io.Serializable {
             case "chorea":
                 g = new GenomeChorea();
                 break;
-            case "obvilion":
+            case "oblivion":
                 g = new GenomeOblivion();
                 break;
             case "paralysis":

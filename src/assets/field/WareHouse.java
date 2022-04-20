@@ -16,7 +16,7 @@ import java.util.ArrayList;
 import collectables.genome.Genome;
 import main.Skeleton;
 /** At the start of the game collectables.material.Materials are placed in the WarHouses*/
-public class WareHouse extends Field {
+public class WareHouse extends Field implements java.io.Serializable{
 	/** Constructor*/
 	public WareHouse(){
 		Skeleton.methodCall(this);
@@ -24,6 +24,7 @@ public class WareHouse extends Field {
 		this.neighbours = new ArrayList<>();
 		backpack = new Backpack();
 		Skeleton.methodReturn(this);
+		neighbours.add(this);
 	}
 
 	@Override

@@ -4,7 +4,7 @@ import assets.virologist.State;
 import assets.virologist.Virologist;
 import collectables.equipment.Axe;
 
-public class Kill implements KillBehavior{
+public class Kill implements KillBehavior, java.io.Serializable{
     Axe axe;
     public Kill(Axe axe){
         this.axe=axe;

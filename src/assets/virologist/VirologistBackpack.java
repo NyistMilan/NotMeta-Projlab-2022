@@ -22,7 +22,7 @@ import java.util.ArrayList;
  * The backpack of the field.virologist.Virologist. He keeps here his Aminoacids, collectables.material.Nucleotide, Equipments, the Agents he Created
  * and the Agents he was infected with.
  * */
-public class VirologistBackpack extends Backpack {
+public class VirologistBackpack extends Backpack implements java.io.Serializable{
 	/** Constructor*/
 	VirologistBackpack(){
 		super();

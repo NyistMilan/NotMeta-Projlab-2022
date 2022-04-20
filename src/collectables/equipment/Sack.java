@@ -13,7 +13,7 @@ import main.Skeleton;
 import assets.virologist.Virologist;
 
 /** The field.virologist.Virologist can store more items than usually*/
-public class Sack extends Equipment {
+public class Sack extends Equipment implements java.io.Serializable{
 	private static final int extraInventory = 20;
 
 	public Sack(){

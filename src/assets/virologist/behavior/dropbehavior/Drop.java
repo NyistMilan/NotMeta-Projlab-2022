@@ -15,7 +15,7 @@ import assets.virologist.Virologist;
 import java.util.ArrayList;
 import main.Skeleton;
 
-public class Drop implements DropBehavior {
+public class Drop implements DropBehavior, java.io.Serializable{
     /**
      * Drops the Collectables on the field.field.Field the field.virologist.Virologist stands on
      *

@@ -128,6 +128,8 @@ public class ProtoUI {
                             PrintWriter testPw = new PrintWriter(new BufferedWriter(new FileWriter(runOutputFileName)));
                             BufferedReader testBr = new BufferedReader(new FileReader(inputFileName));
                             Run(testCt, testPw, testBr);
+                            testPw.close();
+                            testBr.close();
                             BufferedReader actual = new BufferedReader(new FileReader(runOutputFileName));
                             String expectedOutputFileName = "TestOutputs/" + command[1] + "_Output.txt";
                             BufferedReader expected = new BufferedReader(new FileReader(expectedOutputFileName));
@@ -388,13 +390,14 @@ public class ProtoUI {
 
 
     private static void ShowBackpack(Backpack backpack, PrintWriter pw) {
-        pw.printf("materials:\naminoacid %d\nnucleotide %d\nequipments:\n", backpack.GetAminos().size(), backpack.GetNucleotide().size());
+        pw.printf("materials:\naminoacid: %d\nnucleotide: %d\nequipments:\n", backpack.GetAminos().size(), backpack.GetNucleotide().size());
         int index = 1;
         for(Equipment e : backpack.GetEquipments()){
             if(e.GetDurability() < 0)
                 pw.printf("%d. %s\n", index, e.GetName());
             else
                 pw.printf("%d. %s %d\n", index, e.GetName(), e.GetDurability());
+            index++;
         }
     }
     /**
@@ -485,7 +488,7 @@ public class ProtoUI {
      * @param pw the output will be written there
      */
     private static void ShowField(Field field, PrintWriter pw) throws IOException {
-        pw.printf("fieldId: %s\ntype: %s\n", field.GetFieldID(),field.GetType());
+        pw.printf("fieldID: %s\ntype: %s\n", field.GetFieldID(),field.GetType());
         if(field.GetGenome() != null){
             pw.printf("genome: %s\n", field.GetGenome());
         }
@@ -495,6 +498,7 @@ public class ProtoUI {
         }
         Backpack backpack = field.GetBackpack();
         ShowBackpack(backpack, pw);
+        pw.printf("\n");
     }
 
     /**
@@ -526,18 +530,20 @@ public class ProtoUI {
             pw.printf("-%s\n", g.GetName());
         }
         VirologistBackpack backpack = virologist.GetBackpack();
-        pw.printf("backpack\ncapacity: %d\n", backpack.GetCapacity());
+        pw.printf("backpack:\ncapacity: %d\n", backpack.GetCapacity());
         ShowBackpack(backpack, pw);
 
-        pw.printf("agents\n");
+        pw.printf("agents:\n");
         int aIndex = 1;
         for(Agent a : backpack.GetAgents()){
             pw.printf("%d. %s %d\n", aIndex, a.GetName(), a.getWarranty());
+            aIndex++;
         }
         pw.printf("applied agents\n");
         for(Agent a : backpack.GetAppliedAgents()){
             pw.printf("- %s %d\n", a.GetName(), a.getDuration());
         }
+        pw.printf("\n");
     }
 
     /**
@@ -552,7 +558,7 @@ public class ProtoUI {
         String line1, line2;
         while ((line1 = expected.readLine()) != null) {
             line2 = actual.readLine();
-            if (line2 == null || !line1.equals(line2)) {
+            if (!line1.equals(line2)) {
                 return lineNumber;
             }
             lineNumber++;

@@ -15,7 +15,7 @@ import assets.virologist.behavior.getinfectedbehavior.NotInfected;
 import main.Skeleton;
 
 /** The field.virologist.Virologist can not get infected by other Virologists*/
-public class Protection extends Agent {
+public class Protection extends Agent implements java.io.Serializable{
 
 	/** The number of turns a field.virologist.Virologist can store the collectables.agent.Agent in his field.Backpack.*/
 	private static int warranty;

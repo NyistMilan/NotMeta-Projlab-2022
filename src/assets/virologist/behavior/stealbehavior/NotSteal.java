@@ -16,7 +16,7 @@ import assets.virologist.Virologist;
 import java.util.ArrayList;
 import main.Skeleton;
 /** */
-public class NotSteal implements StealBehavior {
+public class NotSteal implements StealBehavior, java.io.Serializable {
     /**
      * Nothing happens.
      *
