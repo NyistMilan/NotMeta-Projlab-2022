@@ -11,23 +11,117 @@ import collectables.genome.Genome;
 import java.io.*;
 
 public class ProtoUI {
+    static boolean godmode = false;    //after the game starts no more system commands are allowed
     public static void main(String[] args){
         Controller controller = new Controller(); //base controller
         final BufferedReader cbr = new BufferedReader(new InputStreamReader(System.in)); //BufferedReader for the console
         final PrintWriter cpw = new PrintWriter(new BufferedWriter(new OutputStreamWriter(System.out)), true); //BufferedWriter for the console
+
         Run(controller, cpw, cbr);
     }
 
     private static void Run(Controller ct, PrintWriter pw, BufferedReader br) {
         boolean running = true;
-        boolean started = false;    //after the game starts no more system commands are allowed
         while(running){
             try {
                 String input = br.readLine();
                 String[] command = input.split("\\s+");
-                if(!started) {
-                    switch (command[0]) {
-                        case "runTest":
+                switch (command[0]){
+                    case "field":
+                        if(godmode && command.length >= 3){
+                            if (command[1].equals("laboratory") || command[1].equals("bearlaboratory")){
+                                ct.CreateLaboratory(command[1], command[2], command[3]);
+                                break;
+                            }
+                            ct.CreateField(command[1], command[2]);
+                            break;
+                        }
+                        pw.printf("command not allowed\n");
+                        break;
+                    case "neighbor":
+                        if(godmode && command.length == 3){
+                            ct.NeighborFields(command[1], command[2]);
+                            break;
+                        }
+                        pw.printf("command not allowed\n");
+                        break;
+                    case "virologist":
+                        if(godmode && command.length == 3){
+                            ct.CreateVirologist(command[1], command[2]);
+                            break;
+                        }
+                        pw.printf("command not allowed\n");
+                        break;
+                    case "put":
+                        if(godmode && command.length == 4){
+                            switch (command[1]) {
+                                case "aminoacid":
+                                    ct.PutAminoacidOnField(Integer.parseInt(command[2]), command[3]);
+                                    break;
+                                case "nucleotide":
+                                    ct.PutNucleotideOnField(Integer.parseInt(command[2]), command[3]);
+                                    break;
+                                case "equipment":
+                                    ct.PutEquipmentOnField(command[2], command[3]);
+                                    break;
+                            }
+                            break;
+                        }
+                        pw.printf("command not allowed\n");
+                        break;
+                    case "give":
+                        if(godmode && command.length == 4) {
+                            switch (command[1]) {
+                                case "aminoacid":
+                                    ct.GiveAminoacidToVirologist(Integer.parseInt(command[2]), command[3]);
+                                    break;
+                                case "nucleotide":
+                                    ct.GiveNucleotideToVirologist(Integer.parseInt(command[2]), command[3]);
+                                    break;
+                                case "equipment":
+                                    ct.GiveEquipmentToVirologist(command[2], command[3]);
+                                    break;
+                                case "agent":
+                                    ct.GiveAgentToVirologist(command[2], command[3]);
+                                    break;
+                            }
+                            break;
+                        }
+                        pw.printf("command not allowed\n");
+                        break;
+                    case "show":
+                        if(godmode && command.length == 3){
+                            switch (command[1]) {
+                                case "virologist":
+                                    Virologist virologist = ct.GetVirologist(command[2]);
+                                    ShowVirologist(virologist, pw);
+                                    break;
+                                case "field":
+                                    assets.field.Field field = ct.GetField(command[2]);
+                                    ShowField(field, pw);
+                                    break;
+                            }
+                            break;
+                        }
+                        pw.printf("command not allowed\n");
+                        break;
+                    case "effect":
+                        if(godmode && command.length == 3){
+                            ct.EffectVirologist(command[1], command[2]);
+                            break;
+                        }
+                        pw.printf("command not allowed\n");
+                        break;
+                    case "teach":
+                        if(godmode && command.length == 3){
+                            ct.TeachGenome(command[1], command[2]);
+                            break;
+                        }
+                        pw.printf("command not allowed\n");
+                        break;
+                    case "runTest":
+                        if(command.length == 2){
+                            godmode = true;
                             String inputFileName = "TestInputs/" + command[1] + "_Input.txt";
                             String runOutputFileName = "RunOutputs/" + command[1] + "_RunOutput.txt";
                             Controller testCt = new Controller();
@@ -46,69 +140,25 @@ public class ProtoUI {
                             } else {
                                 pw.printf("test failed at line %d\n", FDL);
                             }
+                            godmode = false;
                             break;
-                        case "field":
-                            if (command[1].equals("laboratory") || command[1].equals("bearlaboratory"))
-                                ct.CreateLaboratory(command[1], command[2], command[3]);
-                            else
-                                ct.CreateField(command[1], command[2]);
-                            break;
-                        case "neighbor":
-                            ct.NeighborFields(command[1], command[2]);
-                            break;
-                        case "virologist":
-                            ct.CreateVirologist(command[1], command[2]);
-                            break;
-                        case "put":
-                            switch (command[1]) {
-                                case "aminoacid":
-                                    ct.PutAminoacidOnField(Integer.parseInt(command[2]), command[3]);
-                                    break;
-                                case "nucleotide":
-                                    ct.PutNucleotideOnField(Integer.parseInt(command[2]), command[3]);
-                                    break;
-                                case "equipment":
-                                    ct.PutEquipmentOnField(command[2], command[3]);
-                                    break;
-                            }
-                            break;
-                        case "give":
-                            switch (command[1]) {
-                                case "aminoacid":
-                                    ct.GiveAminoacidToVirologist(Integer.parseInt(command[2]), command[3]);
-                                    break;
-                                case "nucleotide":
-                                    ct.GiveNucleotideToVirologist(Integer.parseInt(command[2]), command[3]);
-                                    break;
-                                case "equipment":
-                                    ct.GiveEquipmentToVirologist(command[2], command[3]);
-                                    break;
-                                case "agent":
-                                    ct.GiveAgentToVirologist(command[2], command[3]);
-                                    break;
-                            }
-                            break;
-                        case "show":
-                            switch (command[1]) {
-                                case "virologist":
-                                    Virologist virologist = ct.GetVirologist(command[2]);
-                                    ShowVirologist(virologist, pw);
-                                    break;
-                                case "field":
-                                    assets.field.Field field = ct.GetField(command[2]);
-                                    ShowField(field, pw);
-                                    break;
-                            }
-                            break;
-                        case "new":
+                        }
+                        pw.printf("wrong command. use: runTest [name of the test]\n");
+                        break;
+                    case "new":
+                        if(command.length == 1){
                             ct = new Controller();
                             pw.printf("new game created\n");
-
                             break;
-                        case "load":
+                        }
+                        pw.printf("wrong command. use: new\n");
+                        break;
+                    case "load":
+                        if(command.length == 2){
                             Controller loadedGame;
                             try {
-                                ObjectInputStream in = new ObjectInputStream(new FileInputStream(command[1]));
+                                String filename = "Saves/" + command[1] + ".ser";
+                                ObjectInputStream in = new ObjectInputStream(new FileInputStream(filename));
                                 loadedGame = (Controller) in.readObject();
                                 ct = loadedGame;
                                 pw.printf("game loaded\n");
@@ -122,67 +172,61 @@ public class ProtoUI {
                                 break;
                             }
                             break;
-                        case "save":
-                            try {
-                                ObjectOutputStream out = new ObjectOutputStream(new FileOutputStream(command[1]));
-                                out.writeObject(ct);
-                                pw.printf("game saved\n");
-                                out.close();
-                            } catch (IOException i) {
-                                i.printStackTrace();
-                                break;
-                            }
-                        case "exit":
-                            br.close();
-                            pw.close();
-                            running = false;
-                            break;
-                        case "effect":
-                            ct.EffectVirologist(command[1], command[2]);
-                            break;
-                        case "teach":
-                            ct.TeachGenome(command[1], command[2]);
-                            break;
-                        case "start":
-                            ct.Start();
-                            started = true;
-                            pw.printf("the game has started\n");
-                            break;
-                    }
-                }
-                else{
-                    switch (command[0]){
-                        case "save":
+                        }
+                        pw.printf("wrong command. use: load [name of the game]\n");
+                        break;
+                    case "save":
+                        if(command.length == 2){
                             try{
-                                ObjectOutputStream out = new ObjectOutputStream(new FileOutputStream(command[1]));
+                                String filename = "Saves/" + command[1] + ".ser";
+                                ObjectOutputStream out = new ObjectOutputStream(new FileOutputStream(filename));
                                 out.writeObject(ct);
                                 pw.printf("game saved\n");
                                 out.close();
                             }
                             catch (IOException i){
                                 i.printStackTrace();
-                                break;
                             }
-                        case "exit":
+                            break;
+                        }
+                        pw.printf("wrong command. use: save [name of the game]\n");
+                        break;
+                    case "start":
+                        if(command.length == 1){
+                            ct.Start();
+                            pw.printf("the game has started\n");
+                            break;
+                        }
+                        pw.printf("wrong command. use: start\n");
+                        break;
+                    case "exit":
+                        if(command.length == 1){
                             br.close();
                             pw.close();
                             running = false;
                             break;
-                        case "move":
-                            if(command[1] == null){
+                        }
+                        pw.printf("wrong command. use: exit\n");
+                        break;
+                    case "move":
+                        if(command.length == 1 || command.length == 2|| (command.length == 3 && command[1].equals("randomoff") && godmode )){
+                            if(command.length == 1){
                                 Field field = ct.GetCurrentField();
                                 ShowDirections(field, pw);
                                 break;
                             }
-                            else if(command[1].equals("randomoff")){
+                            if(command[1].equals("randomoff") && godmode){
                                 ct.MoveVirologistRandomOff(Integer.parseInt(command[2]));
                                 break;
                             }
-                            else
-                                ct.MoveVirologist(Integer.parseInt(command[1]));
+                            ct.MoveVirologist(Integer.parseInt(command[1]));
                             break;
-                        case "drop":
-                            if(command[1] == null){
+                        }
+                        pw.printf("wrong command. use: move | move [fieldID]\n");
+                        break;
+                    case "drop":
+                        if(command.length == 1 || command.length == 3){
+                            if(command.length == 1){
                                 Virologist virologist = ct.GetCurrentVirologist();
                                 ShowVirologistBackpack(virologist, pw);
                                 break;
@@ -199,8 +243,12 @@ public class ProtoUI {
                                     break;
                             }
                             break;
-                        case "take":
-                            if(command[1] == null){
+                        }
+                        pw.printf("wrong command. use: drop [type] [quantity/name]\n");
+                        break;
+                    case "take":
+                        if(command.length == 1 || command.length == 3){
+                            if(command.length == 1){
                                 Field field = ct.GetCurrentField();
                                 ShowFieldBackpack(field, pw);
                                 break;
@@ -217,86 +265,113 @@ public class ProtoUI {
                                     break;
                             }
                             break;
-                        case "steal":
-                            if(command[1] == null){
+                        }
+                        pw.printf("wrong command. use: drop [type] [quantity/name]\n");
+                        break;
+                    case "steal":
+                        if(command.length == 1 || command.length == 2 || command.length == 4){
+                            if(command.length == 1){
                                 Field field = ct.GetCurrentField();
                                 ShowStealableVirologists(field, pw);
                                 break;
                             }
-                            if(command[2] == null){
+                            if(command.length == 2){
                                 Virologist virologist = ct.GetVirologist(command[1]);
                                 ShowVirologistBackpack(virologist, pw);
                                 break;
                             }
-                            switch (command[1]){
+                            switch (command[2]){
                                 case "aminoacid":
-                                    ct.StealAminoacid(command[1], Integer.parseInt(command[2]));
+                                    ct.StealAminoacid(command[1], Integer.parseInt(command[3]));
                                     break;
                                 case "nucleotide":
-                                    ct.StealNucleotide(command[1], Integer.parseInt(command[2]));
+                                    ct.StealNucleotide(command[1], Integer.parseInt(command[3]));
                                     break;
                                 case "equipment":
-                                    ct.StealEquipment(command[1], Integer.parseInt(command[2]));
+                                    ct.StealEquipment(command[1], Integer.parseInt(command[3]));
                                     break;
                             }
                             break;
-                        case "learn":
+                        }
+                        pw.printf("wrong command. use: steal | steal [virologist] | steal [virologist] [type] [quantity/index]\n");
+                        break;
+                    case "learn":
+                        if(command.length == 1){
                             ct.LearnGenome();
                             break;
-                        case "create":
-                            if(command[1] == null){
+                        }
+                        pw.printf("wrong command. use: learn\n");
+                        break;
+                    case "create":
+                        if(command.length == 1 || command.length == 2){
+                            if(command.length == 1){
                                 Virologist virologist = ct.GetCurrentVirologist();
                                 ShowCreatable(virologist, pw);
                                 break;
                             }
                             ct.CreateAgent(command[1]);
                             break;
-                        case "infect":
-                            if(command[1] == null){
+                        }
+                        pw.printf("wrong command. use: create | create [agent]\n");
+                        break;
+                    case "infect":
+                        if(command.length == 1 || command.length == 2 || command.length == 3 || (command.length == 4 && command[2].equals("randomoff") && godmode)){
+                            if(command.length == 1){
                                 Field field = ct.GetCurrentField();
                                 ShowVirologists(field, pw);
                                 break;
                             }
-                            if(command[2] == null){
+                            if(command.length == 2){
                                 Virologist virologist = ct.GetCurrentVirologist();
                                 ShowAgents(virologist, pw);
                                 break;
                             }
-                            if(command[2].equals("randomoff")){
+                            if(command[2].equals("randomoff") && godmode){
                                 ct.InfectVirologistRandomOff(command[1], Integer.parseInt(command[3]));
+                                break;
                             }
                             ct.InfectVirologist(command[1], Integer.parseInt(command[2]));
                             break;
-                        case "kill":
-                            if(command[1] == null){
+                        }
+                        pw.printf("wrong command. use: infect | infect [virologist] | infect [virologist] [agent]\n");
+                        break;
+                    case "kill":
+                        if(command.length == 1 || command.length == 2){
+                            if(command.length == 1){
                                 Field field = ct.GetCurrentField();
                                 ShowVirologists(field, pw);
                                 break;
                             }
                             ct.KillVirologist(command[1]);
-                        case "endTurn":
+                            break;
+                        }
+                        pw.printf("wrong command. use: kill | kill [virologist]\n");
+                        break;
+                    case "endTurn":
+                        if(command.length == 1){
                             ct.EndTurn();
+                            pw.printf("turn ended\n%s's turn\n", ct.GetCurrentVirologist().GetName());
                             break;
-                        case "show":
-                            switch (command[1]) {
-                                case "virologist":
-                                    Virologist virologist = ct.GetVirologist(command[2]);
-                                    ShowVirologist(virologist, pw);
-                                    break;
-                                case "field":
-                                    assets.field.Field field = ct.GetField(command[2]);
-                                    ShowField(field, pw);
-                                    break;
+                        }
+                        pw.printf("wrong command. use: endTurn\n");
+                        break;
+                    case "godmode":
+                        if(command.length == 2){
+                            if(command[1].equals("on")){
+                                godmode = true;
+                                pw.printf("godmode activated\n");
+                                break;
                             }
-                            break;
-                    }
-                }
-
-                {
-
-
-
-
+                            if(command[1].equals("off")){
+                                godmode = false;
+                                pw.printf("godmode deactivated\n");
+                                break;
+                            }
+                        }
+                        pw.printf("wrong command. use: godmode [on/off]\n");
+                        break;
+                    default:
+                        pw.printf("unknown command\n");
                 }
             } catch (IOException e) {
                 e.printStackTrace();
@@ -364,7 +439,7 @@ public class ProtoUI {
      * @param virologist the current virologist
      * @param pw the output will be written there
      */
-    private static void ShowAgents(Virologist virologist, PrintWriter pw) throws IOException {
+    private static void ShowAgents(Virologist virologist, PrintWriter pw) {
         int index = 1;
         for(Agent a : virologist.GetBackpack().GetAgents()){
             pw.printf("%d. %s %d\n", index, a.GetName(), a.getWarranty());
@@ -451,7 +526,7 @@ public class ProtoUI {
             pw.printf("-%s\n", g.GetName());
         }
         VirologistBackpack backpack = virologist.GetBackpack();
-        pw.printf("backpack\ncapacity: %d", backpack.GetCapacity());
+        pw.printf("backpack\ncapacity: %d\n", backpack.GetCapacity());
         ShowBackpack(backpack, pw);
 
         pw.printf("agents\n");
