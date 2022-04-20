@@ -179,7 +179,7 @@ public class ProtoUI {
                         if(command.length == 2){
                             try{
                                 String filename = "Saves/" + command[1] + ".ser";
-                                ObjectOutputStream out = new ObjectOutputStream(new FileOutputStream(command[1]));
+                                ObjectOutputStream out = new ObjectOutputStream(new FileOutputStream(filename));
                                 out.writeObject(ct);
                                 pw.printf("game saved\n");
                                 out.close();
@@ -350,17 +350,25 @@ public class ProtoUI {
                     case "endTurn":
                         if(command.length == 1){
                             ct.EndTurn();
+                            pw.printf("turn ended\n%s's turn\n", ct.GetCurrentVirologist().GetName());
                             break;
                         }
                         pw.printf("wrong command. use: endTurn\n");
                         break;
                     case "godmode":
-                        if(command.length == 1){
-                            godmode = true;
-                            pw.printf("godmode activated\n");
-                            break;
+                        if(command.length == 2){
+                            if(command[1].equals("on")){
+                                godmode = true;
+                                pw.printf("godmode activated\n");
+                                break;
+                            }
+                            if(command[1].equals("off")){
+                                godmode = false;
+                                pw.printf("godmode deactivated\n");
+                                break;
+                            }
                         }
-                        pw.printf("wrong command. use: godmode\n");
+                        pw.printf("wrong command. use: godmode [on/off]\n");
                         break;
                     default:
                         pw.printf("unknown command\n");
@@ -518,7 +526,7 @@ public class ProtoUI {
             pw.printf("-%s\n", g.GetName());
         }
         VirologistBackpack backpack = virologist.GetBackpack();
-        pw.printf("backpack\ncapacity: %d", backpack.GetCapacity());
+        pw.printf("backpack\ncapacity: %d\n", backpack.GetCapacity());
         ShowBackpack(backpack, pw);
 
         pw.printf("agents\n");

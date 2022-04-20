@@ -34,7 +34,7 @@ import java.util.ArrayList;
  * He can interact with Collectables on the field.field.Field and other Virologists.
  * He moves around the map and learns Genomes, of which he can create Agents.
  * */
-public class Virologist{
+public class Virologist implements java.io.Serializable{
 
 
 
@@ -45,6 +45,7 @@ public class Virologist{
 		backPack = new VirologistBackpack();
 		learnedGenomes = new ArrayList<>();
 		DefaultBehaviors();
+		SetState(State.NOT_IN_TURN);
 		Skeleton.methodReturn(this);
 	}
 	/** The current state the field.virologist.Virologist is in*/

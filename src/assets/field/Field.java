@@ -18,7 +18,7 @@ import main.Skeleton;
 import java.util.ArrayList;
 
 /** The Virologists move from field.field.Field to field.field.Field during the game. The Fields can also store Collectables*/
-public abstract class Field {
+public abstract class Field implements java.io.Serializable{
 	/** The Virologists on the field.field.Field*/
 	protected ArrayList<Virologist> virologists;
 
