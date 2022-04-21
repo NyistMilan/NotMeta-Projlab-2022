@@ -13,7 +13,7 @@ import assets.Backpack;
 import assets.virologist.Virologist;
 import main.Skeleton;
 /** Aminoacids are used to create Agents*/
-public class Aminoacid extends Materials implements java.io.Serializable{
+public class Aminoacid extends Materials{
     /**
      * Adds the collectables.material.Aminoacid to a field.Backpack.
      *

@@ -11,7 +11,6 @@ package assets.virologist.behavior.learnbehavior;//
 
 import assets.virologist.State;
 import collectables.genome.Genome;
-import main.Controller;
 import assets.virologist.Virologist;
 import main.Skeleton;
 public class Learn implements LearnBehavior, java.io.Serializable {
@@ -36,7 +35,6 @@ public class Learn implements LearnBehavior, java.io.Serializable {
             Skeleton.methodReturn(this);
             return;
         }
-        Controller.TestWin(v);
         v.SetState(State.AFTER_ACTION);
         Skeleton.methodReturn(this);
     }

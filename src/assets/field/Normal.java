@@ -15,7 +15,7 @@ import main.Skeleton;
 import java.util.ArrayList;
 
 /** A normal field.field.Field*/
-public class Normal extends Field implements java.io.Serializable{
+public class Normal extends Field{
 	/** Constructor*/
 	public Normal(){
 		Skeleton.methodCall(this);

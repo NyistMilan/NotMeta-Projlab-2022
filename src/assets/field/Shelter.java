@@ -15,7 +15,7 @@ import main.Skeleton;
 import java.util.ArrayList;
 
 /** At the start of the game the Equipments are placed in Shelters*/
-public class Shelter extends Field implements java.io.Serializable{
+public class Shelter extends Field{
 	/** Constructor*/
 	public Shelter(){
 		Skeleton.methodCall(this);

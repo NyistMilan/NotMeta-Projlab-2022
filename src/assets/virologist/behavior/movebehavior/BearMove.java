@@ -3,8 +3,6 @@ package assets.virologist.behavior.movebehavior;
 import assets.field.Field;
 import assets.virologist.State;
 import assets.virologist.Virologist;
-import assets.virologist.behavior.killbehavior.Kill;
-import assets.virologist.behavior.learnbehavior.NotLearn;
 import collectables.agent.Bear;
 import main.Skeleton;
 

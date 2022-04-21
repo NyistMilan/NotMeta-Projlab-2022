@@ -1,6 +1,5 @@
 package main;
 
-import java.io.FileInputStream;
 import java.util.ArrayList;
 import java.util.Scanner;
 import assets.virologist.behavior.dropbehavior.*;
@@ -9,7 +8,6 @@ import assets.virologist.behavior.getinfectedbehavior.MaybeInfected;
 import assets.virologist.behavior.getinfectedbehavior.NotInfected;
 import assets.virologist.behavior.getstolenbehavior.*;
 import assets.virologist.behavior.learnbehavior.*;
-import assets.virologist.behavior.movebehavior.*;
 import assets.field.*;
 import assets.virologist.*;
 import assets.virologist.behavior.pickupbehavior.PickUp;
@@ -26,6 +24,7 @@ import collectables.material.Nucleotide;
  * through the console, where we can run specific use cases by inputting their number.
  * @author Milan_Nyist
  */
+@SuppressWarnings("ALL")
 public class Skeleton {
     /** Keeps count of how many tabs deep we are currently.*/
     private static int tabNum = 0;

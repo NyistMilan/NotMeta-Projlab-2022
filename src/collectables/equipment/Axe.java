@@ -2,9 +2,8 @@ package collectables.equipment;
 
 import assets.virologist.Virologist;
 import assets.virologist.behavior.killbehavior.Kill;
-import collectables.Collectable;
 
-public class Axe extends Equipment implements java.io.Serializable{
+public class Axe extends Equipment{
 
     public Axe(){
         durability=1;

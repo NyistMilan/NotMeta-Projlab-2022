@@ -38,6 +38,8 @@ public class InfectBack implements GetInfectedBehavior, java.io.Serializable{
         Skeleton.methodCall(this, "v1", "v2", "a");
         v1.GetInfected(v2, a);
         glove.DecreaseEquipmentDurability();
+        if(glove.GetDurability() == 0)
+            glove.RemoveFromBackpack(v1, v1.GetBackpack());
         Skeleton.methodReturn(this);
     }
 }

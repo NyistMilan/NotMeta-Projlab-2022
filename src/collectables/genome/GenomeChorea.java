@@ -13,10 +13,7 @@ import assets.virologist.Virologist;
 import main.Skeleton;
 
 /** The collectables.genome.GenomeChorea is used to create the collectables.agent.Chorea collectables.agent.Agent*/
-public class GenomeChorea extends Genome implements java.io.Serializable{
-	private static final int aminocost=2;
-	private static final int nucleocost=1;
-
+public class GenomeChorea extends Genome{
 	/**
 	 * Creates a collectables.agent.Chorea collectables.agent.Agent and puts it into the field.Backpack of the field.virologist.Virologist that created it
 	 *
@@ -31,12 +28,12 @@ public class GenomeChorea extends Genome implements java.io.Serializable{
 
 	@Override
 	public int getAminoCost() {
-		return aminocost;
+		return 3;
 	}
 
 	@Override
 	public int getNucleoCost() {
-		return nucleocost;
+		return 3;
 	}
 
 	@Override

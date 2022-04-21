@@ -185,7 +185,7 @@ public class Virologist implements java.io.Serializable{
 
 	public void KillVirologist(Virologist v){
 		Skeleton.methodCall(this,"v");
-		killBehavior.Kill(this,v);
+		killBehavior.KillVirologist(this,v);
 		Skeleton.methodReturn(this);
 	}
 	/**
