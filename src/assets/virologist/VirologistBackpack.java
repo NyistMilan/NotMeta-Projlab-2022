@@ -22,7 +22,7 @@ import java.util.ArrayList;
  * The backpack of the field.virologist.Virologist. He keeps here his Aminoacids, collectables.material.Nucleotide, Equipments, the Agents he Created
  * and the Agents he was infected with.
  * */
-public class VirologistBackpack extends Backpack implements java.io.Serializable{
+public class VirologistBackpack extends Backpack{
 	/** Constructor*/
 	VirologistBackpack(){
 		super();
@@ -171,7 +171,7 @@ public class VirologistBackpack extends Backpack implements java.io.Serializable
 	}
 	//
 	/**
-	 * Decrease the capacity with a given value, whether there is more material then the decreased capacity,
+	 * Decrease the capacity with a given value, whether there is more material than the decreased capacity,
 	 * the extra materials will be dropped to the field.
 	 * @param reduction -
 	 */
@@ -190,13 +190,6 @@ public class VirologistBackpack extends Backpack implements java.io.Serializable
 			nucleoBonus--;
 		}
 		Skeleton.methodReturn(this);
-	}
-	
-	/**
-	 * Remove equipments with 0 durability.
-	 */
-	public void checkEquipmentDurability(){
-		equipments.removeIf(eq -> eq.GetDurability() == 0);
 	}
 
     public ArrayList<Agent> GetAgents() {

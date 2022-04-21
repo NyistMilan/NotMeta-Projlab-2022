@@ -14,7 +14,7 @@ import collectables.Collectable;
 import main.Skeleton;
 
 /** The collectables.material.Materials are the things that the Agents are made of*/
-public abstract class Materials implements Collectable {
+public abstract class Materials implements Collectable , java.io.Serializable{
 
     /** Nothing happens*/
     @Override

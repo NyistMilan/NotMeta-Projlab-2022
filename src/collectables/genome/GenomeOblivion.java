@@ -14,9 +14,7 @@ import collectables.agent.Oblivion;
 import main.Skeleton;
 
 /** The collectables.genome.GenomeChorea is used to create the collectables.agent.Oblivion collectables.agent.Agent*/
-public class GenomeOblivion extends Genome implements java.io.Serializable{
-	private static int aminocost;
-	private static int nucleocost;
+public class GenomeOblivion extends Genome{
 
 	//TODO
 	/**
@@ -32,12 +30,12 @@ public class GenomeOblivion extends Genome implements java.io.Serializable{
 	}
 	@Override
 	public int getAminoCost() {
-		return aminocost;
+		return 3;
 	}
 
 	@Override
 	public int getNucleoCost() {
-		return nucleocost;
+		return 3;
 	}
 
 	@Override

@@ -16,7 +16,7 @@ import java.util.ArrayList;
 import collectables.genome.Genome;
 import main.Skeleton;
 /** At the start of the game collectables.material.Materials are placed in the WarHouses*/
-public class WareHouse extends Field implements java.io.Serializable{
+public class WareHouse extends Field{
 	/** Constructor*/
 	public WareHouse(){
 		Skeleton.methodCall(this);

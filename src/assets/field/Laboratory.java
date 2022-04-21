@@ -9,17 +9,16 @@ package assets.field;//
 //
 //
 
-import collectables.genome.Genome;
 import assets.Backpack;
 import assets.virologist.Virologist;
 import assets.virologist.behavior.learnbehavior.Learn;
-import main.Controller;
+import collectables.genome.Genome;
 import main.Skeleton;
 
 import java.util.ArrayList;
 
 /** In a field.field.Laboratory a field.virologist.Virologist can learn a collectables.genome.Genome*/
-public class Laboratory extends Field implements java.io.Serializable{
+public class Laboratory extends Field{
 	/** Constructor*/
 	public Laboratory(Genome g){
 		Skeleton.methodCall(this);
@@ -27,7 +26,6 @@ public class Laboratory extends Field implements java.io.Serializable{
 		neighbours = new ArrayList<>();
 		backpack = new Backpack();
 		genome = g;
-		Controller.AddLearnableGenome(g);
 		Skeleton.methodReturn(this);
 		neighbours.add(this);
 	}

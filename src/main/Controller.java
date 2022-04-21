@@ -10,7 +10,6 @@ package main;//
 //
 
 import assets.field.*;
-import assets.virologist.Route;
 import assets.virologist.State;
 import assets.virologist.Virologist;
 import collectables.Collectable;
@@ -20,16 +19,15 @@ import collectables.genome.*;
 import collectables.material.Aminoacid;
 import collectables.material.Nucleotide;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 
 /**
  * Controls the Game and the turns of the players
  */
 public class Controller implements java.io.Serializable {
-    private static ArrayList<Field> map;
-    private static ArrayList<collectables.genome.Genome> learnableGenomes;
-    private static ArrayList<Virologist> virologists;
+    private final ArrayList<Field> map;
+    private final ArrayList<collectables.genome.Genome> learnableGenomes;
+    private final ArrayList<Virologist> virologists;
     /**
      * the player
      */
@@ -51,43 +49,40 @@ public class Controller implements java.io.Serializable {
         Skeleton.methodReturn(this);
     }
 
-    public static void TestWin(Virologist v) {
+    public void TestWin(Virologist v) {
         if (v.GetLearnedGenomes().size() == learnableGenomes.size()) {
             End();
         }
     }
 
-    public static void AddLearnableGenome(Genome g) {
+    public void AddLearnableGenome(Genome g) {
         if (!learnableGenomes.contains(g))
             learnableGenomes.add(g);
     }
 
-
+    //TODO
     /**
      *
      */
-    public static void End() {
+    public void End() {
+
     }
 
     /**
-     * Calls the next player and him in which directions can he move
+     * Calls the next player
      */
-    public ArrayList<Integer> NextPlayer() {
+    public void NextPlayer() {
         Virologist v = virologists.get(index);
         if (v.GetState() == State.KILLED) {
             virologists.remove(v);
             v = virologists.get(index);
         }
-        Route r = v.GetRoute();
-        Field f = r.GetLocation();
-        ArrayList<Integer> d = f.GetDirections();
         v.SetState(State.BEFORE_MOVE);
         if (virologists.size() - 1 == index) {
             index = 0;
         } else {
             index++;
         }
-        return d;
     }
 
     /**
@@ -123,34 +118,18 @@ public class Controller implements java.io.Serializable {
      * @param fieldID the ID of the created Field
      */
     public void CreateLaboratory(String type, String genome, String fieldID) {
-        Genome g;
-        switch (genome) {
-            case "chorea":
-                g = new GenomeChorea();
-                break;
-            case "obvilion":
-                g = new GenomeOblivion();
-                break;
-            case "paralysis":
-                g = new GenomeParalysis();
-                break;
-            case "protection":
-                g = new GenomeProtection();
-                break;
-            default:
-                return;
-        }
         Field f;
         switch (type) {
             case "laboratory":
-                f = new Laboratory(g);
+                f = new Laboratory(StringToGenome(genome));
                 break;
             case "bearlaboratory":
-                f = new BearLaboratory(g);
+                f = new BearLaboratory(StringToGenome(genome));
                 break;
             default:
                 return;
         }
+        AddLearnableGenome(StringToGenome(type));
         f.SetFieldID(fieldID);
         map.add(f);
     }
@@ -214,25 +193,8 @@ public class Controller implements java.io.Serializable {
      * @param fieldID the ID of the Field
      */
     public void PutEquipmentOnField(String type, String fieldID) {
-        Equipment eq;
-        switch (type) {
-            case "axe":
-                eq = new Axe();
-                break;
-            case "cloak":
-                eq = new Cloak();
-                break;
-            case "sack":
-                eq = new Sack();
-                break;
-            case "gloves":
-                eq = new Gloves();
-                break;
-            default:
-                return;
-        }
         Field field = GetField(fieldID);
-        field.GetBackpack().Add(eq);
+        field.GetBackpack().Add(StringToEquipment(type));
     }
 
     /**
@@ -274,26 +236,10 @@ public class Controller implements java.io.Serializable {
      * @param name the name of the Virologist
      */
     public void GiveEquipmentToVirologist(String type, String name) {
-        Equipment eq;
-        switch (type) {
-            case "axe":
-                eq = new Axe();
-                break;
-            case "cloak":
-                eq = new Cloak();
-                break;
-            case "sack":
-                eq = new Sack();
-                break;
-            case "gloves":
-                eq = new Gloves();
-                break;
-            default:
-                return;
-        }
+
         for (Virologist v : virologists) {
             if (v.GetName().equals(name)) {
-                v.GetBackpack().Add(eq);
+                v.GetBackpack().Add(StringToEquipment(type));
             }
         }
     }
@@ -305,29 +251,9 @@ public class Controller implements java.io.Serializable {
      * @param name the name of the Virologist
      */
     public void GiveAgentToVirologist(String type, String name) {
-        Agent a;
-        switch (type) {
-            case "bear":
-                a = new Bear();
-                break;
-            case "chorea":
-                a = new Chorea();
-                break;
-            case "obvilion":
-                a = new Oblivion();
-                break;
-            case "paralysis":
-                a = new Paralysis();
-                break;
-            case "protection":
-                a = new Protection();
-                break;
-            default:
-                return;
-        }
         for (Virologist v : virologists) {
             if (v.GetName().equals(name)) {
-                v.GetBackpack().Add(a);
+                v.GetBackpack().Add(StringToAgent(type));
             }
         }
 
@@ -535,24 +461,7 @@ public class Controller implements java.io.Serializable {
      * @param name the name of the Virologist
      */
     public void TeachGenome(String type, String name) {
-        Genome g;
-        switch (type) {
-            case "chorea":
-                g = new GenomeChorea();
-                break;
-            case "oblivion":
-                g = new GenomeOblivion();
-                break;
-            case "paralysis":
-                g = new GenomeParalysis();
-                break;
-            case "protection":
-                g = new GenomeProtection();
-                break;
-            default:
-                return;
-        }
-        GetVirologist(name).Add(g);
+        GetVirologist(name).Add(StringToGenome(type));
     }
 
     /**
@@ -561,24 +470,7 @@ public class Controller implements java.io.Serializable {
      * @param type the type of the Genome
      */
     public void CreateAgent(String type) {
-        Genome g;
-        switch (type) {
-            case "chorea":
-                g = new GenomeChorea();
-                break;
-            case "obvilion":
-                g = new GenomeOblivion();
-                break;
-            case "paralysis":
-                g = new GenomeParalysis();
-                break;
-            case "protection":
-                g = new GenomeProtection();
-                break;
-            default:
-                return;
-        }
-        GetCurrentVirologist().CreateAgent(g);
+        GetCurrentVirologist().CreateAgent(StringToGenome(type));
     }
 
     /**
@@ -616,25 +508,8 @@ public class Controller implements java.io.Serializable {
      * @param name the target
      */
     public void EffectVirologist(String type, String name) {
-        Agent g;
-        switch (type) {
-            case "chorea":
-                g = new Chorea();
-                break;
-            case "obvilion":
-                g = new Oblivion();
-                break;
-            case "paralysis":
-                g = new Paralysis();
-                break;
-            case "protection":
-                g = new Protection();
-                break;
-            default:
-                return;
-        }
         Virologist vInfected = GetVirologist(name);
-        vInfected.GetBackpack().AddApplied(g);
+        vInfected.GetBackpack().AddApplied(StringToAgent(type));
     }
 
     /**
@@ -654,6 +529,69 @@ public class Controller implements java.io.Serializable {
      */
     public void EndTurn() {
         GetCurrentVirologist().SetState(State.NOT_IN_TURN);
+        TestWin(GetCurrentVirologist());
         NextPlayer();
+    }
+    private Agent StringToAgent(String type){
+        Agent a;
+        switch (type) {
+            case "chorea":
+                a = new Chorea();
+                break;
+            case "oblivion":
+                a = new Oblivion();
+                break;
+            case "paralysis":
+                a = new Paralysis();
+                break;
+            case "protection":
+                a = new Protection();
+                break;
+            default:
+                return null;
+        }
+        return a;
+    }
+
+    private Genome StringToGenome(String type){
+        Genome g;
+        switch (type) {
+            case "chorea":
+                g = new GenomeChorea();
+                break;
+            case "oblivion":
+                g = new GenomeOblivion();
+                break;
+            case "paralysis":
+                g = new GenomeParalysis();
+                break;
+            case "protection":
+                g = new GenomeProtection();
+                break;
+            default:
+                return null;
+        }
+        return g;
+    }
+
+    private Equipment StringToEquipment(String type){
+        Equipment eq;
+        switch (type) {
+            case "axe":
+                eq = new Axe();
+                break;
+            case "cloak":
+                eq = new Cloak();
+                break;
+            case "sack":
+                eq = new Sack();
+                break;
+            case "gloves":
+                eq = new Gloves();
+                break;
+            default:
+                return null;
+        }
+        return eq;
     }
 }

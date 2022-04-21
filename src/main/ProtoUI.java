@@ -28,7 +28,7 @@ public class ProtoUI {
                 String[] command = input.split("\\s+");
                 switch (command[0]){
                     case "field":
-                        if(godmode && command.length >= 3){
+                        if(godmode && (command.length == 3 || (command.length == 4 && command[1].equals("laboratory") || command[1].equals("bearlaboratory")))){
                             if (command[1].equals("laboratory") || command[1].equals("bearlaboratory")){
                                 ct.CreateLaboratory(command[1], command[2], command[3]);
                                 break;
@@ -246,7 +246,7 @@ public class ProtoUI {
                             }
                             break;
                         }
-                        pw.printf("wrong command. use: drop [type] [quantity/name]\n");
+                        pw.printf("wrong command. use: drop [type] [quantity/index]\n");
                         break;
                     case "take":
                         if(command.length == 1 || command.length == 3){
@@ -268,7 +268,7 @@ public class ProtoUI {
                             }
                             break;
                         }
-                        pw.printf("wrong command. use: drop [type] [quantity/name]\n");
+                        pw.printf("wrong command. use: drop [type] [quantity/index]\n");
                         break;
                     case "steal":
                         if(command.length == 1 || command.length == 2 || command.length == 4){
@@ -405,7 +405,7 @@ public class ProtoUI {
      * @param field the field the Virologist is on.
      * @param pw the output will be written there
      */
-    private static void ShowVirologists(Field field, PrintWriter pw) throws IOException {
+    private static void ShowVirologists(Field field, PrintWriter pw) {
         for(Virologist v : field.GetVirologists()){
             pw.printf("%s\n", v.GetName());
         }
@@ -416,7 +416,7 @@ public class ProtoUI {
      * @param field the field the Virologist is on.
      * @param pw the output will be written there
      */
-    private static void ShowStealableVirologists(Field field, PrintWriter pw) throws IOException {
+    private static void ShowStealableVirologists(Field field, PrintWriter pw) {
         for(Virologist v : field.GetVirologists()){
             if(v.GetGetStolenBehavior().CanStealForm())
                 pw.printf("%s\n", v.GetName());
@@ -428,7 +428,7 @@ public class ProtoUI {
      * @param virologist the current Virologist
      * @param pw the output will be written there
      */
-    private static void ShowCreatable(Virologist virologist, PrintWriter pw) throws IOException {
+    private static void ShowCreatable(Virologist virologist, PrintWriter pw) {
         int aminoCount = virologist.GetBackpack().GetAminos().size();
         int nucleoCount = virologist.GetBackpack().GetNucleotide().size();
         pw.printf("you have: \t%d aminoacid \t%d nucleotide\n", aminoCount, nucleoCount);
@@ -455,7 +455,7 @@ public class ProtoUI {
      * @param field the Field the current Virologist is on
      * @param pw the output will be written there
      */
-    private static void ShowFieldBackpack(Field field, PrintWriter pw) throws IOException {
+    private static void ShowFieldBackpack(Field field, PrintWriter pw) {
         Backpack backpack = field.GetBackpack();
         ShowBackpack(backpack, pw);
 
@@ -466,7 +466,7 @@ public class ProtoUI {
      * @param virologist the Virologist who owns the Backpack
      * @param pw the output will be written there
      */
-    private static void ShowVirologistBackpack(Virologist virologist, PrintWriter pw) throws IOException {
+    private static void ShowVirologistBackpack(Virologist virologist, PrintWriter pw) {
         VirologistBackpack backpack = virologist.GetBackpack();
         ShowBackpack(backpack, pw);
     }
@@ -476,7 +476,7 @@ public class ProtoUI {
      * @param field The Field the Current Virologist is on
      * @param pw the output will be written there
      */
-    private static void ShowDirections(Field field, PrintWriter pw) throws IOException {
+    private static void ShowDirections(Field field, PrintWriter pw) {
         for(int d: field.GetDirections()){
             pw.printf("%d - %s\n", d, field.GetNeighbour(d).GetType());
         }
@@ -487,7 +487,7 @@ public class ProtoUI {
      * @param field the Field
      * @param pw the output will be written there
      */
-    private static void ShowField(Field field, PrintWriter pw) throws IOException {
+    private static void ShowField(Field field, PrintWriter pw) {
         pw.printf("fieldID: %s\ntype: %s\n", field.GetFieldID(),field.GetType());
         if(field.GetGenome() != null){
             pw.printf("genome: %s\n", field.GetGenome());
@@ -506,7 +506,7 @@ public class ProtoUI {
      * @param virologist the Virologist
      * @param pw the output will be written there
      */
-    private static void ShowVirologist(Virologist virologist, PrintWriter pw) throws IOException {
+    private static void ShowVirologist(Virologist virologist, PrintWriter pw) {
         pw.printf("name: %s\nfield: %s\n", virologist.GetName(), virologist.GetRoute().GetLocation().GetFieldID());
         String state = "";
         switch (virologist.GetState()){

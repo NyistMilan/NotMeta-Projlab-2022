@@ -12,7 +12,6 @@ package assets.virologist.behavior.movebehavior;//
 import assets.field.Field;
 import assets.virologist.State;
 import assets.virologist.Virologist;
-import assets.virologist.behavior.learnbehavior.NotLearn;
 
 import java.util.ArrayList;
 import main.Skeleton;

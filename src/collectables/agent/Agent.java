@@ -15,7 +15,7 @@ import assets.virologist.Virologist;
 import assets.*;
 
 /** A field.virologist.Virologist can use a collectables.agent.Agent to infect another field.virologist.Virologist (or himself).*/
-public abstract class Agent implements Collectable {
+public abstract class Agent implements Collectable, java.io.Serializable {
 
 	/**
 	 * Gets the duration of the collectables.agent.Agent

@@ -21,7 +21,7 @@ import assets.virologist.*;
 import assets.virologist.behavior.dropbehavior.*;
 
 /** The field.virologist.Virologist can not do anything. Other Virologists can steal from him*/
-public class Paralysis extends Agent implements java.io.Serializable{
+public class Paralysis extends Agent{
 
 	/** The number of turns a field.virologist.Virologist can store the collectables.agent.Agent in his field.Backpack.*/
 	private static int warranty;

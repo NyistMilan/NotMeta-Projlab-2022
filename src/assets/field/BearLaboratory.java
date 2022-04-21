@@ -1,17 +1,11 @@
 package assets.field;
 
-import assets.Backpack;
 import assets.virologist.Virologist;
-import assets.virologist.behavior.learnbehavior.Learn;
-import assets.virologist.behavior.movebehavior.BearMove;
 import collectables.agent.Bear;
 import collectables.genome.Genome;
-import collectables.genome.GenomeProtection;
 import main.Skeleton;
 
-import java.util.ArrayList;
-
-public class BearLaboratory extends Laboratory implements java.io.Serializable{
+public class BearLaboratory extends Laboratory{
 
 
     /**
