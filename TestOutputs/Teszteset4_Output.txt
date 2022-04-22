@@ -1,0 +1,10 @@
+the game has started
+0 - this
+1 - normal
+2 - shelter
+fieldID: S1
+type: shelter
+virologists:
+-V1
+materials:
+equipments:

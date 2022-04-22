@@ -1,0 +1,9 @@
+field normal N1
+put aminoacid 1 N1
+virologist V1 N1
+show virologist V1
+start
+move 0
+take aminoacid 1
+show virologist V1
+exit

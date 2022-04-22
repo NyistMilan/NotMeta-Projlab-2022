@@ -1,0 +1,9 @@
+field warehouse W1
+virologist V1 W1
+give nucleotide 5 V1
+start
+move 0
+drop nucleotide 5
+show virologist V1
+show field W1
+exit

@@ -1,0 +1,22 @@
+the game has started
+fieldID: F1
+type: warehouse
+genome:
+virologists:
+-V1
+materials:
+-aminoacid: 0
+-nucleotide: 0
+equipments:
+1. axe 1
+name: V1
+field: F1
+state: before_action
+learned genomes:
+backpack:
+capacity: 10
+aminoacid: 0
+nucleotide: 0
+equipments:
+agents:
+applied agents:

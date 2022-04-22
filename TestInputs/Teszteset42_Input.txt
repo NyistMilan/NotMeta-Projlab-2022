@@ -1,0 +1,8 @@
+field normal F1
+virologist V1 F1
+teach chorea V1
+start
+move 0
+create chorea
+show virologist V1
+exit

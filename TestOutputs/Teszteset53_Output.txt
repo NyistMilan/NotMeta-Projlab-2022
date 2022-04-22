@@ -1,0 +1,16 @@
+the game has started
+turn ended
+V1’s turn
+name: V1
+field: F1
+state: before_move
+learned genomes:
+backpack:
+capacity: 10
+aminoacid: 0
+nucleotide: 0
+equipments:
+agents:
+1. chorea 4
+applied agents:
+-chorea 2

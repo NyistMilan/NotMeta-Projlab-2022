@@ -1,0 +1,25 @@
+the game has started
+name: V2
+field: F1
+state: killed
+learned genomes:
+backpack:
+capacity: 10
+aminoacid: 0
+nucleotide: 0
+equipments:
+agents:
+applied agents:
+-bear
+name: V1
+field: F1
+state: after_action
+learned genomes:
+backpack:
+capacity: 10
+aminoacid: 0
+nucleotide: 0
+equipments:
+1. axe 0
+agents:
+applied agents:

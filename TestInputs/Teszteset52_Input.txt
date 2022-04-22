@@ -1,0 +1,11 @@
+field normal F1
+virologist V1 F1
+virologist V2 F1
+effect bear V2
+give equipment axe V1
+start
+move 0
+kill V2
+show virologist V2
+show virologist V1
+exit

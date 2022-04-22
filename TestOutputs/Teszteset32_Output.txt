@@ -1,0 +1,21 @@
+the game has started
+name: V1
+field: L1
+state: after_action
+learned genomes:
+backpack:
+capacity: 10
+aminoacid: 0
+nucleotide: 0
+equipments:
+agents:
+applied agents:
+fieldID: L1
+type: laboratory
+genome: protection
+virologists:
+-V1
+materials:
+-aminoacid: 0
+-nucleotide: 4
+equipments:

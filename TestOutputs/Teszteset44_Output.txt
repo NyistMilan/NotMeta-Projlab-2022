@@ -1,0 +1,13 @@
+the game has started
+name: V2
+field: F1
+state: not_in_turn
+learned genomes:
+backpack:
+capacity: 10
+aminoacid: 0
+nucleotide: 0
+equipments:
+agents:
+applied agents:
+chorea 3

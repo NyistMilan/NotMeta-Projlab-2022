@@ -1,0 +1,13 @@
+the game has started
+name: V1
+field: F1
+state: before_action
+learned genomes:
+backpack:
+capacity: 10
+aminoacid: 0
+nucleotide: 0
+equipments:
+agents:
+applied agents:
+-Paralysis 1

@@ -1,0 +1,8 @@
+field laboratory chorea L1
+virologist V1 L1
+show virologist V1
+start
+move 0
+learn
+show virologist V1
+exit

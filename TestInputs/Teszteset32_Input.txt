@@ -1,0 +1,9 @@
+field laboratory protection L1
+virologist V1 L1
+give nucleotide 4 V1
+start
+move 0
+drop nucleotide 4
+show virologist V1
+show field L1
+exit
