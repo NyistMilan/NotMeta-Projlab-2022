@@ -459,7 +459,6 @@ public class ProtoUI {
         Backpack backpack = field.GetBackpack();
         pw.printf("materials:\n");
         ShowBackpack(backpack, pw);
-
     }
 
     /**
@@ -498,8 +497,6 @@ public class ProtoUI {
             pw.printf("-%s\n", v.GetName());
         }
         ShowFieldBackpack(field, pw);
-        /*Backpack backpack = field.GetBackpack();
-        ShowBackpack(backpack, pw);*/
     }
 
     /**
