@@ -1,12 +1,12 @@
 field shelter S1
 put equipment axe S1
 virologist V1 S1
-give equipment cloack V1
+give equipment cloak V1
 give equipment gloves V1
 give equipment sack V1
 show virologist V1
 start
 move 0
-take equipment axe
+take equipment 1
 show virologist V1
 exit

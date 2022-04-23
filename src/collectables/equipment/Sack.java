@@ -44,4 +44,9 @@ public class Sack extends Equipment{
 	public String GetName() {
 		return "sack";
 	}
+
+	@Override
+	public int GetDurability(){
+		return -1;
+	}
 }

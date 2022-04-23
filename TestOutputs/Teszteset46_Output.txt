@@ -8,6 +8,6 @@ capacity: 10
 aminoacid: 0
 nucleotide: 0
 equipments:
-1. cloack
+1. cloak
 agents:
 applied agents:

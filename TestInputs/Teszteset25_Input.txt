@@ -4,6 +4,6 @@ virologist V1 W1
 show virologist V1
 start
 move 0
-take equipment axe
+take equipment 1
 show virologist V1
 exit

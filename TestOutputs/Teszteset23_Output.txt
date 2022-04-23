@@ -7,7 +7,7 @@ capacity: 30
 aminoacid: 0
 nucleotide: 0
 equipments:
-1. cloack
+1. cloak
 2. gloves 3
 3. sack
 agents:
@@ -22,7 +22,7 @@ capacity: 30
 aminoacid: 0
 nucleotide: 0
 equipments:
-1. cloack
+1. cloak
 2. gloves 3
 3. sack
 agents:

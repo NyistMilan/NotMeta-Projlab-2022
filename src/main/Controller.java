@@ -44,7 +44,7 @@ public class Controller implements java.io.Serializable {
      */
     public void Start() {
         Skeleton.methodCall(this);
-        index = 0;
+        index = virologists.size() - 1;
         NextPlayer();
         Skeleton.methodReturn(this);
     }
@@ -72,17 +72,17 @@ public class Controller implements java.io.Serializable {
      * Calls the next player
      */
     public void NextPlayer() {
+        if (virologists.size() - 1 == index) {
+            index = 0;
+        } else {
+            index++;
+        }
         Virologist v = virologists.get(index);
         if (v.GetState() == State.KILLED) {
             virologists.remove(v);
             v = virologists.get(index);
         }
         v.SetState(State.BEFORE_MOVE);
-        if (virologists.size() - 1 == index) {
-            index = 0;
-        } else {
-            index++;
-        }
     }
 
     /**
