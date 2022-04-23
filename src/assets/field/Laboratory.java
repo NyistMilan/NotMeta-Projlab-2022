@@ -12,6 +12,7 @@ package assets.field;//
 import assets.Backpack;
 import assets.virologist.Virologist;
 import assets.virologist.behavior.learnbehavior.Learn;
+import collectables.agent.Chorea;
 import collectables.genome.Genome;
 import main.Skeleton;
 

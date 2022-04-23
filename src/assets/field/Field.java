@@ -28,6 +28,10 @@ public abstract class Field implements java.io.Serializable{
 
 	protected String fieldID;
 
+	public String GetFieldId(){
+		return fieldID;
+	}
+
 
 	/** Returns the neighbour in the given direction*/
 	public Field GetNeighbour(int d) {
@@ -84,6 +88,10 @@ public abstract class Field implements java.io.Serializable{
 		Skeleton.methodCall(this, "f");
 		neighbours.add(f);
 		Skeleton.methodReturn(this);
+	}
+
+	public void SetFieldId(String fieldID){
+		this.fieldID = fieldID;
 	}
 
 	/** Returns the direction a field.virologist.Virologist can move from this field.field.Field*/
