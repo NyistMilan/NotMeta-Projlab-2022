@@ -19,7 +19,13 @@ import collectables.genome.*;
 import collectables.material.Aminoacid;
 import collectables.material.Nucleotide;
 
+import java.io.BufferedReader;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
 import java.util.ArrayList;
+
+import static java.lang.Integer.valueOf;
 
 /**
  * Controls the Game and the turns of the players
@@ -47,6 +53,120 @@ public class Controller implements java.io.Serializable {
         index = 0;
         NextPlayer();
         Skeleton.methodReturn(this);
+    }
+
+    public void ImportMap(String fileName){
+        this.ImportFields(fileName);
+        this.SetFieldNeighbours(fileName);
+
+    }
+
+    public void ImportFields(String fileName){
+        FileReader fr = null;
+        try {
+            fr = new FileReader(fileName);
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
+        BufferedReader br = new BufferedReader(fr);
+        while (true) {
+            String line = null;
+            try {
+                line = br.readLine();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            if (line == null || line.equals("")) break;
+            String[] field = line.split(" ");
+
+            if(field[1] == "laboratory"){
+                Genome genom = WhichGenome(field[2]);
+                Field newField = new Laboratory(genom);
+                newField.SetFieldId(field[0]);
+            } else {
+                Field newField = WhichField(field[1]);
+                if(newField == null){
+                    break;
+                }
+                newField.SetFieldId(field[0]);
+            }
+        }
+        try {
+            br.close();
+            fr.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void SetFieldNeighbours(String fileName){
+        FileReader fr2 = null;
+        try {
+            fr2 = new FileReader(fileName);
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
+        BufferedReader br2 = new BufferedReader(fr2);
+        int id = 0;
+        while (true) {
+            String line2 = null;
+            try {
+                line2 = br2.readLine();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            if (line2 == null) break;
+            String[] field = line2.split(" ");
+            for (int i = 2; i<field.length; i++){
+                if(field[1] == "laboratory"){
+                    map.get(id).SetNeighbour(searchFieldById(field[i+1]));
+                } else {
+                    map.get(id).SetNeighbour(searchFieldById(field[i]));
+                }
+
+            }
+        }
+        try {
+            br2.close();
+            fr2.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public Field searchFieldById (String id){
+        for (int i=0; i<map.size(); i++){
+            if(map.get(i).GetFieldId() == id){
+                return map.get(i);
+            }
+        }
+        return null;
+    }
+
+    public Field WhichField (String fieldName) {
+        if(fieldName.equals("shelter"))
+            return new Shelter();
+        if(fieldName.equals("warehouse"))
+            return new WareHouse();
+        if(fieldName.equals("bearlaboratory")) {
+            Genome genom = new GenomeChorea();
+            return new BearLaboratory(genom);
+        }
+        if(fieldName.equals("normal"))
+            return new Normal();
+        return null;
+    }
+
+    public Genome WhichGenome (String genomeName) {
+        if(genomeName.equals("chorea"))
+            return new GenomeChorea();
+        if(genomeName.equals("oblivion"))
+            return new GenomeOblivion();
+        if(genomeName.equals("paralysis"))
+            return new GenomeParalysis();
+        if(genomeName.equals("protection"))
+            return new GenomeProtection();
+        return null;
     }
 
     public void TestWin(Virologist v) {
