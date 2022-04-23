@@ -1,0 +1,9 @@
+field normal F1
+virologist V1 F1
+virologist V2 F1
+give agent chorea V1
+start
+move 0
+infect V2 1
+show virologist V2
+exit

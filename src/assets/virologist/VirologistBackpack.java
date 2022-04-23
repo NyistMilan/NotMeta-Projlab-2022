@@ -26,7 +26,7 @@ public class VirologistBackpack extends Backpack{
 	/** Constructor*/
 	VirologistBackpack(){
 		super();
-		capacity = 5;
+		capacity = 10;
 		agents = new ArrayList<>();
 		appliedAgents = new ArrayList<>();
 	}

@@ -1,0 +1,9 @@
+field shelter S1
+virologist V1 S1
+give nucleotide 7 V1
+start
+move 0
+drop nucleotide 7
+show virologist V1
+show field S1
+exit

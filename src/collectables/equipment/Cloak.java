@@ -37,4 +37,9 @@ public class Cloak extends Equipment {
 	public String GetName() {
 		return "cloak";
 	}
+
+	@Override
+	public int GetDurability(){
+		return -1;
+	}
 }

@@ -1,0 +1,13 @@
+fieldID: F1
+type: normal
+virologists:
+-V1
+materials:
+equipments:
+the game has started
+fieldID: F2
+type: normal
+virologists:
+-V1
+materials:
+equipments:

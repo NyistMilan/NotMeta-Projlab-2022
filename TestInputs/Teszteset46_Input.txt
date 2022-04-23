@@ -1,0 +1,10 @@
+field normal F1
+virologist V1 F1
+virologist V2 F1
+give agent chorea V1
+give equipment cloak V2
+start
+move 0
+infect randomoff V2 1
+show virologist V2
+exit

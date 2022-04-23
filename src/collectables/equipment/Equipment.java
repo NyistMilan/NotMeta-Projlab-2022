@@ -50,14 +50,14 @@ public abstract class Equipment implements Collectable , java.io.Serializable{
 	public boolean AddToBackpack(Virologist v, Backpack b) {
 		Skeleton.methodCall(this, "v","b");
 		boolean isAdded = b.Add(this);
-		if(!isAdded) {
+		/*if(!isAdded) {
 			int i = Skeleton.askForInput("Which equipment do you want to drop?", 1, 3);
 			Equipment e = b.GetEquipments().get(i - 1);
 			ArrayList<Collectable> list = new ArrayList<>();
 			list.add(e);
 			v.DropCollectable(list);
 			isAdded = b.Add(this);
-		}
+		}*/
 		Skeleton.methodReturn(this);
 		return isAdded;
 	}

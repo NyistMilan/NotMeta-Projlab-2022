@@ -1,0 +1,9 @@
+field normal F1
+field bearlaboratory chorea B1
+neighbor F1 B1
+virologist V1 F1
+show virologist V1
+start
+move 1
+show virologist V1
+exit

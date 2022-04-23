@@ -1,0 +1,26 @@
+name: V1
+field: F1
+state: not_in_turn
+learned genomes:
+backpack:
+capacity: 10
+aminoacid: 0
+nucleotide: 0
+equipments:
+agents:
+applied agents:
+-Protection 1
+
+the game has started
+name: V1
+field: B1
+state: before_action
+learned genomes:
+backpack:
+capacity: 10
+aminoacid: 0
+nucleotide: 0
+equipments:
+agents:
+applied agents:
+-Protection 1

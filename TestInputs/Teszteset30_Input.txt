@@ -1,0 +1,9 @@
+field warehouse W1
+virologist V1 W1
+give aminoacid 6 V1
+start
+move 0
+drop aminoacid 6
+show virologist V1
+show field W1
+exit

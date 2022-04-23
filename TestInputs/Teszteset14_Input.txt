@@ -1,0 +1,9 @@
+field laboratory chorea L1
+put aminoacid 1 L1
+virologist V1 L1
+show virologist V1
+start
+move 0
+take aminoacid 1
+show virologist V1
+exit

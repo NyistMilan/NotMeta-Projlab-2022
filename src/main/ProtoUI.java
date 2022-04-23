@@ -391,7 +391,7 @@ public class ProtoUI {
 
 
     private static void ShowBackpack(Backpack backpack, PrintWriter pw) {
-        pw.printf("materials:\naminoacid: %d\nnucleotide: %d\nequipments:\n", backpack.GetAminos().size(), backpack.GetNucleotide().size());
+        pw.printf("aminoacid: %d\nnucleotide: %d\nequipments:\n", backpack.GetAminos().size(), backpack.GetNucleotide().size());
         int index = 1;
         for(Equipment e : backpack.GetEquipments()){
             if(e.GetDurability() < 0)
@@ -458,8 +458,8 @@ public class ProtoUI {
      */
     private static void ShowFieldBackpack(Field field, PrintWriter pw) {
         Backpack backpack = field.GetBackpack();
+        pw.printf("materials:\n");
         ShowBackpack(backpack, pw);
-
     }
 
     /**
@@ -497,9 +497,7 @@ public class ProtoUI {
         for(Virologist v : field.GetVirologists()){
             pw.printf("-%s\n", v.GetName());
         }
-        Backpack backpack = field.GetBackpack();
-        ShowBackpack(backpack, pw);
-        pw.printf("\n");
+        ShowFieldBackpack(field, pw);
     }
 
     /**
@@ -540,11 +538,10 @@ public class ProtoUI {
             pw.printf("%d. %s %d\n", aIndex, a.GetName(), a.getWarranty());
             aIndex++;
         }
-        pw.printf("applied agents\n");
+        pw.printf("applied agents:\n");
         for(Agent a : backpack.GetAppliedAgents()){
             pw.printf("- %s %d\n", a.GetName(), a.getDuration());
         }
-        pw.printf("\n");
     }
 
     /**

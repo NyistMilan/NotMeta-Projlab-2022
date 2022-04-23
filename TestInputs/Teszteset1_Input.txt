@@ -1,0 +1,9 @@
+field normal F1
+field normal F2
+neighbor F1 F2
+virologist V1 F1
+show field F1
+start
+move 1
+show field F2
+exit

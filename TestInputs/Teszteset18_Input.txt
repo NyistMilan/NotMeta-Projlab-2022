@@ -1,0 +1,10 @@
+field warehouse W1
+put nucleotide 1 W1
+virologist V1 W1
+give nucleotide 10 V1
+show virologist V1
+start
+move 0
+take nucleotide 1
+show virologist V1
+exit

@@ -1,0 +1,9 @@
+field normal N1
+put equipment axe N1
+virologist V1 N1
+show virologist V1
+start
+move 0
+take equipment 1
+show virologist V1
+exit

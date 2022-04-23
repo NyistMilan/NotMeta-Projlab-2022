@@ -1,0 +1,24 @@
+name: V1
+field: L1
+state: not_in_turn
+learned genomes:
+backpack:
+capacity: 10
+aminoacid: 0
+nucleotide: 0
+equipments:
+agents:
+applied agents:
+the game has started
+name: V1
+field: L1
+state: after_action
+learned genomes:
+-chorea
+backpack:
+capacity: 10
+aminoacid: 0
+nucleotide: 0
+equipments:
+agents:
+applied agents:

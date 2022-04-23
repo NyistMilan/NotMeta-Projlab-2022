@@ -1,0 +1,12 @@
+field normal F1
+field normal F2
+field shelter S1
+neighbor F1 F2
+neighbor F1 S1
+virologist V1 F1
+effect bear V1
+start
+move
+move randomoff 1
+show field S1
+exit

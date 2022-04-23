@@ -1,0 +1,9 @@
+field laboratory oblivion L1
+virologist V1 L1
+give aminoacid 1 V1
+start
+move 0
+drop aminoacid 1
+show virologist V1
+show field L1
+exit
