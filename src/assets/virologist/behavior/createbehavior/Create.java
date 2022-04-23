@@ -34,11 +34,11 @@ public class Create implements CreateBehavior, java.io.Serializable{
         if(isEnough){
             ArrayList<Aminoacid> aminos = v.GetBackpack().GetAminos();
             for(int i = 0; i < g.getAminoCost(); i++){
-                v.GetBackpack().Remove(aminos.get(i));
+                v.GetBackpack().Remove(aminos.get(0));
             }
             ArrayList<Nucleotide> nucleos = v.GetBackpack().GetNucleotide();
             for(int i = 0; i < g.getNucleoCost(); i++){
-                v.GetBackpack().Remove(nucleos.get(i));
+                v.GetBackpack().Remove(nucleos.get(0));
             }
             g.CreateAgent(v);
             v.SetState(State.AFTER_ACTION);

@@ -19,5 +19,4 @@ endTurn
 move 0
 infect V2 1
 show virologist V2
-show virologist V1
 exit

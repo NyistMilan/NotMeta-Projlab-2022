@@ -79,7 +79,7 @@ public class Controller implements java.io.Serializable {
             if (line == null || line.equals("")) break;
             String[] field = line.split(" ");
 
-            if(field[1] == "laboratory"){
+            if(field[1].equals("laboratory")){
                 Genome genom = WhichGenome(field[2]);
                 Field newField = new Laboratory(genom);
                 newField.SetFieldId(field[0]);
@@ -118,7 +118,7 @@ public class Controller implements java.io.Serializable {
             if (line2 == null) break;
             String[] field = line2.split(" ");
             for (int i = 2; i<field.length; i++){
-                if(field[1] == "laboratory"){
+                if(field[1].equals("laboratory")){
                     map.get(id).SetNeighbour(searchFieldById(field[i+1]));
                 } else {
                     map.get(id).SetNeighbour(searchFieldById(field[i]));
@@ -136,7 +136,7 @@ public class Controller implements java.io.Serializable {
 
     public Field searchFieldById (String id){
         for (int i=0; i<map.size(); i++){
-            if(map.get(i).GetFieldId() == id){
+            if(map.get(i).GetFieldId().equals(id)){
                 return map.get(i);
             }
         }
@@ -652,7 +652,7 @@ public class Controller implements java.io.Serializable {
      * The current Virologist ends his turn.
      */
     public void EndTurn() {
-        GetCurrentVirologist().SetState(State.NOT_IN_TURN);
+        GetCurrentVirologist().EndTurn();
         TestWin(GetCurrentVirologist());
         NextPlayer();
     }

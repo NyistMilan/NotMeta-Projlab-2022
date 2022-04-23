@@ -16,6 +16,6 @@ genome: oblivion
 virologists:
 -V1
 materials:
--aminoacid: 1
--nucleotide: 0
+aminoacid: 1
+nucleotide: 0
 equipments:

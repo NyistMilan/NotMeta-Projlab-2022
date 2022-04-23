@@ -8,7 +8,7 @@ capacity: 10
 aminoacid: 0
 nucleotide: 0
 equipments:
-1. axe
+1. axe 1
 agents:
 applied agents:
 name: V2
@@ -22,3 +22,4 @@ nucleotide: 0
 equipments:
 agents:
 applied agents:
+-paralysis 1

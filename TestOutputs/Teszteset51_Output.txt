@@ -21,7 +21,7 @@ capacity: 10
 aminoacid: 0
 nucleotide: 0
 equipments:
-1. gloves 2
+1. gloves 3
 agents:
 applied agents:
 -chorea 3

@@ -5,17 +5,16 @@ state: before_action
 learned genomes:
 backpack:
 capacity: 10
-aminoacids: 0
+aminoacid: 0
 nucleotide: 0
 equipments:
 agents:
 applied agents:
-
 fieldID: N1
 type: normal
 virologists:
 -V1
 materials:
--aminoacid 0
--nucleotide 3
+aminoacid: 0
+nucleotide: 3
 equipments:
