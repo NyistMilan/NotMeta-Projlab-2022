@@ -78,7 +78,6 @@ public class Controller implements java.io.Serializable {
             }
             if (line == null || line.equals("")) break;
             String[] field = line.split(" ");
-
             if(field[1].equals("laboratory")){
                 Genome genom = WhichGenome(field[2]);
                 Field newField = new Laboratory(genom);
