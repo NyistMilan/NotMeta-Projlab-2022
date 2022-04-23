@@ -478,7 +478,10 @@ public class ProtoUI {
      */
     private static void ShowDirections(Field field, PrintWriter pw) {
         for(int d: field.GetDirections()){
-            pw.printf("%d - %s\n", d, field.GetNeighbour(d).GetType());
+            if(d == 0)
+                pw.printf("0 - this\n");
+            else
+                pw.printf("%d - %s\n", d, field.GetNeighbour(d).GetType());
         }
     }
 
@@ -539,7 +542,10 @@ public class ProtoUI {
         }
         pw.printf("applied agents:\n");
         for(Agent a : backpack.GetAppliedAgents()){
-            pw.printf("- %s %d\n", a.GetName(), a.getDuration());
+            if(a.getDuration() != -1)
+                pw.printf("-%s %d\n", a.GetName(), a.getDuration());
+            else
+                pw.printf("-%s\n", a.GetName());
         }
     }
 

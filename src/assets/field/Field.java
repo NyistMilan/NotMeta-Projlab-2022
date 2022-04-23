@@ -45,6 +45,10 @@ public abstract class Field implements java.io.Serializable{
 		Skeleton.methodReturn(this);
 	}
 
+	public void AcceptRandomOff(Virologist v){
+		Accept(v);
+	}
+
 	public void Remove(Virologist v) {
 		Skeleton.methodCall(this, "v");
 		virologists.remove(v);

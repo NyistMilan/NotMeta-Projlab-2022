@@ -31,6 +31,12 @@ public class BearLaboratory extends Laboratory{
     }
 
     @Override
+    public void AcceptRandomOff(Virologist v){
+        v.GetInfectedRandomOff(v,new Bear());
+        virologists.add(v);
+    }
+
+    @Override
     public String GetType(){
         return "bearlaboratory";
     }

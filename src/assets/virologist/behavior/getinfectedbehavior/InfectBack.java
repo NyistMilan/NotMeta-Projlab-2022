@@ -42,4 +42,9 @@ public class InfectBack implements GetInfectedBehavior, java.io.Serializable{
             glove.RemoveFromBackpack(v1, v1.GetBackpack());
         Skeleton.methodReturn(this);
     }
+
+    @Override
+    public void getInfectedRandomOff(Virologist v1, Virologist v2, Agent a) {
+        getInfected(v1,v2,a);
+    }
 }

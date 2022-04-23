@@ -94,6 +94,12 @@ public class Virologist implements java.io.Serializable{
 		}
 		Skeleton.methodReturn(this);
 	}
+
+	public void MoveRandomOff(int d){
+		if(this.state == State.BEFORE_MOVE) {
+			moveBehavior.MoveRandomOff(this, d);
+		}
+	}
 	/** If the field.virologist.Virologist didn't do action in his turn he calls his PickUpBehavior*/
 	public void PickUpCollectable(ArrayList<Collectable> c) {
 		Skeleton.methodCall(this, "c");
@@ -166,13 +172,19 @@ public class Virologist implements java.io.Serializable{
 		Skeleton.methodReturn(this);
 	}
 
+	public void InfectRandomOff(Virologist v2, Agent a){
+		if(state == State.BEFORE_ACTION){
+			infectBehavior.InfectRandomOff(this, v2, a);
+		}
+	}
+
 	/**
 	 * If the field.virologist.Virologist is not in his turn he calls his GetInfectedBehavior.
 	 * If he is in his turn he will get infected regardless of his protection.
 	 * */
 	public void GetInfected(Virologist v1, Agent a) {
 		Skeleton.methodCall(this, "v1", "a");
-		if(state ==State.NOT_IN_TURN || state == State.BEFORE_ACTION){
+		if(state ==State.NOT_IN_TURN || state == State.BEFORE_MOVE){
 			getInfectedBehavior.getInfected(v1, this, a);
 		}
 		else {
@@ -181,6 +193,17 @@ public class Virologist implements java.io.Serializable{
 
 		}
 		Skeleton.methodReturn(this);
+	}
+
+	public void GetInfectedRandomOff(Virologist v1, Agent a) {
+		if(state ==State.NOT_IN_TURN || state == State.BEFORE_MOVE){
+			getInfectedBehavior.getInfectedRandomOff(v1, this, a);
+		}
+		else {
+			a.Apply(this);
+			backPack.AddApplied(a);
+
+		}
 	}
 
 	public void KillVirologist(Virologist v){
@@ -380,4 +403,5 @@ public class Virologist implements java.io.Serializable{
 		return name;
 	}
 	public void SetName(String name) {this.name = name;}
+
 }

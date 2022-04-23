@@ -35,4 +35,9 @@ public class GetInfected implements GetInfectedBehavior, java.io.Serializable{
         v2.GetBackpack().AddApplied(a);
         Skeleton.methodReturn(this);
     }
+
+    @Override
+    public void getInfectedRandomOff(Virologist v1, Virologist v2, Agent a) {
+        getInfected(v1, v2, a);
+    }
 }

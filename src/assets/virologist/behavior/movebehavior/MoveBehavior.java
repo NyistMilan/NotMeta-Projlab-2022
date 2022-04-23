@@ -22,4 +22,6 @@ public interface MoveBehavior {
 	 * @param d the direction he wants to move
 	 */
 	void MoveToField(Virologist v, int d);
+
+	void MoveRandomOff(Virologist v, int d);
 }

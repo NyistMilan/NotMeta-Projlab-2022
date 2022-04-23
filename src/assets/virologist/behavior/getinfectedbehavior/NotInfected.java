@@ -32,4 +32,9 @@ public class NotInfected implements GetInfectedBehavior, java.io.Serializable {
         Skeleton.methodCall(this, "v1", "v2", "a");
         Skeleton.methodReturn(this);
     }
+
+    @Override
+    public void getInfectedRandomOff(Virologist v1, Virologist v2, Agent a) {
+        getInfected(v1,v2,a);
+    }
 }

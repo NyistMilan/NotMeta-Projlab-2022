@@ -9,8 +9,7 @@ nucleotide: 0
 equipments:
 agents:
 applied agents:
--Protection 1
-
+-protection 3
 the game has started
 name: V1
 field: B1
@@ -23,4 +22,4 @@ nucleotide: 0
 equipments:
 agents:
 applied agents:
--Protection 1
+-protection 3

@@ -3,6 +3,8 @@ type: normal
 virologists:
 -V1
 materials:
+aminoacid: 0
+nucleotide: 0
 equipments:
 the game has started
 fieldID: F2
@@ -10,4 +12,6 @@ type: normal
 virologists:
 -V1
 materials:
+aminoacid: 0
+nucleotide: 0
 equipments:

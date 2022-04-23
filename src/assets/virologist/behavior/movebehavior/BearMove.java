@@ -43,4 +43,22 @@ public class BearMove implements MoveBehavior, java.io.Serializable{
         v.SetState(State.BEFORE_ACTION);
         Skeleton.methodReturn(this);
     }
+
+    @Override
+    public void MoveRandomOff(Virologist v, int d) {
+        Field f = v.GetRoute().GetLocation();
+        int newD = 0;
+        if(d != f.GetDirections().size() - 1)
+            newD = d + 1;
+        Field f2 = f.GetNeighbour(newD);
+        f.Remove(v);
+        f2.AcceptRandomOff(v);
+        f2.DestroyMaterials();
+        ArrayList<Virologist> virologistsOnField = f2.GetVirologists();
+        for (Virologist vOnField: virologistsOnField) {
+            vOnField.GetInfected(v,new Bear());
+        }
+        v.GetRoute().Add(f2);
+        v.SetState(State.BEFORE_ACTION);
+    }
 }

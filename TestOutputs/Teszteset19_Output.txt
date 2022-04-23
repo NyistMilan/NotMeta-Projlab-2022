@@ -18,6 +18,6 @@ backpack:
 capacity: 10
 aminoacid: 0
 nucleotide: 1
-equipments: 0
+equipments:
 agents:
 applied agents:
