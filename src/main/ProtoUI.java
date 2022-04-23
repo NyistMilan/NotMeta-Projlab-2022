@@ -14,6 +14,7 @@ public class ProtoUI {
     static boolean godmode = false;    //after the game starts no more system commands are allowed
     public static void main(String[] args){
         Controller controller = new Controller(); //base controller
+        controller.ImportMap("map.txt");
         final BufferedReader cbr = new BufferedReader(new InputStreamReader(System.in)); //BufferedReader for the console
         final PrintWriter cpw = new PrintWriter(new BufferedWriter(new OutputStreamWriter(System.out)), true); //BufferedWriter for the console
 
