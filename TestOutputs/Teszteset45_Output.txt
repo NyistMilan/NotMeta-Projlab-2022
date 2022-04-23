@@ -10,3 +10,4 @@ nucleotide: 0
 equipments:
 agents:
 applied agents:
+-protection 3

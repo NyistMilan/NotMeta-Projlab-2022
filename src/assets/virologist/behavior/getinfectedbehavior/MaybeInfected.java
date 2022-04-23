@@ -38,4 +38,9 @@ public class MaybeInfected implements GetInfectedBehavior, java.io.Serializable 
         }
         Skeleton.methodReturn(this);
     }
+
+    @Override
+    public void getInfectedRandomOff(Virologist v1, Virologist v2, Agent a) {
+        //not get infected
+    }
 }

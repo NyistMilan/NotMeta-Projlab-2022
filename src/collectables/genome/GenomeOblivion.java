@@ -30,12 +30,12 @@ public class GenomeOblivion extends Genome{
 	}
 	@Override
 	public int getAminoCost() {
-		return 3;
+		return 5;
 	}
 
 	@Override
 	public int getNucleoCost() {
-		return 3;
+		return 5;
 	}
 
 	@Override

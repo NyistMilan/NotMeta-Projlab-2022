@@ -30,4 +30,11 @@ public class Infect implements InfectBehavior, java.io.Serializable {
         v1.SetState(State.AFTER_ACTION);
         Skeleton.methodReturn(this);
     }
+
+    @Override
+    public void InfectRandomOff(Virologist v1, Virologist v2, Agent a) {
+        v1.GetBackpack().Remove(a);
+        v2.GetInfectedRandomOff(v1, a);
+        v1.SetState(State.AFTER_ACTION);
+    }
 }

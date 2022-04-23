@@ -15,7 +15,7 @@ applied agents:
 the game has started
 name: V1
 field: S1
-state: before_action
+state: after_action
 learned genomes:
 backpack:
 capacity: 30

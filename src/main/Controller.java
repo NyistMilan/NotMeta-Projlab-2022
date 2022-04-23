@@ -78,8 +78,7 @@ public class Controller implements java.io.Serializable {
             }
             if (line == null || line.equals("")) break;
             String[] field = line.split(" ");
-
-            if(field[1] == "laboratory"){
+            if(field[1].equals("laboratory")){
                 Genome genom = WhichGenome(field[2]);
                 Field newField = new Laboratory(genom);
                 newField.SetFieldId(field[0]);
@@ -118,7 +117,7 @@ public class Controller implements java.io.Serializable {
             if (line2 == null) break;
             String[] field = line2.split(" ");
             for (int i = 2; i<field.length; i++){
-                if(field[1] == "laboratory"){
+                if(field[1].equals("laboratory")){
                     map.get(id).SetNeighbour(searchFieldById(field[i+1]));
                 } else {
                     map.get(id).SetNeighbour(searchFieldById(field[i]));
@@ -136,7 +135,7 @@ public class Controller implements java.io.Serializable {
 
     public Field searchFieldById (String id){
         for (int i=0; i<map.size(); i++){
-            if(map.get(i).GetFieldId() == id){
+            if(map.get(i).GetFieldId().equals(id)){
                 return map.get(i);
             }
         }
@@ -227,7 +226,7 @@ public class Controller implements java.io.Serializable {
                 return;
         }
         f.SetFieldID(fieldID);
-        f.SetNeighbour(f);
+        //f.SetNeighbour(f);
         map.add(f);
     }
 
@@ -279,6 +278,7 @@ public class Controller implements java.io.Serializable {
         v.SetName(name);
         Field field = GetField(fieldID);
         v.GetRoute().Add(field);
+        field.Accept(v);
         virologists.add(v);
     }
 
@@ -359,7 +359,9 @@ public class Controller implements java.io.Serializable {
 
         for (Virologist v : virologists) {
             if (v.GetName().equals(name)) {
-                v.GetBackpack().Add(StringToEquipment(type));
+                Equipment equipment = StringToEquipment(type);
+                equipment.Apply(v);
+                v.GetBackpack().Add(equipment);
             }
         }
     }
@@ -433,7 +435,7 @@ public class Controller implements java.io.Serializable {
      * @param direction the given direction
      */
     public void MoveVirologistRandomOff(int direction) {
-        virologists.get(index).Move(direction);
+        virologists.get(index).MoveRandomOff(direction);
     }
 
     /**
@@ -452,9 +454,8 @@ public class Controller implements java.io.Serializable {
      */
     public void DropAminoacid(int quantity) {
         ArrayList<Collectable> aminos = new ArrayList<>();
-        for (int i = 0; i < quantity; i++) {
-            aminos.add(new Aminoacid());
-            GetCurrentField().GetBackpack().Add(new Aminoacid());
+        for (int i = 0; i < quantity && i < GetCurrentVirologist().GetBackpack().GetAminos().size(); i++) {
+            aminos.add(GetCurrentVirologist().GetBackpack().GetAminos().get(i));
         }
         GetCurrentVirologist().DropCollectable(aminos);
     }
@@ -465,12 +466,11 @@ public class Controller implements java.io.Serializable {
      * @param quantity the number of Nucleotide
      */
     public void DropNucleotide(int quantity) {
-        ArrayList<Collectable> nucleotides = new ArrayList<>();
-        for (int i = 0; i < quantity; i++) {
-            nucleotides.add(new Nucleotide());
-            GetCurrentField().GetBackpack().Add(new Nucleotide());
+        ArrayList<Collectable> nucleos = new ArrayList<>();
+        for (int i = 0; i < quantity && i < GetCurrentVirologist().GetBackpack().GetNucleotide().size(); i++) {
+            nucleos.add(GetCurrentVirologist().GetBackpack().GetNucleotide().get(i));
         }
-        GetCurrentVirologist().DropCollectable(nucleotides);
+        GetCurrentVirologist().DropCollectable(nucleos);
     }
 
     /**
@@ -618,7 +618,7 @@ public class Controller implements java.io.Serializable {
         Virologist vInfecter = GetCurrentVirologist();
         Virologist vInfected = GetVirologist(name);
         Agent agent= vInfecter.GetBackpack().GetAgents().get(index-1);
-        vInfecter.Infect(vInfected, agent);
+        vInfecter.InfectRandomOff(vInfected, agent);
     }
 
     /**
@@ -629,7 +629,10 @@ public class Controller implements java.io.Serializable {
      */
     public void EffectVirologist(String type, String name) {
         Virologist vInfected = GetVirologist(name);
-        vInfected.GetBackpack().AddApplied(StringToAgent(type));
+        Agent a = StringToAgent(type);
+        a.Apply(vInfected);
+        vInfected.GetBackpack().AddApplied(a);
+
     }
 
     /**
@@ -648,7 +651,7 @@ public class Controller implements java.io.Serializable {
      * The current Virologist ends his turn.
      */
     public void EndTurn() {
-        GetCurrentVirologist().SetState(State.NOT_IN_TURN);
+        GetCurrentVirologist().EndTurn();
         TestWin(GetCurrentVirologist());
         NextPlayer();
     }
@@ -666,6 +669,9 @@ public class Controller implements java.io.Serializable {
                 break;
             case "protection":
                 a = new Protection();
+                break;
+            case "bear":
+                a = new Bear();
                 break;
             default:
                 return null;

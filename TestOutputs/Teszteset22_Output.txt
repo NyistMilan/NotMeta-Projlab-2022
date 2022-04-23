@@ -19,6 +19,6 @@ capacity: 10
 aminoacid: 0
 nucleotide: 0
 equipments:
-1. axe
+1. axe 1
 agents:
 applied agents:

@@ -1,12 +1,12 @@
 the game has started
 turn ended
-V2’s turn
+V2's turn
 turn ended
-V1’s turn
+V1's turn
 turn ended
-V2’s turn
+V2's turn
 turn ended
-V1’s turn
+V1's turn
 name: V2
 field: F1
 state: not_in_turn
@@ -17,3 +17,4 @@ aminoacid: 0
 nucleotide: 0
 equipments:
 agents:
+applied agents:

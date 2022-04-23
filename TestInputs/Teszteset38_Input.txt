@@ -2,6 +2,7 @@ field warehouse F1
 virologist V1 F1
 give equipment axe V1
 start
+move 0
 drop equipment 1
 show field F1
 show virologist V1

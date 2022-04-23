@@ -1,7 +1,7 @@
 the game has started
 name: V1
 field: W1
-state: after_action
+state: before_action
 learned genomes:
 backpack:
 capacity: 10
@@ -15,6 +15,6 @@ type: warehouse
 virologists:
 -V1
 materials:
--aminoacid: 0
--nucleotide: 5
+aminoacid: 0
+nucleotide: 5
 equipments:

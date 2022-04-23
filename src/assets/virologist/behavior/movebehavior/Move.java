@@ -39,4 +39,14 @@ public class Move implements MoveBehavior, java.io.Serializable {
         v.SetState(State.BEFORE_ACTION);
         Skeleton.methodReturn(this);
     }
+
+    @Override
+    public void MoveRandomOff(Virologist v, int d) {
+        Field f = v.GetRoute().GetLocation();
+        Field f2 = f.GetNeighbour(d);
+        f.Remove(v);
+        f2.AcceptRandomOff(v);
+        v.GetRoute().Add(f2);
+        v.SetState(State.BEFORE_ACTION);
+    }
 }

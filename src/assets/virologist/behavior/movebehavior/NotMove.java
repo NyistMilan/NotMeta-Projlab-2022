@@ -32,4 +32,9 @@ public class NotMove implements MoveBehavior, java.io.Serializable {
         v.SetState(State.BEFORE_ACTION);
         Skeleton.methodReturn(this);
     }
+
+    @Override
+    public void MoveRandomOff(Virologist v, int d) {
+        MoveToField(v,d);
+    }
 }

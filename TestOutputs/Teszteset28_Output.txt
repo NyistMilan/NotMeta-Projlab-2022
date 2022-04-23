@@ -1,7 +1,7 @@
 the game has started
 name: V1
 field: L1
-state: after_action
+state: before_action
 learned genomes:
 backpack:
 capacity: 10
@@ -16,6 +16,6 @@ genome: oblivion
 virologists:
 -V1
 materials:
--aminoacid: 1
--nucleotide: 0
+aminoacid: 1
+nucleotide: 0
 equipments:

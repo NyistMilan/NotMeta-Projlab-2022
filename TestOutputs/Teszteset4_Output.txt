@@ -7,4 +7,6 @@ type: shelter
 virologists:
 -V1
 materials:
+aminoacid: 0
+nucleotide: 0
 equipments:
