@@ -13,7 +13,6 @@ import collectables.Collectable;
 import assets.virologist.Virologist;
 
 import java.util.ArrayList;
-import main.Skeleton;
 public class GetStolen implements GetStolenBehavior, java.io.Serializable {
     /**
      * The field.virologist.Virologist drops the desired item to the field.field.Field.
@@ -24,9 +23,7 @@ public class GetStolen implements GetStolenBehavior, java.io.Serializable {
      */
     @Override
     public boolean GetStolenFrom(Virologist v, ArrayList<Collectable> c) {
-        Skeleton.methodCall(this, "v","c");
         v.DropCollectable(c);
-        Skeleton.methodReturn(this);
         return true;
     }
 

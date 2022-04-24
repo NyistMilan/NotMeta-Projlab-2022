@@ -11,7 +11,7 @@ package collectables.genome;//
 
 import assets.virologist.Virologist;
 import collectables.agent.Oblivion;
-import main.Skeleton;
+
 
 /** The collectables.genome.GenomeChorea is used to create the collectables.agent.Oblivion collectables.agent.Agent*/
 public class GenomeOblivion extends Genome{
@@ -23,10 +23,8 @@ public class GenomeOblivion extends Genome{
 	 * @param v the field.virologist.Virologist who creates the collectables.agent.Agent
 	 */
 	public void CreateAgent(Virologist v) {
-		Skeleton.methodCall(this, "v");
 		Oblivion agent = new Oblivion();
 		agent.AddToBackpack(v, v.GetBackpack());
-		Skeleton.methodReturn(this);
 	}
 	@Override
 	public int getAminoCost() {

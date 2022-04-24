@@ -11,7 +11,6 @@ package assets.virologist.behavior.createbehavior;//
 
 import collectables.genome.Genome;
 import assets.virologist.Virologist;
-import main.Skeleton;
 public class NotCreate implements CreateBehavior, java.io.Serializable{
     /**
      * Nothing happens
@@ -21,7 +20,5 @@ public class NotCreate implements CreateBehavior, java.io.Serializable{
      */
     @Override
     public void CreateAgent(Virologist v, Genome g) {
-        Skeleton.methodCall(this, "v","g");
-        Skeleton.methodReturn(this);
     }
 }

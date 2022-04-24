@@ -14,7 +14,6 @@ import assets.Backpack;
 import assets.virologist.Virologist;
 import assets.virologist.behavior.learnbehavior.NotLearn;
 import collectables.genome.Genome;
-import main.Skeleton;
 import java.util.ArrayList;
 
 /** The Virologists move from field.field.Field to field.field.Field during the game. The Fields can also store Collectables*/
@@ -35,18 +34,13 @@ public abstract class Field implements java.io.Serializable{
 
 	/** Returns the neighbour in the given direction*/
 	public Field GetNeighbour(int d) {
-		Skeleton.methodCall(this, "d");
-		Field f = neighbours.get(d);
-		Skeleton.methodReturn(this);
-		return f;
+		return neighbours.get(d);
 	}
 
 	/** Accepts a field.virologist.Virologist in the field.field.Field. He can not learn here unless it is a field.field.Laboratory(Overwrite)*/
 	public void Accept(Virologist v){
-		Skeleton.methodCall(this, "v");
 		virologists.add(v);
 		v.SetLearnBehavior(new NotLearn());
-		Skeleton.methodReturn(this);
 	}
 
 	public void AcceptRandomOff(Virologist v){
@@ -54,9 +48,7 @@ public abstract class Field implements java.io.Serializable{
 	}
 
 	public void Remove(Virologist v) {
-		Skeleton.methodCall(this, "v");
 		virologists.remove(v);
-		Skeleton.methodReturn(this);
 	}
 
 
@@ -67,9 +59,7 @@ public abstract class Field implements java.io.Serializable{
 	 * @param c the collectables.Collectable
 	 */
 	public void Add(Virologist v, Collectable c) {
-		Skeleton.methodCall(this, "v","c");
 		c.AddToBackpack(v, this.backpack);
-		Skeleton.methodReturn(this);
 	}
 
 	/**
@@ -79,15 +69,11 @@ public abstract class Field implements java.io.Serializable{
 	 * @param c the collectables.Collectable
 	 */
 	public void Remove(Virologist v, Collectable c) {
-		Skeleton.methodCall(this, "v","c");
 		c.RemoveFromBackpack(v, this.backpack);
-		Skeleton.methodReturn(this);
 	}
 
 	public void SetNeighbour(Field f) {
-		Skeleton.methodCall(this, "f");
 		neighbours.add(f);
-		Skeleton.methodReturn(this);
 	}
 
 	public void SetFieldId(String fieldID){
@@ -96,12 +82,10 @@ public abstract class Field implements java.io.Serializable{
 
 	/** Returns the direction a field.virologist.Virologist can move from this field.field.Field*/
 	public ArrayList<Integer> GetDirections() {
-		Skeleton.methodCall(this);
 		ArrayList<Integer> directions = new ArrayList<>();
 		for(Field f: neighbours){
 			directions.add(neighbours.indexOf(f));
 		}
-		Skeleton.methodReturn(this);
 		return directions;
 	}
 

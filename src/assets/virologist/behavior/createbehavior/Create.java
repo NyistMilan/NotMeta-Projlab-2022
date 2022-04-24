@@ -14,7 +14,6 @@ import collectables.genome.Genome;
 import collectables.material.Aminoacid;
 import collectables.material.Nucleotide;
 import assets.virologist.Virologist;
-import main.Skeleton;
 import java.util.ArrayList;
 
 public class Create implements CreateBehavior, java.io.Serializable{
@@ -27,7 +26,6 @@ public class Create implements CreateBehavior, java.io.Serializable{
     //TODOg
     @Override
     public void CreateAgent(Virologist v, Genome g) {
-        Skeleton.methodCall(this, "v","g");
         int aminocost = g.getAminoCost();
         int nucleocost = g.getNucleoCost();
         boolean isEnough = v.GetBackpack().EnoughMaterials(aminocost, nucleocost);
@@ -43,6 +41,5 @@ public class Create implements CreateBehavior, java.io.Serializable{
             g.CreateAgent(v);
             v.SetState(State.AFTER_ACTION);
         }
-        Skeleton.methodReturn(this);
     }
 }

@@ -10,7 +10,6 @@ package collectables.material;//
 //
 import assets.Backpack;
 import assets.virologist.Virologist;
-import main.Skeleton;
 
 public class Nucleotide extends Materials {
     /**
@@ -22,10 +21,7 @@ public class Nucleotide extends Materials {
      */
     @Override
     public boolean AddToBackpack(Virologist v, Backpack b) {
-        Skeleton.methodCall(this, "b");
-        boolean isAdded = b.Add(this);
-        Skeleton.methodReturn(this);
-        return isAdded;
+        return b.Add(this);
     }
 
     /**
@@ -36,9 +32,7 @@ public class Nucleotide extends Materials {
      */
     @Override
     public void RemoveFromBackpack(Virologist v, Backpack b) {
-        Skeleton.methodCall(this,"v", "b");
         b.Remove(this);
-        Skeleton.methodReturn(this);
     }
 
     @Override
