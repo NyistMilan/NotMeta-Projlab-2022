@@ -134,8 +134,16 @@ public class ProtoUI {
                     case "runTest":
                         if(command.length == 2){
                             godmode = true;
-                            String inputFileName = "TestInputs/" + command[1] + "_Input.txt";
-                            String runOutputFileName = "RunOutputs/" + command[1] + "_RunOutput.txt";
+                            int lenght=System.getProperty("user.dir").length();
+                            String inputFileName,runOutputFileName,expectedOutputFileName;
+                            if(System.getProperty("user.dir").startsWith("src", lenght-3)){
+                                 inputFileName =System.getProperty("user.dir").substring(0,System.getProperty("user.dir").length()-4)+ "/TestInputs/" + command[1] + "_Input.txt";
+                                 runOutputFileName = System.getProperty("user.dir").substring(0,System.getProperty("user.dir").length()-4)+ "/RunOutputs/" + command[1] + "_RunOutput.txt";
+                            }
+                           else {
+                                 inputFileName =System.getProperty("user.dir")+ "/TestInputs/" + command[1] + "_Input.txt";
+                                 runOutputFileName = System.getProperty("user.dir")+ "/RunOutputs/" + command[1] + "_RunOutput.txt";
+                            }
                             Controller testCt = new Controller();
                             PrintWriter testPw = new PrintWriter(new BufferedWriter(new FileWriter(runOutputFileName)));
                             BufferedReader testBr = new BufferedReader(new FileReader(inputFileName));
@@ -143,7 +151,12 @@ public class ProtoUI {
                             testPw.close();
                             testBr.close();
                             BufferedReader actual = new BufferedReader(new FileReader(runOutputFileName));
-                            String expectedOutputFileName = "TestOutputs/" + command[1] + "_Output.txt";
+                            if(System.getProperty("user.dir").startsWith("src", lenght-3)) {
+                                expectedOutputFileName = System.getProperty("user.dir").substring(0, lenght - 4) + "/TestOutputs/" + command[1] + "_Output.txt";
+                            }
+                            else {
+                                expectedOutputFileName = System.getProperty("user.dir") + "/TestOutputs/" + command[1] + "_Output.txt";
+                            }
                             BufferedReader expected = new BufferedReader(new FileReader(expectedOutputFileName));
                             int FDL = CompareFiles(expected, actual); //First Different Line
                             expected.close();
