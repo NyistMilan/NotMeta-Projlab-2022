@@ -55,10 +55,40 @@ public class Controller implements java.io.Serializable {
         Skeleton.methodReturn(this);
     }
 
+    /**
+     * Calls the next player
+     */
+    public void NextPlayer() {
+        if (virologists.size() - 1 == index) {
+            index = 0;
+        } else {
+            index++;
+        }
+        Virologist v = virologists.get(index);
+        if (v.GetState() == State.KILLED) {
+            virologists.remove(v);
+            v = virologists.get(index);
+        }
+        v.SetState(State.BEFORE_MOVE);
+    }
+
+    /**
+     * The current Virologist ends his turn.
+     */
+    public void EndTurn() {
+        GetCurrentVirologist().EndTurn();
+        if (GetCurrentVirologist().GetLearnedGenomes().size() == learnableGenomes.size()) {
+            System.out.printf("%s won the game!!!!", GetCurrentVirologist().GetName());
+        }
+        else
+            NextPlayer();
+    }
+
+
     public void ImportMap(String fileName){
         this.ImportFields(fileName);
         this.SetFieldNeighbours(fileName);
-
+        this.PlaceVirologists(fileName);
     }
 
     public void ImportFields(String fileName){
@@ -76,18 +106,17 @@ public class Controller implements java.io.Serializable {
             } catch (IOException e) {
                 e.printStackTrace();
             }
-            if (line == null || line.equals("")) break;
+            if (line == null || line.equals("") || line.equals("virologists:")) break;
             String[] field = line.split(" ");
-            if(field[1].equals("laboratory")){
-                Genome genom = WhichGenome(field[2]);
-                Field newField = new Laboratory(genom);
-                newField.SetFieldId(field[0]);
+            if(field[1].equals("laboratory") || field[1].equals("bearlaboratory")){
+                CreateLaboratory(field[1], field[2], field[0]);
             } else {
                 Field newField = WhichField(field[1]);
                 if(newField == null){
                     break;
                 }
                 newField.SetFieldId(field[0]);
+                map.add(newField);
             }
         }
         try {
@@ -106,7 +135,6 @@ public class Controller implements java.io.Serializable {
             e.printStackTrace();
         }
         BufferedReader br2 = new BufferedReader(fr2);
-        int id = 0;
         while (true) {
             String line2 = null;
             try {
@@ -114,15 +142,14 @@ public class Controller implements java.io.Serializable {
             } catch (IOException e) {
                 e.printStackTrace();
             }
-            if (line2 == null) break;
+            if (line2 == null || line2.equals("virologists:")) break;
             String[] field = line2.split(" ");
-            for (int i = 2; i<field.length; i++){
-                if(field[1].equals("laboratory")){
-                    map.get(id).SetNeighbour(searchFieldById(field[i+1]));
-                } else {
-                    map.get(id).SetNeighbour(searchFieldById(field[i]));
-                }
-
+            if(field[1].equals("laboratory") || field[1].equals("bearlaboratory")){
+                for (int i = 2; i<field.length; i++)
+                    searchFieldById(field[0]).SetNeighbour(searchFieldById(field[i]));
+            } else {
+                for (int i = 2; i<field.length; i++)
+                    searchFieldById(field[0]).SetNeighbour(searchFieldById(field[i]));
             }
         }
         try {
@@ -132,6 +159,47 @@ public class Controller implements java.io.Serializable {
             e.printStackTrace();
         }
     }
+
+    public void PlaceVirologists(String fileName) {
+        FileReader fr3 = null;
+        try {
+            fr3 = new FileReader(fileName);
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
+        BufferedReader br = new BufferedReader(fr3);
+        while (true) {
+            String line3 = null;
+            try {
+                line3 = br.readLine();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            if (line3 == null || line3.equals("") || line3.equals("virologists:")) break;
+            String[] field = line3.split(" ");
+        }
+        while (true) {
+            String line3 = null;
+            try {
+                line3 = br.readLine();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            if (line3 == null || line3.equals("")) break;
+            String[] virologist = line3.split(" ");
+            if(virologist.length == 2){
+                this.CreateVirologist(virologist[0], virologist[1]);
+            }
+
+        }
+        try {
+            br.close();
+            fr3.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
 
     public Field searchFieldById (String id){
         for (int i=0; i<map.size(); i++){
@@ -168,41 +236,16 @@ public class Controller implements java.io.Serializable {
         return null;
     }
 
-    public void TestWin(Virologist v) {
-        if (v.GetLearnedGenomes().size() == learnableGenomes.size()) {
-            End();
-        }
-    }
+
 
     public void AddLearnableGenome(Genome g) {
         if (!learnableGenomes.contains(g))
             learnableGenomes.add(g);
     }
 
-    //TODO
-    /**
-     *
-     */
-    public void End() {
 
-    }
 
-    /**
-     * Calls the next player
-     */
-    public void NextPlayer() {
-        if (virologists.size() - 1 == index) {
-            index = 0;
-        } else {
-            index++;
-        }
-        Virologist v = virologists.get(index);
-        if (v.GetState() == State.KILLED) {
-            virologists.remove(v);
-            v = virologists.get(index);
-        }
-        v.SetState(State.BEFORE_MOVE);
-    }
+
 
     /**
      * Creates a field.
@@ -647,14 +690,7 @@ public class Controller implements java.io.Serializable {
         vKiller.KillVirologist(vKilled);
     }
 
-    /**
-     * The current Virologist ends his turn.
-     */
-    public void EndTurn() {
-        GetCurrentVirologist().EndTurn();
-        TestWin(GetCurrentVirologist());
-        NextPlayer();
-    }
+
     private Agent StringToAgent(String type){
         Agent a;
         switch (type) {
@@ -720,4 +756,6 @@ public class Controller implements java.io.Serializable {
         }
         return eq;
     }
+
+
 }
