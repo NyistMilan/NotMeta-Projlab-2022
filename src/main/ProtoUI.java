@@ -101,6 +101,7 @@ public class ProtoUI {
                                     ShowField(field, pw);
                                     break;
                             }
+                            break;
                         }
                         if(godmode && command.length == 3){
                             switch (command[1]) {
@@ -176,7 +177,6 @@ public class ProtoUI {
                         if(command.length == 1){
                             ct = new Controller();
                             ct.ImportMap("map.txt");
-                            ct.PlaceVirologists("map.txt");
                             pw.printf("new game created\n");
                             break;
                         }
