@@ -135,7 +135,7 @@ public class ProtoUI {
                         if(command.length == 2){
                             godmode = true;
                             String inputFileName = "TestInputs/" + command[1] + "_Input.txt";
-                            String runOutputFileName = "RunOutputs/" + command[1] + "_RunOutput.txt";
+                            String runOutputFileName = System.getProperty("user.dir") + "/RunOutputs/" + command[1] + "_RunOutput.txt";
                             Controller testCt = new Controller();
                             PrintWriter testPw = new PrintWriter(new BufferedWriter(new FileWriter(runOutputFileName)));
                             BufferedReader testBr = new BufferedReader(new FileReader(inputFileName));
@@ -143,7 +143,7 @@ public class ProtoUI {
                             testPw.close();
                             testBr.close();
                             BufferedReader actual = new BufferedReader(new FileReader(runOutputFileName));
-                            String expectedOutputFileName = "TestOutputs/" + command[1] + "_Output.txt";
+                            String expectedOutputFileName = System.getProperty("user.dir") + "/TestOutputs/" + command[1] + "_Output.txt";
                             BufferedReader expected = new BufferedReader(new FileReader(expectedOutputFileName));
                             int FDL = CompareFiles(expected, actual); //First Different Line
                             expected.close();
