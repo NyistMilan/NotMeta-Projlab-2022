@@ -11,7 +11,6 @@ package collectables.material;//
 
 import assets.Backpack;
 import assets.virologist.Virologist;
-import main.Skeleton;
 /** Aminoacids are used to create Agents*/
 public class Aminoacid extends Materials{
     /**
@@ -23,10 +22,7 @@ public class Aminoacid extends Materials{
      */
     @Override
     public boolean AddToBackpack(Virologist v, Backpack b) {
-        Skeleton.methodCall(this, "v", "b");
-        boolean isAdded = b.Add(this);
-        Skeleton.methodReturn(this);
-        return isAdded;
+        return b.Add(this);
     }
 
     /**
@@ -37,9 +33,7 @@ public class Aminoacid extends Materials{
      */
     @Override
     public void RemoveFromBackpack(Virologist v, Backpack b) {
-        Skeleton.methodCall(this, "v", "b");
         b.Remove(this);
-        Skeleton.methodReturn(this);
     }
 
     @Override

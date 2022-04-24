@@ -11,7 +11,6 @@ package collectables.agent;//
 
 import assets.virologist.Virologist;
 import collectables.agent.Agent;
-import main.Skeleton;
 
 /** The field.virologist.Virologist forgets every collectables.genome.Genome he learned so far*/
 @SuppressWarnings("GrazieInspection")
@@ -54,9 +53,7 @@ public class Oblivion extends Agent{
 
 	/** Applies the effect on the field.virologist.Virologist*/
 	public void Apply(Virologist v) {
-		Skeleton.methodCall(this, "v");
 		v.ForgetGenome();
-		Skeleton.methodReturn(this);
 	}
 
 	@Override

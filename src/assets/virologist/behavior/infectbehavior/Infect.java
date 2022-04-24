@@ -12,7 +12,6 @@ package assets.virologist.behavior.infectbehavior;//
 import assets.virologist.State;
 import collectables.agent.Agent;
 import assets.virologist.Virologist;
-import main.Skeleton;
 public class Infect implements InfectBehavior, java.io.Serializable {
     /**
      * v1 tries to infect v2.
@@ -24,10 +23,15 @@ public class Infect implements InfectBehavior, java.io.Serializable {
 
     @Override
     public void InfectVirologist(Virologist v1, Virologist v2, Agent a) {
-        Skeleton.methodCall(this, "v1", "v2", "a");
         v1.GetBackpack().Remove(a);
         v2.GetInfected(v1, a);
         v1.SetState(State.AFTER_ACTION);
-        Skeleton.methodReturn(this);
+    }
+
+    @Override
+    public void InfectRandomOff(Virologist v1, Virologist v2, Agent a) {
+        v1.GetBackpack().Remove(a);
+        v2.GetInfectedRandomOff(v1, a);
+        v1.SetState(State.AFTER_ACTION);
     }
 }

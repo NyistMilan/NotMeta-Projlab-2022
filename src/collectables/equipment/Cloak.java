@@ -12,7 +12,6 @@ package collectables.equipment;//
 import assets.virologist.Virologist;
 import assets.virologist.behavior.getinfectedbehavior.MaybeInfected;
 import collectables.equipment.Equipment;
-import main.Skeleton;
 
 /** The collectables.equipment.Cloak protects the field.virologist.Virologist from Agents with an 82.3% chance*/
 public class Cloak extends Equipment {
@@ -27,14 +26,17 @@ public class Cloak extends Equipment {
 
 	/** Applies the effect to the field.virologist.Virologist if there is no stronger effect on him*/
 	public void Apply(Virologist v) {
-		Skeleton.methodCall(this, "v");
 		if(v.GetGetInfectedBehavior().GetPriority() < 1)
 			v.SetGetInfectedBehavior(new MaybeInfected());
-		Skeleton.methodReturn(this);
 	}
 
 	@Override
 	public String GetName() {
 		return "cloak";
+	}
+
+	@Override
+	public int GetDurability(){
+		return -1;
 	}
 }

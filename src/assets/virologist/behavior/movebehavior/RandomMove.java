@@ -14,7 +14,6 @@ import assets.virologist.State;
 import assets.virologist.Virologist;
 
 import java.util.ArrayList;
-import main.Skeleton;
 public class RandomMove implements MoveBehavior, java.io.Serializable {
     /**
      * Generates a random number between to numbers.
@@ -26,8 +25,6 @@ public class RandomMove implements MoveBehavior, java.io.Serializable {
 
     @Override
     public int GetPriority() {
-        Skeleton.methodCall(this);
-        Skeleton.methodReturn(this);
         return 1;
     }
 
@@ -40,7 +37,6 @@ public class RandomMove implements MoveBehavior, java.io.Serializable {
     @Override
 
     public void MoveToField(Virologist v, int d) {
-        Skeleton.methodCall(this, "v", "d");
         Field f = v.GetRoute().GetLocation();
         ArrayList<Integer> directions = f.GetDirections();
         int newD = getRandomNumber(0, directions.size());
@@ -49,6 +45,18 @@ public class RandomMove implements MoveBehavior, java.io.Serializable {
         f2.Accept(v);
         v.GetRoute().Add(f2);
         v.SetState(State.BEFORE_ACTION);
-        Skeleton.methodReturn(this);
+    }
+
+    @Override
+    public void MoveRandomOff(Virologist v, int d) {
+        Field f = v.GetRoute().GetLocation();
+        int newD = 0;
+        if(d != f.GetDirections().size() - 1)
+            newD = d + 1;
+        Field f2 = f.GetNeighbour(newD);
+        f.Remove(v);
+        f2.AcceptRandomOff(v);
+        v.GetRoute().Add(f2);
+        v.SetState(State.BEFORE_ACTION);
     }
 }

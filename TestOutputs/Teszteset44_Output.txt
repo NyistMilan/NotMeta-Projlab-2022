@@ -10,4 +10,4 @@ nucleotide: 0
 equipments:
 agents:
 applied agents:
-chorea 3
+-chorea 3

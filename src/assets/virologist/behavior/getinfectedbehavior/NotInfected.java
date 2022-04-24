@@ -11,12 +11,9 @@ package assets.virologist.behavior.getinfectedbehavior;//
 
 import collectables.agent.Agent;
 import assets.virologist.Virologist;
-import main.Skeleton;
 public class NotInfected implements GetInfectedBehavior, java.io.Serializable {
     @Override
     public int GetPriority() {
-        Skeleton.methodCall(this);
-        Skeleton.methodReturn(this);
         return 2;
     }
 
@@ -29,7 +26,10 @@ public class NotInfected implements GetInfectedBehavior, java.io.Serializable {
      */
     @Override
     public void getInfected(Virologist v1, Virologist v2, Agent a) {
-        Skeleton.methodCall(this, "v1", "v2", "a");
-        Skeleton.methodReturn(this);
+    }
+
+    @Override
+    public void getInfectedRandomOff(Virologist v1, Virologist v2, Agent a) {
+        getInfected(v1,v2,a);
     }
 }

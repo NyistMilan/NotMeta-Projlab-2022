@@ -5,8 +5,8 @@ genome: chorea
 virologists:
 -V1
 materials:
--aminoacid: 0
--nucleotide: 0
+aminoacid: 0
+nucleotide: 0
 equipments:
 1. axe 1
 name: V1

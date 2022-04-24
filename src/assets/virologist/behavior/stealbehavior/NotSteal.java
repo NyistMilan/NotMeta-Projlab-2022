@@ -14,7 +14,6 @@ import collectables.Collectable;
 import assets.virologist.Virologist;
 
 import java.util.ArrayList;
-import main.Skeleton;
 /** */
 public class NotSteal implements StealBehavior, java.io.Serializable {
     /**
@@ -26,7 +25,5 @@ public class NotSteal implements StealBehavior, java.io.Serializable {
      */
     @Override
     public void StealFromVirologist(Virologist v1, Virologist v2, ArrayList<Collectable> c) {
-        Skeleton.methodCall(this, "v", "c");
-        Skeleton.methodReturn(this);
     }
 }

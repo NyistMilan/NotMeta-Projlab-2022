@@ -12,7 +12,6 @@ import assets.virologist.Virologist;
 //
 
 import assets.virologist.behavior.getinfectedbehavior.NotInfected;
-import main.Skeleton;
 
 /** The field.virologist.Virologist can not get infected by other Virologists*/
 public class Protection extends Agent{
@@ -55,10 +54,8 @@ public class Protection extends Agent{
 
 	/** Applies the effect to the field.virologist.Virologist if there is no stronger effect on him*/
 	public void Apply(Virologist v) {
-		Skeleton.methodCall(this, "v");
 		if(v.GetGetInfectedBehavior().GetPriority() < 2)
 			v.SetGetInfectedBehavior(new NotInfected());
-		Skeleton.methodReturn(this);
 	}
 
 	@Override

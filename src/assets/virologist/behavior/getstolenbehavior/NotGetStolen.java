@@ -13,7 +13,6 @@ import collectables.Collectable;
 import assets.virologist.Virologist;
 
 import java.util.ArrayList;
-import main.Skeleton;
 /** */
 public class NotGetStolen implements GetStolenBehavior, java.io.Serializable {
     /**
@@ -25,8 +24,6 @@ public class NotGetStolen implements GetStolenBehavior, java.io.Serializable {
      */
     @Override
     public boolean GetStolenFrom(Virologist v, ArrayList<Collectable> c) {
-        Skeleton.methodCall(this, "v","c");
-        Skeleton.methodReturn(this);
         return false;
     }
 

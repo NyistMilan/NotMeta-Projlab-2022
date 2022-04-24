@@ -9,12 +9,9 @@ package collectables.equipment;//
 //
 //
 
-import java.util.ArrayList;
-
 import assets.Backpack;
 import assets.virologist.Virologist;
 import collectables.Collectable;
-import main.Skeleton;
 /**
  * The field.virologist.Virologist can pick up up to 3 collectables.equipment.Equipment.
  * They apply their effects on the field.virologist.Virologist until he drops them
@@ -34,9 +31,7 @@ public abstract class Equipment implements Collectable , java.io.Serializable{
 
 	/** Removes its effect from a field.virologist.Virologist*/
 	public void Remove(Virologist v) {
-		Skeleton.methodCall(this, "v");
 		v.RefreshEffects();
-		Skeleton.methodReturn(this);
 	}
 
 	/**
@@ -48,18 +43,7 @@ public abstract class Equipment implements Collectable , java.io.Serializable{
 	 */
 	@Override
 	public boolean AddToBackpack(Virologist v, Backpack b) {
-		Skeleton.methodCall(this, "v","b");
-		boolean isAdded = b.Add(this);
-		if(!isAdded) {
-			int i = Skeleton.askForInput("Which equipment do you want to drop?", 1, 3);
-			Equipment e = b.GetEquipments().get(i - 1);
-			ArrayList<Collectable> list = new ArrayList<>();
-			list.add(e);
-			v.DropCollectable(list);
-			isAdded = b.Add(this);
-		}
-		Skeleton.methodReturn(this);
-		return isAdded;
+		return b.Add(this);
 	}
 
 	/**
@@ -69,9 +53,7 @@ public abstract class Equipment implements Collectable , java.io.Serializable{
 	 */
 	@Override
 	public void RemoveFromBackpack(Virologist v, Backpack b) {
-		Skeleton.methodCall(this, "v", "b");
 		b.Remove(this);
-		Skeleton.methodReturn(this);
 	}
 	public abstract String GetName();
 }

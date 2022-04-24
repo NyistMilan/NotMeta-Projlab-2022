@@ -14,7 +14,6 @@ public class ProtoUI {
     static boolean godmode = false;    //after the game starts no more system commands are allowed
     public static void main(String[] args){
         Controller controller = new Controller(); //base controller
-        controller.ImportMap("map.txt");
         final BufferedReader cbr = new BufferedReader(new InputStreamReader(System.in)); //BufferedReader for the console
         final PrintWriter cpw = new PrintWriter(new BufferedWriter(new OutputStreamWriter(System.out)), true); //BufferedWriter for the console
 
@@ -91,6 +90,18 @@ public class ProtoUI {
                         pw.printf("command not allowed\n");
                         break;
                     case "show":
+                        if(command.length == 2){
+                            switch (command[1]) {
+                                case "virologist":
+                                    Virologist virologist = ct.GetCurrentVirologist();
+                                    ShowVirologist(virologist, pw);
+                                    break;
+                                case "field":
+                                    Field field = ct.GetCurrentField();
+                                    ShowField(field, pw);
+                                    break;
+                            }
+                        }
                         if(godmode && command.length == 3){
                             switch (command[1]) {
                                 case "virologist":
@@ -151,6 +162,8 @@ public class ProtoUI {
                     case "new":
                         if(command.length == 1){
                             ct = new Controller();
+                            ct.ImportMap("map.txt");
+                            ct.PlaceVirologists("map.txt");
                             pw.printf("new game created\n");
                             break;
                         }
@@ -318,7 +331,7 @@ public class ProtoUI {
                         pw.printf("wrong command. use: create | create [agent]\n");
                         break;
                     case "infect":
-                        if(command.length == 1 || command.length == 2 || command.length == 3 || (command.length == 4 && command[2].equals("randomoff") && godmode)){
+                        if(command.length == 1 || command.length == 2 || command.length == 3 || (command.length == 4 && command[1].equals("randomoff") && godmode)){
                             if(command.length == 1){
                                 Field field = ct.GetCurrentField();
                                 ShowVirologists(field, pw);
@@ -329,8 +342,8 @@ public class ProtoUI {
                                 ShowAgents(virologist, pw);
                                 break;
                             }
-                            if(command[2].equals("randomoff") && godmode){
-                                ct.InfectVirologistRandomOff(command[1], Integer.parseInt(command[3]));
+                            if(command[1].equals("randomoff") && godmode){
+                                ct.InfectVirologistRandomOff(command[2], Integer.parseInt(command[3]));
                                 break;
                             }
                             ct.InfectVirologist(command[1], Integer.parseInt(command[2]));
@@ -460,7 +473,6 @@ public class ProtoUI {
         Backpack backpack = field.GetBackpack();
         pw.printf("materials:\n");
         ShowBackpack(backpack, pw);
-
     }
 
     /**
@@ -480,7 +492,10 @@ public class ProtoUI {
      */
     private static void ShowDirections(Field field, PrintWriter pw) {
         for(int d: field.GetDirections()){
-            pw.printf("%d - %s\n", d, field.GetNeighbour(d).GetType());
+            if(d == 0)
+                pw.printf("0 - this\n");
+            else
+                pw.printf("%d - %s\n", d, field.GetNeighbour(d).GetType());
         }
     }
 
@@ -492,15 +507,13 @@ public class ProtoUI {
     private static void ShowField(Field field, PrintWriter pw) {
         pw.printf("fieldID: %s\ntype: %s\n", field.GetFieldID(),field.GetType());
         if(field.GetGenome() != null){
-            pw.printf("genome: %s\n", field.GetGenome());
+            pw.printf("genome: %s\n", field.GetGenome().GetName());
         }
         pw.printf("virologists:\n");
         for(Virologist v : field.GetVirologists()){
             pw.printf("-%s\n", v.GetName());
         }
         ShowFieldBackpack(field, pw);
-        /*Backpack backpack = field.GetBackpack();
-        ShowBackpack(backpack, pw);*/
     }
 
     /**
@@ -543,7 +556,10 @@ public class ProtoUI {
         }
         pw.printf("applied agents:\n");
         for(Agent a : backpack.GetAppliedAgents()){
-            pw.printf("- %s %d\n", a.GetName(), a.getDuration());
+            if(a.getDuration() != -1)
+                pw.printf("-%s %d\n", a.GetName(), a.getDuration());
+            else
+                pw.printf("-%s\n", a.GetName());
         }
     }
 

@@ -9,7 +9,6 @@ package collectables.agent;//
 //
 //
 
-import main.Skeleton;
 import assets.virologist.Virologist;
 import assets.virologist.behavior.movebehavior.*;
 
@@ -54,10 +53,8 @@ public class Chorea extends Agent{
 
 	/** Applies the effect to the field.virologist.Virologist if there is no stronger effect on him*/
 	public void Apply(Virologist v) {
-		Skeleton.methodCall(this, "v");
 		if(v.GetMoveBehavior().GetPriority() < 1)
 			v.SetMoveBehavior(new RandomMove());
-		Skeleton.methodReturn(this);
 	}
 
 	@Override

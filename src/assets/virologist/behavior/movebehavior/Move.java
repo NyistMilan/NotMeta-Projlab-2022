@@ -11,13 +11,10 @@ package assets.virologist.behavior.movebehavior;//
 
 import assets.field.Field;
 import assets.virologist.*;
-import main.Skeleton;
 
 public class Move implements MoveBehavior, java.io.Serializable {
     @Override
     public int GetPriority() {
-        Skeleton.methodCall(this);
-        Skeleton.methodReturn(this);
         return 0;
     }
 
@@ -30,13 +27,21 @@ public class Move implements MoveBehavior, java.io.Serializable {
 
     @Override
     public void MoveToField(Virologist v, int d) {
-        Skeleton.methodCall(this, "v", "d");
         Field f = v.GetRoute().GetLocation();
         Field f2 = f.GetNeighbour(d);
         f.Remove(v);
         f2.Accept(v);
         v.GetRoute().Add(f2);
         v.SetState(State.BEFORE_ACTION);
-        Skeleton.methodReturn(this);
+    }
+
+    @Override
+    public void MoveRandomOff(Virologist v, int d) {
+        Field f = v.GetRoute().GetLocation();
+        Field f2 = f.GetNeighbour(d);
+        f.Remove(v);
+        f2.AcceptRandomOff(v);
+        v.GetRoute().Add(f2);
+        v.SetState(State.BEFORE_ACTION);
     }
 }

@@ -7,7 +7,7 @@ capacity: 30
 aminoacid: 0
 nucleotide: 0
 equipments:
-1. cloack
+1. cloak
 2. gloves 3
 3. sack
 agents:
@@ -15,14 +15,14 @@ applied agents:
 the game has started
 name: V1
 field: S1
-state: before_action
+state: after_action
 learned genomes:
 backpack:
 capacity: 30
 aminoacid: 0
 nucleotide: 0
 equipments:
-1. cloack
+1. cloak
 2. gloves 3
 3. sack
 agents:

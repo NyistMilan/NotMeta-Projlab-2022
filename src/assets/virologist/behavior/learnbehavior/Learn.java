@@ -12,7 +12,6 @@ package assets.virologist.behavior.learnbehavior;//
 import assets.virologist.State;
 import collectables.genome.Genome;
 import assets.virologist.Virologist;
-import main.Skeleton;
 public class Learn implements LearnBehavior, java.io.Serializable {
     /**
      * The field.virologist.Virologist learns the collectables.genome.Genome from the field.field.Laboratory if he didn't know it already.
@@ -24,18 +23,14 @@ public class Learn implements LearnBehavior, java.io.Serializable {
 
     @Override
     public void LearnGenome(Virologist v) {
-        Skeleton.methodCall(this, "v");
         Genome g = v.GetRoute().GetLocation().GetGenome();
         if( g == null){
-            Skeleton.methodReturn(this);
             return;
         }
         boolean added = v.Add(g);
         if(!added){
-            Skeleton.methodReturn(this);
             return;
         }
         v.SetState(State.AFTER_ACTION);
-        Skeleton.methodReturn(this);
     }
 }

@@ -1,5 +1,5 @@
 field normal F1
-field bearlaboratory B1
+field bearlaboratory chorea B1
 neighbor F1 B1
 virologist V1 F1
 effect protection V1

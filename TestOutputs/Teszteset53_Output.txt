@@ -1,6 +1,6 @@
 the game has started
 turn ended
-V1’s turn
+V1's turn
 name: V1
 field: F1
 state: before_move

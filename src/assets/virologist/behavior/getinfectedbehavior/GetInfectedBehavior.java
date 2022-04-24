@@ -25,4 +25,6 @@ public interface GetInfectedBehavior {
 	 * @param a the Agents v1 wants to infect v2 with
 	 */
 	void getInfected(Virologist v1, Virologist v2, Agent a);
+
+    void getInfectedRandomOff(Virologist v1, Virologist v2, Agent a);
 }

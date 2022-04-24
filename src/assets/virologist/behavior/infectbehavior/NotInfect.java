@@ -11,7 +11,6 @@ package assets.virologist.behavior.infectbehavior;//
 
 import collectables.agent.Agent;
 import assets.virologist.Virologist;
-import main.Skeleton;
 public class NotInfect implements InfectBehavior, java.io.Serializable {
     /**
      * Nothing happens.
@@ -22,7 +21,10 @@ public class NotInfect implements InfectBehavior, java.io.Serializable {
      */
     @Override
     public void InfectVirologist(Virologist v1, Virologist v2, Agent a) {
-        Skeleton.methodCall(this, "v1", "v2", "a");
-        Skeleton.methodReturn(this);
+    }
+
+    @Override
+    public void InfectRandomOff(Virologist v1, Virologist v2, Agent a) {
+
     }
 }

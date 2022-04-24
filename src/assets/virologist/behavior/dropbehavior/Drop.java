@@ -13,7 +13,6 @@ import assets.field.Field;
 import collectables.Collectable;
 import assets.virologist.Virologist;
 import java.util.ArrayList;
-import main.Skeleton;
 
 public class Drop implements DropBehavior, java.io.Serializable{
     /**
@@ -25,14 +24,11 @@ public class Drop implements DropBehavior, java.io.Serializable{
 
     @Override
     public void DropCollectable(Virologist v, ArrayList<Collectable> c) {
-        Skeleton.methodCall(this, "v","c");
         Field f = v.GetRoute().GetLocation();
         for(Collectable collectable: c){
             collectable.RemoveFromBackpack(v, v.GetBackpack());
             collectable.Remove(v);
             f.Add(v, collectable);
         }
-
-        Skeleton.methodReturn(this);
     }
 }

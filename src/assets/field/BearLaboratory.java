@@ -3,8 +3,6 @@ package assets.field;
 import assets.virologist.Virologist;
 import collectables.agent.Bear;
 import collectables.genome.Genome;
-import main.Skeleton;
-
 public class BearLaboratory extends Laboratory{
 
 
@@ -24,10 +22,14 @@ public class BearLaboratory extends Laboratory{
      * @param v virologist
      **/
     public void Accept(Virologist v) {
-        Skeleton.methodCall(this, "v");
         v.GetInfected(v,new Bear());
         virologists.add(v);
-        Skeleton.methodReturn(this);
+    }
+
+    @Override
+    public void AcceptRandomOff(Virologist v){
+        v.GetInfectedRandomOff(v,new Bear());
+        virologists.add(v);
     }
 
     @Override

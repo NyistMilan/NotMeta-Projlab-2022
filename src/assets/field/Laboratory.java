@@ -12,9 +12,7 @@ package assets.field;//
 import assets.Backpack;
 import assets.virologist.Virologist;
 import assets.virologist.behavior.learnbehavior.Learn;
-import collectables.agent.Chorea;
 import collectables.genome.Genome;
-import main.Skeleton;
 
 import java.util.ArrayList;
 
@@ -22,12 +20,10 @@ import java.util.ArrayList;
 public class Laboratory extends Field{
 	/** Constructor*/
 	public Laboratory(Genome g){
-		Skeleton.methodCall(this);
 		virologists = new ArrayList<>();
 		neighbours = new ArrayList<>();
 		backpack = new Backpack();
 		genome = g;
-		Skeleton.methodReturn(this);
 		neighbours.add(this);
 	}
 
@@ -35,17 +31,13 @@ public class Laboratory extends Field{
 	private final Genome genome;
 
 	public Genome GetGenome() {
-		Skeleton.methodCall(this);
-		Skeleton.methodReturn(this);
 		return genome;
 	}
 	
 	/** If the field.virologist.Virologist steps on a field.field.Laboratory he can learn the collectables.genome.Genome*/
 	public void Accept(Virologist v) {
-		Skeleton.methodCall(this, "v");
 		v.SetLearnBehavior(new Learn());
 		virologists.add(v);
-		Skeleton.methodReturn(this);
 	}
 
 	@Override
