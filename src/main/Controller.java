@@ -195,9 +195,9 @@ public class Controller implements java.io.Serializable {
 
 
     public Field searchFieldById (String id){
-        for (int i=0; i<map.size(); i++){
-            if(map.get(i).GetFieldId().equals(id)){
-                return map.get(i);
+        for (Field field : map) {
+            if (field.GetFieldId().equals(id)) {
+                return field;
             }
         }
         return null;
