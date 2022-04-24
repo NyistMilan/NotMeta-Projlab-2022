@@ -8,45 +8,45 @@
 8 laboratory chorea 29 30 40 28 7
 9 laboratory oblivion 10 29
 10 normal 11 31 9
-11 bearlaboratory 12 32 44 31 10
+11 bearlaboratory chorea 12 32 44 31 10
 12 normal 13 11
-13 shelter 14 32 12
+13 shelter aminoacid 14 32 12
 14 normal 15 13
 15 normal 16 46 14
-16 warehouse 17 15
+16 warehouse axe 17 15
 17 normal 18 47 16
 18 laboratory paralysis 19 49 48 17
 19 normal 20 18
-20 warehouse 50 19
+20 warehouse cloak 50 19
 21 normal 22 34 33
 22 normal 23 21 1
 23 laboratory protection 4 36 37 35 34 22 2 3
 24 normal 25 36 4
 25 normal 26 38 24 5
-26 shelter 27 38 25 6
+26 shelter nucleotide 27 38 25 6
 27 normal 28 39 26
 28 normal 8 27 7
 29 normal 9 30 8
-30 shelter 29 42 8
+30 shelter aminoacid 29 42 8
 31 normal 11 43 10
 32 normal 13 45 11
 33 normal 21 51
-34 shelter 23 35 52 51 21
-35 shelter 37 53 63 52 34 23
+34 shelter nucleotide 23 35 52 51 21
+35 shelter aminoacid 37 53 63 52 34 23
 36 normal 38 37 23 24
-37 shelter 38 54 53 35 23 36
+37 shelter nucleotide 38 54 53 35 23 36
 38 normal 26 39 55 54 37 36 25
 39 normal 40 55 38 27
 40 laboratory chorea 41 56 39 8
-41 shelter 42 58 57 40
+41 shelter aminoacid 42 58 57 40
 42 normal 43 41 30
 43 normal 31 44 58 42
-44 warehouse 11 45 71 70 43
+44 warehouse gloves 11 45 71 70 43
 45 normal 46 44 32
 46 normal 47 72 45 15
-47 shelter 48 75 74 73 46 17
+47 shelter nucleotide 48 75 74 73 46 17
 48 normal 49 75 47 18
-49 warehouse 50 76 75 48 18
+49 warehouse sack 50 76 75 48 18
 50 normal 77 49 20
 51 normal 34 59 33
 52 normal 35 59 34
@@ -60,24 +60,24 @@
 60 normal 59 61
 61 normal 62 79 60
 62 normal 63 61 59
-63 warehouse 64 81 62 35
+63 warehouse axe 64 81 62 35
 64 normal 65 82 63 53
 65 normal 66 83 64 54
-66 warehouse 56 86 84 65 54
-67 warehouse 68 101 86 56
+66 warehouse cloak 56 86 84 65 54
+67 warehouse gloves 68 101 86 56
 68 normal 69 87 67 57
 69 normal 70 68 58
-70 shelter 44 88 107 87 69
+70 shelter aminoacid 44 88 107 87 69
 71 normal 72 88 44
 72 bearlaboratory protection 73 89 108 88 71 46
 73 normal 47 74 72
 74 normal 75 90 110 89 73 47
 75 laboratory oblivion 49 76 90 74 47 48
-76 shelter 77 78 91 75 49
+76 shelter nucleotide 77 78 91 75 49
 77 normal 78 76 50
 78 normal 92 76 77
 79 normal 80 95 61
-80 warehouse 81 116 95 79
+80 warehouse sack 81 116 95 79
 81 normal 82 96 80 63
 82 normal 97 81 64
 83 normal 84 97 65
@@ -85,17 +85,17 @@
 85 normal 86 99 84
 86 normal 67 101 85 66
 87 normal 70 105 68
-88 shelter 72 108 122 107 70 71
+88 shelter aminoacid 72 108 122 107 70 71
 89 normal 74 109 72
-90 warehouse 91 112 111 74 75
+90 warehouse axe 91 112 111 74 75
 91 normal 92 112 90 76
 92 normal 93 113 91 78
-93 warehouse 128 92
+93 warehouse cloak 128 92
 94 normal 95 114
 95 normal 80 115 94 79
 96 normal 97 117 134 116 81
 97 normal 83 98 96 82
-98 warehouse 84 99 117 97
+98 warehouse gloves 84 99 117 97
 99 normal 100 118 98 85
 100 laboratory paralysis 102 119 137 118 99
 101 normal 67 101 102 80
@@ -103,17 +103,17 @@
 103 normal 101 119 102
 104 normal 105 103 101
 105 normal 87 106 101
-106 warehouse 107 121 120 105
+106 warehouse sack 107 121 120 105
 107 normal 88 121 106 70
 108 normal 109 123 88 72
 109 normal 110 125 108 89
 110 laboratory protection 111 126 109 74
-111 shelter 90 127 110
+111 shelter nucleotide 90 127 110
 112 normal 113 90 91
 113 laboratory chorea 92 128 152 127 112
 114 normal 115 130 94
 115 normal 116 131 114 95
-116 shelter 96 133 132 115 80
+116 shelter aminoacid 96 133 132 115 80
 117 normal 98 118 135 96
 118 normal 100 137 160 136 117 99
 119 normal 120 138 100 103
@@ -125,7 +125,7 @@
 125 normal 109 126 145 144 124
 126 normal 127 150 167 145 125 110
 127 normal 113 151 126 111
-128 warehouse 153 173 152 113 93
+128 warehouse axe 153 173 152 113 93
 129 normal 130 154
 130 normal 131 155 129 114
 131 normal 132 130 115
@@ -135,10 +135,10 @@
 135 normal 136 157 134 117
 136 normal 118 159 135
 137 normal 138 161 118 100
-138 laboratory 139 162 186 161 137 119
+138 laboratory chorea 139 162 186 161 137 119
 139 normal 140 162 138 120
 140 normal 141 163 139 142
-141 laboratory 144 165 164 140 143
+141 laboratory paralysis 144 165 164 140 143
 142 normal 143 140 120 121
 143 normal 144 141 142 122
 144 normal 125 145 141 143 124
@@ -151,14 +151,14 @@
 151 normal 152 169 150 127
 152 laboratory oblivion 128 171 151 113
 153 normal 174 128
-154 shelter 155 176 129
+154 shelter aminoacid 155 176 129
 155 normal 132 156 177 154 130
 156 normal 133 179 155 132
 157 normal 159 158 133 135
 158 normal 180 200 179 133 157
 159 normal 160 181 180 157 136
 160 normal 161 183 181 159 118
-161 shelter 138 186 185 183 160 137
+161 shelter nucleotide 138 186 185 183 160 137
 162 normal 187 186 138 139
 163 normal 164 187 140
 164 normal 141 165 188 163
@@ -166,16 +166,16 @@
 166 normal 190 165 145
 167 normal 168 190 145 126
 168 normal 169 167 150
-169 shelter 170 192 192 168 151
+169 shelter aminoacid 170 192 192 168 151
 170 normal 171 193 192 169
 171 normal 172 170 152
 172 normal 173 194 193 171
 173 normal 174 172 128
-174 shelter 175 195 173 153
+174 shelter nucleotide 175 195 173 153
 175 normal 196 174
 176 normal 177 197 154
 177 normal 178 176 155
-178 warehouse 179 200 199 197 177
+178 warehouse cloak 179 200 199 197 177
 179 normal 158 178 156
 180 normal 159 182 158
 181 normal 160 182 159
@@ -190,7 +190,7 @@
 190 normal 167 191 166
 191 laboratory chorea 169 192 190
 192 normal 170 193 191 169
-193 shelter 172 194 189 192 170
+193 shelter nucleotide 172 194 189 192 170
 194 laboratory oblivion 195 189 193 172
 195 normal 196 146 194 174
 196 normal 175 147 195
@@ -200,7 +200,7 @@
 200 normal 201 202 178 158
 201 normal 182 203 200
 202 normal 200 203 199
-203 shelter 204 202 201
+203 shelter aminoacid 204 202 201
 204 normal 184 203 182
 virologists:
 player1 1
