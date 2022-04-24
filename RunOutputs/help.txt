@@ -1,0 +1,1 @@
+Ebbe a konyvtarba generalodnak a tesztek futasi kiementei.
