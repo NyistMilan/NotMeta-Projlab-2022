@@ -90,6 +90,18 @@ public class ProtoUI {
                         pw.printf("command not allowed\n");
                         break;
                     case "show":
+                        if(command.length == 2){
+                            switch (command[1]) {
+                                case "virologist":
+                                    Virologist virologist = ct.GetCurrentVirologist();
+                                    ShowVirologist(virologist, pw);
+                                    break;
+                                case "field":
+                                    Field field = ct.GetCurrentField();
+                                    ShowField(field, pw);
+                                    break;
+                            }
+                        }
                         if(godmode && command.length == 3){
                             switch (command[1]) {
                                 case "virologist":
