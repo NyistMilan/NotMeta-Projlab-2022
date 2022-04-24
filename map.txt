@@ -188,7 +188,7 @@
 188 normal 164 187
 189 normal 194 146 193
 190 normal 167 191 166
-191 laboratory chora 169 192 190
+191 laboratory chorea 169 192 190
 192 normal 170 193 191 169
 193 shelter 172 194 189 192 170
 194 laboratory oblivion 195 189 193 172

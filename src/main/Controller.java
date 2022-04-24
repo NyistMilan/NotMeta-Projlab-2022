@@ -210,10 +210,6 @@ public class Controller implements java.io.Serializable {
             return new Shelter();
         if(fieldName.equals("warehouse"))
             return new WareHouse();
-        if(fieldName.equals("bearlaboratory")) {
-            Genome genome = new GenomeChorea();
-            return new BearLaboratory(genome);
-        }
         if(fieldName.equals("normal"))
             return new Normal();
         return null;
@@ -221,7 +217,14 @@ public class Controller implements java.io.Serializable {
 
 
     public void AddLearnableGenome(Genome g) {
-        if (!learnableGenomes.contains(g))
+        if(g == null)
+            return;
+        boolean contains = false;
+        for(Genome learned: learnableGenomes){
+            if(learned.GetName().equals(g.GetName()))
+                contains = true;
+        }
+        if(!contains)
             learnableGenomes.add(g);
     }
 
@@ -270,7 +273,7 @@ public class Controller implements java.io.Serializable {
             default:
                 return;
         }
-        AddLearnableGenome(StringToGenome(type));
+        AddLearnableGenome(StringToGenome(genome));
         f.SetFieldID(fieldID);
         map.add(f);
     }
@@ -694,24 +697,18 @@ public class Controller implements java.io.Serializable {
     }
 
     private Genome StringToGenome(String type){
-        Genome g;
         switch (type) {
             case "chorea":
-                g = new GenomeChorea();
-                break;
+                return new GenomeChorea();
             case "oblivion":
-                g = new GenomeOblivion();
-                break;
+                return new GenomeOblivion();
             case "paralysis":
-                g = new GenomeParalysis();
-                break;
+                return new GenomeParalysis();
             case "protection":
-                g = new GenomeProtection();
-                break;
+                return new GenomeProtection();
             default:
                 return null;
         }
-        return g;
     }
 
     private Equipment StringToEquipment(String type){
