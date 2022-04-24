@@ -10,7 +10,6 @@ package assets.virologist.behavior.learnbehavior;//
 //
 
 import assets.virologist.Virologist;
-import main.Skeleton;
 public class NotLearn implements LearnBehavior, java.io.Serializable {
     /**
      * Nothing happens
@@ -19,7 +18,5 @@ public class NotLearn implements LearnBehavior, java.io.Serializable {
      */
     @Override
     public void LearnGenome(Virologist v) {
-        Skeleton.methodCall(this, "v");
-        Skeleton.methodReturn(this);
     }
 }

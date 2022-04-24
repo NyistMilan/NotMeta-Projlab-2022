@@ -12,23 +12,18 @@ package assets.virologist;//
 import java.util.ArrayList;
 
 import assets.field.Field;
-import main.Skeleton;
 
 /** The Fields the field.virologist.Virologist was on*/
 public class Route implements java.io.Serializable{
 	/** Constructor*/
 	Route(){
-		Skeleton.methodCall(this);
 		fields = new ArrayList<>();
-		Skeleton.methodReturn(this);
 	}
 	/** The List where the field.virologist.Route Stores the Fields*/
 	public final ArrayList<Field> fields;
 	
 	/** Returns the Location of the Wizard by looking at the last field.field.Field he moved to*/
 	public Field GetLocation() {
-		Skeleton.methodCall(this);
-		Skeleton.methodReturn(this);
 		if(fields.isEmpty()){
 			return null;
 		}
@@ -36,8 +31,6 @@ public class Route implements java.io.Serializable{
 	}
 
 	public void Add(Field f) {
-		Skeleton.methodCall(this, "f");
 		fields.add(f);
-		Skeleton.methodReturn(this);
 	}
 }

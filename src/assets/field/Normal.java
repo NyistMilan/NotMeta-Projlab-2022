@@ -11,18 +11,15 @@ package assets.field;//
 
 import assets.Backpack;
 import collectables.genome.Genome;
-import main.Skeleton;
 import java.util.ArrayList;
 
 /** A normal field.field.Field*/
 public class Normal extends Field{
 	/** Constructor*/
 	public Normal(){
-		Skeleton.methodCall(this);
 		virologists = new ArrayList<>();
 		neighbours = new ArrayList<>();
 		backpack = new Backpack();
-		Skeleton.methodReturn(this);
 		neighbours.add(this);
 	}
 

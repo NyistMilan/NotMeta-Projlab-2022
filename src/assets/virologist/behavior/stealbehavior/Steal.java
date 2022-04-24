@@ -14,7 +14,6 @@ import collectables.Collectable;
 import assets.virologist.Virologist;
 
 import java.util.ArrayList;
-import main.Skeleton;
 
 public class Steal implements StealBehavior, java.io.Serializable {
     /**
@@ -28,12 +27,10 @@ public class Steal implements StealBehavior, java.io.Serializable {
 
     @Override
     public void StealFromVirologist(Virologist v1, Virologist v2, ArrayList<Collectable> c) {
-        Skeleton.methodCall(this, "v1", "v2", "c");
         boolean isStolen = v2.GetStolenFrom(c);
         if(isStolen){
             v1.PickUpCollectable(c);
             v1.SetState(State.AFTER_ACTION);
         }
-        Skeleton.methodReturn(this);
     }
 }

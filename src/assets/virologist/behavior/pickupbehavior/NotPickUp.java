@@ -13,7 +13,6 @@ import collectables.Collectable;
 import assets.virologist.Virologist;
 
 import java.util.ArrayList;
-import main.Skeleton;
 public class NotPickUp implements PickUpBehavior, java.io.Serializable {
     /**
      * Nothing happens
@@ -22,7 +21,5 @@ public class NotPickUp implements PickUpBehavior, java.io.Serializable {
      */
     @Override
     public void PickUpCollectable(Virologist v, ArrayList<Collectable> c) {
-        Skeleton.methodCall(this, "v", "c");
-        Skeleton.methodReturn(this);
     }
 }

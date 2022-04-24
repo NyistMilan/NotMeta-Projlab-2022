@@ -14,7 +14,6 @@ import collectables.Collectable;
 import assets.virologist.Virologist;
 
 import java.util.ArrayList;
-import main.Skeleton;
 
 public class PickUp implements PickUpBehavior, java.io.Serializable {
     /**
@@ -26,7 +25,6 @@ public class PickUp implements PickUpBehavior, java.io.Serializable {
 
     @Override
     public void PickUpCollectable(Virologist v, ArrayList<Collectable> c) {
-        Skeleton.methodCall(this, "v", "c");
         for(Collectable collectable: c){
             v.GetRoute().GetLocation().Remove(v, collectable);
             boolean isAdded = collectable.AddToBackpack(v, v.GetBackpack());
@@ -37,6 +35,5 @@ public class PickUp implements PickUpBehavior, java.io.Serializable {
             }
         }
         v.SetState(State.AFTER_ACTION);
-        Skeleton.methodReturn(this);
     }
 }

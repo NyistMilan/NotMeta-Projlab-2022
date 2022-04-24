@@ -25,8 +25,6 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
 
-import static java.lang.Integer.valueOf;
-
 /**
  * Controls the Game and the turns of the players
  */
@@ -49,10 +47,8 @@ public class Controller implements java.io.Serializable {
      *
      */
     public void Start() {
-        Skeleton.methodCall(this);
         index = virologists.size() - 1;
         NextPlayer();
-        Skeleton.methodReturn(this);
     }
 
     /**
@@ -78,7 +74,7 @@ public class Controller implements java.io.Serializable {
     public void EndTurn() {
         GetCurrentVirologist().EndTurn();
         if (GetCurrentVirologist().GetLearnedGenomes().size() == learnableGenomes.size()) {
-            System.out.printf("%s won the game!!!!", GetCurrentVirologist().GetName());
+            System.out.printf("%s won the game!!!!\n", GetCurrentVirologist().GetName());
         }
         else
             NextPlayer();
@@ -175,8 +171,7 @@ public class Controller implements java.io.Serializable {
             } catch (IOException e) {
                 e.printStackTrace();
             }
-            if (line3 == null || line3.equals("") || line3.equals("virologists:")) break;
-            String[] field = line3.split(" ");
+            if (line3.equals("virologists:")) break;
         }
         while (true) {
             String line3 = null;
@@ -216,35 +211,19 @@ public class Controller implements java.io.Serializable {
         if(fieldName.equals("warehouse"))
             return new WareHouse();
         if(fieldName.equals("bearlaboratory")) {
-            Genome genom = new GenomeChorea();
-            return new BearLaboratory(genom);
+            Genome genome = new GenomeChorea();
+            return new BearLaboratory(genome);
         }
         if(fieldName.equals("normal"))
             return new Normal();
         return null;
     }
 
-    public Genome WhichGenome (String genomeName) {
-        if(genomeName.equals("chorea"))
-            return new GenomeChorea();
-        if(genomeName.equals("oblivion"))
-            return new GenomeOblivion();
-        if(genomeName.equals("paralysis"))
-            return new GenomeParalysis();
-        if(genomeName.equals("protection"))
-            return new GenomeProtection();
-        return null;
-    }
-
-
 
     public void AddLearnableGenome(Genome g) {
         if (!learnableGenomes.contains(g))
             learnableGenomes.add(g);
     }
-
-
-
 
 
     /**

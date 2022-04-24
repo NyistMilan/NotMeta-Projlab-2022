@@ -10,7 +10,6 @@ package collectables.agent;
 //
 //
 import collectables.*;
-import main.Skeleton;
 import assets.virologist.Virologist;
 import assets.*;
 
@@ -42,18 +41,12 @@ public abstract class Agent implements Collectable, java.io.Serializable {
 	public abstract void setWarranty(int warranty);
 
 	public int DecreaseWarranty() {
-		Skeleton.methodCall(this);
 		setWarranty(getWarranty() - 1);
-		Skeleton.printWithIndent("Warranty:" + getWarranty());
-		Skeleton.methodReturn(this);
 		return getWarranty();
 	}
 
 	public int DecreaseDuration() {
-		Skeleton.methodCall(this);
 		setDuration(getDuration() - 1);
-		Skeleton.printWithIndent("Duration:" + getDuration());
-		Skeleton.methodReturn(this);
 		return getDuration();
 	}
 	
@@ -70,9 +63,7 @@ public abstract class Agent implements Collectable, java.io.Serializable {
 	 * @param v the field.virologist.Virologist the collectables.agent.Agent gets removed from
 	 * */
 	public void Remove(Virologist v) {
-		Skeleton.methodCall(this, "v");
 		v.RefreshEffects();
-		Skeleton.methodReturn(this);
 	}
 
 	/**
@@ -84,10 +75,7 @@ public abstract class Agent implements Collectable, java.io.Serializable {
 	 */
 	@Override
 	public boolean AddToBackpack(Virologist v, Backpack b) {
-		Skeleton.methodCall(this, "v", "b");
-		boolean isAdded = v.GetBackpack().Add(this);
-		Skeleton.methodReturn(this);
-		return isAdded;
+		return v.GetBackpack().Add(this);
 	}
 
 	/**
@@ -98,9 +86,7 @@ public abstract class Agent implements Collectable, java.io.Serializable {
 	 */
 	@Override
 	public void RemoveFromBackpack(Virologist v, Backpack b) {
-		Skeleton.methodCall(this, "v","b");
 		v.GetBackpack().Remove(this);
-		Skeleton.methodReturn(this);
 	}
 
 	public abstract String GetName();

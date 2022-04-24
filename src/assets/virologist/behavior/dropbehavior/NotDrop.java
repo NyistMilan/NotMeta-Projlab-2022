@@ -11,7 +11,6 @@ package assets.virologist.behavior.dropbehavior;//
 
 import collectables.Collectable;
 import assets.virologist.Virologist;
-import main.Skeleton;
 import java.util.ArrayList;
 
 public class NotDrop implements DropBehavior, java.io.Serializable {
@@ -23,7 +22,5 @@ public class NotDrop implements DropBehavior, java.io.Serializable {
      */
     @Override
     public void DropCollectable(Virologist v, ArrayList<Collectable> c) {
-        Skeleton.methodCall(this, "v","c");
-        Skeleton.methodReturn(this);
     }
 }

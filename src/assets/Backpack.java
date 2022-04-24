@@ -12,7 +12,6 @@ package assets;//
 import collectables.equipment.Equipment;
 import collectables.material.Aminoacid;
 import collectables.material.Nucleotide;
-import main.Skeleton;
 import java.util.ArrayList;
 
 /** Stores materials and Equipments*/
@@ -32,61 +31,43 @@ public class Backpack implements java.io.Serializable{
 
 	/** The Backpack can always store the Equipment*/
 	public boolean Add(Equipment e) {
-		Skeleton.methodCall(this, "e");
 		equipments.add(e);
-		Skeleton.methodReturn(this);
 		return true;
 	}
 
 
 	/** The Backpack can always store the Aminoacid*/
 	public boolean Add(Aminoacid a) {
-		Skeleton.methodCall(this, "a");
 		aminoacids.add(a);
-		Skeleton.methodReturn(this);
 		return true;
 	}
 	/** The Backpack can always store the Nucleotide*/
 	public boolean Add(Nucleotide n) {
-		Skeleton.methodCall(this, "n");
 		nucleotids.add(n);
-		Skeleton.methodReturn(this);
 		return true;
 	}
 
 	public ArrayList<Equipment> GetEquipments() {
-		Skeleton.methodCall(this);
-		Skeleton.methodReturn(this);
 		return equipments;
 	}
 
 	public ArrayList<Aminoacid> GetAminos() {
-		Skeleton.methodCall(this);
-		Skeleton.methodReturn(this);
 		return  aminoacids;
 	}
 
 	public ArrayList<Nucleotide> GetNucleotide() {
-		Skeleton.methodCall(this);
-		Skeleton.methodReturn(this);
 		return nucleotids;
 	}
 
 	public void Remove(Equipment e) {
-		Skeleton.methodCall(this, "e");
 		equipments.remove(e);
-		Skeleton.methodReturn(this);
 	}
 
 	public void Remove(Aminoacid a) {
-		Skeleton.methodCall(this, "a");
 		aminoacids.remove(a);
-		Skeleton.methodReturn(this);
 	}
 
 	public void Remove(Nucleotide n) {
-		Skeleton.methodCall(this, "n");
 		nucleotids.remove(n);
-		Skeleton.methodReturn(this);
 	}
 }

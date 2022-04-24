@@ -4,7 +4,6 @@ import assets.field.Field;
 import assets.virologist.State;
 import assets.virologist.Virologist;
 import collectables.agent.Bear;
-import main.Skeleton;
 
 import java.util.ArrayList;
 
@@ -27,7 +26,6 @@ public class BearMove implements MoveBehavior, java.io.Serializable{
 
     @Override
     public void MoveToField(Virologist v, int d) {
-        Skeleton.methodCall(this, "v", "d");
         Field f = v.GetRoute().GetLocation();
         ArrayList<Integer> directions = f.GetDirections();
         int newD = getRandomNumber(0, directions.size());
@@ -41,7 +39,6 @@ public class BearMove implements MoveBehavior, java.io.Serializable{
         }
         v.GetRoute().Add(f2);
         v.SetState(State.BEFORE_ACTION);
-        Skeleton.methodReturn(this);
     }
 
     @Override

@@ -25,7 +25,6 @@ import collectables.Collectable;
 import collectables.agent.*;
 import collectables.genome.*;
 import collectables.equipment.*;
-import main.Skeleton;
 
 import java.util.ArrayList;
 
@@ -40,13 +39,11 @@ public class Virologist implements java.io.Serializable{
 
 	/** Constructor, creates the attributes of the field.virologist.Virologist and sets his field.virologist.behaviors to the default value*/
 	public Virologist(){
-		Skeleton.methodCall(this);
 		route = new Route();
 		backPack = new VirologistBackpack();
 		learnedGenomes = new ArrayList<>();
 		DefaultBehaviors();
 		SetState(State.NOT_IN_TURN);
-		Skeleton.methodReturn(this);
 	}
 	/** The current state the field.virologist.Virologist is in*/
 	private State state;
@@ -82,17 +79,13 @@ public class Virologist implements java.io.Serializable{
 	private KillBehavior killBehavior;
 
 	public VirologistBackpack GetBackpack(){
-		Skeleton.methodCall(this);
-		Skeleton.methodReturn(this);
 		return backPack;
 	}
 	/** If the field.virologist.Virologist didn't move yet in his turn he calls his MoveBehavior*/
 	public void Move(int d) {
-		Skeleton.methodCall(this, "d");
 		if(this.state == State.BEFORE_MOVE) {
 			moveBehavior.MoveToField(this, d);
 		}
-		Skeleton.methodReturn(this);
 	}
 
 	public void MoveRandomOff(int d){
@@ -102,28 +95,21 @@ public class Virologist implements java.io.Serializable{
 	}
 	/** If the field.virologist.Virologist didn't do action in his turn he calls his PickUpBehavior*/
 	public void PickUpCollectable(ArrayList<Collectable> c) {
-		Skeleton.methodCall(this, "c");
 		if(state == State.BEFORE_ACTION){
 			pickUpBehavior.PickUpCollectable(this, c);
 		}
-		Skeleton.methodReturn(this);
 	}
 
 	/** If the field.virologist.Virologist didn't do action in his turn he calls his StealBehavior*/
 	public void Steal(Virologist v2, ArrayList<Collectable> c) {
-		Skeleton.methodCall(this, "c");
 		if(state == State.BEFORE_ACTION){
 			stealBehavior.StealFromVirologist(this, v2, c);
 		}
-		Skeleton.methodReturn(this);
 	}
 
 	/** The field.virologist.Virologist calls his GetStolenBehavior and returns the result*/
 	public boolean GetStolenFrom(ArrayList<Collectable> c) {
-		Skeleton.methodCall(this,"c");
-		boolean result = getStolenBehavior.GetStolenFrom(this, c);
-		Skeleton.methodReturn(this);
-		return result;
+		return getStolenBehavior.GetStolenFrom(this, c);
 	}
 
 	/**
@@ -131,7 +117,6 @@ public class Virologist implements java.io.Serializable{
 	 * If he is not in turn he just drops the items
 	 * */
 	public void DropCollectable(ArrayList<Collectable> c) {
-		Skeleton.methodCall(this, "c");
 		if(state == State.BEFORE_ACTION || state == State.AFTER_ACTION){
 			dropBehavior.DropCollectable(this, c);
 		}
@@ -143,33 +128,26 @@ public class Virologist implements java.io.Serializable{
 				f.Add(this, collectable);
 			}
 		}
-		Skeleton.methodReturn(this);
 	}
 	/** If the field.virologist.Virologist didn't do action in his turn he calls his LearnBehavior*/
 	public void Learn() {
-		Skeleton.methodCall(this);
 		if(state == State.BEFORE_ACTION){
 			learnBehavior.LearnGenome(this);
 		}
-		Skeleton.methodReturn(this);
 	}
 
 	/** If the field.virologist.Virologist didn't do action in his turn he calls his CreateBehavior*/
 	public void CreateAgent(Genome g) {
-		Skeleton.methodCall(this, "g");
 		if(state == State.BEFORE_ACTION){
 			createBehavior.CreateAgent(this, g);
 		}
-		Skeleton.methodReturn(this);
 	}
 
 	/**If the field.virologist.Virologist didn't do action in his turn he calls his InfectBehavior*/
 	public void Infect(Virologist v2, Agent a) {
-		Skeleton.methodCall(this, "v2", "a");
 		if(state == State.BEFORE_ACTION){
 			infectBehavior.InfectVirologist(this, v2, a);
 		}
-		Skeleton.methodReturn(this);
 	}
 
 	public void InfectRandomOff(Virologist v2, Agent a){
@@ -183,7 +161,6 @@ public class Virologist implements java.io.Serializable{
 	 * If he is in his turn he will get infected regardless of his protection.
 	 * */
 	public void GetInfected(Virologist v1, Agent a) {
-		Skeleton.methodCall(this, "v1", "a");
 		if(state ==State.NOT_IN_TURN || state == State.BEFORE_MOVE){
 			getInfectedBehavior.getInfected(v1, this, a);
 		}
@@ -192,7 +169,6 @@ public class Virologist implements java.io.Serializable{
 			backPack.AddApplied(a);
 
 		}
-		Skeleton.methodReturn(this);
 	}
 
 	public void GetInfectedRandomOff(Virologist v1, Agent a) {
@@ -207,24 +183,19 @@ public class Virologist implements java.io.Serializable{
 	}
 
 	public void KillVirologist(Virologist v){
-		Skeleton.methodCall(this,"v");
 		killBehavior.KillVirologist(this,v);
-		Skeleton.methodReturn(this);
 	}
 	/**
 	 * The field.virologist.Virologist Ends his turn. The warranty of all of his Agents will be decreased,
 	 * as well as the durations of his applied Agents.
 	 * */
 	public void EndTurn() {
-		Skeleton.methodCall(this);
 		backPack.DecreaseWarranties();
 		SetState(State.NOT_IN_TURN);
-		Skeleton.methodReturn(this);
 	}
 	//
 	/** Sets all the effects to default. Then applies the effects of all collectables.equipment.Equipment and applies collectables.agent.Agent*/
 	public void RefreshEffects() {
-		Skeleton.methodCall(this);
 		DefaultBehaviors();
 		ArrayList<Equipment> eqs = backPack.GetEquipments();
 		for(Equipment e : eqs){
@@ -234,13 +205,11 @@ public class Virologist implements java.io.Serializable{
 		for(Agent a: ags){
 			a.Apply(this);
 		}
-		Skeleton.methodReturn(this);
 	}
 
 
 	/** Sets the field.virologist.behaviors to the default value*/
 	public void DefaultBehaviors(){
-		Skeleton.methodCall(this);
 		SetMoveBehavior(new Move());
 		SetPickUpBehavior(new PickUp());
 		SetStealBehavior(new Steal());
@@ -251,7 +220,6 @@ public class Virologist implements java.io.Serializable{
 		SetInfectBehavior(new Infect());
 		SetGetInfectedBehavior(new GetInfected());
 		SetKillBehavior(new NotKill());
-		Skeleton.methodReturn(this);
 	}
 
 
@@ -261,44 +229,33 @@ public class Virologist implements java.io.Serializable{
 	 * @return true if it was added, false if it was not added
 	 * */
 	public boolean Add(Genome g) {
-		Skeleton.methodCall(this, "g");
 		if(learnedGenomes.contains(g)){
-			Skeleton.methodReturn(this);
 			return false;
 		}
 		learnedGenomes.add(g);
-		Skeleton.methodReturn(this);
 		return true;
 	}
 
 	/** Forgets all known genomes*/
 	public void ForgetGenome() {
-		Skeleton.methodCall(this);
 		int s = learnedGenomes.size();
 		if (s > 0) {
 			learnedGenomes.subList(0, s).clear();
 		}
-		Skeleton.methodReturn(this);
 	}
 
 	/** */
 	public void SetState(State s) {
-		Skeleton.methodCall(this, "s");
 		state = s;
-		Skeleton.methodReturn(this);
 	}
 	
 	/** */
 	public State GetState() {
-		Skeleton.methodCall(this);
-		Skeleton.methodReturn(this);
 		return state;
 	}
 	
 	/** */
 	public Route GetRoute() {
-		Skeleton.methodCall(this);
-		Skeleton.methodReturn(this);
 		return route;
 	}
 
@@ -309,27 +266,19 @@ public class Virologist implements java.io.Serializable{
 
 
 	public void SetMoveBehavior(MoveBehavior b){
-		Skeleton.methodCall(this, "b");
 		moveBehavior = b;
-		Skeleton.methodReturn(this);
 	}
 
 	public void SetPickUpBehavior(PickUpBehavior b){
-		Skeleton.methodCall(this, "b");
 		pickUpBehavior = b;
-		Skeleton.methodReturn(this);
 	}
 
 	public void SetStealBehavior(StealBehavior b){
-		Skeleton.methodCall(this, "b");
 		stealBehavior = b;
-		Skeleton.methodReturn(this);
 	}
 
 	public void SetGetStolenBehavior(GetStolenBehavior b){
-		Skeleton.methodCall(this, "b");
 		getStolenBehavior = b;
-		Skeleton.methodReturn(this);
 	}
 
 	public GetStolenBehavior GetGetStolenBehavior(){
@@ -337,66 +286,35 @@ public class Virologist implements java.io.Serializable{
 	}
 
 	public void SetDropBehavior(DropBehavior b){
-		Skeleton.methodCall(this, "b");
 		dropBehavior = b;
-		Skeleton.methodReturn(this);
 	}
 
-	public void SetLearnBehavior(LearnBehavior b){
-		Skeleton.methodCall(this, "b");
+	public void SetLearnBehavior(LearnBehavior b) {
 		learnBehavior = b;
-		Skeleton.methodReturn(this);
 	}
 
 	public void SetCreateBehavior(CreateBehavior b){
-		Skeleton.methodCall(this, "b");
 		createBehavior = b;
-		Skeleton.methodReturn(this);
 	}
 
 	public void SetInfectBehavior(InfectBehavior b){
-		Skeleton.methodCall(this, "b");
 		infectBehavior = b;
-		Skeleton.methodReturn(this);
 	}
 
 	public void SetGetInfectedBehavior(GetInfectedBehavior b){
-		Skeleton.methodCall(this, "b");
 		getInfectedBehavior = b;
-		Skeleton.methodReturn(this);
 	}
 
 	public MoveBehavior GetMoveBehavior(){
-		Skeleton.methodCall(this);
-		Skeleton.methodReturn(this);
 		return this.moveBehavior;
 	}
 
 	public GetInfectedBehavior GetGetInfectedBehavior(){
-		Skeleton.methodCall(this);
-		Skeleton.methodReturn(this);
 		return this.getInfectedBehavior;
 	}
 
 	public void SetKillBehavior(KillBehavior k) {
-		Skeleton.methodCall(this, "k");
 		killBehavior = k;
-		Skeleton.methodReturn(this);
-	}
-
-
-
-	/** I'm not sure if we need this one*/
-
-
-	public void ListCollectables() {
-		Skeleton.methodCall(this);
-		ArrayList<Equipment> eqList= this.GetBackpack().GetEquipments();
-		Skeleton.printWithIndent("Equipment(s) in Backpack:");
-		for(int i=0; i< eqList.size(); i++){
-			Skeleton.printWithIndent("\t-"+eqList.get(i).GetName());
-		}
-		Skeleton.methodReturn(this);
 	}
 
 	public String GetName() {

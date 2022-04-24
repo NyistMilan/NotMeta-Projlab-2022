@@ -12,7 +12,6 @@ package assets.virologist.behavior.getinfectedbehavior;//
 import collectables.agent.Agent;
 import assets.virologist.Virologist;
 import collectables.equipment.Gloves;
-import main.Skeleton;
 public class InfectBack implements GetInfectedBehavior, java.io.Serializable{
     final private Gloves glove;
     public InfectBack(Gloves glove){
@@ -20,8 +19,6 @@ public class InfectBack implements GetInfectedBehavior, java.io.Serializable{
     }
     @Override
     public int GetPriority() {
-        Skeleton.methodCall(this);
-        Skeleton.methodReturn(this);
         return 3;
     }
 
@@ -35,12 +32,10 @@ public class InfectBack implements GetInfectedBehavior, java.io.Serializable{
 
     @Override
     public void getInfected(Virologist v1, Virologist v2, Agent a) {
-        Skeleton.methodCall(this, "v1", "v2", "a");
         v1.GetInfected(v2, a);
         glove.DecreaseEquipmentDurability();
         if(glove.GetDurability() == 0)
             glove.RemoveFromBackpack(v2, v2.GetBackpack());
-        Skeleton.methodReturn(this);
     }
 
     @Override

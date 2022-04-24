@@ -16,7 +16,6 @@ import assets.virologist.behavior.learnbehavior.NotLearn;
 import assets.virologist.behavior.movebehavior.NotMove;
 import assets.virologist.behavior.pickupbehavior.NotPickUp;
 import assets.virologist.behavior.stealbehavior.NotSteal;
-import main.Skeleton;
 import assets.virologist.*;
 import assets.virologist.behavior.dropbehavior.*;
 
@@ -61,7 +60,6 @@ public class Paralysis extends Agent{
 
 	/** Applies the effects on a field.virologist.Virologist*/
 	public void Apply(Virologist v) {
-		Skeleton.methodCall(this, "v");
 		if(v.GetMoveBehavior().GetPriority() < 2)
 			v.SetMoveBehavior(new NotMove());
 		v.SetCreateBehavior(new NotCreate());
@@ -71,7 +69,6 @@ public class Paralysis extends Agent{
 		v.SetInfectBehavior(new NotInfect());
 		v.SetDropBehavior(new NotDrop());
 		v.SetGetStolenBehavior(new GetStolen());
-		Skeleton.methodReturn(this);
 	}
 
 	@Override
