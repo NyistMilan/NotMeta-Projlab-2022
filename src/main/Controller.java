@@ -635,7 +635,6 @@ public class Controller implements java.io.Serializable {
      * @param name  the name of the infected Virologist
      * @param index the index of an Agent in the current Virologist's Backpack
      */
-    //TODO
     public void InfectVirologistRandomOff(String name, int index) {
         Virologist vInfecter = GetCurrentVirologist();
         Virologist vInfected = GetVirologist(name);
