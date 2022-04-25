@@ -276,8 +276,8 @@ public class Controller implements java.io.Serializable {
         map.add(f);
     }
 
-    public void CreateShelter(String type, String material, String fieldID) {
-        Field f = new Shelter();
+    public void CreateWarehouse(String type, String material, String fieldID) {
+        Field f = new WareHouse();
         if(material.equals("aminoacid")){
             for(int i=0; i<20; i++)
                 f.GetBackpack().Add(new Aminoacid());
@@ -290,8 +290,8 @@ public class Controller implements java.io.Serializable {
         map.add(f);
     }
 
-    public void CreateWarehouse(String type, String equipment, String fieldID) {
-        Field f = new WareHouse();
+    public void CreateShelter(String type, String equipment, String fieldID) {
+        Field f = new Shelter();
         for (int i=0; i<20; i++)
             f.GetBackpack().Add(StringToEquipment(equipment));
         f.SetFieldID(fieldID);
