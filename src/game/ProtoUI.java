@@ -1,4 +1,4 @@
-package main;
+package game;
 
 import assets.Backpack;
 import assets.field.Field;
@@ -7,6 +7,7 @@ import assets.virologist.VirologistBackpack;
 import collectables.agent.Agent;
 import collectables.equipment.Equipment;
 import collectables.genome.Genome;
+import game.Controller;
 
 import java.io.*;
 
@@ -14,6 +15,7 @@ public class ProtoUI {
     static boolean godmode = false;    //after the game starts no more system commands are allowed
     public static void main(String[] args){
         Controller controller = new Controller(); //base controller
+        // GrapUI ui= new
         final BufferedReader cbr = new BufferedReader(new InputStreamReader(System.in)); //BufferedReader for the console
         final PrintWriter cpw = new PrintWriter(new BufferedWriter(new OutputStreamWriter(System.out)), true); //BufferedWriter for the console
 
