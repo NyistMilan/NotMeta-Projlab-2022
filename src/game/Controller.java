@@ -17,6 +17,7 @@ import collectables.agent.*;
 import collectables.equipment.*;
 import collectables.genome.*;
 import collectables.material.Aminoacid;
+import collectables.material.Materials;
 import collectables.material.Nucleotide;
 
 import java.io.BufferedReader;
@@ -113,15 +114,11 @@ public class Controller implements java.io.Serializable {
             }
             if (line == null || line.equals("") || line.equals("virologists:")) break;
             String[] field = line.split(" ");
-            if(field[1].equals("laboratory") || field[1].equals("bearlaboratory")){
-                CreateLaboratory(field[1], field[2], field[0]);
-            } else {
-                Field newField = WhichField(field[1]);
-                if(newField == null){
-                    break;
-                }
-                newField.SetFieldId(field[0]);
-                map.add(newField);
+            switch (field[1]) {
+                case "laboratory", "bearlaboratory" -> CreateLaboratory(field[1], field[2], field[0]);
+                case "shelter" -> CreateShelter(field[1], field[2], field[0]);
+                case "warehouse" -> CreateWarehouse(field[1], field[2], field[0]);
+                case "normal" -> CreateNormal(field[1], field[0]);
             }
         }
         try {
@@ -149,14 +146,15 @@ public class Controller implements java.io.Serializable {
             }
             if (line2 == null || line2.equals("virologists:")) break;
             String[] field = line2.split(" ");
-            if(field[1].equals("laboratory") || field[1].equals("bearlaboratory")){
+            if(field[1].equals("normal")){
                 for (int i = 2; i<field.length; i++)
                     searchFieldById(field[0]).SetNeighbour(searchFieldById(field[i]));
             } else {
-                for (int i = 2; i<field.length; i++)
+                for (int i = 3; i<field.length; i++)
                     searchFieldById(field[0]).SetNeighbour(searchFieldById(field[i]));
             }
         }
+
         try {
             br2.close();
             fr2.close();
@@ -206,9 +204,9 @@ public class Controller implements java.io.Serializable {
 
 
     public Field searchFieldById (String id){
-        for (int i=0; i<map.size(); i++){
-            if(map.get(i).GetFieldId().equals(id)){
-                return map.get(i);
+        for (Field field : map) {
+            if (field.GetFieldId().equals(id)) {
+                return field;
             }
         }
         return null;
@@ -219,10 +217,6 @@ public class Controller implements java.io.Serializable {
             return new Shelter();
         if(fieldName.equals("warehouse"))
             return new WareHouse();
-        if(fieldName.equals("bearlaboratory")) {
-            Genome genome = new GenomeChorea();
-            return new BearLaboratory(genome);
-        }
         if(fieldName.equals("normal"))
             return new Normal();
         return null;
@@ -230,7 +224,14 @@ public class Controller implements java.io.Serializable {
 
 
     public void AddLearnableGenome(Genome g) {
-        if (!learnableGenomes.contains(g))
+        if(g == null)
+            return;
+        boolean contains = false;
+        for(Genome learned: learnableGenomes){
+            if(learned.GetName().equals(g.GetName()))
+                contains = true;
+        }
+        if(!contains)
             learnableGenomes.add(g);
     }
 
@@ -279,10 +280,39 @@ public class Controller implements java.io.Serializable {
             default:
                 return;
         }
-        AddLearnableGenome(StringToGenome(type));
+        AddLearnableGenome(StringToGenome(genome));
         f.SetFieldID(fieldID);
         map.add(f);
     }
+
+    public void CreateWarehouse(String type, String material, String fieldID) {
+        Field f = new WareHouse();
+        if(material.equals("aminoacid")){
+            for(int i=0; i<20; i++)
+                f.GetBackpack().Add(new Aminoacid());
+        }
+        if (material.equals("nucleotide")){
+            for(int i=0; i<20; i++)
+                f.GetBackpack().Add(new Nucleotide());
+        }
+        f.SetFieldID(fieldID);
+        map.add(f);
+    }
+
+    public void CreateShelter(String type, String equipment, String fieldID) {
+        Field f = new Shelter();
+        for (int i=0; i<20; i++)
+            f.GetBackpack().Add(StringToEquipment(equipment));
+        f.SetFieldID(fieldID);
+        map.add(f);
+    }
+
+    public void CreateNormal (String type, String fieldID) {
+        Field f = new Normal();
+        f.SetFieldID(fieldID);
+        map.add(f);
+    }
+
 
     /**
      * Makes two Field neighbors.
@@ -702,24 +732,13 @@ public class Controller implements java.io.Serializable {
     }
 
     private Genome StringToGenome(String type){
-        Genome g;
-        switch (type) {
-            case "chorea":
-                g = new GenomeChorea();
-                break;
-            case "oblivion":
-                g = new GenomeOblivion();
-                break;
-            case "paralysis":
-                g = new GenomeParalysis();
-                break;
-            case "protection":
-                g = new GenomeProtection();
-                break;
-            default:
-                return null;
-        }
-        return g;
+        return switch (type) {
+            case "chorea" -> new GenomeChorea();
+            case "oblivion" -> new GenomeOblivion();
+            case "paralysis" -> new GenomeParalysis();
+            case "protection" -> new GenomeProtection();
+            default -> null;
+        };
     }
 
     private Equipment StringToEquipment(String type){
