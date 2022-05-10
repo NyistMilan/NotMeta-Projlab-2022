@@ -1,6 +1,8 @@
 package game.ui.game;
 
 import game.ui.SceneLauncher;
+import game.ui.game.GameScene;
+import game.ui.game.map.DField;
 
 import javax.swing.*;
 import java.awt.*;
@@ -19,7 +21,11 @@ public class MapPanel extends JPanel {
         this.setPreferredSize(new Dimension(mapWidth, mapHeight));
         setBorder(BorderFactory.createLineBorder(Color.black));
         this.setBackground(Color.red);
-        //this.setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
-
+        this.setLayout(null);
+        for(DField df: gameScene.GetDMap()){
+            JButton fieldButton = new JButton();
+            fieldButton.setBounds(df.GetCoords().x - 25, df.GetCoords().y -25, 50,50);
+            this.add(fieldButton);
+        }
     }
 }

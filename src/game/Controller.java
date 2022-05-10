@@ -20,6 +20,7 @@ import collectables.material.Aminoacid;
 import collectables.material.Materials;
 import collectables.material.Nucleotide;
 
+import java.awt.*;
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
@@ -33,16 +34,18 @@ public class Controller implements java.io.Serializable {
     private final ArrayList<Field> map;
     private final ArrayList<collectables.genome.Genome> learnableGenomes;
     private final ArrayList<Virologist> virologists;
+    private final ArrayList<Point> fieldCoords;
     //GRAPHUI class
     /**
      * the player
      */
     private static int index;
 
-    Controller() {
+    public Controller() {
         map = new ArrayList<>();
         learnableGenomes = new ArrayList<>();
         virologists = new ArrayList<>();
+        fieldCoords = new ArrayList<>();
         // ui class = new UI(boolean start);
 
     }
@@ -90,6 +93,17 @@ public class Controller implements java.io.Serializable {
             NextPlayer();
     }
 
+    public ArrayList<Field> GetMap(){
+        return map;
+    }
+
+    public ArrayList<Virologist> GetVirologists() {
+        return virologists;
+    }
+
+    public ArrayList<Point> GetFieldCoords(){
+        return fieldCoords;
+    }
 
     public void ImportMap(String fileName){
         this.ImportFields(fileName);
@@ -114,11 +128,12 @@ public class Controller implements java.io.Serializable {
             }
             if (line == null || line.equals("") || line.equals("virologists:")) break;
             String[] field = line.split(" ");
-            switch (field[1]) {
-                case "laboratory", "bearlaboratory" -> CreateLaboratory(field[1], field[2], field[0]);
-                case "shelter" -> CreateShelter(field[1], field[2], field[0]);
-                case "warehouse" -> CreateWarehouse(field[1], field[2], field[0]);
-                case "normal" -> CreateNormal(field[1], field[0]);
+            fieldCoords.add(new Point(Integer.parseInt(field[1]), Integer.parseInt(field[2])));
+            switch (field[3]) {
+                case "laboratory", "bearlaboratory" -> CreateLaboratory(field[3], field[4], field[0]);
+                case "shelter" -> CreateShelter(field[3], field[4], field[0]);
+                case "warehouse" -> CreateWarehouse(field[3], field[4], field[0]);
+                case "normal" -> CreateNormal(field[3], field[0]);
             }
         }
         try {
@@ -146,11 +161,11 @@ public class Controller implements java.io.Serializable {
             }
             if (line2 == null || line2.equals("virologists:")) break;
             String[] field = line2.split(" ");
-            if(field[1].equals("normal")){
-                for (int i = 2; i<field.length; i++)
+            if(field[3].equals("normal")){
+                for (int i = 4; i<field.length; i++)
                     searchFieldById(field[0]).SetNeighbour(searchFieldById(field[i]));
             } else {
-                for (int i = 3; i<field.length; i++)
+                for (int i = 5; i<field.length; i++)
                     searchFieldById(field[0]).SetNeighbour(searchFieldById(field[i]));
             }
         }
@@ -761,5 +776,6 @@ public class Controller implements java.io.Serializable {
         }
         return eq;
     }
+
 
 }
