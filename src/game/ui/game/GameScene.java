@@ -27,24 +27,32 @@ public class GameScene extends JFrame{
             String type = f.GetType();
             switch (type){
                 case "normal":
-                    dmap.add(new DNormal("d" + f.GetFieldID()));
+                    dmap.add(new DNormal(f.GetFieldID()));
                     break;
                 case "laboratory":
-                    dmap.add(new DLaboratory("d" + f.GetFieldID()));
+                    dmap.add(new DLaboratory(f.GetFieldID()));
                     break;
                 case "bearlaboratory":
-                    dmap.add(new DLaboratory("d" + f.GetFieldID()));
+                    dmap.add(new DLaboratory(f.GetFieldID()));
                     break;
                 case "warehouse":
-                    dmap.add(new DWareHouse("d" + f.GetFieldID()));
+                    dmap.add(new DWareHouse(f.GetFieldID()));
                     break;
                 case "shelter":
-                    dmap.add(new DShelter("d" + f.GetFieldID()));
+                    dmap.add(new DShelter(f.GetFieldID()));
                     break;
             }
         }
         for(int i = 0; i < dmap.size(); i++){
             dmap.get(i).SetCoords(controller.GetFieldCoords().get(i));
+        }
+        for(Field f :controller.GetMap()){
+            DField df1 = FindDFieldByID(f.GetFieldID());
+            for(int d :f.GetDirections()){
+                String ID = f.GetNeighbour(d).GetFieldID();
+                DField df2 = FindDFieldByID(ID);
+                df1.AddNeighbor(df2);
+            }
         }
         for(Virologist v: controller.GetVirologists()){
             dVirologists.add(new DVirologist("d" + v.GetName()));
@@ -52,6 +60,12 @@ public class GameScene extends JFrame{
         this.add(new GamePanel(this, sl, players));
         this.pack();
         this.setVisible(true);
+    }
+    private DField FindDFieldByID(String ID){
+        for(DField d : dmap)
+            if(d.GetID().equals(ID))
+                return d;
+        return null;
     }
     public ArrayList<DField> GetDMap(){
         return dmap;

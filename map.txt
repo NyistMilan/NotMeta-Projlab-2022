@@ -9,16 +9,16 @@
 9 200 150 warehouse nucleotide 10 13
 10 335 190 normal 4 9 11 16 17
 11 420 140 shelter sack 6 10 12
-12 710 220 normal 7 11 18
-13 530 150 laboratory chorea 8 9 14
+12 535 150 normal 7 11 18
+13 130 200 laboratory chorea 8 9 14
 14 50 250 normal 13 19
 15 150 290 warehouse aminoacid 19 20
-16 265 255 normal 10, 20 21
+16 265 255 normal 10 20 21
 17 390 260 shelter gloves 10 18 21 22
 18 490 235 normal 12 17 22 23
 19 70 350 laboratory oblivion 14 15 20
 20 240 360 normal 15 16 19
-21 335 330 warehouse nucletide 16 17
+21 335 330 warehouse nucleotide 16 17
 22 450 335 normal 17 18 23
 23 555 320 shelter cloak 18 22
 virologists:

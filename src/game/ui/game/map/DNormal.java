@@ -1,5 +1,7 @@
 package game.ui.game.map;
 
+import javax.swing.*;
+
 public class DNormal extends DField{
     public DNormal(String s) {
         super();
@@ -7,7 +9,8 @@ public class DNormal extends DField{
     }
 
     @Override
-    public void Draw() {
-
+    public JButton Draw() {
+        Icon icon = new ImageIcon("Images/normal.png");
+        return new JButton(icon);
     }
 }
