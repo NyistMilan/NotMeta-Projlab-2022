@@ -27,15 +27,10 @@ public class GamePanel extends JPanel {
         this.setBackground(Color.white);
         GroupLayout layout = new GroupLayout(this);
         this.setLayout(layout);
-        //this.setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
         mapPanel = new MapPanel(gameScene, sceneLauncher, players);
-        //this.add(mapPanel);
         backpackPanel = new BackpackPanel(gameScene, sceneLauncher, players);
-        //this.add(backpackPanel);
         fieldPanel = new FieldPanel(gameScene, sceneLauncher, players);
-        //this.add(fieldPanel);
         actionPanel = new ActionPanel(gameScene, sceneLauncher, players);
-        //this.add(actionPanel);
         layout.setVerticalGroup(
                 layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(GroupLayout.Alignment.BASELINE)
