@@ -101,6 +101,8 @@ public class Controller implements java.io.Serializable {
         return virologists;
     }
 
+    public int GetIndex(){return index;}
+
     public ArrayList<Point> GetFieldCoords(){
         return fieldCoords;
     }

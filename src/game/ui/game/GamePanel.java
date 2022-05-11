@@ -1,6 +1,8 @@
 package game.ui.game;
 
+import game.Controller;
 import game.ui.SceneLauncher;
+import game.ui.game.map.DVirologist;
 
 import javax.swing.*;
 import java.awt.*;
@@ -17,7 +19,7 @@ public class GamePanel extends JPanel {
     private ActionPanel actionPanel;
 
 
-    public GamePanel(GameScene gameScene, SceneLauncher sl, ArrayList<String> players){
+    public GamePanel(GameScene gameScene, SceneLauncher sl, ArrayList<String> players, Controller controller){
         this.players = players;
         sceneLauncher = sl;
         this.gameScene = gameScene;
@@ -27,8 +29,8 @@ public class GamePanel extends JPanel {
         GroupLayout layout = new GroupLayout(this);
         this.setLayout(layout);
         mapPanel = new MapPanel(gameScene, sceneLauncher, players);
-        backpackPanel = new BackpackPanel(gameScene, sceneLauncher, players);
-        fieldPanel = new FieldPanel(gameScene, sceneLauncher, players);
+        backpackPanel = new BackpackPanel(gameScene, sceneLauncher, players, controller);
+        fieldPanel = new FieldPanel(gameScene, sceneLauncher, players, controller);
         actionPanel = new ActionPanel(gameScene, sceneLauncher, players);
         layout.setVerticalGroup(
                 layout.createSequentialGroup()

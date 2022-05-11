@@ -12,9 +12,7 @@ public class PlayersPanel extends JPanel {
         this.setVisible(true);
     }
 
-    public void setPlayerNames(String player){
-        players.add(player);
-    }
+    public void setPlayerNames(String player){players.add(player);}
 
     public void resetPlayerNames(){
         players.clear();

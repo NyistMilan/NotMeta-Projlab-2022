@@ -13,6 +13,7 @@ public class GameScene extends JFrame{
     private Controller controller;
     private ArrayList<DField> dmap;
     private ArrayList<DVirologist> dVirologists;
+
     public GameScene(SceneLauncher sl, ArrayList<String> players){
         this.setTitle("Game");
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -22,7 +23,12 @@ public class GameScene extends JFrame{
         this.dmap = new ArrayList<>();
         this.dVirologists = new ArrayList<>();
         controller = new Controller();
+
         controller.ImportMap("map.txt");
+        for (int i=0; i<players.size();i++){
+            controller.GetVirologists().get(i).SetName(players.get(i));
+        }
+
         for(Field f :controller.GetMap()){
             String type = f.GetType();
             switch (type){
@@ -57,7 +63,8 @@ public class GameScene extends JFrame{
         for(Virologist v: controller.GetVirologists()){
             dVirologists.add(new DVirologist("d" + v.GetName()));
         }
-        this.add(new GamePanel(this, sl, players));
+
+        this.add(new GamePanel(this, sl, players, controller));
         this.pack();
         this.setVisible(true);
     }

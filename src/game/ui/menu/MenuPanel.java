@@ -1,5 +1,6 @@
 package game.ui.menu;
 
+import assets.virologist.Virologist;
 import game.ui.SceneLauncher;
 import game.ui.StyledMenuButtonUI;
 
@@ -104,6 +105,7 @@ public class MenuPanel extends JPanel implements ActionListener {
                     } else {
                         playernames.add(newPlayer);
                         playersPanel.setPlayerNames(playernames.get(playernames.size() - 1));
+
                     }
                     repaint();
                 }
