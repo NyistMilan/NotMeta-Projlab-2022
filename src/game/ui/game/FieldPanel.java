@@ -1,5 +1,6 @@
 package game.ui.game;
 
+import assets.Backpack;
 import game.Controller;
 import game.ui.SceneLauncher;
 
@@ -49,23 +50,24 @@ public class FieldPanel extends JPanel {
         g2d.setStroke(new BasicStroke(5));
         g2d.draw(new Line2D.Float(0,0,800,0));
 
+        Backpack backpack = controller.GetVirologists().get(controller.GetIndex()).GetRoute().GetLocation().GetBackpack();
         g2d.drawString("Equipments", 25, 20);
-        for (int i = 0; i < controller.GetVirologists().get(controller.GetIndex()).GetRoute().GetLocation().GetBackpack().GetEquipments().size(); i++) {
-            g2d.drawString(controller.GetVirologists().get(controller.GetIndex()).GetRoute().GetLocation().GetBackpack().GetEquipments().get(i).GetName(),
+        for (int i = 0; i < backpack.GetEquipments().size(); i++) {
+            g2d.drawString(backpack.GetEquipments().get(i).GetName(),
                     30,
                     40 + i*15);
         }
 
         g2d.drawString("Materials", 150, 20);
         int linegap = 0;
-        for (int i = 0; i < controller.GetVirologists().get(controller.GetIndex()).GetRoute().GetLocation().GetBackpack().GetAminos().size(); i++) {
-            g2d.drawString(controller.GetVirologists().get(controller.GetIndex()).GetRoute().GetLocation().GetBackpack().GetAminos().get(i).GetName(),
+        for (int i = 0; i < backpack.GetAminos().size(); i++) {
+            g2d.drawString(backpack.GetAminos().get(i).GetName(),
                     155,
                     40 + linegap*15);
             linegap++;
         }
-        for (int i = 0; i < controller.GetVirologists().get(controller.GetIndex()).GetRoute().GetLocation().GetBackpack().GetNucleotide().size(); i++) {
-            g2d.drawString(controller.GetVirologists().get(controller.GetIndex()).GetRoute().GetLocation().GetBackpack().GetNucleotide().get(i).GetName(),
+        for (int i = 0; i < backpack.GetNucleotide().size(); i++) {
+            g2d.drawString(backpack.GetNucleotide().get(i).GetName(),
                     155,
                     40 + linegap*15);
             linegap++;

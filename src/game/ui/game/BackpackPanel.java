@@ -1,5 +1,6 @@
 package game.ui.game;
 
+import assets.virologist.VirologistBackpack;
 import collectables.equipment.Axe;
 import collectables.equipment.Cloak;
 import collectables.equipment.Equipment;
@@ -65,23 +66,24 @@ public class BackpackPanel extends JPanel {
         g2d.draw(new Line2D.Float(0,0,800,0));
         g2d.drawString(controller.GetVirologists().get(controller.GetIndex()).GetName()+"'s backpack", 25, 20);
 
+        VirologistBackpack backpack = controller.GetVirologists().get(controller.GetIndex()).GetBackpack();
         int linegap = 0;
-            for (int i = 0; i < controller.GetVirologists().get(controller.GetIndex()).GetBackpack().GetEquipments().size(); i++) {
-                g2d.drawString(controller.GetVirologists().get(controller.GetIndex()).GetBackpack().GetEquipments().get(i).GetName(),
+            for (int i = 0; i < backpack.GetEquipments().size(); i++) {
+                g2d.drawString(backpack.GetEquipments().get(i).GetName(),
                         25,
                         40 + linegap*15);
                 linegap++;
             }
 
-        for (int i = 0; i < controller.GetVirologists().get(controller.GetIndex()).GetBackpack().GetAminos().size(); i++) {
-            g2d.drawString(controller.GetVirologists().get(controller.GetIndex()).GetBackpack().GetAminos().get(i).GetName(),
+        for (int i = 0; i < backpack.GetAminos().size(); i++) {
+            g2d.drawString(backpack.GetAminos().get(i).GetName(),
                     25,
                     40 + linegap*15);
             linegap++;
         }
 
-        for (int i = 0; i < controller.GetVirologists().get(controller.GetIndex()).GetBackpack().GetNucleotide().size(); i++) {
-            g2d.drawString(controller.GetVirologists().get(controller.GetIndex()).GetBackpack().GetNucleotide().get(i).GetName(),
+        for (int i = 0; i < backpack.GetNucleotide().size(); i++) {
+            g2d.drawString(backpack.GetNucleotide().get(i).GetName(),
                     25,
                     40 + linegap*15);
             linegap++;
