@@ -84,6 +84,14 @@ public class BackpackPanel extends JPanel {
         g2d.drawString("Nucleotide: " + backpack.GetNucleotide().size(), 30, 40 + linegap*15);
         linegap++;
 
+        for (int i = 0; i < backpack.GetAgents().size(); i++) {
+            g2d.drawString(backpack.GetAgents().get(i).GetName(),
+                    30,
+                    40 + linegap*15);
+            linegap++;
+        }
+
+
         g2d.drawString("Active effects", 25, 250);
 
         if(!(backpack.GetAppliedAgents().isEmpty())){

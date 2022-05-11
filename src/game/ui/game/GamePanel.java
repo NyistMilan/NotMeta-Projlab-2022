@@ -31,7 +31,7 @@ public class GamePanel extends JPanel {
         mapPanel = new MapPanel(gameScene, sceneLauncher, players);
         backpackPanel = new BackpackPanel(gameScene, sceneLauncher, players, controller);
         fieldPanel = new FieldPanel(gameScene, sceneLauncher, players, controller);
-        actionPanel = new ActionPanel(gameScene, sceneLauncher, players);
+        actionPanel = new ActionPanel(gameScene, sceneLauncher, players, controller, backpackPanel);
         layout.setVerticalGroup(
                 layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(GroupLayout.Alignment.BASELINE)

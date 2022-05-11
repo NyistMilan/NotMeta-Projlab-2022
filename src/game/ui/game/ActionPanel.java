@@ -1,5 +1,6 @@
 package game.ui.game;
 
+import game.Controller;
 import game.ui.SceneLauncher;
 import game.ui.StyledMenuButtonUI;
 
@@ -11,8 +12,10 @@ import java.util.ArrayList;
 
 public class ActionPanel extends JPanel implements ActionListener {
     private ArrayList<String> players;
+    private Controller controller;
     private SceneLauncher sceneLauncher;
     private GameScene gameScene;
+    private BackpackPanel backpackPanel;
     private final int actionWidth = 600;
     private final int actionHeight = 400;
     private JLabel label;
@@ -26,10 +29,12 @@ public class ActionPanel extends JPanel implements ActionListener {
     private JButton kill;
     private JButton endTurn;
 
-    public ActionPanel(GameScene gameScene, SceneLauncher sl, ArrayList<String> players){
+    public ActionPanel(GameScene gameScene, SceneLauncher sl, ArrayList<String> players, Controller controller, BackpackPanel backpackPanel){
         this.gameScene = gameScene;
         this.sceneLauncher = sl;
         this.players = players;
+        this.controller = controller;
+        this.backpackPanel = backpackPanel;
         setPreferredSize(new Dimension(actionWidth, actionHeight));
         setBorder(BorderFactory.createLineBorder(Color.black));
         this.setBackground(Color.cyan);
@@ -123,6 +128,9 @@ public class ActionPanel extends JPanel implements ActionListener {
 
     @Override
     public void actionPerformed(ActionEvent e) {
-
+        if(e.getSource() == endTurn){
+            controller.SetIndex(controller.GetIndex()+1);
+            JOptionPane.showMessageDialog(null, "Start "+controller.GetVirologists().get(controller.GetIndex()).GetName()+"'s turn");
+        }
     }
 }
