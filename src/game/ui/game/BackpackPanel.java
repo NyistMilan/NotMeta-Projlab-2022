@@ -72,33 +72,24 @@ public class BackpackPanel extends JPanel {
 
         VirologistBackpack backpack = controller.GetVirologists().get(controller.GetIndex()).GetBackpack();
         int linegap = 0;
-            for (int i = 0; i < backpack.GetEquipments().size(); i++) {
-                g2d.drawString(backpack.GetEquipments().get(i).GetName(),
-                        30,
-                        40 + linegap*15);
-                linegap++;
-            }
-
-        for (int i = 0; i < backpack.GetAminos().size(); i++) {
-            g2d.drawString(backpack.GetAminos().get(i).GetName(),
+        for (int i = 0; i < backpack.GetEquipments().size(); i++) {
+            g2d.drawString(backpack.GetEquipments().get(i).GetName(),
                     30,
                     40 + linegap*15);
             linegap++;
         }
+        g2d.drawString("Aminoacids: " + backpack.GetAminos().size(), 30, 40 + linegap*15);
+        linegap++;
 
-        for (int i = 0; i < backpack.GetNucleotide().size(); i++) {
-            g2d.drawString(backpack.GetNucleotide().get(i).GetName(),
-                    30,
-                    40 + linegap*15);
-            linegap++;
-        }
+        g2d.drawString("Nucleotide: " + backpack.GetNucleotide().size(), 30, 40 + linegap*15);
+        linegap++;
 
         g2d.drawString("Active effects", 25, 250);
 
-        if(!(controller.GetVirologists().get(controller.GetIndex()).GetBackpack().GetAppliedAgents().isEmpty())){
-            for (int i=0; i<controller.GetVirologists().get(controller.GetIndex()).GetBackpack().GetAppliedAgents().size(); i++){
-                g2d.drawString(controller.GetVirologists().get(controller.GetIndex()).GetBackpack().GetAppliedAgents().get(i).GetName()+": "
-                        +controller.GetVirologists().get(controller.GetIndex()).GetBackpack().GetAppliedAgents().get(i).getDuration()
+        if(!(backpack.GetAppliedAgents().isEmpty())){
+            for (int i=0; i<backpack.GetAppliedAgents().size(); i++){
+                g2d.drawString(backpack.GetAppliedAgents().get(i).GetName()+": "
+                        +backpack.GetAppliedAgents().get(i).getDuration()
                         +" turns left",
                         30, 265+i*15);
             }
