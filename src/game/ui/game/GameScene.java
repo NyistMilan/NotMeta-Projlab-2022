@@ -25,8 +25,15 @@ public class GameScene extends JFrame{
         controller = new Controller();
 
         controller.ImportMap("map.txt");
+
+        while(players.size() < controller.GetVirologists().size()){
+            controller.GetVirologists().remove(controller.GetVirologists().size()-1);
+        }
         for (int i=0; i<players.size();i++){
             controller.GetVirologists().get(i).SetName(players.get(i));
+        }
+        for(Virologist v: controller.GetVirologists()){
+            dVirologists.add(new DVirologist(v.GetName()));
         }
 
         for(Field f :controller.GetMap()){
@@ -60,9 +67,7 @@ public class GameScene extends JFrame{
                 df1.AddNeighbor(df2);
             }
         }
-        for(Virologist v: controller.GetVirologists()){
-            dVirologists.add(new DVirologist("d" + v.GetName()));
-        }
+
 
         this.add(new GamePanel(this, sl, players, controller));
         this.pack();

@@ -87,8 +87,8 @@ public class MenuPanel extends JPanel implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent e) {
         if (e.getSource() == StartGame) {
-            sceneLauncher.SwitchScenes(SceneLauncher.GLOBALGAMESTATES.Game);
             sceneLauncher.SetPlayerNames(playernames);
+            sceneLauncher.SwitchScenes(SceneLauncher.GLOBALGAMESTATES.Game);
             menuScene.dispose();
             playernames.clear();
         } else if (e.getSource() == NewPlayer) {

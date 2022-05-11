@@ -2,7 +2,7 @@
 2 120 90 normal 1 3
 3 190 35 warehouse aminoacid 2 4 5
 4 280 100 normal 3 5 10
-5 325 40 shelter axe 3 4 6
+5 325 30 shelter axe 3 4 6
 6 425 55 normal 5 7 11
 7 535 50 laboratory protection 6 12
 8 45 150 normal 1 13
