@@ -82,4 +82,17 @@ public class GameScene extends JFrame{
     public ArrayList<DField> GetDMap(){
         return dmap;
     }
+    public ArrayList<DField> GetVisibleFields(){
+        Virologist v = controller.GetCurrentVirologist();
+        ArrayList<DField> visible = new ArrayList<>();
+        for(Field f : v.GetRoute().fields){
+            visible.add(FindDFieldByID(f.GetFieldID()));
+        }
+        DField actual = FindDFieldByID(v.GetRoute().GetLocation().GetFieldID());
+        for(DField df : actual.GetNeighbors()){
+            if(!visible.contains(df))
+                visible.add(df);
+        }
+        return visible;
+    }
 }

@@ -87,10 +87,15 @@ public class MenuPanel extends JPanel implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent e) {
         if (e.getSource() == StartGame) {
-            sceneLauncher.SetPlayerNames(playernames);
-            sceneLauncher.SwitchScenes(SceneLauncher.GLOBALGAMESTATES.Game);
-            menuScene.dispose();
-            playernames.clear();
+            if(playernames.size() > 0){
+                sceneLauncher.SetPlayerNames(playernames);
+                sceneLauncher.SwitchScenes(SceneLauncher.GLOBALGAMESTATES.Game);
+                menuScene.dispose();
+                playernames.clear();
+            }
+            else{
+                JOptionPane.showMessageDialog(null, "Please add az least one player", "0player", JOptionPane.INFORMATION_MESSAGE);
+            }
         } else if (e.getSource() == NewPlayer) {
             if(playernames.size()==4){
                 JOptionPane.showMessageDialog(null, "Reached max player count", "Gang", JOptionPane.INFORMATION_MESSAGE, new ImageIcon("Images/gutyuligang.gif"));
