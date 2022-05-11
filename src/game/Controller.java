@@ -102,7 +102,6 @@ public class Controller implements java.io.Serializable {
     }
 
     public int GetIndex(){return index;}
-    public void SetIndex(int index){this.index=index;}
 
     public ArrayList<Point> GetFieldCoords(){
         return fieldCoords;

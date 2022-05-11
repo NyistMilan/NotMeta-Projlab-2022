@@ -129,8 +129,9 @@ public class ActionPanel extends JPanel implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent e) {
         if(e.getSource() == endTurn){
-            controller.SetIndex(controller.GetIndex()+1);
+            controller.NextPlayer();
             JOptionPane.showMessageDialog(null, "Start "+controller.GetVirologists().get(controller.GetIndex()).GetName()+"'s turn");
+            gameScene.repaint();
         }
     }
 }

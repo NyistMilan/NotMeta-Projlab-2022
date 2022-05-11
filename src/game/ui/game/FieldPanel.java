@@ -16,7 +16,6 @@ public class FieldPanel extends JPanel {
     private final int fieldWidth = 400;
     private final int fieldHeight = 200;
 
-    private JLabel eqs;
     private Controller controller;
 
     public FieldPanel(GameScene gameScene, SceneLauncher sl, ArrayList<String> players, Controller controller){
@@ -28,10 +27,6 @@ public class FieldPanel extends JPanel {
         setBorder(BorderFactory.createLineBorder(Color.black));
         this.setBackground(Color.blue);
         //this.setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
-
-        eqs = new JLabel("Field");
-        eqs.setBounds(190, 20, 40, 40);
-        this.add(eqs);
 
     }
 
@@ -50,34 +45,36 @@ public class FieldPanel extends JPanel {
         g2d.setStroke(new BasicStroke(5));
         g2d.draw(new Line2D.Float(0,0,800,0));
 
+        g2d.drawString("Field", 150, 20);
+
         Backpack backpack = controller.GetVirologists().get(controller.GetIndex()).GetRoute().GetLocation().GetBackpack();
-        g2d.drawString("Equipments", 25, 20);
+        g2d.drawString("Equipments", 25, 35);
         for (int i = 0; i < backpack.GetEquipments().size(); i++) {
             g2d.drawString(backpack.GetEquipments().get(i).GetName(),
                     30,
-                    40 + i*15);
+                    50 + i*15);
         }
 
-        g2d.drawString("Materials", 150, 20);
+        g2d.drawString("Materials", 150, 35);
         int linegap = 0;
         for (int i = 0; i < backpack.GetAminos().size(); i++) {
             g2d.drawString(backpack.GetAminos().get(i).GetName(),
                     155,
-                    40 + linegap*15);
+                    50 + linegap*15);
             linegap++;
         }
         for (int i = 0; i < backpack.GetNucleotide().size(); i++) {
             g2d.drawString(backpack.GetNucleotide().get(i).GetName(),
                     155,
-                    40 + linegap*15);
+                    50 + linegap*15);
             linegap++;
         }
 
-        g2d.drawString("Players", 275, 20);
+        g2d.drawString("Players", 275, 35);
         for (int i = 0; i < controller.GetVirologists().get(controller.GetIndex()).GetRoute().GetLocation().GetVirologists().size(); i++) {
             g2d.drawString(controller.GetVirologists().get(controller.GetIndex()).GetRoute().GetLocation().GetVirologists().get(i).GetName(),
                     280,
-                    40 + i*15);
+                    50 + i*15);
         }
 
 

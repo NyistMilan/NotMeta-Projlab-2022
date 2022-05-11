@@ -29,7 +29,6 @@ public class BackpackPanel extends JPanel {
 
     private Controller controller;
 
-    private JLabel owner;
 
     public BackpackPanel(GameScene gameScene, SceneLauncher sl, ArrayList<String> players, Controller controller){
         this.gameScene = gameScene;
@@ -40,10 +39,6 @@ public class BackpackPanel extends JPanel {
         setBorder(BorderFactory.createLineBorder(Color.black));
         this.setBackground(Color.green);
         //this.setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
-
-        owner = new JLabel(controller.GetVirologists().get(controller.GetIndex()).GetName()+ "'s backpack");
-        owner.setBounds(190, 20, 20, 20);
-        this.add(owner);
 
         //csak tesztelés végett raktam bele
         controller.GetVirologists().get(controller.GetIndex()).GetBackpack().GetEquipments().add(new Axe());
