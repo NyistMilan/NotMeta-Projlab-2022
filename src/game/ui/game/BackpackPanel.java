@@ -1,6 +1,10 @@
 package game.ui.game;
 
 import assets.virologist.VirologistBackpack;
+import assets.virologist.behavior.movebehavior.BearMove;
+import assets.virologist.behavior.movebehavior.Move;
+import assets.virologist.behavior.movebehavior.NotMove;
+import assets.virologist.behavior.movebehavior.RandomMove;
 import collectables.equipment.Axe;
 import collectables.equipment.Cloak;
 import collectables.equipment.Equipment;
@@ -70,23 +74,34 @@ public class BackpackPanel extends JPanel {
         int linegap = 0;
             for (int i = 0; i < backpack.GetEquipments().size(); i++) {
                 g2d.drawString(backpack.GetEquipments().get(i).GetName(),
-                        25,
+                        30,
                         40 + linegap*15);
                 linegap++;
             }
 
         for (int i = 0; i < backpack.GetAminos().size(); i++) {
             g2d.drawString(backpack.GetAminos().get(i).GetName(),
-                    25,
+                    30,
                     40 + linegap*15);
             linegap++;
         }
 
         for (int i = 0; i < backpack.GetNucleotide().size(); i++) {
             g2d.drawString(backpack.GetNucleotide().get(i).GetName(),
-                    25,
+                    30,
                     40 + linegap*15);
             linegap++;
+        }
+
+        g2d.drawString("Active effects", 25, 250);
+
+        if(!(controller.GetVirologists().get(controller.GetIndex()).GetBackpack().GetAppliedAgents().isEmpty())){
+            for (int i=0; i<controller.GetVirologists().get(controller.GetIndex()).GetBackpack().GetAppliedAgents().size(); i++){
+                g2d.drawString(controller.GetVirologists().get(controller.GetIndex()).GetBackpack().GetAppliedAgents().get(i).GetName()+": "
+                        +controller.GetVirologists().get(controller.GetIndex()).GetBackpack().GetAppliedAgents().get(i).getDuration()
+                        +" turns left",
+                        30, 265+i*15);
+            }
         }
 
     }
