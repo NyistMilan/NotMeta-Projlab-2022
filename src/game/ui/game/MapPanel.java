@@ -1,8 +1,10 @@
 package game.ui.game;
 
+import assets.virologist.Virologist;
 import game.ui.SceneLauncher;
 import game.ui.game.GameScene;
 import game.ui.game.map.DField;
+import game.ui.game.map.DVirologist;
 
 import javax.swing.*;
 import java.awt.*;
@@ -25,10 +27,20 @@ public class MapPanel extends JPanel {
 
     }
     public void paint(Graphics g){
+
+        for(Component component : this.getComponents()){
+            this.remove(component);
+        }
         for(DField df: gameScene.GetVisibleFields()){
             JButton fieldButton = df.Draw();
             fieldButton.setBounds(df.GetCoords().x - 25, df.GetCoords().y -25, 50,50);
             this.add(fieldButton);
+        }
+        for(DVirologist dv: gameScene.GetVisibleVirologists()){
+            JButton virologistButton = dv.Draw();
+            virologistButton.setBounds(gameScene.GetCurrentField().GetCoords().x + dv.GetCoords().x-10,
+                    gameScene.GetCurrentField().GetCoords().y + dv.GetCoords().y-10, 20,20);
+            this.add(virologistButton);
         }
         super.paint(g);
         double r = 35;

@@ -7,6 +7,7 @@ import game.ui.SceneLauncher;
 import game.ui.game.map.*;
 
 import javax.swing.*;
+import java.awt.*;
 import java.util.ArrayList;
 
 public class GameScene extends JFrame{
@@ -32,10 +33,10 @@ public class GameScene extends JFrame{
         for (int i=0; i<players.size();i++){
             controller.GetVirologists().get(i).SetName(players.get(i));
         }
-        for(Virologist v: controller.GetVirologists()){
-            dVirologists.add(new DVirologist(v.GetName()));
+        for (int i=0; i<players.size();i++){
+            Virologist v = controller.GetVirologists().get(i);
+            dVirologists.add(new DVirologist(v.GetName(), i+1));
         }
-
         for(Field f :controller.GetMap()){
             String type = f.GetType();
             switch (type){
@@ -68,8 +69,10 @@ public class GameScene extends JFrame{
             }
         }
 
-
+        controller.Start();
         this.add(new GamePanel(this, sl, players, controller));
+
+
         this.pack();
         this.setVisible(true);
     }
@@ -79,8 +82,22 @@ public class GameScene extends JFrame{
                 return d;
         return null;
     }
+    private DVirologist FindVirologistByName(String ID){
+        for(DVirologist d : dVirologists)
+            if(d.GetID().equals(ID))
+                return d;
+        return null;
+    }
     public ArrayList<DField> GetDMap(){
         return dmap;
+    }
+    public ArrayList<DVirologist> GetVisibleVirologists(){
+        ArrayList<DVirologist> visible = new ArrayList<>();
+        Field f = controller.GetCurrentVirologist().GetRoute().GetLocation();
+        for(Virologist v: f.GetVirologists()){
+            visible.add(FindVirologistByName(v.GetName()));
+        }
+        return visible;
     }
     public ArrayList<DField> GetVisibleFields(){
         Virologist v = controller.GetCurrentVirologist();
@@ -95,4 +112,8 @@ public class GameScene extends JFrame{
         }
         return visible;
     }
+    public DField GetCurrentField(){
+        return FindDFieldByID(controller.GetCurrentField().GetFieldID());
+    }
+
 }

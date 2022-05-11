@@ -24,13 +24,15 @@ public class GamePanel extends JPanel {
         sceneLauncher = sl;
         this.gameScene = gameScene;
 
-        this.setPreferredSize(new Dimension(sceneLauncher.Gamewidth, sceneLauncher.Gameheight));
+        this.setPreferredSize(new Dimension(SceneLauncher.Gamewidth, SceneLauncher.Gameheight));
         this.setBackground(Color.white);
         GroupLayout layout = new GroupLayout(this);
         this.setLayout(layout);
         mapPanel = new MapPanel(gameScene, sceneLauncher, players);
         backpackPanel = new BackpackPanel(gameScene, sceneLauncher, players, controller);
         fieldPanel = new FieldPanel(gameScene, sceneLauncher, players, controller);
+        actionPanel = new ActionPanel(gameScene, sceneLauncher, players, controller, backpackPanel);
+        actionPanel.Update();
         actionPanel = new ActionPanel(gameScene, sceneLauncher, players, controller, backpackPanel);
         layout.setVerticalGroup(
                 layout.createSequentialGroup()

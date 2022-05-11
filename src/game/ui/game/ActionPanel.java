@@ -1,5 +1,6 @@
 package game.ui.game;
 
+import assets.virologist.State;
 import game.Controller;
 import game.ui.SceneLauncher;
 import game.ui.StyledMenuButtonUI;
@@ -28,6 +29,7 @@ public class ActionPanel extends JPanel implements ActionListener {
     private JButton steal;
     private JButton kill;
     private JButton endTurn;
+
 
     public ActionPanel(GameScene gameScene, SceneLauncher sl, ArrayList<String> players, Controller controller, BackpackPanel backpackPanel){
         this.gameScene = gameScene;
@@ -124,6 +126,59 @@ public class ActionPanel extends JPanel implements ActionListener {
         this.add(endTurn);
 
 
+    }
+
+    @Override
+    public void paint(Graphics g){
+        super.paint(g);
+        Update();
+    }
+    public void Update(){
+        State state = controller.GetCurrentVirologist().GetState();
+        switch (state){
+            case BEFORE_MOVE :
+                move.setEnabled(true);
+                learn.setEnabled(false);
+                pickUp.setEnabled(false);
+                drop.setEnabled(false);
+                create.setEnabled(false);
+                infect.setEnabled(false);
+                steal.setEnabled(false);
+                kill.setEnabled(false);
+                endTurn.setEnabled(true);
+                break;
+            case BEFORE_ACTION:
+                move.setEnabled(false);
+                learn.setEnabled(true);
+                pickUp.setEnabled(true);
+                drop.setEnabled(true);
+                create.setEnabled(true);
+                infect.setEnabled(true);
+                steal.setEnabled(true);
+                kill.setEnabled(true);
+                endTurn.setEnabled(true);
+                break;
+            case AFTER_ACTION:
+                move.setEnabled(false);
+                learn.setEnabled(false);
+                pickUp.setEnabled(false);
+                drop.setEnabled(false);
+                create.setEnabled(false);
+                infect.setEnabled(false);
+                steal.setEnabled(false);
+                kill.setEnabled(false);
+                endTurn.setEnabled(true);
+            case NOT_IN_TURN:
+                move.setEnabled(false);
+                learn.setEnabled(false);
+                pickUp.setEnabled(false);
+                drop.setEnabled(false);
+                create.setEnabled(false);
+                infect.setEnabled(false);
+                steal.setEnabled(false);
+                kill.setEnabled(false);
+                endTurn.setEnabled(false);
+        }
     }
 
     @Override
