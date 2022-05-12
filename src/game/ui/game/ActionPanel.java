@@ -184,9 +184,33 @@ public class ActionPanel extends JPanel implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent e) {
         if(e.getSource() == endTurn){
-            controller.NextPlayer();
+            controller.EndTurn();
             JOptionPane.showMessageDialog(null, "Start "+controller.GetVirologists().get(controller.GetIndex()).GetName()+"'s turn");
             gameScene.repaint();
+        }
+        else if(e.getSource() == move){
+
+        }
+        else if(e.getSource() == learn){
+
+        }
+        else if(e.getSource() == pickUp){
+
+        }
+        else if(e.getSource() == drop){
+
+        }
+        else if(e.getSource() == create){
+
+        }
+        else if(e.getSource() == infect){
+
+        }
+        else if(e.getSource() == steal){
+
+        }
+        else if(e.getSource() == kill){
+
         }
     }
 }
