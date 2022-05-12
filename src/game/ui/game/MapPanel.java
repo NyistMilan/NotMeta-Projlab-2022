@@ -7,10 +7,12 @@ import game.ui.game.map.DField;
 import game.ui.game.map.DVirologist;
 
 import javax.swing.*;
+import javax.swing.border.Border;
+import javax.swing.border.EmptyBorder;
 import java.awt.*;
 import java.util.ArrayList;
 
-public class MapPanel extends JPanel {
+public class MapPanel extends JLayeredPane {
     private ArrayList<String> players;
     private SceneLauncher sceneLauncher;
     private GameScene gameScene;
@@ -34,13 +36,14 @@ public class MapPanel extends JPanel {
         for(DField df: gameScene.GetVisibleFields()){
             JButton fieldButton = df.Draw();
             fieldButton.setBounds(df.GetCoords().x - 25, df.GetCoords().y -25, 50,50);
-            this.add(fieldButton);
+            this.add(fieldButton, 0);
         }
         for(DVirologist dv: gameScene.GetVisibleVirologists()){
             JButton virologistButton = dv.Draw();
             virologistButton.setBounds(gameScene.GetCurrentField().GetCoords().x + dv.GetCoords().x-10,
                     gameScene.GetCurrentField().GetCoords().y + dv.GetCoords().y-10, 20,20);
-            this.add(virologistButton);
+            virologistButton.setBorder(new EmptyBorder(new Insets(0,0,0,0)));
+            this.add(virologistButton, 1);
         }
         super.paint(g);
         double r = 35;

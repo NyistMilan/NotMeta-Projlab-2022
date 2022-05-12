@@ -1,8 +1,10 @@
 package game.ui.game.map;
 
 import javax.swing.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
-public class DVirologist extends InGameButton{
+public class DVirologist extends InGameButton implements ActionListener {
     private int index;
     public DVirologist(String s, int index) {
         super();
@@ -32,23 +34,35 @@ public class DVirologist extends InGameButton{
     @Override
     public JButton Draw() {
         Icon icon;
+        JButton button;
         switch (index){
             case 1:
                 icon = new ImageIcon("Images/red.png");
-                return new JButton(icon);
+                button = new JButton(icon);
+                button.addActionListener(this);
+                return button;
             case 2:
                 icon = new ImageIcon("Images/blue.png");
-                return new JButton(icon);
+                button = new JButton(icon);
+                button.addActionListener(this);
+                return button;
             case 3:
                 icon = new ImageIcon("Images/green.png");
-                return new JButton(icon);
+                button = new JButton(icon);
+                button.addActionListener(this);
+                return button;
             case 4:
                 icon = new ImageIcon("Images/yellow.png");
-                return new JButton(icon);
+                button = new JButton(icon);
+                button.addActionListener(this);
+                return button;
             default:
                 return null;
         }
-
-
     }
+    @Override
+    public void actionPerformed(ActionEvent e) {
+        JOptionPane.showMessageDialog(null, "Virologist: name: " + drawableID);
+    }
+
 }
