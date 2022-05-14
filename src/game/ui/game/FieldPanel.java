@@ -56,19 +56,8 @@ public class FieldPanel extends JPanel {
         }
 
         g2d.drawString("Materials", 150, 35);
-        int linegap = 0;
-        for (int i = 0; i < backpack.GetAminos().size(); i++) {
-            g2d.drawString(backpack.GetAminos().get(i).GetName(),
-                    155,
-                    50 + linegap*15);
-            linegap++;
-        }
-        for (int i = 0; i < backpack.GetNucleotide().size(); i++) {
-            g2d.drawString(backpack.GetNucleotide().get(i).GetName(),
-                    155,
-                    50 + linegap*15);
-            linegap++;
-        }
+        g2d.drawString("Aminoacids: " + backpack.GetAminos().size(), 155, 50);
+        g2d.drawString("Nucleotide: " + backpack.GetNucleotide().size(), 155, 65);
 
         g2d.drawString("Players", 275, 35);
         for (int i = 0; i < controller.GetVirologists().get(controller.GetIndex()).GetRoute().GetLocation().GetVirologists().size(); i++) {
