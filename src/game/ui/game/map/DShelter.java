@@ -12,7 +12,12 @@ public class DShelter extends DField implements ActionListener {
 
     @Override
     public JButton Draw() {
-        Icon icon = new ImageIcon("Images/shelter.png");
+        Icon icon;
+        if (activeStatus){
+            icon = new ImageIcon("Images/shelterActive.png");
+        } else {
+            icon = new ImageIcon("Images/shelter.png");
+        }
         JButton button = new JButton(icon);
         button.addActionListener(this);
         return button;
@@ -21,5 +26,13 @@ public class DShelter extends DField implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent e) {
         JOptionPane.showMessageDialog(null, "Field: shelter ID:" + drawableID);
+        if (activeStatus){
+            this.mapPanel.setActiveFiled(null);
+            activeStatus = false;
+        }else{
+            this.mapPanel.setActiveFiled(this);
+            activeStatus = true;
+        }
+        this.mapPanel.repaint();
     }
 }

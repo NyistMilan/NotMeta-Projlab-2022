@@ -1,11 +1,16 @@
 package game.ui.game;
 
 import assets.virologist.State;
+import collectables.equipment.Equipment;
+import collectables.material.Aminoacid;
+import collectables.material.Nucleotide;
 import game.Controller;
 import game.ui.SceneLauncher;
 import game.ui.StyledMenuButtonUI;
 
 import javax.swing.*;
+import javax.swing.event.ChangeEvent;
+import javax.swing.event.ChangeListener;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -17,6 +22,7 @@ public class ActionPanel extends JPanel implements ActionListener {
     private SceneLauncher sceneLauncher;
     private GameScene gameScene;
     private BackpackPanel backpackPanel;
+    private MapPanel mapPanel;
     private final int actionWidth = 600;
     private final int actionHeight = 400;
     private JLabel label;
@@ -31,12 +37,13 @@ public class ActionPanel extends JPanel implements ActionListener {
     private JButton endTurn;
 
 
-    public ActionPanel(GameScene gameScene, SceneLauncher sl, ArrayList<String> players, Controller controller, BackpackPanel backpackPanel){
+    public ActionPanel(GameScene gameScene, SceneLauncher sl, ArrayList<String> players, Controller controller, BackpackPanel backpackPanel, MapPanel mapPanel){
         this.gameScene = gameScene;
         this.sceneLauncher = sl;
         this.players = players;
         this.controller = controller;
         this.backpackPanel = backpackPanel;
+        this.mapPanel = mapPanel;
         setPreferredSize(new Dimension(actionWidth, actionHeight));
         setBorder(BorderFactory.createLineBorder(Color.black));
         this.setBackground(Color.cyan);
@@ -178,6 +185,8 @@ public class ActionPanel extends JPanel implements ActionListener {
                 steal.setEnabled(false);
                 kill.setEnabled(false);
                 endTurn.setEnabled(false);
+            default:
+                endTurn.setEnabled(true);
         }
     }
 
@@ -189,13 +198,77 @@ public class ActionPanel extends JPanel implements ActionListener {
             gameScene.repaint();
         }
         else if(e.getSource() == move){
-
+            int dir = 0;
+            String id = mapPanel.getActiveField().GetID();
+            ArrayList<Integer> directions = controller.GetCurrentField().GetDirections();
+            for (Integer d: directions) {
+                if (controller.GetCurrentField().GetNeighbour(d) == controller.GetField(id)){
+                    dir = d;
+                    break;
+                }
+            }
+            controller.MoveVirologist(dir);
+            mapPanel.setActiveFiled(null);
+            gameScene.repaint();
         }
         else if(e.getSource() == learn){
-
+            controller.LearnGenome();
+            gameScene.repaint();
         }
         else if(e.getSource() == pickUp){
+            ArrayList<Aminoacid> aminoList = controller.GetCurrentField().GetBackpack().GetAminos();
+            ArrayList<Nucleotide> nucleoList = controller.GetCurrentField().GetBackpack().GetNucleotide();
+            ArrayList<Equipment> equipmentList = controller.GetCurrentField().GetBackpack().GetEquipments();
+            boolean a, n = false;
+            if (aminoList.size() > 0){
+                a = true;
+            }
+            if (nucleoList.size() > 0){
+                n = true;
+            }
 
+            String[] names = {"Aminoacid", "Nucleotide", "Equipment"};
+            int x = JOptionPane.showOptionDialog(null, "Choose what you want to pick up!",
+                    "Choose",
+                    JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE, null, names, names[0]);
+
+            switch (x) {
+                case 0:
+                    JOptionPane optionPane = new JOptionPane();
+                    JSlider slider = getSlider(optionPane, aminoList.size());
+                    optionPane.setMessage(new Object[] { "Select a value of aminoacid's to pick up: ", slider });
+                    optionPane.setMessageType(JOptionPane.QUESTION_MESSAGE);
+                    optionPane.setOptionType(JOptionPane.OK_CANCEL_OPTION);
+                    JDialog dialog = optionPane.createDialog(null, "My Slider");
+                    dialog.setVisible(true);
+                    int value = (int)optionPane.getInputValue();
+                    controller.TakeAminoacid(value);
+                    break;
+                case 1:
+                    JOptionPane optionPane2 = new JOptionPane();
+                    JSlider slider2 = getSlider(optionPane2, nucleoList.size());
+                    optionPane2.setMessage(new Object[] { "Select a value of nucleotide's to pick up: ", slider2 });
+                    optionPane2.setMessageType(JOptionPane.QUESTION_MESSAGE);
+                    optionPane2.setOptionType(JOptionPane.OK_CANCEL_OPTION);
+                    JDialog dialog2 = optionPane2.createDialog(null, "Capacity");
+                    dialog2.setVisible(true);
+                    int value2 = (int)optionPane2.getInputValue();
+                    controller.TakeAminoacid(value2);
+                    break;
+                case 2:
+                    ArrayList<String> list = new ArrayList<>();
+                    for (Equipment eq: equipmentList){
+                        list.add(eq.GetName());
+                    }
+                    Object[] equipments = list.toArray();
+                    int index = JOptionPane.showOptionDialog(null, "Choose what you want to pick up!",
+                            "Choose",
+                            JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE, null, equipments, equipments[0]);
+
+                    controller.TakeEquipment(index+1);
+                    break;
+            }
+            gameScene.repaint();
         }
         else if(e.getSource() == drop){
 
@@ -212,5 +285,22 @@ public class ActionPanel extends JPanel implements ActionListener {
         else if(e.getSource() == kill){
 
         }
+    }
+
+    static JSlider getSlider(final JOptionPane optionPane, int max) {
+        JSlider slider = new JSlider(0, max);
+        slider.setMajorTickSpacing(1);
+        slider.setPaintTicks(true);
+        slider.setPaintLabels(true);
+        ChangeListener changeListener = new ChangeListener() {
+            public void stateChanged(ChangeEvent changeEvent) {
+                JSlider theSlider = (JSlider) changeEvent.getSource();
+                if (!theSlider.getValueIsAdjusting()) {
+                    optionPane.setInputValue(new Integer(theSlider.getValue()));
+                }
+            }
+        };
+        slider.addChangeListener(changeListener);
+        return slider;
     }
 }

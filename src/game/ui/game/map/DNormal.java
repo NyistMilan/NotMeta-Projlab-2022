@@ -13,7 +13,12 @@ public class DNormal extends DField implements ActionListener {
     @Override
     public JButton Draw() {
         this.setVisible(true);
-        Icon icon = new ImageIcon("Images/normal.png");
+        Icon icon;
+        if (activeStatus){
+            icon = new ImageIcon("Images/normalActive.png");
+        } else {
+            icon = new ImageIcon("Images/normal.png");
+        }
         JButton button = new JButton(icon);
         button.addActionListener(this);
         return button;
@@ -22,5 +27,14 @@ public class DNormal extends DField implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent e) {
         JOptionPane.showMessageDialog(null, "Field: normal ID:" + drawableID);
+
+        if (activeStatus){
+            this.mapPanel.setActiveFiled(null);
+            activeStatus = false;
+        }else{
+            this.mapPanel.setActiveFiled(this);
+            activeStatus = true;
+        }
+        this.mapPanel.repaint();
     }
 }

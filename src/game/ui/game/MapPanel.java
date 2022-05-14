@@ -5,6 +5,7 @@ import game.ui.SceneLauncher;
 import game.ui.game.GameScene;
 import game.ui.game.map.DField;
 import game.ui.game.map.DVirologist;
+import game.ui.game.map.InGameButton;
 
 import javax.swing.*;
 import javax.swing.border.Border;
@@ -18,6 +19,10 @@ public class MapPanel extends JLayeredPane {
     private GameScene gameScene;
     private final int mapWidth = 600;
     private final int mapHeight = 400;
+
+    private DField activeField = null;
+    private DVirologist activeVirologist = null;
+
     public MapPanel(GameScene gameScene, SceneLauncher sl, ArrayList<String> players){
         this.gameScene = gameScene;
         this.sceneLauncher = sl;
@@ -34,11 +39,13 @@ public class MapPanel extends JLayeredPane {
             this.remove(component);
         }
         for(DField df: gameScene.GetVisibleFields()){
+            df.setMapPanel(this);
             JButton fieldButton = df.Draw();
             fieldButton.setBounds(df.GetCoords().x - 25, df.GetCoords().y -25, 50,50);
             this.add(fieldButton, 0);
         }
         for(DVirologist dv: gameScene.GetVisibleVirologists()){
+            dv.setMapPanel(this);
             JButton virologistButton = dv.Draw();
             virologistButton.setBounds(gameScene.GetCurrentField().GetCoords().x + dv.GetCoords().x-10,
                     gameScene.GetCurrentField().GetCoords().y + dv.GetCoords().y-10, 20,20);
@@ -48,6 +55,7 @@ public class MapPanel extends JLayeredPane {
         super.paint(g);
         double r = 35;
         for(DField df: gameScene.GetVisibleFields()){
+            df.setMapPanel(this);
             for(DField neighbor: df.GetNeighbors()){
                 if(gameScene.GetVisibleFields().contains(neighbor)){
                     int dx = neighbor.GetCoords().x - df.GetCoords().x;
@@ -64,5 +72,23 @@ public class MapPanel extends JLayeredPane {
             }
         }
 
+    }
+    public void setActiveFiled(DField activeField){
+        if (this.activeField != null){
+            this.activeField.setActivateStatus(false);
+        }
+        this.activeField = activeField;
+    }
+    public void setActiveVirologists(DVirologist activeVirologist){
+        if (this.activeVirologist != null){
+            this.activeVirologist.setActivateStatus(false);
+        }
+        this.activeVirologist = activeVirologist;
+    }
+    public DField getActiveField(){
+        return this.activeField;
+    }
+    public DVirologist getActiveVirologist() {
+        return this.activeVirologist;
     }
 }

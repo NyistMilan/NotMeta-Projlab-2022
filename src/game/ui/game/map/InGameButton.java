@@ -1,9 +1,13 @@
 package game.ui.game.map;
 
+import game.ui.game.MapPanel;
+
 import javax.swing.*;
 import java.awt.*;
 
 public abstract class InGameButton extends JButton {
+    protected MapPanel mapPanel;
+    protected boolean activeStatus = false;
     protected String drawableID;
     protected int x,y;
     public abstract JButton Draw();
@@ -17,4 +21,6 @@ public abstract class InGameButton extends JButton {
     public String GetID(){
         return drawableID;
     }
+    public void setActivateStatus(boolean s) { activeStatus = s; }
+    public void setMapPanel(MapPanel mapPanel) { this.mapPanel = mapPanel; }
 }

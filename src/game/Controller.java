@@ -132,10 +132,21 @@ public class Controller implements java.io.Serializable {
             String[] field = line.split(" ");
             fieldCoords.add(new Point(Integer.parseInt(field[1]), Integer.parseInt(field[2])));
             switch (field[3]) {
-                case "laboratory", "bearlaboratory" -> CreateLaboratory(field[3], field[4], field[0]);
-                case "shelter" -> CreateShelter(field[3], field[4], field[0]);
-                case "warehouse" -> CreateWarehouse(field[3], field[4], field[0]);
-                case "normal" -> CreateNormal(field[3], field[0]);
+                case "laboratory":
+                    CreateLaboratory(field[3], field[4], field[0]);
+                    break;
+                case "bearlaboratory":
+                    CreateLaboratory(field[3], field[4], field[0]);
+                    break;
+                case "shelter":
+                    CreateShelter(field[3], field[4], field[0]);
+                    break;
+                case "warehouse":
+                    CreateWarehouse(field[3], field[4], field[0]);
+                    break;
+                case "normal":
+                    CreateNormal(field[3], field[0]);
+                    break;
             }
         }
         try {
@@ -749,13 +760,24 @@ public class Controller implements java.io.Serializable {
     }
 
     private Genome StringToGenome(String type){
-        return switch (type) {
-            case "chorea" -> new GenomeChorea();
-            case "oblivion" -> new GenomeOblivion();
-            case "paralysis" -> new GenomeParalysis();
-            case "protection" -> new GenomeProtection();
-            default -> null;
+        Genome g;
+        switch (type) {
+            case "chorea":
+                g = new GenomeChorea();
+                break;
+            case "oblivion":
+                g = new GenomeOblivion();
+                break;
+            case "paralysis":
+                g = new GenomeParalysis();
+                break;
+            case "protection":
+                g = new GenomeProtection();
+                break;
+            default:
+                g = null;
         };
+        return g;
     }
 
     private Equipment StringToEquipment(String type){

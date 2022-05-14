@@ -63,6 +63,13 @@ public class DVirologist extends InGameButton implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent e) {
         JOptionPane.showMessageDialog(null, "Virologist: name: " + drawableID);
+        if (activeStatus){
+            this.mapPanel.setActiveVirologists(null);
+            activeStatus = false;
+        }else{
+            this.mapPanel.setActiveVirologists(this);
+            activeStatus = true;
+        }
     }
 
 }
