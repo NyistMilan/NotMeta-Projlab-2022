@@ -25,7 +25,7 @@ public class DShelter extends DField implements ActionListener {
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        JOptionPane.showMessageDialog(null, "Field: shelter ID:" + drawableID);
+        //JOptionPane.showMessageDialog(null, "Field: shelter ID:" + drawableID);
         if (activeStatus){
             this.mapPanel.setActiveFiled(null);
             activeStatus = false;

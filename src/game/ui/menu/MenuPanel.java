@@ -110,7 +110,6 @@ public class MenuPanel extends JPanel implements ActionListener {
                     } else {
                         playernames.add(newPlayer);
                         playersPanel.setPlayerNames(playernames.get(playernames.size() - 1));
-
                     }
                     repaint();
                 }

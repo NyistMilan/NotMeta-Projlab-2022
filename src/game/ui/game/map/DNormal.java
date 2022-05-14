@@ -26,7 +26,7 @@ public class DNormal extends DField implements ActionListener {
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        JOptionPane.showMessageDialog(null, "Field: normal ID:" + drawableID);
+        //JOptionPane.showMessageDialog(null, "Field: normal ID:" + drawableID);
 
         if (activeStatus){
             this.mapPanel.setActiveFiled(null);

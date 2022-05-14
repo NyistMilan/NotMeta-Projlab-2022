@@ -329,7 +329,7 @@ public class Controller implements java.io.Serializable {
 
     public void CreateShelter(String type, String equipment, String fieldID) {
         Field f = new Shelter();
-        for (int i=0; i<20; i++)
+        for (int i=0; i<5; i++)
             f.GetBackpack().Add(StringToEquipment(equipment));
         f.SetFieldID(fieldID);
         map.add(f);
@@ -583,7 +583,7 @@ public class Controller implements java.io.Serializable {
     public void TakeAminoacid(int quantity) {
         ArrayList<Collectable> aminos = new ArrayList<>();
         for (int i = 0; i < quantity; i++)
-            aminos.add(new Aminoacid());
+            aminos.add(GetCurrentField().GetBackpack().GetAminos().get(i));
         GetCurrentVirologist().PickUpCollectable(aminos);
     }
 
@@ -595,7 +595,7 @@ public class Controller implements java.io.Serializable {
     public void TakeNucleotide(int quantity) {
         ArrayList<Collectable> nucleotides = new ArrayList<>();
         for (int i = 0; i < quantity; i++)
-            nucleotides.add(new Nucleotide());
+            nucleotides.add(GetCurrentField().GetBackpack().GetNucleotide().get(i));
         GetCurrentVirologist().PickUpCollectable(nucleotides);
     }
 

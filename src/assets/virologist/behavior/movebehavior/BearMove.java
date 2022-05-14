@@ -35,7 +35,8 @@ public class BearMove implements MoveBehavior, java.io.Serializable{
         f2.DestroyMaterials();
         ArrayList<Virologist> virologistsOnField = f2.GetVirologists();
         for (Virologist vOnField: virologistsOnField) {
-            vOnField.GetInfected(v,new Bear());
+            if(!vOnField.GetName().equals(v.GetName()))
+                vOnField.GetInfected(v,new Bear());
         }
         v.GetRoute().Add(f2);
         v.SetState(State.BEFORE_ACTION);

@@ -183,7 +183,9 @@ public class Virologist implements java.io.Serializable{
 	}
 
 	public void KillVirologist(Virologist v){
-		killBehavior.KillVirologist(this,v);
+		if(state == State.BEFORE_ACTION){
+			killBehavior.KillVirologist(this,v);
+		}
 	}
 	/**
 	 * The field.virologist.Virologist Ends his turn. The warranty of all of his Agents will be decreased,

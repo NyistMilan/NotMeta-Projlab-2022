@@ -25,7 +25,7 @@ public class DWareHouse extends DField implements ActionListener {
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        JOptionPane.showMessageDialog(null, "Field: warehouse ID:" + drawableID);
+        //JOptionPane.showMessageDialog(null, "Field: warehouse ID:" + drawableID);
         if (activeStatus){
             this.mapPanel.setActiveFiled(null);
             activeStatus = false;
