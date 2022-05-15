@@ -39,7 +39,7 @@ public class BearMove implements MoveBehavior, java.io.Serializable{
                 vOnField.GetInfected(v,new Bear());
         }
         v.GetRoute().Add(f2);
-        v.SetState(State.BEFORE_ACTION);
+        v.SetState(State.AFTER_ACTION);
     }
 
     @Override
