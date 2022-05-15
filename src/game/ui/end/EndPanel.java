@@ -2,21 +2,28 @@ package game.ui.end;
 
 import game.ui.SceneLauncher;
 import game.ui.StyledMenuButtonUI;
-import game.ui.menu.MenuScene;
-import game.ui.menu.PlayersPanel;
 
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.ArrayList;
 
+/**
+ * JPanel that respenbles that tell who is the winner.
+ */
 public class EndPanel extends JPanel implements ActionListener {
 
     EndScene endScene;
     SceneLauncher sceneLauncher;
     JButton backToMenu;
     JLabel gif;
+
+    /**
+     * Constructor sets up the panel with winner's name
+     * @param endScene the parent JFrame
+     * @param sl SceneLauncher to change state to menu
+     * @param winner the winners name
+     */
     public EndPanel(EndScene endScene, SceneLauncher sl, String winner){
         this.setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
         this.setPreferredSize(new Dimension(SceneLauncher.Gamewidth, SceneLauncher.Gameheight));
@@ -42,6 +49,10 @@ public class EndPanel extends JPanel implements ActionListener {
     }
 
 
+    /**
+     * Action to return to the menuscene
+     * @param e
+     */
     @Override
     public void actionPerformed(ActionEvent e) {
         if(e.getSource() == backToMenu){

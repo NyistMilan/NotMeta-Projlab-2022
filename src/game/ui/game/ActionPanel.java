@@ -39,7 +39,7 @@ public class ActionPanel extends JPanel implements ActionListener {
     private JButton endTurn;
 
 
-    public ActionPanel(GameScene gameScene, SceneLauncher sl, ArrayList<String> players, Controller controller, BackpackPanel backpackPanel, MapPanel mapPanel){
+    public ActionPanel(GameScene gameScene, SceneLauncher sl, ArrayList<String> players, Controller controller, BackpackPanel backpackPanel, MapPanel mapPanel) {
         this.gameScene = gameScene;
         this.sceneLauncher = sl;
         this.players = players;
@@ -67,7 +67,7 @@ public class ActionPanel extends JPanel implements ActionListener {
         move.addActionListener(this);
         move.setUI(new StyledMenuButtonUI());
         move.setBackground(actionColor);
-        move.setBounds(xGap, 2*yGap+height, width, height);
+        move.setBounds(xGap, 2 * yGap + height, width, height);
         this.add(move);
 
         learn = new JButton("Learn");
@@ -75,7 +75,7 @@ public class ActionPanel extends JPanel implements ActionListener {
         learn.addActionListener(this);
         learn.setUI(new StyledMenuButtonUI());
         learn.setBackground(actionColor);
-        learn.setBounds(2*xGap+width, 2*yGap+height, width, height);
+        learn.setBounds(2 * xGap + width, 2 * yGap + height, width, height);
         this.add(learn);
 
         pickUp = new JButton("Pick up");
@@ -83,7 +83,7 @@ public class ActionPanel extends JPanel implements ActionListener {
         pickUp.addActionListener(this);
         pickUp.setUI(new StyledMenuButtonUI());
         pickUp.setBackground(actionColor);
-        pickUp.setBounds(3*xGap+2*width, 2*yGap+height, width, height);
+        pickUp.setBounds(3 * xGap + 2 * width, 2 * yGap + height, width, height);
         this.add(pickUp);
 
         drop = new JButton("Drop");
@@ -91,7 +91,7 @@ public class ActionPanel extends JPanel implements ActionListener {
         drop.addActionListener(this);
         drop.setUI(new StyledMenuButtonUI());
         drop.setBackground(actionColor);
-        drop.setBounds(4*xGap+3*width, 2*yGap+height, width, height);
+        drop.setBounds(4 * xGap + 3 * width, 2 * yGap + height, width, height);
         this.add(drop);
 
         create = new JButton("Create");
@@ -99,7 +99,7 @@ public class ActionPanel extends JPanel implements ActionListener {
         create.addActionListener(this);
         create.setUI(new StyledMenuButtonUI());
         create.setBackground(actionColor);
-        create.setBounds(xGap, 3*yGap+2*height, width, height);
+        create.setBounds(xGap, 3 * yGap + 2 * height, width, height);
         this.add(create);
 
         infect = new JButton("Infect");
@@ -107,7 +107,7 @@ public class ActionPanel extends JPanel implements ActionListener {
         infect.addActionListener(this);
         infect.setUI(new StyledMenuButtonUI());
         infect.setBackground(actionColor);
-        infect.setBounds(2*xGap+width, 3*yGap+2*height, width, height);
+        infect.setBounds(2 * xGap + width, 3 * yGap + 2 * height, width, height);
         this.add(infect);
 
         steal = new JButton("Steal");
@@ -115,7 +115,7 @@ public class ActionPanel extends JPanel implements ActionListener {
         steal.addActionListener(this);
         steal.setUI(new StyledMenuButtonUI());
         steal.setBackground(actionColor);
-        steal.setBounds(3*xGap+2*width, 3*yGap+2*height, width, height);
+        steal.setBounds(3 * xGap + 2 * width, 3 * yGap + 2 * height, width, height);
         this.add(steal);
 
         kill = new JButton("Kill");
@@ -123,7 +123,7 @@ public class ActionPanel extends JPanel implements ActionListener {
         kill.addActionListener(this);
         kill.setUI(new StyledMenuButtonUI());
         kill.setBackground(actionColor);
-        kill.setBounds(4*xGap+3*width, 3*yGap+2*height, width, height);
+        kill.setBounds(4 * xGap + 3 * width, 3 * yGap + 2 * height, width, height);
         this.add(kill);
 
         endTurn = new JButton("End turn");
@@ -131,21 +131,22 @@ public class ActionPanel extends JPanel implements ActionListener {
         endTurn.addActionListener(this);
         endTurn.setUI(new StyledMenuButtonUI());
         endTurn.setBackground(actionColor);
-        endTurn.setBounds(200-width, 4*yGap+3*height, 2*width, height);
+        endTurn.setBounds(200 - width, 4 * yGap + 3 * height, 2 * width, height);
         this.add(endTurn);
 
 
     }
 
     @Override
-    public void paint(Graphics g){
+    public void paint(Graphics g) {
         super.paint(g);
         Update();
     }
-    public void Update(){
+
+    public void Update() {
         State state = controller.GetCurrentVirologist().GetState();
-        switch (state){
-            case BEFORE_MOVE :
+        switch (state) {
+            case BEFORE_MOVE:
                 move.setEnabled(true);
                 learn.setEnabled(false);
                 pickUp.setEnabled(false);
@@ -196,20 +197,19 @@ public class ActionPanel extends JPanel implements ActionListener {
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        if(e.getSource() == endTurn){
+        if (e.getSource() == endTurn) {
             controller.EndTurn();
-            JOptionPane.showMessageDialog(null, "Start "+controller.GetVirologists().get(controller.GetIndex()).GetName()+"'s turn");
+            JOptionPane.showMessageDialog(null, "Start " + controller.GetVirologists().get(controller.GetIndex()).GetName() + "'s turn");
             gameScene.repaint();
-        }
-        else if(e.getSource() == move){
+        } else if (e.getSource() == move) {
             int dir = 0;
-            if(mapPanel.getActiveField() == null)
+            if (mapPanel.getActiveField() == null)
                 JOptionPane.showMessageDialog(null, "Select a field to move!");
-            else{
+            else {
                 String id = mapPanel.getActiveField().GetID();
                 ArrayList<Integer> directions = controller.GetCurrentField().GetDirections();
-                for (Integer d: directions) {
-                    if (controller.GetCurrentField().GetNeighbour(d).GetFieldID().equals(id)){
+                for (Integer d : directions) {
+                    if (controller.GetCurrentField().GetNeighbour(d).GetFieldID().equals(id)) {
                         dir = d;
                         break;
                     }
@@ -218,12 +218,10 @@ public class ActionPanel extends JPanel implements ActionListener {
                 mapPanel.setActiveFiled(null);
                 gameScene.repaint();
             }
-        }
-        else if(e.getSource() == learn){
+        } else if (e.getSource() == learn) {
             controller.LearnGenome();
             gameScene.repaint();
-        }
-        else if(e.getSource() == pickUp){
+        } else if (e.getSource() == pickUp) {
             ArrayList<Aminoacid> aminoList = controller.GetCurrentField().GetBackpack().GetAminos();
             ArrayList<Nucleotide> nucleoList = controller.GetCurrentField().GetBackpack().GetNucleotide();
             ArrayList<Equipment> equipmentList = controller.GetCurrentField().GetBackpack().GetEquipments();
@@ -235,42 +233,55 @@ public class ActionPanel extends JPanel implements ActionListener {
             switch (x) {
                 case 0:
                     JOptionPane optionPane = new JOptionPane();
-                    JSlider slider = getSlider(optionPane, aminoList.size());
-                    optionPane.setMessage(new Object[] { "Select a value of aminoacid's to pick up: ", slider });
-                    optionPane.setMessageType(JOptionPane.QUESTION_MESSAGE);
-                    optionPane.setOptionType(JOptionPane.OK_CANCEL_OPTION);
-                    JDialog dialog = optionPane.createDialog(null, "My Slider");
-                    dialog.setVisible(true);
-                    int value = slider.getValue();
-                    controller.TakeAminoacid(value);
-                    break;
+                    if (aminoList.isEmpty()) {
+                        JOptionPane.showMessageDialog(null, "There's no aminoacid on the field");
+                        break;
+                    } else {
+                        JSlider slider = getSlider(optionPane, aminoList.size());
+                        optionPane.setMessage(new Object[]{"Select a value of aminoacid's to pick up: ", slider});
+                        optionPane.setMessageType(JOptionPane.QUESTION_MESSAGE);
+                        optionPane.setOptionType(JOptionPane.OK_CANCEL_OPTION);
+                        JDialog dialog = optionPane.createDialog(null, "My Slider");
+                        dialog.setVisible(true);
+                        int value = slider.getValue();
+                        controller.TakeAminoacid(value);
+                        break;
+                    }
+
                 case 1:
                     JOptionPane optionPane2 = new JOptionPane();
-                    JSlider slider2 = getSlider(optionPane2, nucleoList.size());
-                    optionPane2.setMessage(new Object[] { "Select a value of nucleotide's to pick up: ", slider2 });
-                    optionPane2.setMessageType(JOptionPane.QUESTION_MESSAGE);
-                    optionPane2.setOptionType(JOptionPane.OK_CANCEL_OPTION);
-                    JDialog dialog2 = optionPane2.createDialog(null, "Capacity");
-                    dialog2.setVisible(true);
-                    int value2 = slider2.getValue();
-                    controller.TakeNucleotide(value2);
-                    break;
+                    if (nucleoList.isEmpty()) {
+                        JOptionPane.showMessageDialog(null, "There's no nucleotid on the field");
+                        break;
+                    } else {
+                        JSlider slider2 = getSlider(optionPane2, nucleoList.size());
+                        optionPane2.setMessage(new Object[]{"Select a value of nucleotide's to pick up: ", slider2});
+                        optionPane2.setMessageType(JOptionPane.QUESTION_MESSAGE);
+                        optionPane2.setOptionType(JOptionPane.OK_CANCEL_OPTION);
+                        JDialog dialog2 = optionPane2.createDialog(null, "Capacity");
+                        dialog2.setVisible(true);
+                        int value2 = slider2.getValue();
+                        controller.TakeNucleotide(value2);
+                        break;
+                    }
                 case 2:
                     ArrayList<String> list = new ArrayList<>();
-                    for (Equipment eq: equipmentList){
+                    for (Equipment eq : equipmentList) {
                         list.add(eq.GetName());
                     }
                     Object[] equipments = list.toArray();
-                    int index = JOptionPane.showOptionDialog(null, "Choose what you want to pick up!",
-                            "Choose",
-                            JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE, null, equipments, equipments[0]);
-
-                    controller.TakeEquipment(index+1);
+                    if (equipments.length != 0) {
+                        int index = JOptionPane.showOptionDialog(null, "Choose what you want to pick up!",
+                                "Choose",
+                                JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE, null, equipments, equipments[0]);
+                        controller.TakeEquipment(index + 1);
+                    } else {
+                        JOptionPane.showMessageDialog(null, "There's no Equipment on the field");
+                    }
                     break;
             }
             gameScene.repaint();
-        }
-        else if(e.getSource() == drop){
+        } else if (e.getSource() == drop) {
             ArrayList<Aminoacid> aminoList = controller.GetCurrentVirologist().GetBackpack().GetAminos();
             ArrayList<Nucleotide> nucleoList = controller.GetCurrentVirologist().GetBackpack().GetNucleotide();
             ArrayList<Equipment> equipmentList = controller.GetCurrentVirologist().GetBackpack().GetEquipments();
@@ -283,7 +294,7 @@ public class ActionPanel extends JPanel implements ActionListener {
                 case 0:
                     JOptionPane optionPane = new JOptionPane();
                     JSlider slider = getSlider(optionPane, aminoList.size());
-                    optionPane.setMessage(new Object[] { "Select a value of aminoacid's to drop: ", slider });
+                    optionPane.setMessage(new Object[]{"Select a value of aminoacid's to drop: ", slider});
                     optionPane.setMessageType(JOptionPane.QUESTION_MESSAGE);
                     optionPane.setOptionType(JOptionPane.OK_CANCEL_OPTION);
                     JDialog dialog = optionPane.createDialog(null, "My Slider");
@@ -294,7 +305,7 @@ public class ActionPanel extends JPanel implements ActionListener {
                 case 1:
                     JOptionPane optionPane2 = new JOptionPane();
                     JSlider slider2 = getSlider(optionPane2, nucleoList.size());
-                    optionPane2.setMessage(new Object[] { "Select a value of nucleotide's to drop: ", slider2 });
+                    optionPane2.setMessage(new Object[]{"Select a value of nucleotide's to drop: ", slider2});
                     optionPane2.setMessageType(JOptionPane.QUESTION_MESSAGE);
                     optionPane2.setOptionType(JOptionPane.OK_CANCEL_OPTION);
                     JDialog dialog2 = optionPane2.createDialog(null, "Capacity");
@@ -304,7 +315,7 @@ public class ActionPanel extends JPanel implements ActionListener {
                     break;
                 case 2:
                     ArrayList<String> list = new ArrayList<>();
-                    for (Equipment eq: equipmentList){
+                    for (Equipment eq : equipmentList) {
                         list.add(eq.GetName());
                     }
                     Object[] equipments = list.toArray();
@@ -312,17 +323,16 @@ public class ActionPanel extends JPanel implements ActionListener {
                             "Choose",
                             JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE, null, equipments, equipments[0]);
 
-                    controller.DropEquipment(index+1);
+                    controller.DropEquipment(index + 1);
                     break;
             }
             gameScene.repaint();
-        }
-        else if(e.getSource() == create){
-            if(controller.GetCurrentVirologist().GetLearnedGenomes().isEmpty())
+        } else if (e.getSource() == create) {
+            if (controller.GetCurrentVirologist().GetLearnedGenomes().isEmpty())
                 JOptionPane.showMessageDialog(null, "You can not create any agents yet");
-            else{
+            else {
                 ArrayList<String> list = new ArrayList<>();
-                for (Genome g: controller.GetCurrentVirologist().GetLearnedGenomes()){
+                for (Genome g : controller.GetCurrentVirologist().GetLearnedGenomes()) {
                     String create = g.GetName() + " a:" + g.getAminoCost() + " n:" + g.getNucleoCost();
                     list.add(create);
                 }
@@ -333,15 +343,14 @@ public class ActionPanel extends JPanel implements ActionListener {
                 controller.CreateAgent(controller.GetCurrentVirologist().GetLearnedGenomes().get(index).GetName());
                 gameScene.repaint();
             }
-        }
-        else if(e.getSource() == infect){
-            if(mapPanel.getActiveVirologist() == null)
+        } else if (e.getSource() == infect) {
+            if (mapPanel.getActiveVirologist() == null)
                 JOptionPane.showMessageDialog(null, "Select a virologist to infect!");
-            else if(controller.GetCurrentVirologist().GetBackpack().GetAgents().isEmpty())
+            else if (controller.GetCurrentVirologist().GetBackpack().GetAgents().isEmpty())
                 JOptionPane.showMessageDialog(null, "You have no agents.");
-            else{
+            else {
                 ArrayList<String> list = new ArrayList<>();
-                for (Agent a: controller.GetCurrentVirologist().GetBackpack().GetAgents()){
+                for (Agent a : controller.GetCurrentVirologist().GetBackpack().GetAgents()) {
                     String create = a.GetName() + " warranty:" + a.getWarranty();
                     list.add(create);
                 }
@@ -352,11 +361,10 @@ public class ActionPanel extends JPanel implements ActionListener {
                 controller.InfectVirologist(mapPanel.getActiveVirologist().GetVirologistName(), index + 1);
                 gameScene.repaint();
             }
-        }
-        else if(e.getSource() == steal){
-            if(mapPanel.getActiveVirologist() == null)
+        } else if (e.getSource() == steal) {
+            if (mapPanel.getActiveVirologist() == null)
                 JOptionPane.showMessageDialog(null, "Select a virologist to steal from!");
-            else{
+            else {
                 ArrayList<Aminoacid> aminoList = controller.GetVirologist(mapPanel.getActiveVirologist().GetVirologistName()).GetBackpack().GetAminos();
                 ArrayList<Nucleotide> nucleoList = controller.GetVirologist(mapPanel.getActiveVirologist().GetVirologistName()).GetBackpack().GetNucleotide();
                 ArrayList<Equipment> equipmentList = controller.GetVirologist(mapPanel.getActiveVirologist().GetVirologistName()).GetBackpack().GetEquipments();
@@ -369,7 +377,7 @@ public class ActionPanel extends JPanel implements ActionListener {
                     case 0:
                         JOptionPane optionPane = new JOptionPane();
                         JSlider slider = getSlider(optionPane, aminoList.size());
-                        optionPane.setMessage(new Object[] { "Select a value of aminoacid's to steal: ", slider });
+                        optionPane.setMessage(new Object[]{"Select a value of aminoacid's to steal: ", slider});
                         optionPane.setMessageType(JOptionPane.QUESTION_MESSAGE);
                         optionPane.setOptionType(JOptionPane.OK_CANCEL_OPTION);
                         JDialog dialog = optionPane.createDialog(null, "My Slider");
@@ -380,7 +388,7 @@ public class ActionPanel extends JPanel implements ActionListener {
                     case 1:
                         JOptionPane optionPane2 = new JOptionPane();
                         JSlider slider2 = getSlider(optionPane2, nucleoList.size());
-                        optionPane2.setMessage(new Object[] { "Select a value of nucleotide's to steaé: ", slider2 });
+                        optionPane2.setMessage(new Object[]{"Select a value of nucleotide's to steal: ", slider2});
                         optionPane2.setMessageType(JOptionPane.QUESTION_MESSAGE);
                         optionPane2.setOptionType(JOptionPane.OK_CANCEL_OPTION);
                         JDialog dialog2 = optionPane2.createDialog(null, "Capacity");
@@ -390,7 +398,7 @@ public class ActionPanel extends JPanel implements ActionListener {
                         break;
                     case 2:
                         ArrayList<String> list = new ArrayList<>();
-                        for (Equipment eq: equipmentList){
+                        for (Equipment eq : equipmentList) {
                             list.add(eq.GetName());
                         }
                         Object[] equipments = list.toArray();
@@ -398,17 +406,16 @@ public class ActionPanel extends JPanel implements ActionListener {
                                 "Choose",
                                 JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE, null, equipments, equipments[0]);
 
-                        controller.StealEquipment(mapPanel.getActiveVirologist().GetVirologistName(), index+1);
+                        controller.StealEquipment(mapPanel.getActiveVirologist().GetVirologistName(), index + 1);
                         break;
                 }
                 gameScene.repaint();
             }
 
-        }
-        else if(e.getSource() == kill){
-            if(mapPanel.getActiveVirologist() == null)
+        } else if (e.getSource() == kill) {
+            if (mapPanel.getActiveVirologist() == null)
                 JOptionPane.showMessageDialog(null, "Select a virologist to kill!");
-            else{
+            else {
                 controller.KillVirologist(mapPanel.getActiveVirologist().GetVirologistName());
                 gameScene.repaint();
             }

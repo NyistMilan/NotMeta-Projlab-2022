@@ -53,12 +53,13 @@ public class Controller implements java.io.Serializable {
     /**
      *
      */
-    public void gameLOOP(){
+    public void gameLOOP() {
 
 
         //ui.draw()s
 
     }
+
     public void Start() {
         index = virologists.size() - 1;
         NextPlayer();
@@ -74,10 +75,15 @@ public class Controller implements java.io.Serializable {
             index++;
         }
         Virologist v = virologists.get(index);
-        if (v.GetState() == State.KILLED) {
+
+        while (v.GetState() == State.KILLED) {
             virologists.remove(v);
+            if(index>virologists.size()-1){
+                index=0;
+            }
             v = virologists.get(index);
         }
+
         v.SetState(State.BEFORE_MOVE);
     }
 
@@ -88,12 +94,11 @@ public class Controller implements java.io.Serializable {
         GetCurrentVirologist().EndTurn();
         if (GetCurrentVirologist().GetLearnedGenomes().size() == learnableGenomes.size()) {
             System.out.printf("%s won the game!!!!\n", GetCurrentVirologist().GetName());
-        }
-        else
+        } else
             NextPlayer();
     }
 
-    public ArrayList<Field> GetMap(){
+    public ArrayList<Field> GetMap() {
         return map;
     }
 
@@ -101,19 +106,21 @@ public class Controller implements java.io.Serializable {
         return virologists;
     }
 
-    public int GetIndex(){return index;}
+    public int GetIndex() {
+        return index;
+    }
 
-    public ArrayList<Point> GetFieldCoords(){
+    public ArrayList<Point> GetFieldCoords() {
         return fieldCoords;
     }
 
-    public void ImportMap(String fileName){
+    public void ImportMap(String fileName) {
         this.ImportFields(fileName);
         this.SetFieldNeighbours(fileName);
         this.PlaceVirologists(fileName);
     }
 
-    public void ImportFields(String fileName){
+    public void ImportFields(String fileName) {
         FileReader fr = null;
         try {
             fr = new FileReader(fileName);
@@ -157,7 +164,7 @@ public class Controller implements java.io.Serializable {
         }
     }
 
-    public void SetFieldNeighbours(String fileName){
+    public void SetFieldNeighbours(String fileName) {
         FileReader fr2 = null;
         try {
             fr2 = new FileReader(fileName);
@@ -174,11 +181,11 @@ public class Controller implements java.io.Serializable {
             }
             if (line2 == null || line2.equals("virologists:")) break;
             String[] field = line2.split(" ");
-            if(field[3].equals("normal")){
-                for (int i = 4; i<field.length; i++)
+            if (field[3].equals("normal")) {
+                for (int i = 4; i < field.length; i++)
                     searchFieldById(field[0]).SetNeighbour(searchFieldById(field[i]));
             } else {
-                for (int i = 5; i<field.length; i++)
+                for (int i = 5; i < field.length; i++)
                     searchFieldById(field[0]).SetNeighbour(searchFieldById(field[i]));
             }
         }
@@ -217,7 +224,7 @@ public class Controller implements java.io.Serializable {
             }
             if (line3 == null || line3.equals("")) break;
             String[] virologist = line3.split(" ");
-            if(virologist.length == 2){
+            if (virologist.length == 2) {
                 this.CreateVirologist(virologist[0], virologist[1]);
             }
 
@@ -231,7 +238,7 @@ public class Controller implements java.io.Serializable {
     }
 
 
-    public Field searchFieldById (String id){
+    public Field searchFieldById(String id) {
         for (Field field : map) {
             if (field.GetFieldId().equals(id)) {
                 return field;
@@ -240,26 +247,26 @@ public class Controller implements java.io.Serializable {
         return null;
     }
 
-    public Field WhichField (String fieldName) {
-        if(fieldName.equals("shelter"))
+    public Field WhichField(String fieldName) {
+        if (fieldName.equals("shelter"))
             return new Shelter();
-        if(fieldName.equals("warehouse"))
+        if (fieldName.equals("warehouse"))
             return new WareHouse();
-        if(fieldName.equals("normal"))
+        if (fieldName.equals("normal"))
             return new Normal();
         return null;
     }
 
 
     public void AddLearnableGenome(Genome g) {
-        if(g == null)
+        if (g == null)
             return;
         boolean contains = false;
-        for(Genome learned: learnableGenomes){
-            if(learned.GetName().equals(g.GetName()))
+        for (Genome learned : learnableGenomes) {
+            if (learned.GetName().equals(g.GetName()))
                 contains = true;
         }
-        if(!contains)
+        if (!contains)
             learnableGenomes.add(g);
     }
 
@@ -315,12 +322,12 @@ public class Controller implements java.io.Serializable {
 
     public void CreateWarehouse(String type, String material, String fieldID) {
         Field f = new WareHouse();
-        if(material.equals("aminoacid")){
-            for(int i=0; i<20; i++)
+        if (material.equals("aminoacid")) {
+            for (int i = 0; i < 20; i++)
                 f.GetBackpack().Add(new Aminoacid());
         }
-        if (material.equals("nucleotide")){
-            for(int i=0; i<20; i++)
+        if (material.equals("nucleotide")) {
+            for (int i = 0; i < 20; i++)
                 f.GetBackpack().Add(new Nucleotide());
         }
         f.SetFieldID(fieldID);
@@ -329,13 +336,13 @@ public class Controller implements java.io.Serializable {
 
     public void CreateShelter(String type, String equipment, String fieldID) {
         Field f = new Shelter();
-        for (int i=0; i<5; i++)
+        for (int i = 0; i < 5; i++)
             f.GetBackpack().Add(StringToEquipment(equipment));
         f.SetFieldID(fieldID);
         map.add(f);
     }
 
-    public void CreateNormal (String type, String fieldID) {
+    public void CreateNormal(String type, String fieldID) {
         Field f = new Normal();
         f.SetFieldID(fieldID);
         map.add(f);
@@ -623,7 +630,7 @@ public class Controller implements java.io.Serializable {
         for (int i = 0; i < quantity; i++) {
             aminos.add(new Aminoacid());
         }
-        vStealer.Steal(vPoor,aminos);
+        vStealer.Steal(vPoor, aminos);
     }
 
     /**
@@ -639,7 +646,7 @@ public class Controller implements java.io.Serializable {
         for (int i = 0; i < quantity; i++) {
             nucleotides.add(new Aminoacid());
         }
-        vStealer.Steal(vPoor,nucleotides);
+        vStealer.Steal(vPoor, nucleotides);
     }
 
     /**
@@ -653,7 +660,7 @@ public class Controller implements java.io.Serializable {
         Virologist vPoor = GetVirologist(name);
         ArrayList<Collectable> stolenEq = new ArrayList<>();
         stolenEq.add(GetVirologist(name).GetBackpack().GetEquipments().get(index - 1));
-        vStealer.Steal(vPoor,stolenEq);
+        vStealer.Steal(vPoor, stolenEq);
     }
 
     /**
@@ -691,7 +698,7 @@ public class Controller implements java.io.Serializable {
     public void InfectVirologist(String name, int index) {
         Virologist vInfecter = GetCurrentVirologist();
         Virologist vInfected = GetVirologist(name);
-        Agent agent= vInfecter.GetBackpack().GetAgents().get(index-1);
+        Agent agent = vInfecter.GetBackpack().GetAgents().get(index - 1);
         vInfecter.Infect(vInfected, agent);
     }
 
@@ -705,7 +712,7 @@ public class Controller implements java.io.Serializable {
     public void InfectVirologistRandomOff(String name, int index) {
         Virologist vInfecter = GetCurrentVirologist();
         Virologist vInfected = GetVirologist(name);
-        Agent agent= vInfecter.GetBackpack().GetAgents().get(index-1);
+        Agent agent = vInfecter.GetBackpack().GetAgents().get(index - 1);
         vInfecter.InfectRandomOff(vInfected, agent);
     }
 
@@ -735,7 +742,7 @@ public class Controller implements java.io.Serializable {
         vKiller.KillVirologist(vKilled);
     }
 
-    private Agent StringToAgent(String type){
+    private Agent StringToAgent(String type) {
         Agent a;
         switch (type) {
             case "chorea":
@@ -759,7 +766,7 @@ public class Controller implements java.io.Serializable {
         return a;
     }
 
-    private Genome StringToGenome(String type){
+    private Genome StringToGenome(String type) {
         Genome g;
         switch (type) {
             case "chorea":
@@ -776,11 +783,12 @@ public class Controller implements java.io.Serializable {
                 break;
             default:
                 g = null;
-        };
+        }
+        ;
         return g;
     }
 
-    private Equipment StringToEquipment(String type){
+    private Equipment StringToEquipment(String type) {
         Equipment eq;
         switch (type) {
             case "axe":

@@ -6,22 +6,35 @@ import game.ui.menu.MenuScene;
 
 import java.util.ArrayList;
 
+/**
+ * The main class which is responsible for the UI changes, playernames, and for the screen size;
+ */
 public class SceneLauncher {
 
     public static final int Gamewidth = 800;
     public static final int Gameheight = 600;
     public ArrayList<String> players = new ArrayList<>();
+
+    /**
+     * Main states for the game;
+     */
     public enum GLOBALGAMESTATES{
         Menu,
         Game,
         End
     }
 
-    //ITT tudod a kezdő panelt változtatni...
+    /**
+     * Constructor creates a MenuScene, pass itself as a parameter;
+     */
     public SceneLauncher(){
-        new EndScene(this);
+        new MenuScene(this);
     }
 
+    /**
+     * Function that responsible for changing the different states, and scenes for the game;
+     * @param globalgamestates the state that resembles the scene
+     */
     public void SwitchScenes(GLOBALGAMESTATES globalgamestates){
         switch (globalgamestates){
             case Menu:
@@ -36,11 +49,10 @@ public class SceneLauncher {
         }
     }
 
-    //TODO
-    public void SetWinner(String virologist){
-
-    }
-
+    /**
+     * Setter for players names
+     * @param players array that holds the player's names
+     */
     public void SetPlayerNames(ArrayList<String> players){
         this.players = players;
     }
