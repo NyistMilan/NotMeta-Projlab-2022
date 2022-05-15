@@ -5,6 +5,9 @@ import java.awt.*;
 import java.awt.geom.Line2D;
 import java.util.ArrayList;
 
+/**
+ * JPanel that holds and draw out the players name's
+ */
 public class PlayersPanel extends JPanel {
     ArrayList<String> players;
     public PlayersPanel(){
@@ -12,16 +15,32 @@ public class PlayersPanel extends JPanel {
         this.setVisible(true);
     }
 
+    /**
+     * Setter for a new player's name
+     * @param player new player's name
+     */
     public void setPlayerNames(String player){players.add(player);}
 
+    /**
+     * Clears the players names to set up new names.
+     */
     public void resetPlayerNames(){
         players.clear();
     }
+
+    /**
+     * Paint function that is called by system
+     * @param g
+     */
     @Override
     public void paint(Graphics g) {
         drawPlayerNames(g);
     }
 
+    /**
+     * Draw playernames to the screen
+     * @param g
+     */
     private void drawPlayerNames(Graphics g) {
         Graphics2D g2d = (Graphics2D) g;
         g2d.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);

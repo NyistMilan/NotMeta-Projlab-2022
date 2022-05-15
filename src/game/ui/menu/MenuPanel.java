@@ -10,6 +10,9 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
+/**
+ * JPanel class represents the menu for the game
+ */
 public class MenuPanel extends JPanel implements ActionListener {
 
     private ArrayList<String> playernames = new ArrayList<>();
@@ -23,6 +26,11 @@ public class MenuPanel extends JPanel implements ActionListener {
     private JLabel Players;
     private JLabel Welcome;
 
+    /**
+     * JPanel's constructor that sets up the buttons and labels.
+     * @param menuScene the parent JFrame class.
+     * @param sl the main class that will be calles if there's a gamestate change.
+     */
     public MenuPanel(MenuScene menuScene, SceneLauncher sl) {
         sceneLauncher = sl;
         this.menuScene = menuScene;
@@ -80,9 +88,9 @@ public class MenuPanel extends JPanel implements ActionListener {
 
 
     /**
-     * Ha a gomb lenyomódik akkor átállítja a játék állapotát és a framet disposolja.
-     *
-     * @param e event, mely meghívódik ha változás történik.
+     * If a button pressed this action will be performed.
+     * Depending which button was pressed there will be a certain change on the screen.
+     * @param e ActionEvent which holds the source.
      */
     @Override
     public void actionPerformed(ActionEvent e) {
