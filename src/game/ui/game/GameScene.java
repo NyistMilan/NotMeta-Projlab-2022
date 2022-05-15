@@ -28,6 +28,7 @@ public class GameScene extends JFrame{
         controller.ImportMap("map.txt");
 
         while(players.size() < controller.GetVirologists().size()){
+            controller.GetVirologists().get(controller.GetVirologists().size()-1).GetRoute().GetLocation().GetVirologists().remove(controller.GetVirologists().get(controller.GetVirologists().size()-1));
             controller.GetVirologists().remove(controller.GetVirologists().size()-1);
         }
         for (int i=0; i<players.size();i++){

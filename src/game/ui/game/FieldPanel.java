@@ -50,7 +50,7 @@ public class FieldPanel extends JPanel {
         Backpack backpack = controller.GetVirologists().get(controller.GetIndex()).GetRoute().GetLocation().GetBackpack();
         g2d.drawString("Equipments", 25, 35);
         for (int i = 0; i < backpack.GetEquipments().size(); i++) {
-            g2d.drawString(backpack.GetEquipments().get(i).GetName(),
+            g2d.drawString(backpack.GetEquipments().get(i).GetName() + " " + backpack.GetEquipments().get(i).GetDurability(),
                     30,
                     50 + i*15);
         }

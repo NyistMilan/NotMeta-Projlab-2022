@@ -22,7 +22,7 @@ public class BearLaboratory extends Laboratory{
      * @param v virologist
      **/
     public void Accept(Virologist v) {
-        v.GetInfected(v,new Bear());
+        v.GetInfected(new Virologist(),new Bear());
         virologists.add(v);
     }
 

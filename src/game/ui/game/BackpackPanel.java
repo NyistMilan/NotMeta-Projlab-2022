@@ -40,13 +40,6 @@ public class BackpackPanel extends JPanel {
         this.setBackground(Color.green);
         //this.setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
 
-        //csak tesztelés végett raktam bele
-        controller.GetVirologists().get(controller.GetIndex()).GetBackpack().GetEquipments().add(new Axe());
-        controller.GetVirologists().get(controller.GetIndex()).GetBackpack().GetEquipments().add(new Axe());
-        controller.GetVirologists().get(controller.GetIndex()).GetBackpack().GetEquipments().add(new Cloak());
-        controller.GetVirologists().get(controller.GetIndex()).GetBackpack().GetEquipments().add(new Gloves());
-        controller.GetVirologists().get(controller.GetIndex()).GetBackpack().GetAminos().add(new Aminoacid());
-
     }
 
     @Override
@@ -68,7 +61,7 @@ public class BackpackPanel extends JPanel {
         VirologistBackpack backpack = controller.GetVirologists().get(controller.GetIndex()).GetBackpack();
         int linegap = 0;
         for (int i = 0; i < backpack.GetEquipments().size(); i++) {
-            g2d.drawString(backpack.GetEquipments().get(i).GetName(),
+            g2d.drawString(backpack.GetEquipments().get(i).GetName() + " " + backpack.GetEquipments().get(i).GetDurability(),
                     30,
                     40 + linegap*15);
             linegap++;
@@ -80,7 +73,7 @@ public class BackpackPanel extends JPanel {
         linegap++;
 
         for (int i = 0; i < backpack.GetAgents().size(); i++) {
-            g2d.drawString(backpack.GetAgents().get(i).GetName(),
+            g2d.drawString(backpack.GetAgents().get(i).GetName() + " " +backpack.GetAgents().get(i).getWarranty(),
                     30,
                     40 + linegap*15);
             linegap++;
