@@ -4,14 +4,17 @@ import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class DNormal extends DField implements ActionListener {
+/**
+ * Class for the normal Fields
+ */
+public class DNormal extends DField{
     public DNormal(String s) {
         super();
         drawableID = s;
     }
 
     @Override
-    public JButton Draw() {
+    public JButton Draw() { //has a different look if its selected
         this.setVisible(true);
         Icon icon;
         if (activeStatus){
@@ -22,19 +25,5 @@ public class DNormal extends DField implements ActionListener {
         JButton button = new JButton(icon);
         button.addActionListener(this);
         return button;
-    }
-
-    @Override
-    public void actionPerformed(ActionEvent e) {
-        //JOptionPane.showMessageDialog(null, "Field: normal ID:" + drawableID);
-
-        if (activeStatus){
-            this.mapPanel.setActiveFiled(null);
-            activeStatus = false;
-        }else{
-            this.mapPanel.setActiveFiled(this);
-            activeStatus = true;
-        }
-        this.mapPanel.repaint();
     }
 }

@@ -4,14 +4,17 @@ import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class DShelter extends DField implements ActionListener {
+/**
+ * Class for the Shelters
+ */
+public class DShelter extends DField{
     public DShelter(String s) {
         super();
         drawableID = s;
     }
 
     @Override
-    public JButton Draw() {
+    public JButton Draw() { //has a different look if its selected
         Icon icon;
         if (activeStatus){
             icon = new ImageIcon("Images/shelterActive.png");
@@ -21,18 +24,5 @@ public class DShelter extends DField implements ActionListener {
         JButton button = new JButton(icon);
         button.addActionListener(this);
         return button;
-    }
-
-    @Override
-    public void actionPerformed(ActionEvent e) {
-        //JOptionPane.showMessageDialog(null, "Field: shelter ID:" + drawableID);
-        if (activeStatus){
-            this.mapPanel.setActiveFiled(null);
-            activeStatus = false;
-        }else{
-            this.mapPanel.setActiveFiled(this);
-            activeStatus = true;
-        }
-        this.mapPanel.repaint();
     }
 }

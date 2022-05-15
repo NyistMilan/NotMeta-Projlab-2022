@@ -4,14 +4,17 @@ import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class DWareHouse extends DField implements ActionListener {
+/**
+ * Class for Warehouses
+ */
+public class DWareHouse extends DField{
     public DWareHouse(String s) {
         super();
         drawableID = s;
     }
 
     @Override
-    public JButton Draw() {
+    public JButton Draw() { //has a different look if its selected
         Icon icon;
         if (activeStatus){
             icon = new ImageIcon("Images/warehouseActive.png");
@@ -21,18 +24,5 @@ public class DWareHouse extends DField implements ActionListener {
         JButton button = new JButton(icon);
         button.addActionListener(this);
         return button;
-    }
-
-    @Override
-    public void actionPerformed(ActionEvent e) {
-        //JOptionPane.showMessageDialog(null, "Field: warehouse ID:" + drawableID);
-        if (activeStatus){
-            this.mapPanel.setActiveFiled(null);
-            activeStatus = false;
-        }else{
-            this.mapPanel.setActiveFiled(this);
-            activeStatus = true;
-        }
-        this.mapPanel.repaint();
     }
 }

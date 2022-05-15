@@ -13,6 +13,9 @@ import javax.swing.border.EmptyBorder;
 import java.awt.*;
 import java.util.ArrayList;
 
+/**
+ * JPanel that represents the map. It contains buttons as Fields and Virologists
+ */
 public class MapPanel extends JLayeredPane {
     private ArrayList<String> players;
     private SceneLauncher sceneLauncher;
@@ -34,16 +37,18 @@ public class MapPanel extends JLayeredPane {
 
     }
     public void paint(Graphics g){
-
+        //remove the remaining buttons
         for(Component component : this.getComponents()){
             this.remove(component);
         }
+        //for each DField that is to be displayed create a button
         for(DField df: gameScene.GetVisibleFields()){
             df.setMapPanel(this);
             JButton fieldButton = df.Draw();
             fieldButton.setBounds(df.GetCoords().x - 25, df.GetCoords().y -25, 50,50);
             this.add(fieldButton, 0);
         }
+        //for each DVirologist that is to be displayed create a button
         for(DVirologist dv: gameScene.GetVisibleVirologists()){
             dv.setMapPanel(this);
             JButton virologistButton = dv.Draw();
@@ -54,6 +59,7 @@ public class MapPanel extends JLayeredPane {
         }
         super.paint(g);
         double r = 35;
+        //create lines between neighboring DFields
         for(DField df: gameScene.GetVisibleFields()){
             df.setMapPanel(this);
             for(DField neighbor: df.GetNeighbors()){
@@ -71,23 +77,34 @@ public class MapPanel extends JLayeredPane {
                 }
             }
         }
-
     }
+
+    /**
+     * Sets the given DField as activeField
+     * @param activeField the DField
+     */
     public void setActiveFiled(DField activeField){
         if (this.activeField != null){
             this.activeField.setActivateStatus(false);
         }
         this.activeField = activeField;
     }
+
+    /**
+     * Sets the given Virologist as activeVirologist
+     * @param activeVirologist the Virologist
+     */
     public void setActiveVirologists(DVirologist activeVirologist){
         if (this.activeVirologist != null){
             this.activeVirologist.setActivateStatus(false);
         }
         this.activeVirologist = activeVirologist;
     }
+
     public DField getActiveField(){
         return this.activeField;
     }
+
     public DVirologist getActiveVirologist() {
         return this.activeVirologist;
     }

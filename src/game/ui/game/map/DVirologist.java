@@ -4,6 +4,9 @@ import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+/**
+ * Class for the Virologists
+ */
 public class DVirologist extends InGameButton implements ActionListener {
     private int index;
     public DVirologist(String s, int index) {
@@ -11,7 +14,7 @@ public class DVirologist extends InGameButton implements ActionListener {
         drawableID = s;
         this.index = index;
         int d = 20;
-        switch (index){
+        switch (index){ //Each DVirologist gets a corner on a DField, so they are visible even if multiple virologists are on the same field
             case 1:
                 x = d;
                 y = d;
@@ -35,7 +38,7 @@ public class DVirologist extends InGameButton implements ActionListener {
     public JButton Draw() {
         Icon icon;
         JButton button;
-        switch (index){
+        switch (index){ //each virologist has its own color: player1: red, player2: blue, player3: green and player4: yellow
             case 1:
                 if (activeStatus){
                     icon = new ImageIcon("Images/redActive.png");

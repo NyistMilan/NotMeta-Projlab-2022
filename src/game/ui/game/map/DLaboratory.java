@@ -5,14 +5,17 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class DLaboratory extends DField implements ActionListener {
+/**
+ * Class for the Laboratories
+ */
+public class DLaboratory extends DField{
     public DLaboratory(String s) {
         super();
         drawableID = s;
     }
 
     @Override
-    public JButton Draw() {
+    public JButton Draw() { //has a different look if its selected
         Icon icon;
         if (activeStatus){
             icon = new ImageIcon("Images/laboratoryActive.png");
@@ -22,18 +25,5 @@ public class DLaboratory extends DField implements ActionListener {
         JButton button = new JButton(icon);
         button.addActionListener((ActionListener) this);
         return button;
-    }
-
-    @Override
-    public void actionPerformed(ActionEvent e) {
-        //JOptionPane.showMessageDialog(null, "Field: laboratory ID:" + drawableID);
-        if (activeStatus){
-            this.mapPanel.setActiveFiled(null);
-            activeStatus = false;
-        }else{
-            this.mapPanel.setActiveFiled(this);
-            activeStatus = true;
-        }
-        this.mapPanel.repaint();
     }
 }

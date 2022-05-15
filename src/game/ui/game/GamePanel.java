@@ -8,6 +8,9 @@ import javax.swing.*;
 import java.awt.*;
 import java.util.ArrayList;
 
+/**
+ * JPanel that represents the Game. It contains 4 other JPanels.
+ */
 public class GamePanel extends JPanel {
     private ArrayList<String> players;
 
@@ -23,7 +26,6 @@ public class GamePanel extends JPanel {
         this.players = players;
         sceneLauncher = sl;
         this.gameScene = gameScene;
-
         this.setPreferredSize(new Dimension(SceneLauncher.Gamewidth, SceneLauncher.Gameheight));
         this.setBackground(Color.white);
         GroupLayout layout = new GroupLayout(this);
@@ -31,8 +33,6 @@ public class GamePanel extends JPanel {
         mapPanel = new MapPanel(gameScene, sceneLauncher, players);
         backpackPanel = new BackpackPanel(gameScene, sceneLauncher, players, controller);
         fieldPanel = new FieldPanel(gameScene, sceneLauncher, players, controller);
-        actionPanel = new ActionPanel(gameScene, sceneLauncher, players, controller, backpackPanel, mapPanel);
-        actionPanel.Update();
         actionPanel = new ActionPanel(gameScene, sceneLauncher, players, controller, backpackPanel, mapPanel);
         layout.setVerticalGroup(
                 layout.createSequentialGroup()
