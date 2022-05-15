@@ -242,7 +242,8 @@ public class ActionPanel extends JPanel implements ActionListener {
                     JDialog dialog = optionPane.createDialog(null, "My Slider");
                     dialog.setVisible(true);
                     int value = slider.getValue();
-                    controller.TakeAminoacid(value);
+                    if(value > 0)
+                        controller.TakeAminoacid(value);
                     break;
                 case 1:
                     JOptionPane optionPane2 = new JOptionPane();
@@ -253,19 +254,22 @@ public class ActionPanel extends JPanel implements ActionListener {
                     JDialog dialog2 = optionPane2.createDialog(null, "Capacity");
                     dialog2.setVisible(true);
                     int value2 = slider2.getValue();
-                    controller.TakeNucleotide(value2);
+                    if(value2 > 0)
+                        controller.TakeNucleotide(value2);
                     break;
                 case 2:
                     ArrayList<String> list = new ArrayList<>();
                     for (Equipment eq: equipmentList){
                         list.add(eq.GetName());
                     }
-                    Object[] equipments = list.toArray();
-                    int index = JOptionPane.showOptionDialog(null, "Choose what you want to pick up!",
-                            "Choose",
-                            JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE, null, equipments, equipments[0]);
+                    if(!list.isEmpty()){
+                        Object[] equipments = list.toArray();
+                        int index = JOptionPane.showOptionDialog(null, "Choose what you want to pick up!",
+                                "Choose",
+                                JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE, null, equipments, equipments[0]);
 
-                    controller.TakeEquipment(index+1);
+                        controller.TakeEquipment(index+1);
+                    }
                     break;
             }
             gameScene.repaint();
@@ -289,7 +293,8 @@ public class ActionPanel extends JPanel implements ActionListener {
                     JDialog dialog = optionPane.createDialog(null, "My Slider");
                     dialog.setVisible(true);
                     int value = slider.getValue();
-                    controller.DropAminoacid(value);
+                    if(value > 0)
+                        controller.DropAminoacid(value);
                     break;
                 case 1:
                     JOptionPane optionPane2 = new JOptionPane();
@@ -300,19 +305,22 @@ public class ActionPanel extends JPanel implements ActionListener {
                     JDialog dialog2 = optionPane2.createDialog(null, "Capacity");
                     dialog2.setVisible(true);
                     int value2 = slider2.getValue();
-                    controller.DropNucleotide(value2);
+                    if(value2 > 0)
+                        controller.DropNucleotide(value2);
                     break;
                 case 2:
                     ArrayList<String> list = new ArrayList<>();
                     for (Equipment eq: equipmentList){
                         list.add(eq.GetName());
                     }
-                    Object[] equipments = list.toArray();
-                    int index = JOptionPane.showOptionDialog(null, "Choose what you want to drop!",
-                            "Choose",
-                            JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE, null, equipments, equipments[0]);
+                    if(!list.isEmpty()){
+                        Object[] equipments = list.toArray();
+                        int index = JOptionPane.showOptionDialog(null, "Choose what you want to drop!",
+                                "Choose",
+                                JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE, null, equipments, equipments[0]);
 
-                    controller.DropEquipment(index+1);
+                        controller.DropEquipment(index+1);
+                    }
                     break;
             }
             gameScene.repaint();
@@ -375,7 +383,8 @@ public class ActionPanel extends JPanel implements ActionListener {
                         JDialog dialog = optionPane.createDialog(null, "My Slider");
                         dialog.setVisible(true);
                         int value = slider.getValue();
-                        controller.StealAminoacid(mapPanel.getActiveVirologist().GetVirologistName(), value);
+                        if(value > 0)
+                            controller.StealAminoacid(mapPanel.getActiveVirologist().GetVirologistName(), value);
                         break;
                     case 1:
                         JOptionPane optionPane2 = new JOptionPane();
@@ -386,19 +395,22 @@ public class ActionPanel extends JPanel implements ActionListener {
                         JDialog dialog2 = optionPane2.createDialog(null, "Capacity");
                         dialog2.setVisible(true);
                         int value2 = slider2.getValue();
-                        controller.StealNucleotide(mapPanel.getActiveVirologist().GetVirologistName(), value2);
+                        if(value2 > 0)
+                            controller.StealNucleotide(mapPanel.getActiveVirologist().GetVirologistName(), value2);
                         break;
                     case 2:
                         ArrayList<String> list = new ArrayList<>();
                         for (Equipment eq: equipmentList){
                             list.add(eq.GetName());
                         }
-                        Object[] equipments = list.toArray();
-                        int index = JOptionPane.showOptionDialog(null, "Choose what you want to steal!",
-                                "Choose",
-                                JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE, null, equipments, equipments[0]);
+                        if(!list.isEmpty()){
+                            Object[] equipments = list.toArray();
+                            int index = JOptionPane.showOptionDialog(null, "Choose what you want to steal!",
+                                    "Choose",
+                                    JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE, null, equipments, equipments[0]);
 
-                        controller.StealEquipment(mapPanel.getActiveVirologist().GetVirologistName(), index+1);
+                            controller.StealEquipment(mapPanel.getActiveVirologist().GetVirologistName(), index+1);
+                        }
                         break;
                 }
                 gameScene.repaint();
@@ -417,7 +429,7 @@ public class ActionPanel extends JPanel implements ActionListener {
 
     static JSlider getSlider(final JOptionPane optionPane, int max) {
         JSlider slider = new JSlider(0, max);
-        slider.setMajorTickSpacing(1);
+        slider.setMajorTickSpacing(2);
         slider.setPaintTicks(true);
         slider.setPaintLabels(true);
         ChangeListener changeListener = new ChangeListener() {
