@@ -1,6 +1,7 @@
 package assets.field;
 
 import assets.virologist.Virologist;
+import assets.virologist.behavior.learnbehavior.Learn;
 import collectables.agent.Bear;
 import collectables.genome.Genome;
 public class BearLaboratory extends Laboratory{
@@ -22,6 +23,7 @@ public class BearLaboratory extends Laboratory{
      * @param v virologist
      **/
     public void Accept(Virologist v) {
+        v.SetLearnBehavior(new Learn());
         v.GetInfected(new Virologist(),new Bear());
         virologists.add(v);
     }

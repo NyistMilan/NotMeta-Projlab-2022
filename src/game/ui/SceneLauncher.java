@@ -14,6 +14,7 @@ public class SceneLauncher {
     public static final int Gamewidth = 800;
     public static final int Gameheight = 600;
     public ArrayList<String> players = new ArrayList<>();
+    private String winner;
 
     /**
      * Main states for the game;
@@ -57,9 +58,11 @@ public class SceneLauncher {
         this.players = players;
     }
 
+    public void SetWinner(String winner){
+        this.winner = winner;
+    }
     //TODO
     public String GetWinner(){
-        String alma = "Zoli:)";
-        return alma;
+        return winner;
     }
 }

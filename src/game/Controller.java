@@ -19,6 +19,7 @@ import collectables.genome.*;
 import collectables.material.Aminoacid;
 import collectables.material.Materials;
 import collectables.material.Nucleotide;
+import game.ui.SceneLauncher;
 
 import java.awt.*;
 import java.io.BufferedReader;
@@ -31,6 +32,7 @@ import java.util.ArrayList;
  * Controls the Game and the turns of the players
  */
 public class Controller implements java.io.Serializable {
+    private SceneLauncher sceneLauncher;
     private final ArrayList<Field> map;
     private final ArrayList<collectables.genome.Genome> learnableGenomes;
     private final ArrayList<Virologist> virologists;
@@ -78,6 +80,7 @@ public class Controller implements java.io.Serializable {
 
         while (v.GetState() == State.KILLED) {
             virologists.remove(v);
+            v.GetRoute().GetLocation().GetVirologists().remove(v);
             if(index>virologists.size()-1){
                 index=0;
             }
@@ -87,12 +90,17 @@ public class Controller implements java.io.Serializable {
         v.SetState(State.BEFORE_MOVE);
     }
 
+    public void SetSceneLauncher(SceneLauncher sl){
+        this.sceneLauncher = sl;
+    }
     /**
      * The current Virologist ends his turn.
      */
     public void EndTurn() {
         GetCurrentVirologist().EndTurn();
         if (GetCurrentVirologist().GetLearnedGenomes().size() == learnableGenomes.size()) {
+            sceneLauncher.SetWinner(GetCurrentVirologist().GetName());
+            sceneLauncher.SwitchScenes(SceneLauncher.GLOBALGAMESTATES.End);
             System.out.printf("%s won the game!!!!\n", GetCurrentVirologist().GetName());
         } else
             NextPlayer();

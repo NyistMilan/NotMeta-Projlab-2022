@@ -24,6 +24,7 @@ public class GameScene extends JFrame{
         this.dmap = new ArrayList<>();
         this.dVirologists = new ArrayList<>();
         controller = new Controller();
+        controller.SetSceneLauncher(sl);
 
         controller.ImportMap("map.txt");
 
