@@ -9,6 +9,9 @@ import java.awt.*;
 import java.awt.geom.Line2D;
 import java.util.ArrayList;
 
+/**
+ * contains all the things on the Field where the virologist is on
+ */
 public class FieldPanel extends JPanel {
     private ArrayList<String> players;
     private SceneLauncher sceneLauncher;
@@ -35,6 +38,9 @@ public class FieldPanel extends JPanel {
         drawOnField(g);
     }
 
+    /**
+     *prints out the content of the field: equipments, materials and players
+     */
     private void drawOnField(Graphics g) {
         Graphics2D g2d = (Graphics2D) g;
         g2d.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);

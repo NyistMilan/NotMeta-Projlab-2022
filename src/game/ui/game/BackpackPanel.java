@@ -20,6 +20,9 @@ import java.awt.geom.Line2D;
 import java.util.ArrayList;
 import java.util.Arrays;
 
+/*
+*Panel which prints out the content of the virologist's backpack and the effects whitch affects him
+ */
 public class BackpackPanel extends JPanel {
     private ArrayList<String> players;
     private SceneLauncher sceneLauncher;
@@ -30,6 +33,9 @@ public class BackpackPanel extends JPanel {
     private Controller controller;
 
 
+    /**
+     *contstructor of the backpackpanel
+      */
     public BackpackPanel(GameScene gameScene, SceneLauncher sl, ArrayList<String> players, Controller controller){
         this.gameScene = gameScene;
         this.sceneLauncher = sl;
@@ -47,6 +53,9 @@ public class BackpackPanel extends JPanel {
         drawPlayerBackpack(g);
     }
 
+    /**
+    * prints out the content of the backpack and the active effects
+     */
     private void drawPlayerBackpack(Graphics g) {
         Graphics2D g2d = (Graphics2D) g;
         g2d.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
