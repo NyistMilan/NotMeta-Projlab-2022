@@ -37,22 +37,38 @@ public class DVirologist extends InGameButton implements ActionListener {
         JButton button;
         switch (index){
             case 1:
-                icon = new ImageIcon("Images/red.png");
+                if (activeStatus){
+                    icon = new ImageIcon("Images/redActive.png");
+                } else {
+                    icon = new ImageIcon("Images/red.png");
+                }
                 button = new JButton(icon);
                 button.addActionListener(this);
                 return button;
             case 2:
-                icon = new ImageIcon("Images/blue.png");
+                if (activeStatus){
+                    icon = new ImageIcon("Images/blueActive.png");
+                } else {
+                    icon = new ImageIcon("Images/blue.png");
+                }
                 button = new JButton(icon);
                 button.addActionListener(this);
                 return button;
             case 3:
-                icon = new ImageIcon("Images/green.png");
+                if (activeStatus){
+                    icon = new ImageIcon("Images/greenActive.png");
+                } else {
+                    icon = new ImageIcon("Images/green.png");
+                }
                 button = new JButton(icon);
                 button.addActionListener(this);
                 return button;
             case 4:
-                icon = new ImageIcon("Images/yellow.png");
+                if (activeStatus){
+                    icon = new ImageIcon("Images/yellowActive.png");
+                } else {
+                    icon = new ImageIcon("Images/yellow.png");
+                }
                 button = new JButton(icon);
                 button.addActionListener(this);
                 return button;
@@ -70,6 +86,7 @@ public class DVirologist extends InGameButton implements ActionListener {
             this.mapPanel.setActiveVirologists(this);
             activeStatus = true;
         }
+        this.mapPanel.repaint();
     }
 
     public String GetVirologistName(){
