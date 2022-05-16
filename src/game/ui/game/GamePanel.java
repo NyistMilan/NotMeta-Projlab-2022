@@ -21,7 +21,9 @@ public class GamePanel extends JPanel {
     private FieldPanel fieldPanel;
     private ActionPanel actionPanel;
 
-
+    /**
+     *constructor of the GamenPanel
+     */
     public GamePanel(GameScene gameScene, SceneLauncher sl, ArrayList<String> players, Controller controller){
         this.players = players;
         sceneLauncher = sl;

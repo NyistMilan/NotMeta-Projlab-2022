@@ -17,6 +17,9 @@ public class GameScene extends JFrame{
     private ArrayList<DField> dmap;
     private ArrayList<DVirologist> dVirologists;
 
+    /**
+     *constructor of the GameScene
+     */
     public GameScene(SceneLauncher sl, ArrayList<String> players){
         this.setTitle("Game");
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);

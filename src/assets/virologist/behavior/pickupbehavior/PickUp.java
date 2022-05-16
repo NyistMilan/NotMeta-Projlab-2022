@@ -26,10 +26,11 @@ public class PickUp implements PickUpBehavior, java.io.Serializable {
     @Override
     public void PickUpCollectable(Virologist v, ArrayList<Collectable> c) {
         for(Collectable collectable: c){
-            v.GetRoute().GetLocation().Remove(v, collectable);
             boolean isAdded = collectable.AddToBackpack(v, v.GetBackpack());
-            collectable.Apply(v);
-            if(!isAdded){
+            if (isAdded){
+                v.GetRoute().GetLocation().Remove(v, collectable);
+                collectable.Apply(v);
+            } else {
                 v.SetState(State.AFTER_ACTION);
                 break;
             }

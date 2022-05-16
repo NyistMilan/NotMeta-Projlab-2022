@@ -20,8 +20,8 @@ import java.awt.geom.Line2D;
 import java.util.ArrayList;
 import java.util.Arrays;
 
-/*
-*Panel which prints out the content of the virologist's backpack and the effects whitch affects him
+/**
+ *Panel which prints out the content of the virologist's backpack and the effects whitch affects him
  */
 public class BackpackPanel extends JPanel {
     private ArrayList<String> players;
@@ -34,7 +34,7 @@ public class BackpackPanel extends JPanel {
 
 
     /**
-     *contstructor of the backpackpanel
+     *constructor of the BackpackPanel
       */
     public BackpackPanel(GameScene gameScene, SceneLauncher sl, ArrayList<String> players, Controller controller){
         this.gameScene = gameScene;

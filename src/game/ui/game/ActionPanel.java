@@ -18,6 +18,9 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
+/**
+ * Panel which contains the buttons of actions.
+ */
 public class ActionPanel extends JPanel implements ActionListener {
     private ArrayList<String> players;
     private Controller controller;
@@ -38,7 +41,9 @@ public class ActionPanel extends JPanel implements ActionListener {
     private JButton kill;
     private JButton endTurn;
 
-
+    /**
+     *constructor of the ActionPanel
+     */
     public ActionPanel(GameScene gameScene, SceneLauncher sl, ArrayList<String> players, Controller controller, BackpackPanel backpackPanel, MapPanel mapPanel) {
         this.gameScene = gameScene;
         this.sceneLauncher = sl;
@@ -137,12 +142,19 @@ public class ActionPanel extends JPanel implements ActionListener {
 
     }
 
+    /**
+     * It overrides the paint method
+     * @param g the graphics class
+     */
     @Override
     public void paint(Graphics g) {
         super.paint(g);
         Update();
     }
 
+    /**
+     * This method updates the states of all button.
+     */
     public void Update() {
         State state = controller.GetCurrentVirologist().GetState();
         switch (state) {
@@ -195,6 +207,10 @@ public class ActionPanel extends JPanel implements ActionListener {
         }
     }
 
+    /**
+     * This handles all the actions, get inputs from the player and call to the controllers methods.
+     * @param e the event
+     */
     @Override
     public void actionPerformed(ActionEvent e) {
         if (e.getSource() == endTurn) {
@@ -422,16 +438,22 @@ public class ActionPanel extends JPanel implements ActionListener {
         }
     }
 
+    /**
+     * This method create a new slider between the value of 0 and max.
+     * @param optionPane the optinoPane
+     * @param max the maximum value on the slider
+     * @return the new slider
+     */
     static JSlider getSlider(final JOptionPane optionPane, int max) {
         JSlider slider = new JSlider(0, max);
-        slider.setMajorTickSpacing(1);
+        slider.setMajorTickSpacing(2);
         slider.setPaintTicks(true);
         slider.setPaintLabels(true);
         ChangeListener changeListener = new ChangeListener() {
             public void stateChanged(ChangeEvent changeEvent) {
                 JSlider theSlider = (JSlider) changeEvent.getSource();
                 if (!theSlider.getValueIsAdjusting()) {
-                    optionPane.setInputValue(new Integer(theSlider.getValue()));
+                    optionPane.setInputValue(theSlider.getValue());
                 }
             }
         };
